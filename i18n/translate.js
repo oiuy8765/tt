@@ -89,6 +89,41 @@ async function withRetry(fn, times) {
   throw lastErr;
 }
 
+// ── Google gtx 兜底：腾讯接口被限流/封 IP 时（CI 数据中心 IP 常见）逐条兜底。
+//    gtx 是 Google 翻译的公开接口，海外服务器可直连、无需密钥。
+const GTX_LANG = { zh: 'zh-CN' };
+let gtxBroken = false; // 连续失败（如 429）后本次进程不再尝试，避免拖慢构建
+
+async function gtxOne(text, from, to) {
+  const tl = GTX_LANG[to] || to;
+  const url =
+    'https://translate.googleapis.com/translate_a/single?client=gtx&dt=t' +
+    '&sl=' +
+    encodeURIComponent(from === 'auto' ? 'auto' : from) +
+    '&tl=' +
+    encodeURIComponent(tl) +
+    '&q=' +
+    encodeURIComponent(text);
+  const r = await fetch(url, {
+    headers: {
+      'User-Agent':
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+    },
+    signal: AbortSignal.timeout(15000),
+  });
+  if (r.status !== 200) {
+    if (r.status === 429) gtxBroken = true;
+    throw new Error('gtx HTTP ' + r.status);
+  }
+  const j = await r.json();
+  const segs = j && j[0];
+  if (!Array.isArray(segs) || !segs.length) throw new Error('gtx 返回格式异常');
+  return segs
+    .map((s) => (s && s[0]) || '')
+    .join('')
+    .trim();
+}
+
 /**
  * @param {string[]} texts
  * @param {{from?:string,to:string,onProgress?:Function,force?:boolean}} opts
@@ -131,17 +166,32 @@ async function translate(texts, opts) {
             } else failed++;
           });
         } catch (e) {
-          // 整批失败时退回逐条翻，避免一条坏数据连坐 19 条
+          // 整批失败时退回逐条翻，避免一条坏数据连坐 19 条；腾讯失败再走 Google gtx 兜底
           for (const one of my) {
+            let ok = false;
             try {
               await new Promise((r) => setTimeout(r, 250));
               const g = await withRetry(() => tencentTranslate([one], from, to), 3);
               const v = String(g[0] == null ? '' : g[0]).trim();
-              if (v) cache[one] = v;
-              else failed++;
+              if (v) {
+                cache[one] = v;
+                ok = true;
+              }
             } catch (e2) {
-              failed++;
+              /* 落入 gtx 兜底 */
             }
+            if (!ok && !gtxBroken) {
+              try {
+                const v = await gtxOne(one, from, to);
+                if (v) {
+                  cache[one] = v;
+                  ok = true;
+                }
+              } catch (e3) {
+                /* gtx 也不行，记失败 */
+              }
+            }
+            if (!ok) failed++;
           }
         }
         done += my.length;

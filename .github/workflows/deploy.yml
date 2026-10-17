@@ -42,6 +42,10 @@ jobs:
 
       - name: Build static site
         run: node build-static.js
+        env:
+          # 强制重新抓取 explodingtopics 榜单：否则 CI 回写的新鲜缓存（6h 内）
+          # 会让 getRadar 直接走缓存，机会库词表永远不会更新
+          GT_FORCE_RADAR: '1'
 
       - name: Stop server
         if: always()

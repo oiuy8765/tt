@@ -1424,7 +1424,10 @@ async function buildDailyTranslations() {
     try {
       const r = await translate(texts, { from: 'en', to: l });
       DAILY_TR[l === 'zh' ? 'zh-CN' : l] = r.map || {};
-      console.log('  热榜翻译 ' + l + '：' + Object.keys(r.map).length + '/' + texts.length + '（新译 ' + r.pending + '）');
+      console.log(
+        '  热榜翻译 ' + l + '：' + Object.keys(r.map || {}).length + '/' + texts.length +
+        '（新译 ' + r.pending + (r.failed ? '，失败 ' + r.failed : '') + '）'
+      );
     } catch (e) {
       console.log('  热榜翻译 ' + l + ' 失败，回退原文：' + e.message);
     }

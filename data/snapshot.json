@@ -1,5 +1,5 @@
 {
- "savedAt": 1792267110017,
+ "savedAt": 1792269594555,
  "geos": {
   "GLOBAL": {
    "geo": "GLOBAL",
@@ -511,24 +511,24 @@
      "aggregator": true
     },
     {
-     "query": "TikTok Permanently Bans the ‘Musk’ Film Account, Raising Suppression Fears",
+     "query": "Just a casual sip of corporate toxicity!",
      "traffic": "585K+",
      "trafficValue": 585000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=TikTok%20Permanently%20Bans%20the%20%E2%80%98Musk%E2%80%99%20Film%20Account%2C%20Raising%20Sup&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=Just%20a%20casual%20sip%20of%20corporate%20toxicity!&geo=US",
      "related": [
-      "TikTok Permanently Bans",
-      "reddit movies"
+      "Just a casual",
+      "reddit SipsTea"
      ],
      "articles": [
       {
-       "title": "\"TikTok Permanently Bans the ‘Musk’ Film Account, Raising Suppression Fears\" is generating significant online interest. submitted by    /u/yourfavchoom    to   ",
-       "url": "https://www.reddit.com/r/movies/comments/1x8cfmq/tiktok_permanently_bans_the_musk_film_account/",
-       "source": "Reddit r/movies",
+       "title": "\"Just a casual sip of corporate toxicity!\" is generating significant online interest. submitted by    /u/Putrid-Welder1803    to    r/SipsTea   [link]   [commen",
+       "url": "https://www.reddit.com/r/SipsTea/comments/1x8gywi/just_a_casual_sip_of_corporate_toxicity/",
+       "source": "Reddit r/SipsTea",
        "timeAgo": ""
       }
      ],
      "image": "",
-     "category": "Entertainment",
+     "category": "News",
      "date": "",
      "dateKey": "",
      "geo": "GLOBAL",
@@ -559,24 +559,24 @@
      "aggregator": true
     },
     {
-     "query": "Debra Wilson Also Confused On Why Games Keep Using Her Likeness",
+     "query": "Car Park Capital Is The World’s Most Evil Simulator (Complimentary)",
      "traffic": "560K+",
      "trafficValue": 560000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=Debra%20Wilson%20Also%20Confused%20On%20Why%20Games%20Keep%20Using%20Her%20Liken&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=Car%20Park%20Capital%20Is%20The%20World%E2%80%99s%20Most%20Evil%20Simulator%20(Complim&geo=US",
      "related": [
-      "Debra Wilson Also",
+      "Car Park Capital",
       "Kotaku news"
      ],
      "articles": [
       {
-       "title": "\"Debra Wilson Also Confused On Why Games Keep Using Her Likeness\" is generating significant online interest. In an interview with Joseph Shepherd, the prolific ",
-       "url": "https://kotaku.com/debra-wilson-also-confused-on-why-games-keep-using-her-likeness-2000747061",
+       "title": "\"Car Park Capital Is The World’s Most Evil Simulator (Complimentary)\" is generating significant online interest. Step into Robert Moses’ shoes as you dismantle ",
+       "url": "https://kotaku.com/car-park-capital-is-the-worlds-most-evil-simulator-complimentary-2000747068",
        "source": "Kotaku",
        "timeAgo": ""
       }
      ],
-     "image": "https://kotaku.com/app/uploads/2026/10/callistowolverinedebrawilson.jpg",
-     "category": "Entertainment",
+     "image": "https://kotaku.com/app/uploads/2026/10/carparkcapital-1280x771.jpg",
+     "category": "News",
      "date": "",
      "dateKey": "",
      "geo": "GLOBAL",
@@ -631,18 +631,18 @@
      "aggregator": true
     },
     {
-     "query": "Miley Showcases New Era, Remembers ‘Aunt Dolly’ Parton at Hollywood Bowl",
+     "query": "Eminem Defends New Collaboration With ‘Old Friend’ Kid Rock: ‘Not About Choosing Sides’",
      "traffic": "400K+",
      "trafficValue": 400000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=Miley%20Showcases%20New%20Era%2C%20Remembers%20%E2%80%98Aunt%20Dolly%E2%80%99%20Parton%20at%20Ho&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=Eminem%20Defends%20New%20Collaboration%20With%20%E2%80%98Old%20Friend%E2%80%99%20Kid%20Rock%3A&geo=US",
      "related": [
-      "Miley Showcases New",
+      "Eminem Defends New",
       "Rolling Stone news"
      ],
      "articles": [
       {
-       "title": "\"Miley Showcases New Era, Remembers ‘Aunt Dolly’ Parton at Hollywood Bowl\" is generating significant online interest. The singer covers \"Jolene\" and brings out ",
-       "url": "https://www.rollingstone.com/music/music-live-reviews/miley-cyrus-hollywood-bowl-show-concert-2026-1235644375/",
+       "title": "\"Eminem Defends New Collaboration With ‘Old Friend’ Kid Rock: ‘Not About Choosing Sides’\" is generating significant online interest. \"Just choosing to make musi",
+       "url": "https://www.rollingstone.com/music/music-news/eminem-defends-kid-rock-collaboration-1235644386/",
        "source": "Rolling Stone",
        "timeAgo": ""
       }
@@ -728,8 +728,8 @@
     },
     {
      "query": "DeepSeek-v4.1-Flash-1017",
-     "traffic": "267K+",
-     "trafficValue": 266500,
+     "traffic": "275K+",
+     "trafficValue": 275000,
      "exploreLink": "https://trends.google.com/trends/explore?q=DeepSeek-v4.1-Flash-1017&geo=US",
      "related": [
       "DeepSeek-v4.1-Flash-1017",
@@ -751,7 +751,7 @@
      "aggregator": true
     }
    ],
-   "fetchedAt": 1792266884286
+   "fetchedAt": 1792269528687
   },
   "US": {
    "geo": "US",

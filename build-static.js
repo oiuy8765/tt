@@ -144,7 +144,10 @@ function fetchLocal(apiPath) {
   console.log('[3/5] 生成数据…');
   // 直接用 radar.js 重算：enrich 缓存都在本地（data/radar-enrich.json），不用重新抓
   const R = require(path.join(ROOT, 'radar.js'));
-  let full = await R.getRadar({ force: false });
+  // CI 环境设 GT_FORCE_RADAR=1：每次构建都重新抓 explodingtopics 榜单，
+  // 否则上次构建回写的新鲜缓存（6 小时内）会让榜单永远不刷新
+  const FORCE_RADAR = process.env.GT_FORCE_RADAR === '1';
+  let full = await R.getRadar({ force: FORCE_RADAR });
   // 旧缓存里没有「时间窗口 / 完整历史」字段时，强制重抓一次榜单（两者都只在列表接口里）
   if (full.topics && full.topics.length && (!full.topics[0].trend || !full.topics[0].hist)) {
     console.log('  缓存缺少时间窗口或完整历史字段，重新抓取榜单…');
@@ -222,7 +225,9 @@ function fetchLocal(apiPath) {
 
   // 每日热榜快照（本地服务在跑就抓最新的；否则复用上次构建留下的快照）
   const dailyBackup = path.join(ROOT, 'data', 'daily.json');
-  let daily = await fetchLocal('/api/daily?geos=' + encodeURIComponent('US,GB,JP'));
+  // 12 个主要市场地区（Google 热榜 RSS 每地区每天固定 10 条）
+  const DAILY_GEOS = 'US,GB,CA,AU,IN,DE,FR,JP,KR,BR,MX,ID';
+  let daily = await fetchLocal('/api/daily?geos=' + encodeURIComponent(DAILY_GEOS));
   if (!daily || !daily.ok) {
     try {
       daily = JSON.parse(fs.readFileSync(dailyBackup, 'utf8'));

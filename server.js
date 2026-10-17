@@ -1197,8 +1197,10 @@ const server = http.createServer(async (req, res) => {
       if (!geos.length) return sendJson(res, 400, { ok: false, error: '请至少选择一个地区' });
 
       // ── 一级：Google Trends 官方内部接口（需本机可访问 Google）
+      // 地区多时逐个错峰 600ms，避免并发过高被 Google 限流
       const entries = await Promise.all(
-        geos.map(async (g) => {
+        geos.map(async (g, i) => {
+          if (i) await new Promise((r) => setTimeout(r, i * 600));
           try {
             return [g, await getDailyTrends(g)];
           } catch (e) {
