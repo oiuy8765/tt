@@ -16,3 +16,4 @@ _enrich_all.js
 _rebuild.js
 test-selftest.js
 similar.js.bak
+.dist-trash-*
