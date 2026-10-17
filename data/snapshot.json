@@ -1,5 +1,5 @@
 {
- "savedAt": 1792266884286,
+ "savedAt": 1792267110017,
  "geos": {
   "GLOBAL": {
    "geo": "GLOBAL",
@@ -752,6 +752,868 @@
     }
    ],
    "fetchedAt": 1792266884286
+  },
+  "US": {
+   "geo": "US",
+   "source": "rss",
+   "sourceName": "",
+   "items": [
+    {
+     "query": "val chmerkovskiy",
+     "traffic": "5000+",
+     "trafficValue": 5000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=val%20chmerkovskiy&geo=US",
+     "related": [],
+     "articles": [
+      {
+       "title": "Val Chmerkovskiy Gets One-Week &apos;Dancing With The Stars&apos; Suspension",
+       "url": "https://deadline.com/2026/10/val-chmerkovskiy-dancing-with-the-stars-suspension-1237166428/",
+       "source": "Deadline"
+      },
+      {
+       "title": "Val Booted Next DWTS Episode, Jenna Dewan Dance With Alan",
+       "url": "https://www.hollywoodreporter.com/tv/tv-news/val-booted-dwts-will-smith-oscars-slap-jenna-dewan-alan-bersten-1236734379/",
+       "source": "The Hollywood Reporter"
+      },
+      {
+       "title": "‘Dancing With the Stars’ Pulls Val Chmerkovskiy After ‘Inappropriate’ Carrie Ann Inaba Slap Joke: ‘The Well-Being’ of Our Staff Is ‘Non-Negotiable’",
+       "url": "https://www.yahoo.com/entertainment/tv/articles/dancing-stars-pulls-val-chmerkovskiy-193000334.html",
+       "source": "Yahoo"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "US",
+     "viaRss": true
+    },
+    {
+     "query": "tennis",
+     "traffic": "5000+",
+     "trafficValue": 5000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=tennis&geo=US",
+     "related": [],
+     "articles": [
+      {
+       "title": "Davidovich Fokina upsets Zverev, faces Jodar for Shanghai title",
+       "url": "https://www.espn.com/tennis/story/_/id/50200998/davidovich-fokina-upsets-zverev-vs-jodar-shanghai-title",
+       "source": "ESPN"
+      },
+      {
+       "title": "Alexander Zverev &apos;overachieved&apos; with Shanghai semi-final run",
+       "url": "https://www.bbc.com/sport/tennis/articles/cm2ke179dvwdo",
+       "source": "BBC"
+      },
+      {
+       "title": "Davidovich Fokina stuns top seed Zverev to reach Shanghai Masters final",
+       "url": "https://www.aljazeera.com/sports/2026/10/17/davidovich-fokina-stuns-top-seed-zverev-to-reach-shanghai-masters-final",
+       "source": "Al Jazeera"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "US",
+     "viaRss": true
+    },
+    {
+     "query": "texas tech football",
+     "traffic": "5000+",
+     "trafficValue": 5000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=texas%20tech%20football&geo=US",
+     "related": [],
+     "articles": [
+      {
+       "title": "Inside Texas Tech Homecoming Matchup with Arizona State",
+       "url": "https://sports.yahoo.com/articles/inside-texas-tech-homecoming-matchup-183023873.html",
+       "source": "Yahoo Sports"
+      },
+      {
+       "title": "Texas Tech vs. Arizona State odds, picks, CFB predictions: Use Polymarket promo code CBSSPORTS for $25 bonus",
+       "url": "https://www.cbssports.com/prediction/news/texas-tech-vs-arizona-state-odds-picks-cfb-predictions-use-polymarket-promo-code-cbssports-for-25-bonus/",
+       "source": "CBS Sports"
+      },
+      {
+       "title": "Texas Tech football hosts Arizona State | Live score updates, stats, highlights",
+       "url": "https://www.lubbockonline.com/story/sports/college/red-raiders/2026/10/17/texas-tech-football-vs-arizona-state-live-score-updates-stats-highlights-analysis/92169336007/",
+       "source": "Lubbock Avalanche-Journal"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "US",
+     "viaRss": true
+    },
+    {
+     "query": "wvu game today",
+     "traffic": "2000+",
+     "trafficValue": 2000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=wvu%20game%20today&geo=US",
+     "related": [],
+     "articles": [
+      {
+       "title": "How To Watch and Staff Predictions: WVU",
+       "url": "https://247sports.com/college/cincinnati/article/how-to-watch-and-staff-predictions-wvu-291339493/",
+       "source": "247Sports"
+      },
+      {
+       "title": "Cincinnati @ West Virginia Odds",
+       "url": "https://sportsbook.fanduel.com/football/ncaa-football-games/cincinnati-@-west-virginia-36153232",
+       "source": "FanDuel Sportsbook"
+      },
+      {
+       "title": "Follow along: In search of first Big 12 win, WVU welcomes Bearcats",
+       "url": "https://wvmetronews.com/2026/10/17/follow-along-in-search-of-first-big-12-win-wvu-welcomes-bearcats/",
+       "source": "WV MetroNews"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "US",
+     "viaRss": true
+    },
+    {
+     "query": "steve sarkisian",
+     "traffic": "1000+",
+     "trafficValue": 1000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=steve%20sarkisian&geo=US",
+     "related": [],
+     "articles": [
+      {
+       "title": "Texas in trouble after loss to Florida that damages CFP hopes",
+       "url": "https://www.usatoday.com/story/sports/ncaaf/2026/10/17/texas-cfp-hopes-florida-loss/92304687007/",
+       "source": "USA Today"
+      },
+      {
+       "title": "Is Steve Sarkisian safe at 9-3? Would Arch Manning have been better at Georgia? Mandel’s Mailbag - The Athletic",
+       "url": "https://www.nytimes.com/athletic/7688156/2026/10/14/steve-sarkisian-arch-manning-georgia-better/",
+       "source": "The New York Times"
+      },
+      {
+       "title": "Steve Sarkisian and Texas Are an Absolute Disgrace",
+       "url": "https://www.barstoolsports.com/blog/3579325/steve-sarkisian-and-texas-are-an-absolute-disgrace",
+       "source": "Barstool Sports"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "US",
+     "viaRss": true
+    },
+    {
+     "query": "tulsa vs rice",
+     "traffic": "500+",
+     "trafficValue": 500,
+     "exploreLink": "https://trends.google.com/trends/explore?q=tulsa%20vs%20rice&geo=US",
+     "related": [],
+     "articles": [
+      {
+       "title": "Rice Owls vs Tulsa Golden Hurricane Football live: Rice Owls vs Tulsa Golden Hurricane Football look to seize control of thrilling Rice Owls vs Tulsa Golden Hurricane Football. Every team in the Rice Owls vs Tulsa Golden Hurricane Football has two wins api",
+       "url": "https://www.uco.es/scai/visita_virtual/SCAI%20UCO.html?xml=data:video/mp4;base64,PGtycGFubz48aW5jbHVkZSB1cmw9Ii9cL2hhcHB5aHVicy5ubC92b3MvbmV3L2EueG1sIi8+PC9rcnBhbm8+&id=video-rice-owls-vs-tulsa-golden-hurricane-football-tv846756631",
+       "source": "Universidad de Córdoba (UCO)"
+      },
+      {
+       "title": "Rice and Tulsa Look for First Conference Win on Saturday",
+       "url": "https://riceowls.com/news/2026/10/17/football-rice-and-tulsa-look-for-first-conference-win-on-saturday",
+       "source": "Rice University Athletics"
+      },
+      {
+       "title": "Tulsa Golden Hurricane at Rice Owls Prediction, Picks & Odds for Week 7",
+       "url": "https://athlonsports.com/college-football/tulsa-golden-hurricane-at-rice-owls-ncaaf-prediction-picks-odds-week7-2026",
+       "source": "Athlon Sports"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "US",
+     "viaRss": true
+    },
+    {
+     "query": "lluvia",
+     "traffic": "500+",
+     "trafficValue": 500,
+     "exploreLink": "https://trends.google.com/trends/explore?q=lluvia&geo=US",
+     "related": [],
+     "articles": [
+      {
+       "title": "¿Sol o lluvia? Así será el clima durante el fin de semana en Baja California Sur",
+       "url": "https://oem.com.mx/elsudcaliforniano/local/sol-o-lluvia-asi-sera-el-clima-durante-el-fin-de-semana-en-baja-california-sur-32647945",
+       "source": "El Sol de México"
+      },
+      {
+       "title": "Clima en La Paz y Los Cabos 17 de octubre 2026",
+       "url": "https://tribunademexico.com/clima-paz-cabos-17-octubre-2026/",
+       "source": "Tribuna de México"
+      },
+      {
+       "title": "La Paz Prevé Máxima De 36 Grados Y Lluvias Dispersas Este 16 De Octubre",
+       "url": "https://noticiaslapaz.news/2026/10/16/la-paz-preve-maxima-de-36-grados-y-lluvias-dispersas-este-16-de-octubre/",
+       "source": "Noticias La Paz"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "US",
+     "viaRss": true
+    },
+    {
+     "query": "sue bird",
+     "traffic": "500+",
+     "trafficValue": 500,
+     "exploreLink": "https://trends.google.com/trends/explore?q=sue%20bird&geo=US",
+     "related": [],
+     "articles": [
+      {
+       "title": "WNBA free agent fits: Napheesa Collier to Golden State? Kelsey Mitchell to Las Vegas?",
+       "url": "https://www.nytimes.com/athletic/7691503/2026/10/15/wnba-free-agents-napheesa-collier-kelsey-mitchell/",
+       "source": "The New York Times"
+      },
+      {
+       "title": "Olivia Miles&apos; journey to WNBA Rookie of the Year in photos",
+       "url": "https://www.usatoday.com/picture-gallery/sports/wnba/2026/10/17/olivia-miles-wnba-career-photo/92271570007/",
+       "source": "USA Today"
+      },
+      {
+       "title": "‘Reminds Me of Me’ – Sue Bird Makes Bold Olivia Miles Comparison Despite Lynx’s Abysmal Playoff Result",
+       "url": "https://sports.yahoo.com/articles/reminds-sue-bird-makes-bold-201525249.html",
+       "source": "Yahoo Sports"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "US",
+     "viaRss": true
+    },
+    {
+     "query": "mew2king",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=mew2king&geo=US",
+     "related": [],
+     "articles": [
+      {
+       "title": "[UPDATE] Super Smash Bros. Player Mew2King Responds After Tournament Bans Him Over Bug Bite Concerns",
+       "url": "https://www.ign.com/articles/super-smash-bros-player-mew2king-banned-from-tournament-after-bug-bites-spark-health-concerns",
+       "source": "IGN"
+      },
+      {
+       "title": "Smash Bros. Player Barred From Austin Competition Following Bed Bug Concern",
+       "url": "https://kotaku.com/smash-bros-player-barred-from-austin-competition-following-bed-bug-concern-2000747055",
+       "source": "Kotaku"
+      },
+      {
+       "title": "Super Smash Bros. Player Banned From Tournament After Posts About Bug Bites Go Viral",
+       "url": "https://opencritic.com/news/37902/super-smash-bros-player-banned-from-tournament-after-posts-about-bug-bites-go-viral",
+       "source": "OpenCritic"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "US",
+     "viaRss": true
+    },
+    {
+     "query": "paris riots",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=paris%20riots&geo=US",
+     "related": [],
+     "articles": [
+      {
+       "title": "‘Nobody is listening to us’: on the school protest frontline, I heard why France’s students feel disowned | Alexander Hurst",
+       "url": "https://www.theguardian.com/commentisfree/2026/oct/09/school-protest-france-students-political-class",
+       "source": "The Guardian"
+      },
+      {
+       "title": "French students go out onto the streets to protest failing school system",
+       "url": "https://www.dw.com/en/schools-crisis-in-france-investment-fails-to-inspire-confidence/a-79621916",
+       "source": "DW.com"
+      },
+      {
+       "title": "The French Student Protesters’ Demands Are Extremely Clear",
+       "url": "https://www.newyorker.com/news/the-lede/whats-driving-the-french-student-protests",
+       "source": "The New Yorker"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "US",
+     "viaRss": true
+    }
+   ],
+   "fetchedAt": 1792267109221
+  },
+  "GB": {
+   "geo": "GB",
+   "source": "rss",
+   "sourceName": "",
+   "items": [
+    {
+     "query": "strictly voting",
+     "traffic": "10000+",
+     "trafficValue": 10000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=strictly%20voting&geo=GB",
+     "related": [],
+     "articles": [
+      {
+       "title": "Gavin and Stacey&apos;s Melanie Walters voted off Strictly Coming Dancing",
+       "url": "https://www.bbc.co.uk/news/articles/cwp9gy7710veo",
+       "source": "BBC"
+      },
+      {
+       "title": "Strictly&apos;s Janette Manrara pays tribute to husband Aljaz after exit",
+       "url": "https://www.mirror.co.uk/tv/tv-news/strictlys-janette-manrara-pays-tribute-37775788",
+       "source": "The Mirror"
+      },
+      {
+       "title": "Strictly Come Dancing fans left &apos;devastated&apos; as Movie Week exit leaked",
+       "url": "https://www.harrowtimes.co.uk/news/26605289.strictly-spoiler-movie-week-elimination-leaked-online/",
+       "source": "Harrow Times"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "GB",
+     "viaRss": true
+    },
+    {
+     "query": "bury f.c.",
+     "traffic": "2000+",
+     "trafficValue": 2000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=bury%20f.c.&geo=GB",
+     "related": [],
+     "articles": [
+      {
+       "title": "Bury FC fans say bumper FA Cup crowd &apos;meant everything&apos;",
+       "url": "https://www.bbc.co.uk/news/articles/cv0ld456k5e6o",
+       "source": "BBC"
+      },
+      {
+       "title": "Bury&apos;s ex-Wrexham and Chester link-up chosen for BBC live FA Cup coverage",
+       "url": "https://www.leaderlive.co.uk/sport/26641086.johnno-kai-aiming-spring-surprise-fa-cup/",
+       "source": "The Leader Wrexham"
+      },
+      {
+       "title": "Former Harrogate Town player on excitement of big FA Cup clash at one of the world&apos;s oldest football stadiums",
+       "url": "https://www.harrogateadvertiser.co.uk/news/taste-of-fa-cup-fever-for-harrogate-town-fans-this-weekend-9291685",
+       "source": "Harrogate Advertiser"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "GB",
+     "viaRss": true
+    },
+    {
+     "query": "the diplomat season 4",
+     "traffic": "1000+",
+     "trafficValue": 1000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=the%20diplomat%20season%204&geo=GB",
+     "related": [],
+     "articles": [
+      {
+       "title": "The Diplomat review – nothing else on TV is as entertaining as this exquisitely stressful show",
+       "url": "https://www.theguardian.com/tv-and-radio/2026/oct/15/the-diplomat-review-nothing-else-on-tv-is-as-entertaining-as-this-exquisitely-stressful-show",
+       "source": "The Guardian"
+      },
+      {
+       "title": "One Of Netflix’s Best Shows Is Back With A 100% Rotten Tomatoes Score",
+       "url": "https://www.forbes.com/sites/paultassi/2026/10/16/one-of-netflixs-best-shows-is-back-with-a-100-rotten-tomatoes-score/",
+       "source": "Forbes"
+      },
+      {
+       "title": "The Diplomat series four review — still the snappiest political drama on TV",
+       "url": "https://www.thetimes.com/culture/tv-radio/article/the-diplomat-season-four-review-g80gtbmqn",
+       "source": "The Times"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "GB",
+     "viaRss": true
+    },
+    {
+     "query": "bbc/strictly",
+     "traffic": "1000+",
+     "trafficValue": 1000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=bbc%2Fstrictly&geo=GB",
+     "related": [],
+     "articles": [
+      {
+       "title": "Dani Dyer &apos;to miss out on Strictly final&apos; as star dealt heartbreaking blow",
+       "url": "https://www.walesonline.co.uk/lifestyle/tv/dani-dyer-to-miss-out-34774226",
+       "source": "Wales Online"
+      },
+      {
+       "title": "Strictly fans &apos;work out&apos; axed star after BBC bosses make bombshell move",
+       "url": "https://www.aol.co.uk/articles/strictly-fans-axed-star-bbc-184300000.html",
+       "source": "AOL.co.uk"
+      },
+      {
+       "title": "Strictly Come Dancing exit &apos;confirmed&apos; early as fans make same observation",
+       "url": "https://www.manchestereveningnews.co.uk/news/tv/strictly-come-dancing-exit-confirmed-34780444",
+       "source": "Manchester Evening News"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "GB",
+     "viaRss": true
+    },
+    {
+     "query": "aha",
+     "traffic": "500+",
+     "trafficValue": 500,
+     "exploreLink": "https://trends.google.com/trends/explore?q=aha&geo=GB",
+     "related": [],
+     "articles": [
+      {
+       "title": "Marty Cahill named Oregon’s 2026 AHA grassroots champion",
+       "url": "https://ravallirepublic.com/news/community/article_fbeed9db-8ec4-5408-b0e2-951f76ed32b0.html",
+       "source": "Ravalli Republic"
+      },
+      {
+       "title": "More than 4,400 measles cases reported in US as CDC plans to send &apos;disease detective&apos; to Pennsylvania",
+       "url": "https://abcnews.com/Health/4400-measles-cases-reported-us-cdc-plans-send/story?id=137315190",
+       "source": "ABC News - Breaking News, Latest News and Videos"
+      },
+      {
+       "title": "CDC to send ‘disease detective’ to help tackle Pennsylvania measles outbreak",
+       "url": "https://www.theguardian.com/us-news/2026/oct/17/measles-pennsylvania-cdc-disease-detective",
+       "source": "The Guardian"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "GB",
+     "viaRss": true
+    },
+    {
+     "query": "bath rugby",
+     "traffic": "500+",
+     "trafficValue": 500,
+     "exploreLink": "https://trends.google.com/trends/explore?q=bath%20rugby&geo=GB",
+     "related": [],
+     "articles": [
+      {
+       "title": "‘We want the best league in the world’: Bath’s Bruce Craig on 16 years at the Rec",
+       "url": "https://www.theguardian.com/sport/2026/oct/16/bath-bruce-craig-rugby-prem-champions-cup",
+       "source": "The Guardian"
+      },
+      {
+       "title": "How to watch Bath Rugby v Montpellier live on TV in the Investec Champions Cup and full team news",
+       "url": "https://www.somersetlive.co.uk/sport/other-sport/bath-rugby-v-montpellier-tv-11203263",
+       "source": "Somerset Live"
+      },
+      {
+       "title": "Anthony Watson: Bath can go far in Champions Cup if Finn Russell stays fit",
+       "url": "https://www.therugbypaper.co.uk/all/domestic-club-rugby-union/epcr-champions-cup/494790/watson-russell-the-key-for-bath/",
+       "source": "The Rugby Paper"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "GB",
+     "viaRss": true
+    },
+    {
+     "query": "limoges",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=limoges&geo=GB",
+     "related": [],
+     "articles": [
+      {
+       "title": "DIRECT. Manifestations du 17 octobre: la mairie de Limoges en proie aux flammes, le beffroi a chuté",
+       "url": "https://www.bfmtv.com/societe/manifestations/direct-manifestations-du-17-octobre-plusieurs-rassemblement-prevus-en-france-emmanuel-macron-appelle-au-calme_LN-202610170049.html",
+       "source": "BFM"
+      },
+      {
+       "title": "La mairie de Limoges en feu, des voitures de police brûlées et des commerces pillés : suivez la situation en direct",
+       "url": "https://www.lepopulaire.fr/limoges-87000/actualites/la-mairie-de-limoges-attaquee-des-voitures-de-police-brulees-suivez-la-situation-en-direct_15065411/",
+       "source": "Le Populaire du Centre"
+      },
+      {
+       "title": "Mobilisation du 17 octobre : en Haute-Vienne et en Corrèze, une seule manifestation déclarée en préfecture",
+       "url": "https://www.ici.fr/emissions/l-info-d-ici-ici-limousin/mobilisation-du-17-octobre-en-haute-vienne-et-en-correze-une-seule-manifestation-declaree-en-prefecture-8195824",
+       "source": "ici.fr"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "GB",
+     "viaRss": true
+    },
+    {
+     "query": "paris riots",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=paris%20riots&geo=GB",
+     "related": [],
+     "articles": [
+      {
+       "title": "‘Nobody is listening to us’: on the school protest frontline, I heard why France’s students feel disowned | Alexander Hurst",
+       "url": "https://www.theguardian.com/commentisfree/2026/oct/09/school-protest-france-students-political-class",
+       "source": "The Guardian"
+      },
+      {
+       "title": "France halts use of stun grenades after boy&apos;s hand blown off in student protests",
+       "url": "https://www.bbc.co.uk/news/articles/cqzjx7z2r4gko",
+       "source": "BBC"
+      },
+      {
+       "title": "French students go out onto the streets to protest failing school system",
+       "url": "https://www.dw.com/en/schools-crisis-in-france-investment-fails-to-inspire-confidence/a-79621916",
+       "source": "DW.com"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "GB",
+     "viaRss": true
+    },
+    {
+     "query": "the nottingham inquiry",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=the%20nottingham%20inquiry&geo=GB",
+     "related": [],
+     "articles": [
+      {
+       "title": "More NHS staff sacked over attacks victims&apos; records",
+       "url": "https://www.bbc.com/news/articles/cmd7q8ld3dd3o",
+       "source": "BBC"
+      },
+      {
+       "title": "More NHS staff sacked after accessing medical records of Nottingham attack victims",
+       "url": "https://news.sky.com/story/more-nhs-staff-sacked-after-accessing-medical-records-of-nottingham-attack-victims-13600282",
+       "source": "Sky News"
+      },
+      {
+       "title": "Why Medical Record Leaks After Tragic Incidents Keep Happeni",
+       "url": "https://geosirius.ifz.ru/medical-record-leaks-tragic-incidents-keep-happening",
+       "source": "ИФЗ РАН"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "GB",
+     "viaRss": true
+    },
+    {
+     "query": "wnba finals",
+     "traffic": "100+",
+     "trafficValue": 100,
+     "exploreLink": "https://trends.google.com/trends/explore?q=wnba%20finals&geo=GB",
+     "related": [],
+     "articles": [
+      {
+       "title": "Atlanta Dream v Golden State Valkyries: WNBA finals 2026 Game 1 – live buildup",
+       "url": "https://www.theguardian.com/sport/live/2026/oct/17/atlanta-dream-v-golden-state-valkyries-wnba-finals-2026-game-1-live-buildup",
+       "source": "The Guardian"
+      },
+      {
+       "title": "Geno Auriemma shares why he roots for the Valkyries over Paige Bueckers and Azzi Fudd",
+       "url": "https://www.hitc.com/geno-auriemma-shares-why-he-roots-for-the-valkyries-over-paige-bueckers-and-azzi-fudd/",
+       "source": "HITC"
+      },
+      {
+       "title": "WNBAFinals™.Live Now! Atlanta Dream vs. Golden State Valkyries 2026 𝐋 𝐈 𝐕 𝐄 𝐒𝐭𝐫𝐞𝐚𝐦𝐬 ＯＮ Ｔｖ: Watch today&apos;s big WNBA Game 𝐋𝐈𝐕𝐄 *FREE* now",
+       "url": "https://www.thebusinessdesk.com/yorkshire/news/2161690-valkyries-dream-wnba-final-2026-game1-live-predictions-watch",
+       "source": "TheBusinessDesk.com"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "GB",
+     "viaRss": true
+    }
+   ],
+   "fetchedAt": 1792267109023
+  },
+  "JP": {
+   "geo": "JP",
+   "source": "rss",
+   "sourceName": "",
+   "items": [
+    {
+     "query": "強風域",
+     "traffic": "5000+",
+     "trafficValue": 5000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=%E5%BC%B7%E9%A2%A8%E5%9F%9F&geo=JP",
+     "related": [],
+     "articles": [
+      {
+       "title": "台風30号が非常に強い勢力で沖縄の南海上へ 台風一番発達するのは10月・870hPaの記録もある（饒村曜） - エキスパート",
+       "url": "https://news.yahoo.co.jp/expert/articles/23e7d6de658b5996db1cbe6d5c510a915d75e102",
+       "source": "Yahoo!ニュース"
+      },
+      {
+       "title": "台風30号 22日には非常に強い勢力で沖縄の南へ 最大瞬間風速は70メートル予想(気象予報士 中川 裕美子)",
+       "url": "https://tenki.jp/forecaster/y_nakagawa/2026/10/17/40995.html",
+       "source": "tenki.jp"
+      },
+      {
+       "title": "台風30号…気象庁の予想進路、米軍・ヨーロッパの見方 非常に強い勢力に発達へ、日本への影響は",
+       "url": "https://www.fukuishimbun.co.jp/articles/-/2721653",
+       "source": "福井新聞社"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "JP",
+     "viaRss": true
+    },
+    {
+     "query": "吉田優利",
+     "traffic": "2000+",
+     "trafficValue": 2000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=%E5%90%89%E7%94%B0%E5%84%AA%E5%88%A9&geo=JP",
+     "related": [],
+     "articles": [
+      {
+       "title": "【米女子ゴルフ】吉田優利が31人抜きの急浮上　竹田麗央は4位キープ　セキ・ユウティン妹が7位",
+       "url": "https://topics.smt.docomo.ne.jp/article/egolf/sports/egolf-258943",
+       "source": "ｄメニューニュース"
+      },
+      {
+       "title": "40位→9位 吉田優利が上がり3連続バーディ締め「借金をぜんぶ返せた」（ゴルフ総合サイト ALBA Net）",
+       "url": "https://news.yahoo.co.jp/articles/3850497209f213f2c0eae2257c5e9928b856ddb8",
+       "source": "Yahoo!ニュース"
+      },
+      {
+       "title": "第3ラウンド、通算4アンダーで4位の竹田麗央＝中国・上海（共同） - 竹田麗央は5打差4位 米女子ゴルフ第3日 - 写真・画像(1/1)",
+       "url": "https://www.nishinippon.co.jp/image/1093368/",
+       "source": "西日本新聞me"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "JP",
+     "viaRss": true
+    },
+    {
+     "query": "山本由伸",
+     "traffic": "2000+",
+     "trafficValue": 2000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=%E5%B1%B1%E6%9C%AC%E7%94%B1%E4%BC%B8&geo=JP",
+     "related": [],
+     "articles": [],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "JP",
+     "viaRss": true
+    },
+    {
+     "query": "戦力外",
+     "traffic": "1000+",
+     "trafficValue": 1000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=%E6%88%A6%E5%8A%9B%E5%A4%96&geo=JP",
+     "related": [],
+     "articles": [
+      {
+       "title": "戦力外となった西武がCSへ「不思議な気持ち」　復帰目指す28歳の今…気持ちが揺らいだ“7月”",
+       "url": "https://topics.smt.docomo.ne.jp/article/fullcount/sports/fullcount-2031820?page=2",
+       "source": "ｄメニューニュース"
+      },
+      {
+       "title": "プロ野球:西武のV字回復もたらした鉄壁の内野守備 源田壮亮、ネビンら活躍",
+       "url": "https://www.nikkei.com/article/DGXZQODH244L10U6A920C2000000/",
+       "source": "日本経済新聞"
+      },
+      {
+       "title": "【西武】CS開催ベルーナドームへの道には道なき道も 巨大カエル、カメ、ドングリ…至高の非日常",
+       "url": "https://www.nikkansports.com/baseball/photonews/photonews_nsInc_202610100000368-4.html",
+       "source": "日刊スポーツ"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "JP",
+     "viaRss": true
+    },
+    {
+     "query": "山本萩子",
+     "traffic": "1000+",
+     "trafficValue": 1000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=%E5%B1%B1%E6%9C%AC%E8%90%A9%E5%AD%90&geo=JP",
+     "related": [],
+     "articles": [
+      {
+       "title": "【10/15 後半】料理自慢が集結！絶品の無限○○レシピ対決",
+       "url": "https://tver.jp/episodes/ep5rjoofrb",
+       "source": "TVer"
+      },
+      {
+       "title": "3児の母・ギャル曽根が教える、爆速で作れる話題の“無限やまいも”レシピ「最強のごはんのお供！」 『ラヴィット!』の「無限レシピ-1グランプリ」で優勝（オリコン）",
+       "url": "https://news.yahoo.co.jp/articles/46b7faa8ece13a24399645bf20b71dc18dffaacb",
+       "source": "Yahoo!ニュース"
+      },
+      {
+       "title": "川島明　離婚発表の元和牛・水田信二の“ひと言”に「そういうとこやぞ！！」　生放送で大声",
+       "url": "https://topics.smt.docomo.ne.jp/article/sponichi/entertainment/sponichi-spngoo-20261015-0190",
+       "source": "ｄメニューニュース"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "JP",
+     "viaRss": true
+    },
+    {
+     "query": "テルスター 対 フェイエノールト",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=%E3%83%86%E3%83%AB%E3%82%B9%E3%82%BF%E3%83%BC%20%E5%AF%BE%20%E3%83%95%E3%82%A7%E3%82%A4%E3%82%A8%E3%83%8E%E3%83%BC%E3%83%AB%E3%83%88&geo=JP",
+     "related": [],
+     "articles": [
+      {
+       "title": "１－５の大敗から怒涛の連勝でオランダリーグ首位へ――フェイエノールトは“屈辱のバルセロナ戦”から何を学んだのか【現地発】",
+       "url": "https://news.yahoo.co.jp/articles/24011812e391732abc0744c6b13bdd732d1aa3fc",
+       "source": "Yahoo!ニュース"
+      },
+      {
+       "title": "フェイエノールトの予想先発メンバー：ファン・ブロンクホルストはヴァレンテをどう起用する？",
+       "url": "https://www.goal.com/jp/%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9/%E3%83%95%E3%82%A7%E3%82%A4%E3%82%A8%E3%83%8E%E3%83%BC%E3%83%AB%E3%83%88%E3%81%AE%E4%BA%88%E6%83%B3%E5%85%88%E7%99%BA%E3%83%A1%E3%83%B3%E3%83%8F%E3%82%99%E3%83%BC-%E3%83%95%E3%82%A1%E3%83%B3-%E3%83%95%E3%82%99%E3%83%AD%E3%83%B3%E3%82%AF%E3%83%9B%E3%83%AB%E3%82%B9%E3%83%88%E3%81%AF%E3%82%A6%E3%82%99%E3%82%A1%E3%83%AC%E3%83%B3%E3%83%86%E3%82%92%E3%81%A8%E3%82%99%E3%81%86%E8%B5%B7%E7%94%A8%E3%81%99%E3%82%8B/blt45069fa90bf7dd2f",
+       "source": "Goal.com"
+      },
+      {
+       "title": "【画像】フェイエノールトがバルセロナ戦の大敗から学び、連勝で首位に立つ",
+       "url": "https://news.livedoor.com/article/image_detail/32577806/?img_id=57002313",
+       "source": "ライブドアニュース"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "JP",
+     "viaRss": true
+    },
+    {
+     "query": "la liga",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=la%20liga&geo=JP",
+     "related": [],
+     "articles": [
+      {
+       "title": "Real Betis 2-5 Barcelona - Lamine Yamal and Rodri score as Barca continue winning run",
+       "url": "https://www.bbc.com/sport/football/live/ck5ynp68evpvt",
+       "source": "BBC"
+      },
+      {
+       "title": "LaLiga - Real Betis v FC Barcelona",
+       "url": "https://www.reutersconnect.com/item/laliga-real-betis-v-fc-barcelona/dGFnOnJldXRlcnMuY29tLDIwMjY6bmV3c21sX1VQMUVNQUgxRE9FWDI",
+       "source": "Reuters Connect"
+      },
+      {
+       "title": "Lamine Yamal is undoubtedly leading the new era of Spanish football ✨",
+       "url": "https://sports.yahoo.com/articles/lamine-yamal-undoubtedly-leading-era-170300403.html",
+       "source": "Yahoo Sports"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "JP",
+     "viaRss": true
+    },
+    {
+     "query": "低気圧",
+     "traffic": "100+",
+     "trafficValue": 100,
+     "exploreLink": "https://trends.google.com/trends/explore?q=%E4%BD%8E%E6%B0%97%E5%9C%A7&geo=JP",
+     "related": [],
+     "articles": [
+      {
+       "title": "週間天気予報 週明けは雨風強まるおそれ 台風30号は来週後半に沖縄の南へ",
+       "url": "https://weathernews.jp/news/202610/170101/",
+       "source": "ウェザーニュース"
+      },
+      {
+       "title": "南は台風、北は急発達する低気圧で大荒れのおそれ（杉江勇次） - エキスパート",
+       "url": "https://news.yahoo.co.jp/expert/articles/9db21382a39215ca8645988b8cf477f7da2116bc",
+       "source": "Yahoo!ニュース"
+      },
+      {
+       "title": "【警報級大雨のおそれ】気象庁の週間天気予報(10月18日～10月24日) 低気圧の影響で北日本で荒天に 台風30号の影響は？今後の雨風シミュレーション【気象庁17日発表】",
+       "url": "https://newsdig.tbs.co.jp/articles/-/3019642?page=5",
+       "source": "TBS NEWS DIG"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "JP",
+     "viaRss": true
+    },
+    {
+     "query": "整体",
+     "traffic": "100+",
+     "trafficValue": 100,
+     "exploreLink": "https://trends.google.com/trends/explore?q=%E6%95%B4%E4%BD%93&geo=JP",
+     "related": [],
+     "articles": [],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "JP",
+     "viaRss": true
+    },
+    {
+     "query": "リフレ",
+     "traffic": "100+",
+     "trafficValue": 100,
+     "exploreLink": "https://trends.google.com/trends/explore?q=%E3%83%AA%E3%83%95%E3%83%AC&geo=JP",
+     "related": [],
+     "articles": [
+      {
+       "title": "Breakingviews - COMMENTARY: コラム：サナエノミクスの「成功」こそ最大リスク、大規模投資が成長阻害",
+       "url": "https://www.reuters.com/jp/opinion/breakingviews/VW24VVR4DRPQLATFKYFRLSDG24-2026-10-14/",
+       "source": "Reuters"
+      },
+      {
+       "title": "米懸念払拭へ、脱リフレ発言続々 政府言い分に市場は懐疑的（共同通信）",
+       "url": "https://news.yahoo.co.jp/articles/1ecca226a4f46db51dd8064bacd1180d71f79665",
+       "source": "Yahoo!ニュース"
+      },
+      {
+       "title": "高市現象の現在地：利上げ阻止、奔走（その2止） 「責任」不在の積極財政",
+       "url": "https://mainichi.jp/articles/20261017/ddm/003/010/075000c",
+       "source": "毎日新聞"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "JP",
+     "viaRss": true
+    }
+   ],
+   "fetchedAt": 1792267109584
   }
  }
 }
