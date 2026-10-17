@@ -1,5 +1,5 @@
 {
- "savedAt": 1792271611165,
+ "savedAt": 1792272094005,
  "geos": {
   "GLOBAL": {
    "geo": "GLOBAL",
@@ -55,23 +55,23 @@
      "aggregator": true
     },
     {
-     "query": "UK must protect against Russian 'hybrid attacks', ex-national security adviser says",
+     "query": "Anti-government protesters battle with police in Albania",
      "traffic": "780K+",
      "trafficValue": 780000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=UK%20must%20protect%20against%20Russian%20'hybrid%20attacks'%2C%20ex-nationa&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=Anti-government%20protesters%20battle%20with%20police%20in%20Albania&geo=US",
      "related": [
-      "UK must protect",
+      "Anti-government protesters battle",
       "BBC News news"
      ],
      "articles": [
       {
-       "title": "\"UK must protect against Russian 'hybrid attacks', ex-national security adviser says\" is generating significant online interest. Lord Ricketts says more should ",
-       "url": "https://www.bbc.co.uk/news/articles/cmze4y9rjepro?at_medium=RSS&at_campaign=rss",
+       "title": "\"Anti-government protesters battle with police in Albania\" is generating significant online interest. There were violent clashes between demonstrators and riot ",
+       "url": "https://www.bbc.co.uk/news/articles/crwydey50xeno?at_medium=RSS&at_campaign=rss",
        "source": "BBC News",
        "timeAgo": ""
       }
      ],
-     "image": "https://ichef.bbci.co.uk/ace/standard/640/cpsprodpb/17c3/live/a1eb45a0-ca24-11f1-9a39-31b474234113.jpg",
+     "image": "https://ichef.bbci.co.uk/ace/standard/640/cpsprodpb/9b85/live/bbc9c4f0-ca6b-11f1-b2e2-233efb1fd43c.jpg",
      "category": "News",
      "date": "",
      "dateKey": "",
@@ -487,96 +487,48 @@
      "aggregator": true
     },
     {
-     "query": "[FearBuck] Emotional moment at a Pennsylvania high school yesterday after a student crowned Homec...",
+     "query": "What's actually eating all the storage space on your Android Phone?",
      "traffic": "600K+",
      "trafficValue": 600000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=%5BFearBuck%5D%20Emotional%20moment%20at%20a%20Pennsylvania%20high%20school%20ye&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=What's%20actually%20eating%20all%20the%20storage%20space%20on%20your%20Android&geo=US",
      "related": [
-      "[FearBuck] Emotional moment",
-      "reddit MadeMeSmile"
+      "What's actually eating",
+      "Engadget news"
      ],
      "articles": [
       {
-       "title": "\"[FearBuck] Emotional moment at a Pennsylvania high school yesterday after a student crowned Homecoming King surprised everyone by passing the honor to the runn",
-       "url": "https://www.reddit.com/r/MadeMeSmile/comments/1x8ei5j/fearbuck_emotional_moment_at_a_pennsylvania_high/",
-       "source": "Reddit r/MadeMeSmile",
+       "title": "\"What's actually eating all the storage space on your Android Phone?\" is generating significant online interest. Android phone running out of space? Here's why ",
+       "url": "https://www.engadget.com/2283986/whats-actually-eating-all-the-storage-space-on-your-android-phone/",
+       "source": "Engadget",
        "timeAgo": ""
       }
      ],
-     "image": "",
-     "category": "News",
+     "image": "https://www.engadget.com/img/gallery/whats-actually-eating-all-the-storage-space-on-your-android-phone/l-intro-1791468108.jpg",
+     "category": "Science",
      "date": "",
      "dateKey": "",
      "geo": "GLOBAL",
      "aggregator": true
     },
     {
-     "query": "Just a casual sip of corporate toxicity!",
-     "traffic": "585K+",
-     "trafficValue": 585000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=Just%20a%20casual%20sip%20of%20corporate%20toxicity!&geo=US",
-     "related": [
-      "Just a casual",
-      "reddit SipsTea"
-     ],
-     "articles": [
-      {
-       "title": "\"Just a casual sip of corporate toxicity!\" is generating significant online interest. submitted by    /u/Putrid-Welder1803    to    r/SipsTea   [link]   [commen",
-       "url": "https://www.reddit.com/r/SipsTea/comments/1x8gywi/just_a_casual_sip_of_corporate_toxicity/",
-       "source": "Reddit r/SipsTea",
-       "timeAgo": ""
-      }
-     ],
-     "image": "",
-     "category": "News",
-     "date": "",
-     "dateKey": "",
-     "geo": "GLOBAL",
-     "aggregator": true
-    },
-    {
-     "query": "....and justice for all.",
-     "traffic": "570K+",
-     "trafficValue": 570000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=....and%20justice%20for%20all.&geo=US",
-     "related": [
-      "....and justice for",
-      "reddit memes"
-     ],
-     "articles": [
-      {
-       "title": "\"....and justice for all.\" is generating significant online interest. submitted by    /u/Total_Volume_1096    to    r/memes   [link]   [comments] Follow credibl",
-       "url": "https://www.reddit.com/r/memes/comments/1x8ebuq/and_justice_for_all/",
-       "source": "Reddit r/memes",
-       "timeAgo": ""
-      }
-     ],
-     "image": "",
-     "category": "News",
-     "date": "",
-     "dateKey": "",
-     "geo": "GLOBAL",
-     "aggregator": true
-    },
-    {
-     "query": "Car Park Capital Is The World’s Most Evil Simulator (Complimentary)",
+     "query": "The Mortuary Assistant Film Director Jeremiah Kipp Passes Away",
      "traffic": "560K+",
      "trafficValue": 560000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=Car%20Park%20Capital%20Is%20The%20World%E2%80%99s%20Most%20Evil%20Simulator%20(Complim&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=The%20Mortuary%20Assistant%20Film%20Director%20Jeremiah%20Kipp%20Passes%20Aw&geo=US",
      "related": [
-      "Car Park Capital",
+      "The Mortuary Assistant",
       "Kotaku news"
      ],
      "articles": [
       {
-       "title": "\"Car Park Capital Is The World’s Most Evil Simulator (Complimentary)\" is generating significant online interest. Step into Robert Moses’ shoes as you dismantle ",
-       "url": "https://kotaku.com/car-park-capital-is-the-worlds-most-evil-simulator-complimentary-2000747068",
+       "title": "\"The Mortuary Assistant Film Director Jeremiah Kipp Passes Away\" is generating significant online interest. The underground horror community is mourning a chari",
+       "url": "https://kotaku.com/the-mortuary-assistant-film-director-jeremiah-kipp-passes-away-2000747075",
        "source": "Kotaku",
        "timeAgo": ""
       }
      ],
-     "image": "https://kotaku.com/app/uploads/2026/10/carparkcapital-1280x771.jpg",
-     "category": "News",
+     "image": "https://kotaku.com/app/uploads/2026/10/mortuaryassistantmovie.jpg",
+     "category": "Entertainment",
      "date": "",
      "dateKey": "",
      "geo": "GLOBAL",
@@ -607,23 +559,47 @@
      "aggregator": true
     },
     {
-     "query": "‘Dancing With the Stars’ Pulls Val Chmerkovskiy After ‘Inappropriate’ Carrie Ann Inaba Slap Joke: ‘The Well-Being’ of...",
+     "query": "Here’s Where to Watch Sebastian Fundora vs. Ermal Hadribeaj Title Boxing Match Live Online for Free",
      "traffic": "440K+",
      "trafficValue": 440000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=%E2%80%98Dancing%20With%20the%20Stars%E2%80%99%20Pulls%20Val%20Chmerkovskiy%20After%20%E2%80%98Inapp&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=Here%E2%80%99s%20Where%20to%20Watch%20Sebastian%20Fundora%20vs.%20Ermal%20Hadribeaj%20&geo=US",
      "related": [
-      "‘Dancing With the",
+      "Here’s Where to",
       "Variety news"
      ],
      "articles": [
       {
-       "title": "\"‘Dancing With the Stars’ Pulls Val Chmerkovskiy After ‘Inappropriate’ Carrie Ann Inaba Slap Joke: ‘The Well-Being’ of Our Staff Is ‘Non-Negotiable’\" is generat",
-       "url": "https://variety.com/2026/tv/news/dancing-with-the-stars-pulls-val-chmerkovskiy-carrie-ann-inaba-slap-joke-1236915031/",
+       "title": "\"Here’s Where to Watch Sebastian Fundora vs. Ermal Hadribeaj Title Boxing Match Live Online for Free\" is generating significant online interest. This weekend, b",
+       "url": "https://variety.com/2026/shopping/news/how-to-watch-fundora-vs-hadribeaj-boxing-live-online-free-1236909640/",
        "source": "Variety",
        "timeAgo": ""
       }
      ],
-     "image": "https://variety.com/wp-content/uploads/2026/10/183834_CW104412-e1792265097336.jpg",
+     "image": "https://variety.com/wp-content/uploads/2026/10/Boxing-Sebastian-Fundora-vs.-Ermal-Hadribeaj-Getty-VR-Featured.jpg",
+     "category": "Sports",
+     "date": "",
+     "dateKey": "",
+     "geo": "GLOBAL",
+     "aggregator": true
+    },
+    {
+     "query": "Paul Bettany Says He and Johnny Depp ‘Hadn’t Spoken’ in Years When Their Texts Were Read During Libel Trial: ‘I Was B...",
+     "traffic": "430K+",
+     "trafficValue": 430000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=Paul%20Bettany%20Says%20He%20and%20Johnny%20Depp%20%E2%80%98Hadn%E2%80%99t%20Spoken%E2%80%99%20in%20Year&geo=US",
+     "related": [
+      "Paul Bettany Says",
+      "Variety news"
+     ],
+     "articles": [
+      {
+       "title": "\"Paul Bettany Says He and Johnny Depp ‘Hadn’t Spoken’ in Years When Their Texts Were Read During Libel Trial: ‘I Was Being Painted As This Close Friend’\" is gen",
+       "url": "https://variety.com/2026/film/news/paul-bettany-johnny-depp-hadnt-spoken-in-years-libel-trial-1236915108/",
+       "source": "Variety",
+       "timeAgo": ""
+      }
+     ],
+     "image": "https://variety.com/wp-content/uploads/2026/10/rome-film-fest-2026-paramount-pictures-at-cinemacon-2026-clo-1000x667-1.jpg",
      "category": "News",
      "date": "",
      "dateKey": "",
@@ -679,23 +655,23 @@
      "aggregator": true
     },
     {
-     "query": "The Chilling Summer that Gave Birth to Mary Shelley's 'Frankenstein'",
+     "query": "8 Haunted House Books That’ll Keep You Up at Night",
      "traffic": "380K+",
      "trafficValue": 380000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=The%20Chilling%20Summer%20that%20Gave%20Birth%20to%20Mary%20Shelley's%20'Frank&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=8%20Haunted%20House%20Books%20That%E2%80%99ll%20Keep%20You%20Up%20at%20Night&geo=US",
      "related": [
-      "The Chilling Summer",
+      "8 Haunted House",
       "Mental Floss news"
      ],
      "articles": [
       {
-       "title": "\"The Chilling Summer that Gave Birth to Mary Shelley's 'Frankenstein'\" is generating significant online interest. A peculiarly gloomy summer, a gathering of wri",
-       "url": "https://www.mentalfloss.com/literature/authors/chilling-summer-gave-birth-mary-shelley-frankenstein?utm_source=RSS",
+       "title": "\"8 Haunted House Books That’ll Keep You Up at Night\" is generating significant online interest. From \"The Haunting of Hill House\" to \"The Shining,\" these books ",
+       "url": "https://www.mentalfloss.com/literature/books/scary-haunted-house-books?utm_source=RSS",
        "source": "Mental Floss",
        "timeAgo": ""
       }
      ],
-     "image": "https://images2.minutemediacdn.com/image/upload/c_crop,w_1919,h_1079,x_0,y_0/c_fill,w_2880,ar_16:9,f_auto,q_auto,g_auto/images/voltaxMediaLibrary/mmsport/mentalfloss/01m52vje4nv6y2daen5y.jpg",
+     "image": "https://images2.minutemediacdn.com/image/upload/c_crop,w_968,h_544,x_32,y_0/c_fill,w_2880,ar_16:9,f_auto,q_auto,g_auto/images/voltaxMediaLibrary/mmsport/mentalfloss/01m50ans2n8yyvg2zv6m.jpg",
      "category": "News",
      "date": "",
      "dateKey": "",
@@ -728,8 +704,8 @@
     },
     {
      "query": "DeepSeek-v4.1-Flash-1017",
-     "traffic": "275K+",
-     "trafficValue": 275000,
+     "traffic": "293K+",
+     "trafficValue": 292500,
      "exploreLink": "https://trends.google.com/trends/explore?q=DeepSeek-v4.1-Flash-1017&geo=US",
      "related": [
       "DeepSeek-v4.1-Flash-1017",
@@ -751,7 +727,7 @@
      "aggregator": true
     }
    ],
-   "fetchedAt": 1792269528687
+   "fetchedAt": 1792272094001
   },
   "US": {
    "geo": "US",

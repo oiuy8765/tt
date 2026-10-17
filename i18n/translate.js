@@ -92,11 +92,14 @@ async function withRetry(fn, times) {
 // ── Google gtx 兜底：腾讯接口被限流/封 IP 时（CI 数据中心 IP 常见）逐条兜底。
 //    gtx 是 Google 翻译的公开接口，海外服务器可直连、无需密钥。
 const GTX_LANG = { zh: 'zh-CN' };
-let gtxBroken = false; // 连续失败（如 429）后本次进程不再尝试，避免拖慢构建
+let gtxBroken = false; // 限流严重时本次进程不再尝试，避免拖慢构建
 let tencentBroken = false; // 腾讯接口不可用（如 CI 海外 IP 被封）时直接跳过，避免每条词都等 25s 超时
 let tencentFailStreak = 0;
+let gtx429Streak = 0;
+let gtxLastAt = 0;
 
 async function gtxOne(text, from, to) {
+  if (gtxBroken) throw new Error('gtx 已限流');
   const tl = GTX_LANG[to] || to;
   const url =
     'https://translate.googleapis.com/translate_a/single?client=gtx&dt=t' +
@@ -106,24 +109,46 @@ async function gtxOne(text, from, to) {
     encodeURIComponent(tl) +
     '&q=' +
     encodeURIComponent(text);
-  const r = await fetch(url, {
-    headers: {
-      'User-Agent':
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-    },
-    signal: AbortSignal.timeout(15000),
-  });
-  if (r.status !== 200) {
-    if (r.status === 429) gtxBroken = true;
-    throw new Error('gtx HTTP ' + r.status);
+  // 限速：gtx 调用间隔至少 900ms，避免爆发 429
+  const wait = gtxLastAt + 900 - Date.now();
+  if (wait > 0) await new Promise((r) => setTimeout(r, wait));
+  let lastErr;
+  // 429 指数退避重试：5s → 15s；连续多轮被限才判定不可用
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      gtxLastAt = Date.now();
+      const r = await fetch(url, {
+        headers: {
+          'User-Agent':
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+        },
+        signal: AbortSignal.timeout(15000),
+      });
+      if (r.status !== 200) throw new Error('gtx HTTP ' + r.status);
+      const j = await r.json();
+      const segs = j && j[0];
+      if (!Array.isArray(segs) || !segs.length) throw new Error('gtx 返回格式异常');
+      const out = segs
+        .map((s) => (s && s[0]) || '')
+        .join('')
+        .trim();
+      gtx429Streak = 0;
+      return out;
+    } catch (e) {
+      lastErr = e;
+      if (/429/.test(e.message)) {
+        gtx429Streak++;
+        if (gtx429Streak >= 6) {
+          gtxBroken = true;
+          break;
+        }
+        await new Promise((res) => setTimeout(res, attempt === 0 ? 5000 : 15000));
+      } else {
+        break; // 非 429（格式/网络）没有重试价值
+      }
+    }
   }
-  const j = await r.json();
-  const segs = j && j[0];
-  if (!Array.isArray(segs) || !segs.length) throw new Error('gtx 返回格式异常');
-  return segs
-    .map((s) => (s && s[0]) || '')
-    .join('')
-    .trim();
+  throw lastErr || new Error('gtx 失败');
 }
 
 /**
