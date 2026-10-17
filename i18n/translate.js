@@ -93,6 +93,8 @@ async function withRetry(fn, times) {
 //    gtx 是 Google 翻译的公开接口，海外服务器可直连、无需密钥。
 const GTX_LANG = { zh: 'zh-CN' };
 let gtxBroken = false; // 连续失败（如 429）后本次进程不再尝试，避免拖慢构建
+let tencentBroken = false; // 腾讯接口不可用（如 CI 海外 IP 被封）时直接跳过，避免每条词都等 25s 超时
+let tencentFailStreak = 0;
 
 async function gtxOne(text, from, to) {
   const tl = GTX_LANG[to] || to;
@@ -156,42 +158,64 @@ async function translate(texts, opts) {
       while (idx < batches.length) {
         const my = batches[idx++];
         if (GAP_MS) await new Promise((r) => setTimeout(r, GAP_MS));
-        try {
-          const got = await withRetry(() => tencentTranslate(my, from, to), 3);
-          my.forEach((src, i) => {
-            const v = String(got[i] == null ? '' : got[i]).trim();
-            if (v) {
-              // 译文与原文完全相同（品牌名、专有名词）也存下来，避免下次重复请求
-              cache[src] = v;
-            } else failed++;
-          });
-        } catch (e) {
-          // 整批失败时退回逐条翻，避免一条坏数据连坐 19 条；腾讯失败再走 Google gtx 兜底
-          for (const one of my) {
-            let ok = false;
-            try {
-              await new Promise((r) => setTimeout(r, 250));
-              const g = await withRetry(() => tencentTranslate([one], from, to), 3);
-              const v = String(g[0] == null ? '' : g[0]).trim();
+        if (!tencentBroken) {
+          try {
+            const got = await withRetry(() => tencentTranslate(my, from, to), 3);
+            my.forEach((src, i) => {
+              const v = String(got[i] == null ? '' : got[i]).trim();
               if (v) {
-                cache[one] = v;
-                ok = true;
-              }
-            } catch (e2) {
-              /* 落入 gtx 兜底 */
-            }
-            if (!ok && !gtxBroken) {
+                // 译文与原文完全相同（品牌名、专有名词）也存下来，避免下次重复请求
+                cache[src] = v;
+              } else failed++;
+            });
+            tencentFailStreak = 0;
+          } catch (e) {
+            tencentFailStreak++;
+            // 整批失败时退回逐条翻，避免一条坏数据连坐 19 条；腾讯失败再走 Google gtx 兜底
+            for (const one of my) {
+              let ok = false;
               try {
-                const v = await gtxOne(one, from, to);
+                await new Promise((r) => setTimeout(r, 250));
+                const g = await withRetry(() => tencentTranslate([one], from, to), 3);
+                const v = String(g[0] == null ? '' : g[0]).trim();
                 if (v) {
                   cache[one] = v;
                   ok = true;
                 }
-              } catch (e3) {
-                /* gtx 也不行，记失败 */
+              } catch (e2) {
+                /* 落入 gtx 兜底 */
               }
+              if (!ok && !gtxBroken) {
+                try {
+                  const v = await gtxOne(one, from, to);
+                  if (v) {
+                    cache[one] = v;
+                    ok = true;
+                  }
+                } catch (e3) {
+                  /* gtx 也不行，记失败 */
+                }
+              }
+              if (!ok) failed++;
             }
-            if (!ok) failed++;
+            // 连续 2 批全失败基本可断定腾讯接口不可用（CI 数据中心 IP 被封），
+            // 剩下的直接走 gtx，省掉每条 25 秒 × 3 次重试的等待
+            if (tencentFailStreak >= 2) tencentBroken = true;
+          }
+        } else {
+          // 腾讯已判定不可用：直接 gtx
+          for (const one of my) {
+            if (gtxBroken) {
+              failed++;
+              continue;
+            }
+            try {
+              const v = await gtxOne(one, from, to);
+              if (v) cache[one] = v;
+              else failed++;
+            } catch (e) {
+              failed++;
+            }
           }
         }
         done += my.length;
