@@ -1489,13 +1489,15 @@ input[type="search"].input::-webkit-search-cancel-button {
 
 .opp-score {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: 6px;
+  gap: 4px 8px;
   padding: 6px 9px;
   background: linear-gradient(150deg, #f5f6ff, #eef0ff);
   border: 1px solid #e3e5fb;
   border-radius: 9px;
+  overflow: hidden;
 }
 
 .opp-score b {
@@ -1560,6 +1562,7 @@ input[type="search"].input::-webkit-search-cancel-button {
   color: var(--ink-4);
   text-align: right;
   line-height: 1;
+  margin-left: auto;
 }
 
 .more-wrap {
