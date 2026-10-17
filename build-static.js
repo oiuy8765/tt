@@ -271,6 +271,9 @@ function fetchLocal(apiPath) {
     console.log(
       '  daily.json：快照 OK（' + daily.mode + ' 模式，地区：' + Object.keys(blocks).join('/') + '）'
     );
+    if (daily.mode === 'aggregator' && daily.error) {
+      console.log('  Google 直连失败原因：' + daily.error);
+    }
   } else {
     console.log('  daily.json：无可用数据，跳过（今日热榜会显示空）');
   }
