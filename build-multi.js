@@ -1418,6 +1418,17 @@ async function buildDailyTranslations() {
       }
     }
   }
+  // YouTube 热门视频标题也走同一套翻译（超出长度的截断后跳过）
+  const ytRaw = readJSON(path.join(DIST, 'data', 'yt.json'), null);
+  for (const g of Object.keys((ytRaw && ytRaw.data) || {})) {
+    for (const v of (ytRaw.data[g].items || []).slice(0, 10)) {
+      const s = String(v.title || '').replace(/\s+/g, ' ').trim().slice(0, 140);
+      if (!s || seen.has(s)) continue;
+      if (/^#/.test(s) || /[\u4e00-\u9fa5]/.test(s)) continue;
+      seen.add(s);
+      texts.push(s);
+    }
+  }
   if (!texts.length) return;
   // transmart 的简中代码是 zh（zh-CN 会报 Unrecognized target language）
   for (const l of ['zh', 'zh-TW', 'ja', 'ko']) {
@@ -1448,6 +1459,36 @@ function dailyPage(lang) {  const t = ui(lang);
   const raw = readJSON(path.join(DIST, 'data', 'daily.json'), null);
   const blocks = (raw && raw.data) || {};
   const geos = Object.keys(blocks).filter((g) => blocks[g] && (blocks[g].items || []).length);
+  const ytraw = readJSON(path.join(DIST, 'data', 'yt.json'), null);
+  const ytBlocks = (ytraw && ytraw.data) || {};
+
+  // 每个地区区块底部的 YouTube 热门视频子区块（免 Key 抓 youtube.com/feed/trending）
+  const ytBlockHtml = (g) => {
+    const b = ytBlocks[g];
+    if (!b || !(b.items || []).length) return '';
+    const lis = b.items
+      .slice(0, 10)
+      .map((v) => {
+        const title = String(v.title || '').slice(0, 140);
+        const tTr = trDaily(lang, title);
+        const url = 'https://www.youtube.com/watch?v=' + encodeURIComponent(v.videoId || '');
+        return (
+          '<li class="yt-item">' +
+          '<a class="yt-title" href="' + url + '" target="_blank" rel="noopener nofollow">' + esc(title) + '</a>' +
+          (tTr ? '<p class="dtr">' + esc(tTr) + '</p>' : '') +
+          '<p class="yt-meta">' + esc(v.channel || '') +
+          (v.views ? ' · ' + esc(v.views) : '') +
+          (v.published ? ' · ' + esc(v.published) : '') + '</p>' +
+          '</li>'
+        );
+      })
+      .join('');
+    return (
+      '<div class="yt-block"><h3>▶ ' + esc(t('YouTube 热门视频')) +
+      (b.stale && b.savedAt ? ' <span class="dstale">' + esc(t('数据截至')) + ' ' + esc(b.savedAt) + '</span>' : '') +
+      '</h3><ul class="yt-list">' + lis + '</ul></div>'
+    );
+  };
 
   const sections = geos
     .map((g) => {
@@ -1498,7 +1539,9 @@ function dailyPage(lang) {  const t = ui(lang);
           ? ' <span class="dstale">' + esc(t('数据截至')) + ' ' + esc(blocks[g].savedAt) + '</span>'
           : '') +
         ' <span>' + items.length + ' ' + esc(t('条')) + '</span></h2>' +
-        '<ul class="daily-list">' + lis + '</ul></section>'
+        '<ul class="daily-list">' + lis + '</ul>' +
+        ytBlockHtml(g) +
+        '</section>'
       );
     })
     .join('');

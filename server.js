@@ -597,6 +597,71 @@ function decodeEntities(s) {
 }
 
 // 免代理通道：hottrends.ai 的公开接口，国内可直连，无需任何密钥
+// ── YouTube 热门视频：抓 youtube.com/feed/trending?gl=XX 页面内嵌的 ytInitialData。
+//    匿名可访问、无需 API Key；「热门视频榜」是目前免代理条件下最可靠的 YouTube 趋势信号
+//    （Google Trends 的 YouTube 搜索口径 explore 接口对数据中心 IP 一律 429，已实测）
+function collectVideoRenderers(node, out) {
+  if (!node || typeof node !== 'object') return;
+  if (Array.isArray(node)) {
+    for (const v of node) collectVideoRenderers(v, out);
+    return;
+  }
+  const vr = node.videoRenderer || node.gridVideoRenderer || node.compactVideoRenderer;
+  if (vr && vr.videoId && vr.title) {
+    const runs = (vr.title && vr.title.runs) || [];
+    const title = runs.map((r) => r.text).join('').trim();
+    if (title) {
+      out.push({
+        videoId: vr.videoId,
+        title,
+        channel: ((vr.ownerText && vr.ownerText.runs) || []).map((r) => r.text).join('') || '',
+        views: (vr.viewCountText && vr.viewCountText.simpleText) || '',
+        published: (vr.publishedTimeText && vr.publishedTimeText.simpleText) || '',
+        length: (vr.lengthText && vr.lengthText.simpleText) || '',
+      });
+    }
+  }
+  for (const k of Object.keys(node)) collectVideoRenderers(node[k], out);
+}
+
+async function getYoutubeTrending(geo) {
+  const key = 'yt:' + geo;
+  const cached = cacheGet(key);
+  if (cached) return cached;
+
+  const url = 'https://www.youtube.com/feed/trending?gl=' + encodeURIComponent(geo) + '&hl=en';
+  const r = await fetchUrl(url, {
+    accept: 'text/html,*/*',
+    headers: {
+      'Accept-Language': 'en-US,en;q=0.9',
+      Cookie: 'CONSENT=YES+cb; SOCS=CAI',
+    },
+    timeout: 20000,
+  });
+  if (r.status !== 200) throw new Error('YouTube 页面返回 HTTP ' + r.status);
+  const m = (r.body || '').match(/var ytInitialData\s*=\s*(\{[\s\S]*?\});\s*<\/script>/);
+  if (!m) throw new Error('页面里没有 ytInitialData（可能触发了人机验证）');
+  let data;
+  try {
+    data = JSON.parse(m[1]);
+  } catch (e) {
+    throw new Error('ytInitialData 解析失败');
+  }
+  const raw = [];
+  collectVideoRenderers(data, raw);
+  // 去重（页面有推荐位重复）
+  const seen = new Set();
+  const items = [];
+  for (const v of raw) {
+    if (seen.has(v.videoId)) continue;
+    seen.add(v.videoId);
+    items.push(v);
+    if (items.length >= 20) break;
+  }
+  if (!items.length) throw new Error('未解析到视频');
+  return cacheSet(key, { geo, source: 'youtube-trending', items, fetchedAt: Date.now() });
+}
+
 async function getAggregatorTrends() {
   const key = 'agg';
   const cached = cacheGet(key);
@@ -1318,6 +1383,32 @@ const server = http.createServer(async (req, res) => {
       if (!texts.length) return sendJson(res, 400, { ok: false, error: 'texts 不能为空' });
       const r = await translateTexts(texts);
       return sendJson(res, 200, Object.assign({ ok: true }, r));
+    }
+
+    if (p === '/api/yt') {
+      const geos = (u.searchParams.get('geos') || 'US')
+        .split(',')
+        .map((s) => s.trim().toUpperCase())
+        .filter(Boolean)
+        .slice(0, 12);
+      if (!geos.length) return sendJson(res, 400, { ok: false, error: '请至少选择一个地区' });
+      const entries = await Promise.all(
+        geos.map(async (g, i) => {
+          if (i) await new Promise((r) => setTimeout(r, i * 800));
+          try {
+            return [g, await getYoutubeTrending(g)];
+          } catch (e) {
+            return [g, { geo: g, error: e.message, items: [] }];
+          }
+        })
+      );
+      const data = {};
+      let okCount = 0;
+      for (const [g, v] of entries) {
+        data[g] = v;
+        if (!v.error) okCount++;
+      }
+      return sendJson(res, 200, { ok: okCount > 0, data });
     }
 
     if (p === '/api/aggregator') {

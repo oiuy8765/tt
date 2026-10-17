@@ -92,32 +92,50 @@ async function withRetry(fn, times) {
 // ── Google gtx 兜底：腾讯接口被限流/封 IP 时（CI 数据中心 IP 常见）逐条兜底。
 //    gtx 是 Google 翻译的公开接口，海外服务器可直连、无需密钥。
 const GTX_LANG = { zh: 'zh-CN' };
+const GTX_HOSTS = ['translate.googleapis.com', 'clients5.google.com', 'translate.google.com'];
+let gtxHostIdx = 0;
 let gtxBroken = false; // 限流严重时本次进程不再尝试，避免拖慢构建
 let tencentBroken = false; // 腾讯接口不可用（如 CI 海外 IP 被封）时直接跳过，避免每条词都等 25s 超时
 let tencentFailStreak = 0;
 let gtx429Streak = 0;
 let gtxLastAt = 0;
 
+// ── MyMemory 第三层兜底（免费无 key，单条 500 字内）
+const MM_LANG = { zh: 'zh-CN' };
+
+async function mmOne(text, from, to) {
+  const pair = 'en|' + (MM_LANG[to] || to);
+  const url =
+    'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text.slice(0, 480)) + '&langpair=' + pair;
+  const r = await fetch(url, { signal: AbortSignal.timeout(12000) });
+  if (r.status !== 200) throw new Error('mm HTTP ' + r.status);
+  const j = await r.json();
+  const v = j && j.responseData && j.responseData.translatedText;
+  if (!v || /MYMEMORY WARNING|QUERY LENGTH LIMIT/i.test(v)) throw new Error('mm 限额或空');
+  return String(v).trim();
+}
+
 async function gtxOne(text, from, to) {
   if (gtxBroken) throw new Error('gtx 已限流');
   const tl = GTX_LANG[to] || to;
-  const url =
-    'https://translate.googleapis.com/translate_a/single?client=gtx&dt=t' +
+  const path =
+    '/translate_a/single?client=gtx&dt=t' +
     '&sl=' +
     encodeURIComponent(from === 'auto' ? 'auto' : from) +
     '&tl=' +
     encodeURIComponent(tl) +
     '&q=' +
     encodeURIComponent(text);
-  // 限速：gtx 调用间隔至少 900ms，避免爆发 429
-  const wait = gtxLastAt + 900 - Date.now();
+  // 限速：gtx 调用间隔至少 1.1s，避免爆发 429
+  const wait = gtxLastAt + 1100 - Date.now();
   if (wait > 0) await new Promise((r) => setTimeout(r, wait));
   let lastErr;
-  // 429 指数退避重试：5s → 15s；连续多轮被限才判定不可用
-  for (let attempt = 0; attempt < 3; attempt++) {
+  // 429 退避重试并轮换域名：2s → 5s → 12s → 30s → 60s → 60s…；连续 14 次被限才放弃
+  const BACKOFFS = [2000, 5000, 12000, 30000, 60000, 60000];
+  for (let attempt = 0; attempt < 6; attempt++) {
     try {
       gtxLastAt = Date.now();
-      const r = await fetch(url, {
+      const r = await fetch('https://' + GTX_HOSTS[gtxHostIdx % GTX_HOSTS.length] + path, {
         headers: {
           'User-Agent':
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
@@ -138,17 +156,35 @@ async function gtxOne(text, from, to) {
       lastErr = e;
       if (/429/.test(e.message)) {
         gtx429Streak++;
-        if (gtx429Streak >= 6) {
+        gtxHostIdx++; // 429 时换下一个域名
+        if (gtx429Streak >= 14) {
           gtxBroken = true;
           break;
         }
-        await new Promise((res) => setTimeout(res, attempt === 0 ? 5000 : 15000));
+        await new Promise((res) => setTimeout(res, BACKOFFS[Math.min(attempt, BACKOFFS.length - 1)]));
       } else {
         break; // 非 429（格式/网络）没有重试价值
       }
     }
   }
   throw lastErr || new Error('gtx 失败');
+}
+
+// 统一兜底入口：gtx → MyMemory
+async function fallbackOne(text, from, to) {
+  if (!gtxBroken) {
+    try {
+      const v = await gtxOne(text, from, to);
+      if (v) return v;
+    } catch (e) {
+      /* 落入 MyMemory */
+    }
+  }
+  try {
+    return await mmOne(text, from, to);
+  } catch (e) {
+    throw new Error('全部兜底失败');
+  }
 }
 
 /**
@@ -210,15 +246,15 @@ async function translate(texts, opts) {
               } catch (e2) {
                 /* 落入 gtx 兜底 */
               }
-              if (!ok && !gtxBroken) {
+              if (!ok) {
                 try {
-                  const v = await gtxOne(one, from, to);
+                  const v = await fallbackOne(one, from, to);
                   if (v) {
                     cache[one] = v;
                     ok = true;
                   }
                 } catch (e3) {
-                  /* gtx 也不行，记失败 */
+                  /* 兜底也不行，记失败 */
                 }
               }
               if (!ok) failed++;
@@ -228,14 +264,10 @@ async function translate(texts, opts) {
             if (tencentFailStreak >= 2) tencentBroken = true;
           }
         } else {
-          // 腾讯已判定不可用：直接 gtx
+          // 腾讯已判定不可用：直接走兜底（gtx → MyMemory）
           for (const one of my) {
-            if (gtxBroken) {
-              failed++;
-              continue;
-            }
             try {
-              const v = await gtxOne(one, from, to);
+              const v = await fallbackOne(one, from, to);
               if (v) cache[one] = v;
               else failed++;
             } catch (e) {

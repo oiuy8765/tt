@@ -12,6 +12,7 @@ const UI = {
   '机会库': 'Opportunities',
   '今日热榜': 'Daily trends',
   '数据截至': 'Data as of',
+  'YouTube 热门视频': 'YouTube trending videos',
   '关键词分析': 'Keyword lookup',
   '关于': 'About',
   '语言': 'Language',

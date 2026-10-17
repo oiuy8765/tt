@@ -283,6 +283,42 @@ function fetchLocal(apiPath) {
     console.log('  daily.json：无可用数据，跳过（今日热榜会显示空）');
   }
 
+  // ── YouTube 热门视频（免 Key、免代理；CI 和本地都能抓 youtube.com/feed/trending）
+  //    抓不到时逐地区回退上次快照，页面不会因此空掉
+  const ytBackupPath = path.join(ROOT, 'data', 'yt.json');
+  const todayYt = new Date().toISOString().slice(0, 10);
+  let ytPrev = {};
+  try { ytPrev = JSON.parse(fs.readFileSync(ytBackupPath, 'utf8')).data || {}; } catch (e) {}
+  const ytOut = { ok: false, data: {} };
+  try {
+    const ytRes = await fetchLocal('/api/yt?geos=' + encodeURIComponent(DAILY_GEOS));
+    if (ytRes && ytRes.ok) {
+      ytOut.ok = true;
+      for (const g of Object.keys(ytRes.data || {})) {
+        const b = ytRes.data[g];
+        if (b && Array.isArray(b.items) && b.items.length) ytOut.data[g] = Object.assign({}, b, { savedAt: todayYt });
+        else if (ytPrev[g] && (ytPrev[g].items || []).length) ytOut.data[g] = Object.assign({}, ytPrev[g], { stale: true });
+      }
+    }
+  } catch (e) {
+    console.log('  YouTube 抓取失败：' + e.message);
+  }
+  for (const g of Object.keys(ytPrev)) {
+    if (!ytOut.data[g] && (ytPrev[g].items || []).length) {
+      ytOut.data[g] = Object.assign({}, ytPrev[g], { stale: true });
+    }
+  }
+  const ytGeos = Object.keys(ytOut.data).filter((g) => (ytOut.data[g].items || []).length);
+  ytOut.ok = ytGeos.length > 0;
+  if (ytOut.ok) {
+    fs.mkdirSync(path.join(DIST, 'data'), { recursive: true });
+    fs.writeFileSync(path.join(DIST, 'data', 'yt.json'), JSON.stringify(ytOut), 'utf8');
+    fs.writeFileSync(ytBackupPath, JSON.stringify(ytOut), 'utf8');
+    console.log('  yt.json：YouTube 热门 OK（地区：' + ytGeos.join('/') + '）');
+  } else {
+    console.log('  yt.json：无可用数据（YouTube 热门区块会隐藏）');
+  }
+
   console.log('[4/5] 生成中文词典…');
   const ZH = require(path.join(ROOT, 'build-zh.js'));
   const dailyObj = daily && daily.ok ? daily : null;

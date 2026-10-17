@@ -1,5 +1,5 @@
 {
- "savedAt": 1792272346594,
+ "savedAt": 1792273739099,
  "geos": {
   "GLOBAL": {
    "geo": "GLOBAL",
@@ -439,9 +439,33 @@
      "aggregator": true
     },
     {
-     "query": "Leaked gameplay purports to show a canceled Assassin's Creed game set in ancient China",
+     "query": "The Tesla Roadster is far from the first car to use fans for downforce",
      "traffic": "620K+",
      "trafficValue": 620000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=The%20Tesla%20Roadster%20is%20far%20from%20the%20first%20car%20to%20use%20fans%20for&geo=US",
+     "related": [
+      "The Tesla Roadster",
+      "Engadget news"
+     ],
+     "articles": [
+      {
+       "title": "\"The Tesla Roadster is far from the first car to use fans for downforce\" is generating significant online interest. Here are some of the other, older vehicles t",
+       "url": "https://www.engadget.com/2289646/tesla-roadster-not-first-car-use-fans-for-downforce/",
+       "source": "Engadget",
+       "timeAgo": ""
+      }
+     ],
+     "image": "https://www.engadget.com/img/gallery/the-tesla-roadster-is-far-from-the-first-car-to-use-fans-for-downforce/l-intro-1792267762.jpg",
+     "category": "News",
+     "date": "",
+     "dateKey": "",
+     "geo": "GLOBAL",
+     "aggregator": true
+    },
+    {
+     "query": "Leaked gameplay purports to show a canceled Assassin's Creed game set in ancient China",
+     "traffic": "610K+",
+     "trafficValue": 610000,
      "exploreLink": "https://trends.google.com/trends/explore?q=Leaked%20gameplay%20purports%20to%20show%20a%20canceled%20Assassin's%20Creed&geo=US",
      "related": [
       "Leaked gameplay purports",
@@ -464,8 +488,8 @@
     },
     {
      "query": "Android Auto can be used outside of your car: Here's how",
-     "traffic": "610K+",
-     "trafficValue": 610000,
+     "traffic": "600K+",
+     "trafficValue": 600000,
      "exploreLink": "https://trends.google.com/trends/explore?q=Android%20Auto%20can%20be%20used%20outside%20of%20your%20car%3A%20Here's%20how&geo=US",
      "related": [
       "Android Auto can",
@@ -487,24 +511,72 @@
      "aggregator": true
     },
     {
-     "query": "What's actually eating all the storage space on your Android Phone?",
+     "query": "Just a casual sip of corporate toxicity!",
      "traffic": "600K+",
      "trafficValue": 600000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=What's%20actually%20eating%20all%20the%20storage%20space%20on%20your%20Android&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=Just%20a%20casual%20sip%20of%20corporate%20toxicity!&geo=US",
      "related": [
-      "What's actually eating",
-      "Engadget news"
+      "Just a casual",
+      "reddit SipsTea"
      ],
      "articles": [
       {
-       "title": "\"What's actually eating all the storage space on your Android Phone?\" is generating significant online interest. Android phone running out of space? Here's why ",
-       "url": "https://www.engadget.com/2283986/whats-actually-eating-all-the-storage-space-on-your-android-phone/",
-       "source": "Engadget",
+       "title": "\"Just a casual sip of corporate toxicity!\" is generating significant online interest. submitted by    /u/Putrid-Welder1803    to    r/SipsTea   [link]   [commen",
+       "url": "https://www.reddit.com/r/SipsTea/comments/1x8gywi/just_a_casual_sip_of_corporate_toxicity/",
+       "source": "Reddit r/SipsTea",
        "timeAgo": ""
       }
      ],
-     "image": "https://www.engadget.com/img/gallery/whats-actually-eating-all-the-storage-space-on-your-android-phone/l-intro-1791468108.jpg",
-     "category": "Science",
+     "image": "",
+     "category": "News",
+     "date": "",
+     "dateKey": "",
+     "geo": "GLOBAL",
+     "aggregator": true
+    },
+    {
+     "query": "My partner made me these wheel covers for my chair, because they are awesome",
+     "traffic": "585K+",
+     "trafficValue": 585000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=My%20partner%20made%20me%20these%20wheel%20covers%20for%20my%20chair%2C%20because%20&geo=US",
+     "related": [
+      "My partner made",
+      "reddit MadeMeSmile"
+     ],
+     "articles": [
+      {
+       "title": "\"My partner made me these wheel covers for my chair, because they are awesome\" is generating significant online interest. And...I may have a thing for unicorns ",
+       "url": "https://www.reddit.com/r/MadeMeSmile/comments/1x8gnf4/my_partner_made_me_these_wheel_covers_for_my/",
+       "source": "Reddit r/MadeMeSmile",
+       "timeAgo": ""
+      }
+     ],
+     "image": "",
+     "category": "News",
+     "date": "",
+     "dateKey": "",
+     "geo": "GLOBAL",
+     "aggregator": true
+    },
+    {
+     "query": "....and justice for all.",
+     "traffic": "570K+",
+     "trafficValue": 570000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=....and%20justice%20for%20all.&geo=US",
+     "related": [
+      "....and justice for",
+      "reddit memes"
+     ],
+     "articles": [
+      {
+       "title": "\"....and justice for all.\" is generating significant online interest. submitted by    /u/Total_Volume_1096    to    r/memes   [link]   [comments] Follow credibl",
+       "url": "https://www.reddit.com/r/memes/comments/1x8ebuq/and_justice_for_all/",
+       "source": "Reddit r/memes",
+       "timeAgo": ""
+      }
+     ],
+     "image": "",
+     "category": "News",
      "date": "",
      "dateKey": "",
      "geo": "GLOBAL",
@@ -704,8 +776,8 @@
     },
     {
      "query": "DeepSeek-v4.1-Flash-1017",
-     "traffic": "293K+",
-     "trafficValue": 292500,
+     "traffic": "302K+",
+     "trafficValue": 301500,
      "exploreLink": "https://trends.google.com/trends/explore?q=DeepSeek-v4.1-Flash-1017&geo=US",
      "related": [
       "DeepSeek-v4.1-Flash-1017",
@@ -727,7 +799,7 @@
      "aggregator": true
     }
    ],
-   "fetchedAt": 1792272094001
+   "fetchedAt": 1792273739098
   },
   "US": {
    "geo": "US",
