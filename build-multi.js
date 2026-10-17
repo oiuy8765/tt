@@ -1431,7 +1431,12 @@ async function buildDailyTranslations() {
   }
   if (!texts.length) return;
   // transmart 的简中代码是 zh（zh-CN 会报 Unrecognized target language）
-  for (const l of ['zh', 'zh-TW', 'ja', 'ko']) {
+  // 语言间冷却 100s：Google gtx 兜底按 IP 限流（约 240 条/时间窗），
+  // 连续翻 4 种语言会在第 2 种开始全量 429
+  const DAILY_LANGS = ['zh', 'zh-TW', 'ja', 'ko'];
+  for (let li = 0; li < DAILY_LANGS.length; li++) {
+    const l = DAILY_LANGS[li];
+    if (li) await new Promise((r) => setTimeout(r, 100000));
     try {
       const r = await translate(texts, { from: 'en', to: l });
       DAILY_TR[l === 'zh' ? 'zh-CN' : l] = r.map || {};
