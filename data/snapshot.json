@@ -1,5 +1,5 @@
 {
- "savedAt": 1792266230389,
+ "savedAt": 1792266597840,
  "geos": {
   "GLOBAL": {
    "geo": "GLOBAL",
@@ -439,9 +439,33 @@
      "aggregator": true
     },
     {
-     "query": "Android Auto can be used outside of your car: Here's how",
+     "query": "Leaked gameplay purports to show a canceled Assassin's Creed game set in ancient China",
      "traffic": "620K+",
      "trafficValue": 620000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=Leaked%20gameplay%20purports%20to%20show%20a%20canceled%20Assassin's%20Creed&geo=US",
+     "related": [
+      "Leaked gameplay purports",
+      "Engadget news"
+     ],
+     "articles": [
+      {
+       "title": "\"Leaked gameplay purports to show a canceled Assassin's Creed game set in ancient China\" is generating significant online interest. At least there's still Assas",
+       "url": "https://www.engadget.com/2289636/leaked-gameplay-purports-to-show-a-canceled-assassins-creed-game-set-in-ancient-china/",
+       "source": "Engadget",
+       "timeAgo": ""
+      }
+     ],
+     "image": "https://www.engadget.com/img/gallery/leaked-gameplay-purports-to-show-a-canceled-assassins-creed-game-set-in-ancient-china/l-intro-1792264605.jpg",
+     "category": "Entertainment",
+     "date": "",
+     "dateKey": "",
+     "geo": "GLOBAL",
+     "aggregator": true
+    },
+    {
+     "query": "Android Auto can be used outside of your car: Here's how",
+     "traffic": "610K+",
+     "trafficValue": 610000,
      "exploreLink": "https://trends.google.com/trends/explore?q=Android%20Auto%20can%20be%20used%20outside%20of%20your%20car%3A%20Here's%20how&geo=US",
      "related": [
       "Android Auto can",
@@ -457,54 +481,6 @@
      ],
      "image": "https://www.engadget.com/img/gallery/android-auto-can-be-used-outside-of-your-car-heres-how/l-intro-1791824287.jpg",
      "category": "News",
-     "date": "",
-     "dateKey": "",
-     "geo": "GLOBAL",
-     "aggregator": true
-    },
-    {
-     "query": "What's actually eating all the storage space on your Android Phone?",
-     "traffic": "610K+",
-     "trafficValue": 610000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=What's%20actually%20eating%20all%20the%20storage%20space%20on%20your%20Android&geo=US",
-     "related": [
-      "What's actually eating",
-      "Engadget news"
-     ],
-     "articles": [
-      {
-       "title": "\"What's actually eating all the storage space on your Android Phone?\" is generating significant online interest. Android phone running out of space? Here's why ",
-       "url": "https://www.engadget.com/2283986/whats-actually-eating-all-the-storage-space-on-your-android-phone/",
-       "source": "Engadget",
-       "timeAgo": ""
-      }
-     ],
-     "image": "https://www.engadget.com/img/gallery/whats-actually-eating-all-the-storage-space-on-your-android-phone/l-intro-1791468108.jpg",
-     "category": "Science",
-     "date": "",
-     "dateKey": "",
-     "geo": "GLOBAL",
-     "aggregator": true
-    },
-    {
-     "query": "iPhone Duo shipping estimates have already been pushed back to 2027",
-     "traffic": "600K+",
-     "trafficValue": 600000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=iPhone%20Duo%20shipping%20estimates%20have%20already%20been%20pushed%20back%20&geo=US",
-     "related": [
-      "iPhone Duo shipping",
-      "Engadget news"
-     ],
-     "articles": [
-      {
-       "title": "\"iPhone Duo shipping estimates have already been pushed back to 2027\" is generating significant online interest. Apple called the early demand \"nothing short of",
-       "url": "https://www.engadget.com/2289629/iphone-duo-shipping-estimates-have-already-been-pushed-back-to-2027/",
-       "source": "Engadget",
-       "timeAgo": ""
-      }
-     ],
-     "image": "https://www.engadget.com/img/gallery/iphone-duo-shipping-estimates-have-already-been-pushed-back-to-2027/l-intro-1792260615.jpg",
-     "category": "Technology",
      "date": "",
      "dateKey": "",
      "geo": "GLOBAL",
@@ -607,48 +583,48 @@
      "aggregator": true
     },
     {
-     "query": "‘Whalefall’ Star Stuns On Red Carpet In 40,000-Gallon Tank",
+     "query": "What To Know About Trump’s Russia Diesel Deal",
      "traffic": "500K+",
      "trafficValue": 500000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=%E2%80%98Whalefall%E2%80%99%20Star%20Stuns%20On%20Red%20Carpet%20In%2040%2C000-Gallon%20Tank&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=What%20To%20Know%20About%20Trump%E2%80%99s%20Russia%20Diesel%20Deal&geo=US",
      "related": [
-      "‘Whalefall’ Star Stuns",
+      "What To Know",
       "The Onion news"
      ],
      "articles": [
       {
-       "title": "\"‘Whalefall’ Star Stuns On Red Carpet In 40,000-Gallon Tank\" is currently one of the most discussed topics online. Search volume and social engagement indicate ",
-       "url": "https://theonion.com/whalefall-star-stuns-on-red-carpet-in-40000-gallon-tank/",
+       "title": "\"What To Know About Trump’s Russia Diesel Deal\" is currently one of the most discussed topics online. Search volume and social engagement indicate widespread pu",
+       "url": "https://theonion.com/what-to-know-about-trumps-russia-diesel-deal/",
        "source": "The Onion",
        "timeAgo": ""
       }
      ],
      "image": "",
-     "category": "News",
+     "category": "Politics",
      "date": "",
      "dateKey": "",
      "geo": "GLOBAL",
      "aggregator": true
     },
     {
-     "query": "Harry Styles ‘Together, Together’ Tour Doc Coming From John Wilson, Universal Pictures Content Group (EXCLUSIVE)",
+     "query": "‘Dancing With the Stars’ Pulls Val Chmerkovskiy After ‘Inappropriate’ Carrie Ann Inaba Slap Joke: ‘The Well-Being’ of...",
      "traffic": "440K+",
      "trafficValue": 440000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=Harry%20Styles%20%E2%80%98Together%2C%20Together%E2%80%99%20Tour%20Doc%20Coming%20From%20John%20&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=%E2%80%98Dancing%20With%20the%20Stars%E2%80%99%20Pulls%20Val%20Chmerkovskiy%20After%20%E2%80%98Inapp&geo=US",
      "related": [
-      "Harry Styles ‘Together,",
+      "‘Dancing With the",
       "Variety news"
      ],
      "articles": [
       {
-       "title": "\"Harry Styles ‘Together, Together’ Tour Doc Coming From John Wilson, Universal Pictures Content Group (EXCLUSIVE)\" is generating significant online interest. Ha",
-       "url": "https://variety.com/2026/film/news/harry-styles-john-wilson-tour-documentary-universal-1236914875/",
+       "title": "\"‘Dancing With the Stars’ Pulls Val Chmerkovskiy After ‘Inappropriate’ Carrie Ann Inaba Slap Joke: ‘The Well-Being’ of Our Staff Is ‘Non-Negotiable’\" is generat",
+       "url": "https://variety.com/2026/tv/news/dancing-with-the-stars-pulls-val-chmerkovskiy-carrie-ann-inaba-slap-joke-1236915031/",
        "source": "Variety",
        "timeAgo": ""
       }
      ],
-     "image": "https://variety.com/wp-content/uploads/2026/10/harry-styles-john-wilson.jpg",
-     "category": "Finance",
+     "image": "https://variety.com/wp-content/uploads/2026/10/183834_CW104412-e1792265097336.jpg",
+     "category": "News",
      "date": "",
      "dateKey": "",
      "geo": "GLOBAL",
@@ -752,8 +728,8 @@
     },
     {
      "query": "DeepSeek-v4.1-Flash-1017",
-     "traffic": "253K+",
-     "trafficValue": 253000,
+     "traffic": "267K+",
+     "trafficValue": 266500,
      "exploreLink": "https://trends.google.com/trends/explore?q=DeepSeek-v4.1-Flash-1017&geo=US",
      "related": [
       "DeepSeek-v4.1-Flash-1017",
@@ -775,7 +751,7 @@
      "aggregator": true
     }
    ],
-   "fetchedAt": 1792266230388
+   "fetchedAt": 1792266597840
   }
  }
 }
