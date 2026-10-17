@@ -150,7 +150,7 @@
   }
 
   function loadDict() {
-    if (LANG === 'en') return Promise.resolve();
+    if (LANG === 'zh-CN') return Promise.resolve();
     return fetch(dictUrl())
       .then(function (r) {
         return r.ok ? r.json() : {};
