@@ -1,0 +1,12 @@
+# 依赖与构建产物（CI 上会重新生成）
+node_modules/
+dist/
+*.log
+
+# 本地工作数据
+.workbuddy/
+
+# 系统杂项
+Thumbs.db
+.DS_Store
+radar-enrich.json.old

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#5145e5" />
+<title>TrendSift · 基于 Google Trends 的上升需求雷达</title>
+<meta name="description" content="把 Google Trends 里正在上涨的搜索需求整理成可操作的判断：哪些词在慢涨适合做站，哪些有季节性该提前备货，主战场在哪个平台，这条趋势是真爆发还是短期炒作。覆盖 870+ 上升话题，附 22 年月度历史曲线，可按 1 / 3 / 6 / 12 / 24 个月自行选观察窗口。" />
+<meta name="keywords" content="Google Trends,上涨关键词,上升趋势,长尾词,选品,季节性,建站,SEO,趋势分析,跨境电商" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="TrendSift · 基于 Google Trends 的上升需求雷达" />
+<meta property="og:site_name" content="TrendSift" />
+<meta property="og:description" content="基于 Google Trends 搜索热度：870+ 上升话题，附 22 年月度历史曲线、季节性、平台分布与真伪爆发判定。给做站、选品、投放、做内容的人用。" />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://trendsift.site/" />
+<link rel="stylesheet" href="./styles.css?v=20261017e" />
+<link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+<link rel="apple-touch-icon" href="./logo.svg" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"WebSite","name":"TrendSift","alternateName":"TrendSift 趋势机会雷达","url":"https://trendsift.site/","inLanguage":"zh-CN"},
+ {"@type":"Organization","name":"TrendSift","url":"https://trendsift.site/","email":"id_02081918@foxmail.com","description":"把 Google Trends 的公开搜索热度整理成可操作判断的独立数据工具站"}
+]}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="./" aria-label="TrendSift 首页">
+    <img class="logo" src="./logo.svg" width="38" height="38" alt="" />
+    <span class="brand-text">
+      <h1 class="wordmark">Trend<span class="wm-b">Sift</span></h1>
+      <span class="tagline">Google Trends 上升词 · 选品 / 建站 / 投放</span>
+    </span>
+  </a>
+  <div class="topbar-right">
+    <div id="connPill" class="pill pill-idle">检测中…</div>
+    <button id="btnRefresh" class="btn btn-primary">
+      <svg class="ico" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.2 6.6A5.4 5.4 0 1 0 13 9.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M13.6 3.2v3.6H10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>刷新数据</span>
+    </button>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" data-tab="lib">机会库</button>
+  <button class="tab" data-tab="daily">今日热榜</button>
+  <button class="tab" data-tab="keyword">关键词分析</button>
+  <button class="tab" data-tab="saved">我的清单<span id="savedBadge" class="tab-badge" hidden>0</span></button>
+  <button class="tab" data-tab="about">关于</button>
+</nav>
+
+<main>
+  <!-- ============ 机会库（唯一的找机会入口） ============ -->
+  <section id="panel-lib" class="panel active">
+    <div class="hero">
+      <div class="hero-main">
+        <div class="eyebrow"><span class="dot"></span>数据来自 Google Trends · 每日更新 · 覆盖 870+ 上升话题</div>
+        <h2>什么在涨，而且现在还来得及</h2>
+        <p>
+          榜单基于 <b>Google Trends 的搜索热度</b>——也就是真实用户在 Google 上搜什么、搜得多不多，
+          只收<b>搜索量持续上升的产品、品类、服务、工具</b>，不是新闻热搜。所以这里问的不是「今天发生了什么」，
+          而是「未来半年什么会更好卖」。
+          每条话题都带 <b>22 年月度历史曲线</b>，增速、季节性、波动、是否已过峰，都是按曲线算出来的；
+          你还可以自己选一段时间（近 1、3、6、12、24 个月），只看这段时间里确实在涨的词。
+        </p>
+      </div>
+      <div id="heroStats" class="hero-stats"></div>
+    </div>
+
+    <!-- 第一步：你想做什么。这一步决定了后面所有分数和字段的意义 -->
+    <div class="step-label"><b>1</b> 你想做什么？</div>
+    <div class="carrier-pick" id="carrierPick">
+      <button class="carrier active" data-carrier="all">
+        <span class="c-ico"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.7" y="2.7" width="6" height="6" rx="1.7" stroke="currentColor" stroke-width="1.5"/><rect x="11.3" y="2.7" width="6" height="6" rx="1.7" stroke="currentColor" stroke-width="1.5"/><rect x="2.7" y="11.3" width="6" height="6" rx="1.7" stroke="currentColor" stroke-width="1.5"/><rect x="11.3" y="11.3" width="6" height="6" rx="1.7" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        <span class="c-name">全部机会</span>
+        <span class="c-num" id="cNumAll">—</span>
+        <span class="c-desc">先看整体，再决定方向</span>
+      </button>
+      <button class="carrier" data-carrier="web">
+        <span class="c-ico"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.4" y="3.4" width="15.2" height="10.6" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2.4 6.6h15.2" stroke="currentColor" stroke-width="1.5"/><path d="M7 17h6M10 14v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <span class="c-name">网站 / APP / SaaS</span>
+        <span class="c-num" id="cNumWeb">—</span>
+        <span class="c-desc">纯线上交付，不用碰供应链</span>
+      </button>
+      <button class="carrier" data-carrier="goods">
+        <span class="c-ico"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2.8 17 6.6v6.8L10 17.2 3 13.4V6.6l7-3.8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M3.2 6.7 10 10.4l6.8-3.7M10 10.4v6.6" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+        <span class="c-name">实体产品</span>
+        <span class="c-num" id="cNumGoods">—</span>
+        <span class="c-desc">选品、备货、带货</span>
+      </button>
+    </div>
+    <div id="carrierHint" class="carrier-hint"></div>
+
+    <!-- 第二步：在选定的载体里筛选 -->
+    <div class="step-label"><b>2</b> 在结果里挑</div>
+    <div class="card card-tight">
+      <div class="row row-wrap toolbar">
+        <input id="libSearch" class="input" type="search" placeholder="搜索关键词 / 类别…" />
+        <select id="libForm" class="input input-sm" title="建议做成什么形态" hidden>
+          <option value="all">全部形态</option>
+          <option value="saas">SaaS / B 端工具</option>
+          <option value="app">消费级 APP</option>
+          <option value="tool">工具站</option>
+          <option value="content">内容站 / 数据库</option>
+        </select>
+        <select id="libKind" class="input input-sm" title="机会性质" hidden>
+          <option value="all">需求词 + 赛道玩家</option>
+          <option value="need">只看可直接做（需求词）</option>
+          <option value="company">只看已有玩家（验赛道）</option>
+        </select>
+        <select id="libCat" class="input input-sm" title="类别">
+          <option value="all">全部类别</option>
+        </select>
+        <select id="libVol" class="input input-sm" title="月搜索量区间">
+          <option value="all">全部搜索量</option>
+          <option value="a">1 千 ~ 1 万（小众）</option>
+          <option value="b">1 万 ~ 10 万（甜点区）</option>
+          <option value="c">10 万 ~ 50 万</option>
+          <option value="d">50 万以上</option>
+        </select>
+        <select id="libStage" class="input input-sm" title="阶段">
+          <option value="all">全部阶段</option>
+          <option value="growing">长期增长</option>
+          <option value="emerging">新兴起势</option>
+          <option value="plateau">高位平台</option>
+          <option value="falling">连续回落</option>
+          <option value="declining">已过峰</option>
+        </select>
+        <select id="libSpan" class="input input-sm" title="只看这段时间里确实在涨的话题">
+          <option value="0">不限观察窗口</option>
+          <option value="1">近 1 个月在涨</option>
+          <option value="3">近 3 个月在涨</option>
+          <option value="6">近 6 个月在涨</option>
+          <option value="12">近 12 个月在涨</option>
+          <option value="24">近 24 个月在涨</option>
+        </select>
+        <select id="libSort" class="input input-sm" title="排序">
+          <option value="auto">按推荐排序</option>
+          <option value="span">按所选时段涨幅</option>
+          <option value="build">按建站适配度</option>
+          <option value="ads">按投放价值</option>
+          <option value="g90">按 90 天增长</option>
+          <option value="g12">按 12 个月增长</option>
+          <option value="vol">按搜索量</option>
+          <option value="social">按社媒热度</option>
+          <option value="window">按最新收录（窗口期优先）</option>
+          <option value="season">按季节紧迫度</option>
+        </select>
+        <label class="toggle" title="排除已有公司 / 品牌词">
+          <input type="checkbox" id="libHideBrand" checked />
+          <span>排除品牌词</span>
+        </label>
+        <label class="toggle" title="翻译成中文（免费接口，可能有误差）">
+          <input type="checkbox" id="libZh" />
+          <span>中文</span>
+        </label>
+      </div>
+      <div class="row row-wrap quickfilters" id="quickFilters">
+        <span class="qf-label">只看</span>
+        <button class="qchip" data-qf="evergreen" title="10 年以上历史、12 个月温和上涨、波动低——适合做常青内容">长青词</button>
+        <button class="qchip" data-qf="seasonal" title="季节差异明显，适合提前 2~3 个月布局">季节明显</button>
+        <button class="qchip" data-qf="window" title="上榜不到一年，竞争者还没大量进场">仍在窗口期</button>
+        <button class="qchip" data-qf="growing" title="多个时间尺度同步向上">长期增长</button>
+        <button class="qchip" data-qf="nofalsh" title="排除只有最近 24 个月爆发的短期热点">排除短期爆发</button>
+        <button class="qchip" data-qf="rise90" title="近 90 天在涨，适合马上动手">90 天在涨</button>
+        <button class="qchip" data-qf="nobrand" title="排除月搜不足 1 千的极小词">有实际搜索量</button>
+      </div>
+    </div>
+
+    <!-- 视图切换：列表 / 赛道聚合 -->
+    <div class="lib-bar">
+      <div id="libMeta" class="meta-line"></div>
+      <div class="view-switch" id="viewSwitch">
+        <button class="vs active" data-view="list">列表</button>
+        <button class="vs" data-view="tracks">赛道分布</button>
+      </div>
+    </div>
+
+    <div id="libLoading" class="loading" style="display:none"><span class="spinner"></span><span id="libLoadingText">正在抓取趋势榜单…</span></div>
+    <div id="libErr" class="err-slot"></div>
+    <div id="libHint" class="dig-hint"></div>
+    <div class="row row-wrap toolbar track-bar" id="trackBar" hidden>
+      <select id="trackSort" class="input input-sm">
+        <option value="rising">按「快速增长」话题数</option>
+        <option value="growth">按平均 90 天增长</option>
+        <option value="count">按话题数量</option>
+        <option value="vol">按平均搜索量</option>
+      </select>
+      <span class="hint-inline">类别按词所属的类目聚合，同一个话题可能属于多个类别</span>
+    </div>
+    <div id="libList" class="opp-list"></div>
+    <div id="libMore" class="more-wrap"></div>
+    <div id="trackWrap" class="track-list" hidden></div>
+
+    <details class="method">
+      <summary>这些标签和分数是怎么算出来的？（建议看一眼，避免误判）</summary>
+      <div class="method-body">
+        <p><b>先选载体，再看分数</b>——因为「适合做站」和「适合选品」是两个完全不同的判断标准，同一个词在两边的排名会差很远。</p>
+        <p><b>观察窗口</b>：选「近 6 个月」，就是把最近 6 个月的月均热度，和再往前 6 个月比，只留涨幅 &gt; 0 的话题，并按这个涨幅排序。历史长度不足两倍的词会被排除（不拿半段数据下结论）。这也是为什么同一个词，换窗口后排名会变。</p>
+        <p><code>数字机会分（网站/APP/SaaS）= 0.38×90天增长 + 0.24×规模(3千~10万) + 0.18×变现 + 0.20×线上可行度</code></p>
+        <ul>
+          <li><b>线上可行度</b>：关键词里有没有产品意图（app/tool/generator…）、品类能不能纯线上交付、描述里是不是在讲软件。命中实物词会大幅扣分。</li>
+          <li><b>为什么规模甜点区比选品低</b>：B 端词的搜索量天然小，3 千~10 万才是线上产品的舒适区。</li>
+        </ul>
+        <p><code>实体机会分 = 0.35×增长 + 0.25×规模(2万~20万) + 0.20×变现 + 0.20×社媒</code></p>
+        <ul>
+          <li><b>变现</b>：按类目推断的广告价值（金融/法律/软件高，娱乐/社交低）。<b>这是推断值，不是实测 CPC</b>，公开趋势数据里不含广告出价。</li>
+          <li><b>社媒</b>：8 个平台提及量总和，代表有没有真实人群在讨论。点开卡片能看到主战场在哪个平台。</li>
+        </ul>
+        <p><code>建站适配度 = 0.30×12个月增速 + 0.30×规模(5千~10万长尾甜点) + 0.18×稳定性 + 0.12×新鲜度 + 0.10×内容可覆盖性</code></p>
+        <ul>
+          <li>做站要的是「能长期吃搜索流量的长尾词」，大词反而抢不过头部站。<b>稳定性</b>用近 24 个月环比波动衡量：忽高忽低说明是事件驱动，不是稳定需求。</li>
+        </ul>
+        <p><b>四个判定标签</b>，全部来自 Google Trends 历史曲线与收录时间：</p>
+        <ul>
+          <li><b>真伪爆发</b>：把 24 / 60 / 120 / 180 个月四个时间尺度分别判断是否「爆发」。四个都在爆 = 长期结构性；只有最近 24 个月在爆 = 短期热点，容易踩坑。</li>
+          <li><b>阶段</b>：结合峰值偏离、连续下滑月数和爆发判定，给出「长期增长 / 新兴起势 / 高位平台 / 连续回落 / 已过峰」。</li>
+          <li><b>窗口期</b>：这条话题上榜多久了。刚收录 &lt; 3 个月是最好的卡位期，超过 2 年基本已被充分开发。</li>
+          <li><b>季节</b>：最近 36 个月按日历月归一化后取平均，得到 12 个月的相对强弱。强度 &lt; 0.4 视为全年平坦，不建议当季节性品类做。</li>
+        </ul>
+        <p class="method-warn">
+          分数只做初筛，不能替代商业判断。真正的可行性还要自己看竞争程度、供应链、合规（医疗/金融/博彩尤其注意）和你的执行能力。
+        </p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ 今日热榜（新闻向） ============ -->
+  <section id="panel-daily" class="panel">
+    <div class="notice">
+      <b>这一页是「今天发生了什么」</b>：<b>Google Trends 每日热搜</b>里各地区此刻搜索量突增的词与相关资讯，偏新闻，
+      热度往往一两天就过去。想找可以长期做的产品 / 项目，请回「机会库」。
+    </div>
+    <div class="card">
+      <div class="row row-wrap">
+        <div class="row-label">选择地区</div>
+        <div id="geoList" class="chips"></div>
+      </div>
+      <div class="row row-wrap toolbar">
+        <input id="filterInput" class="input" type="search" placeholder="筛选词条 / 相关搜索…" />
+        <select id="sortSelect" class="input input-sm">
+          <option value="traffic">按搜索量排序</option>
+          <option value="region">按地区分组</option>
+          <option value="alpha">按字母排序</option>
+        </select>
+        <button id="btnExport" class="btn btn-ghost">导出 CSV</button>
+        <button id="btnDemo" class="btn btn-ghost">查看示例数据</button>
+        <label class="toggle" title="把英文热搜词/话题翻译成中文">
+          <input type="checkbox" id="zhToggle" />
+          <span>中文翻译</span>
+        </label>
+      </div>
+    </div>
+
+    <div id="srcBanner" class="src-banner" style="display:none"></div>
+    <div id="dailyMeta" class="meta-line"></div>
+    <div id="dailyGrid" class="grid"></div>
+    <div id="dailyEmpty" class="empty">还没有数据，点右上角「刷新数据」开始抓取。</div>
+  </section>
+
+  <!-- ============ 关键词分析 ============ -->
+  <section id="panel-keyword" class="panel">
+    <div class="notice">
+      输入一个词，看它的<b>飙升相关查询</b>与关注度曲线。这一项需要实时访问官方搜索趋势接口，<b>仅本地版可用</b>；
+      在线版已把同样的历史曲线内置到「机会库」里，不用查也能看到每个词的走势。
+    </div>
+    <div class="card">
+      <div class="row row-wrap">
+        <input id="kwInput" class="input input-grow" type="text" placeholder="输入关键词，例如：ai agent / 露营装备 / 宠物推车" />
+        <select id="kwGeo" class="input input-sm"></select>
+        <select id="kwTime" class="input input-sm">
+          <option value="now 1-d">过去 24 小时</option>
+          <option value="now 7-d" selected>过去 7 天</option>
+          <option value="now 30-d">过去 30 天</option>
+          <option value="now 3-m">过去 90 天</option>
+          <option value="now 12-m">过去 12 个月</option>
+          <option value="today 3-m">近 90 天（含今天）</option>
+          <option value="today 5-y">近 5 年（含今天）</option>
+        </select>
+        <button id="btnKw" class="btn btn-primary">分析</button>
+      </div>
+      <p class="hint">
+        返回该关键词的「飙升相关查询（RISING，带涨幅百分比）」与「热门相关查询（TOP）」，并绘制关注度曲线。
+        它的价值是能给出官方口径的涨幅百分比和任意时间窗——比如某个词过去 90 天里在涨的相关查询。
+      </p>
+    </div>
+    <div id="kwResult" class="kw-result"></div>
+  </section>
+
+  <!-- ============ 我的清单 ============ -->
+  <section id="panel-saved" class="panel">
+    <div class="hero">
+      <div class="hero-main">
+        <h2>我的清单</h2>
+        <p>在机会库点卡片右上角的 ☆ 就能存到这里，方便回头对比。<b>只存在你自己的浏览器里</b>，不上传任何服务器。</p>
+      </div>
+      <div id="savedStats" class="hero-stats"></div>
+    </div>
+    <div class="card card-tight">
+      <div class="row row-wrap toolbar">
+        <button id="btnSavedExport" class="btn btn-ghost">导出 CSV</button>
+        <button id="btnSavedClear" class="btn btn-ghost">清空清单</button>
+        <span class="hint-inline">建议：同一赛道最多留 5~8 个，太多了等于没筛</span>
+      </div>
+    </div>
+    <div id="savedList" class="opp-list"></div>
+  </section>
+
+  <!-- ============ 关于 ============ -->
+  <section id="panel-about" class="panel">
+    <div class="card">
+      <h2 class="card-title">这个站解决什么问题</h2>
+      <p class="hint">
+        大多数人打开 <b>Google Trends</b> 只看 Trending Now，挖到一堆新闻热点，然后踩坑——那些词两天就没了，没法做产品。
+        这个站做的是另一件事：<b>把 Google Trends 里「已经在涨的搜索需求」筛出来，判断它适合做什么</b>——做站、选品、投放还是做内容。
+      </p>
+      <ul class="hint-list">
+        <li><b>不是新闻榜</b>：每日热榜单独放在一个页面，明确标注「新闻向」，避免和机会库混在一起。</li>
+        <li><b>先选载体再看分数</b>：网站/APP 和实体产品的判断标准不同，分开算分。</li>
+        <li><b>能看出真假</b>：四个时间尺度交叉验证，把「只有最近两年在爆」的短期热点标出来。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2 class="card-title">怎么用（三步）</h2>
+      <ol class="hint-list">
+        <li><b>先选载体</b>：网站 / APP / SaaS，还是实体产品。这一步决定了后面所有分数按哪套标准算。</li>
+        <li><b>再选时间窗口</b>：想抓刚起来的短波，选「近 1~3 个月」；想找能长期做的，选「近 12~24 个月」。不选就是全量。</li>
+        <li><b>最后看四个标签</b>：阶段、真伪爆发（几个时间尺度都在涨）、窗口期（被收录多久）、季节（什么时候备货）。</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2 class="card-title">数据说明</h2>
+      <p class="hint">
+        所有数字的出处、统计口径、更新频率和已知偏差，都写在同一份文件里，不占页面篇幅：
+        <a href="./source.txt" target="_blank" rel="noreferrer">打开 source.txt</a>。
+      </p>
+      <p class="hint">
+        一句话概括：<b>搜索热度来自 Google Trends，月搜索量是依据它换算的估算值，所有增速与分数是本站按历史曲线自己算的</b>。
+        完整口径见
+        <a href="./source.txt" target="_blank" rel="noreferrer">数据说明（source.txt）</a>。
+      </p>
+    </div>
+
+    <div class="card">
+      <h2 class="card-title">关于本站</h2>
+      <p class="hint">
+        <b>TrendSift</b> 是一个独立运营的搜索趋势工具站，不做账号体系、不卖榜单、不代运营。
+        常用的说明页面都在这里：
+      </p>
+      <p class="hint">
+        <a href="./about.html">关于我们</a> ·
+        <a href="./privacy.html">隐私政策</a> ·
+        <a href="./contact.html">联系我们</a>
+      </p>
+    </div>
+
+    <div class="card">
+      <h2 class="card-title">已知限制（如实说明）</h2>
+      <ul class="hint-list">
+        <li>月搜索量是按 Google Trends 相对热度换算的估算值，量级可信、具体数字有误差，不是官方精确值。</li>
+        <li>广告出价（CPC）拿不到，界面里的「变现」分是按类目推断的，只能横向比较。</li>
+        <li>历史曲线是<b>月粒度</b>，所以「近 3 个月」是最近 3 个月均值对比之前 3 个月，不是逐日数据。</li>
+        <li>榜单本身只收「已经在涨的话题」，整体增长率天然偏高，别把 +200% 当成异乎寻常。</li>
+        <li>「载体」「形态」是按关键词和类目规则推断的，少数词会分错，以你自己的判断为准。</li>
+        <li>所有分数只做初筛，替代不了商业判断：竞争、供应链、合规（医疗/金融/博彩尤其）都要自己核。</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <img class="foot-logo" src="./logo.svg" width="30" height="30" alt="" />
+      <div>
+        <div class="foot-name">TrendSift</div>
+        <div class="foot-tag">把正在上涨的搜索需求，变成可以动手的判断</div>
+      </div>
+    </div>
+    <nav class="foot-links" aria-label="站点信息">
+      <a href="./about.html">关于我们</a><span class="foot-sep">·</span>
+      <a href="./privacy.html">隐私政策</a><span class="foot-sep">·</span>
+      <a href="./contact.html">联系我们</a><span class="foot-sep">·</span>
+      <a href="./source.txt" target="_blank" rel="noreferrer">数据说明</a>
+    </nav>
+  </div>
+  <div id="footerInfo" class="foot-note">© 2026 TrendSift · 数据来自 Google Trends 公开搜索热度 · 每日更新 · 不构成投资建议</div>
+</footer>
+
+<div id="toast" class="toast"></div>
+<script src="./app.js?v=20261017e"></script>
+</body>
+</html>

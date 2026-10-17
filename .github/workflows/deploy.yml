@@ -1,0 +1,70 @@
+name: Build & Deploy
+
+# 定时自动构建部署（GitHub 服务器在海外，直连 Google，不需要代理）：
+# - UTC 22:00 = 北京时间早上 6:00
+# - UTC 10:00 = 北京时间晚上 18:00
+# 也可以在 Actions 页面手动点 Run workflow 立即更新
+on:
+  schedule:
+    - cron: '0 22 * * *'
+    - cron: '0 10 * * *'
+  workflow_dispatch: {}
+
+# 同一时间只允许一个构建在跑
+concurrency:
+  group: build-deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # 启动本地抓取服务：在 GitHub 服务器上直连 Google，
+      # 热榜能拿到 US/GB/JP 等地区数据（本机构建拿不到的这里都能拿到）
+      - name: Start trends server
+        run: |
+          node server.js > server.log 2>&1 &
+          echo $! > server.pid
+          sleep 5
+          curl -s -m 5 http://127.0.0.1:8787/api/config -o /dev/null -w "server up: %{http_code}\n" || true
+
+      - name: Build static site
+        run: node build-static.js
+
+      - name: Stop server
+        if: always()
+        run: |
+          kill "$(cat server.pid)" 2>/dev/null || true
+          tail -n 30 server.log 2>/dev/null || true
+
+      # 把本次构建新产生的翻译缓存 / 数据快照提交回仓库，
+      # 下次构建增量使用（只翻新增文案，不重复花钱花时间）
+      - name: Commit refreshed caches
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data/
+          if git diff --cached --quiet; then
+            echo "缓存无变化"
+          else
+            git commit -m "chore: refresh data caches (auto build)"
+            git push
+          fi
+
+      - name: Deploy to Cloudflare Pages
+        run: npx --yes wrangler@4 pages deploy dist --project-name=trends-radar --commit-dirty=true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
