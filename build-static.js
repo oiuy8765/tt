@@ -303,6 +303,10 @@ function fetchLocal(apiPath) {
   } catch (e) {
     console.log('  YouTube 抓取失败：' + e.message);
   }
+  // 逐地区错误诊断（接口返回 ok:false 时能看到具体原因）
+  for (const g of Object.keys(ytOut.data)) {
+    if (ytOut.data[g].error) console.log('  YouTube ' + g + ' 失败：' + ytOut.data[g].error);
+  }
   for (const g of Object.keys(ytPrev)) {
     if (!ytOut.data[g] && (ytPrev[g].items || []).length) {
       ytOut.data[g] = Object.assign({}, ytPrev[g], { stale: true });
