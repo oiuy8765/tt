@@ -41,9 +41,7 @@
       collect(JSON.parse(j));
     } catch (e) {}
     console.log('browse HTTP ' + b.status + ' (' + j.length + ' bytes) | videoRenderer+lockup: ' + vids.length);
-    if (b.status !== 200) {
-      console.log('browse body: ' + j.slice(0, 400));
-    }
+    console.log('browse body: ' + j.slice(0, 500).replace(/\s+/g, ' '));
     const vr = vids.find((v) => v.videoRenderer) || vids[0];
     if (vr) console.log(JSON.stringify(vr).slice(0, 600));
   } catch (e) {
