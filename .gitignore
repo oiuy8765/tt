@@ -10,3 +10,9 @@ dist/
 Thumbs.db
 .DS_Store
 radar-enrich.json.old
+.wrangler/
+_backup/
+_enrich_all.js
+_rebuild.js
+test-selftest.js
+similar.js.bak
