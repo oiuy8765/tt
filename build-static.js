@@ -131,7 +131,7 @@ function fetchLocal(apiPath) {
   fs.mkdirSync(path.join(DIST, 'data'), { recursive: true });
 
   console.log('[2/5] 复制前端…');
-  const FILES = ['index.html', 'about.html', 'privacy.html', 'contact.html', 'app.js', 'lang.js', 'compare.js', 'styles.css', 'source.txt', 'logo.svg', 'favicon.svg'];
+  const FILES = ['index.html', 'about.html', 'privacy.html', 'contact.html', 'app.js', 'lang.js', 'compare.js', 'styles.css', 'logo.svg', 'favicon.svg'];
   for (const f of FILES) {
     const src = path.join(ROOT, 'public', f);
     if (!fs.existsSync(src)) {

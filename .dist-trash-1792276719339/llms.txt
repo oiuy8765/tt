@@ -1,0 +1,23 @@
+# TrendSift
+
+> TrendSift (trendsift.site) tracks products, categories, services and tools whose Google Trends search interest is still rising, and turns the 22-year monthly history into build/product/ad decisions. Every topic page states estimated monthly searches, 90-day and 12-month growth, seasonality, main social platform and an early-window judgement.
+
+## What this site is for
+- Finding rising search demand before it becomes crowded
+- Deciding whether a keyword suits a website/app/SaaS or a physical product
+- Checking seasonality and lead times before stocking
+
+## Key pages
+- https://trendsift.site/ — opportunity library (simplified Chinese)
+- https://trendsift.site/en/ — English version
+- https://trendsift.site/ja/ — 日本語版
+- https://trendsift.site/ko/ — 한국어판
+- https://trendsift.site/zh-tw/ — 繁體中文版
+- https://trendsift.site/topics/ — full topic index
+- https://trendsift.site/source.txt — data provenance and known limitations
+
+## Data
+Search interest: Google Trends (public relative index, 0-100). Monthly volume: estimated with standard keyword-tool methodology. Growth, seasonality, volatility and scores: computed by TrendSift from the historical curve. Data is not official Google data and is not investment advice.
+
+## Languages
+Simplified Chinese (default), Traditional Chinese, English, Japanese, Korean — each with its own URL and hreflang annotations.

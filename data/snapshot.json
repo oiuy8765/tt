@@ -1,5 +1,5 @@
 {
- "savedAt": 1792275156669,
+ "savedAt": 1792277531938,
  "geos": {
   "GLOBAL": {
    "geo": "GLOBAL",
@@ -7,9 +7,57 @@
    "sourceName": "hottrends.ai（聚合 Google Trends 实时热搜）",
    "items": [
     {
-     "query": "More NHS staff sacked over attacks victims' records",
+     "query": "Violent clashes, looting and buildings ablaze in France as over 1,000 arrested after protests",
      "traffic": "800K+",
      "trafficValue": 800000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=Violent%20clashes%2C%20looting%20and%20buildings%20ablaze%20in%20France%20as%20o&geo=US",
+     "related": [
+      "Violent clashes, looting",
+      "BBC News news"
+     ],
+     "articles": [
+      {
+       "title": "\"Violent clashes, looting and buildings ablaze in France as over 1,000 arrested after protests\" is generating significant online interest. Disorder broke out in",
+       "url": "https://www.bbc.co.uk/news/articles/c6d937wedj7jo?at_medium=RSS&at_campaign=rss",
+       "source": "BBC News",
+       "timeAgo": ""
+      }
+     ],
+     "image": "https://ichef.bbci.co.uk/ace/standard/640/cpsprodpb/8264/live/a6715ba0-ca74-11f1-9ef8-9dedd6ab697d.jpg",
+     "category": "News",
+     "date": "",
+     "dateKey": "",
+     "geo": "GLOBAL",
+     "aggregator": true
+    },
+    {
+     "query": "How day of protests unfolded as disorder breaks out across France",
+     "traffic": "790K+",
+     "trafficValue": 790000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=How%20day%20of%20protests%20unfolded%20as%20disorder%20breaks%20out%20across%20F&geo=US",
+     "related": [
+      "How day of",
+      "BBC News news"
+     ],
+     "articles": [
+      {
+       "title": "\"How day of protests unfolded as disorder breaks out across France\" is generating significant online interest. Demonstrations across the country turned violent,",
+       "url": "https://www.bbc.co.uk/news/videos/cwz0vy770gpzo?at_medium=RSS&at_campaign=rss",
+       "source": "BBC News",
+       "timeAgo": ""
+      }
+     ],
+     "image": "https://ichef.bbci.co.uk/ace/standard/640/cpsprodpb/087d/live/01edc4a0-ca75-11f1-9a39-31b474234113.jpg",
+     "category": "News",
+     "date": "",
+     "dateKey": "",
+     "geo": "GLOBAL",
+     "aggregator": true
+    },
+    {
+     "query": "More NHS staff sacked over attacks victims' records",
+     "traffic": "780K+",
+     "trafficValue": 780000,
      "exploreLink": "https://trends.google.com/trends/explore?q=More%20NHS%20staff%20sacked%20over%20attacks%20victims'%20records&geo=US",
      "related": [
       "More NHS staff",
@@ -31,33 +79,9 @@
      "aggregator": true
     },
     {
-     "query": "European diplomats attacked by Israeli settlers in West Bank",
-     "traffic": "790K+",
-     "trafficValue": 790000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=European%20diplomats%20attacked%20by%20Israeli%20settlers%20in%20West%20Bank&geo=US",
-     "related": [
-      "European diplomats attacked",
-      "BBC News news"
-     ],
-     "articles": [
-      {
-       "title": "\"European diplomats attacked by Israeli settlers in West Bank\" is generating significant online interest. The Israeli military condemns the violence but the pri",
-       "url": "https://www.bbc.co.uk/news/articles/c962ydpmjm3zo?at_medium=RSS&at_campaign=rss",
-       "source": "BBC News",
-       "timeAgo": ""
-      }
-     ],
-     "image": "https://ichef.bbci.co.uk/ace/standard/640/cpsprodpb/15c7/live/4f318350-ca52-11f1-852c-2b93a8fc4799.jpg",
-     "category": "Finance",
-     "date": "",
-     "dateKey": "",
-     "geo": "GLOBAL",
-     "aggregator": true
-    },
-    {
      "query": "Anti-government protesters battle with police in Albania",
-     "traffic": "780K+",
-     "trafficValue": 780000,
+     "traffic": "770K+",
+     "trafficValue": 770000,
      "exploreLink": "https://trends.google.com/trends/explore?q=Anti-government%20protesters%20battle%20with%20police%20in%20Albania&geo=US",
      "related": [
       "Anti-government protesters battle",
@@ -79,9 +103,33 @@
      "aggregator": true
     },
     {
+     "query": "European diplomats attacked by Israeli settlers in West Bank",
+     "traffic": "760K+",
+     "trafficValue": 760000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=European%20diplomats%20attacked%20by%20Israeli%20settlers%20in%20West%20Bank&geo=US",
+     "related": [
+      "European diplomats attacked",
+      "BBC News news"
+     ],
+     "articles": [
+      {
+       "title": "\"European diplomats attacked by Israeli settlers in West Bank\" is generating significant online interest. The Israeli military condemns the violence but the pri",
+       "url": "https://www.bbc.co.uk/news/articles/c962ydpmjm3zo?at_medium=RSS&at_campaign=rss",
+       "source": "BBC News",
+       "timeAgo": ""
+      }
+     ],
+     "image": "https://ichef.bbci.co.uk/ace/standard/640/cpsprodpb/15c7/live/4f318350-ca52-11f1-852c-2b93a8fc4799.jpg",
+     "category": "Finance",
+     "date": "",
+     "dateKey": "",
+     "geo": "GLOBAL",
+     "aggregator": true
+    },
+    {
      "query": "Swinney's emotional explanation for his commitment to independence",
-     "traffic": "770K+",
-     "trafficValue": 770000,
+     "traffic": "750K+",
+     "trafficValue": 750000,
      "exploreLink": "https://trends.google.com/trends/explore?q=Swinney's%20emotional%20explanation%20for%20his%20commitment%20to%20indepe&geo=US",
      "related": [
       "Swinney's emotional explanation",
@@ -97,54 +145,6 @@
      ],
      "image": "https://ichef.bbci.co.uk/ace/standard/640/cpsprodpb/0cd8/live/4bdea770-ca55-11f1-9a39-31b474234113.jpg",
      "category": "News",
-     "date": "",
-     "dateKey": "",
-     "geo": "GLOBAL",
-     "aggregator": true
-    },
-    {
-     "query": "Pope discharged from hospital days after lung cancer surgery",
-     "traffic": "760K+",
-     "trafficValue": 760000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=Pope%20discharged%20from%20hospital%20days%20after%20lung%20cancer%20surgery&geo=US",
-     "related": [
-      "Pope discharged from",
-      "BBC News news"
-     ],
-     "articles": [
-      {
-       "title": "\"Pope discharged from hospital days after lung cancer surgery\" is generating significant online interest. The pontiff will give the traditional Angelus prayer a",
-       "url": "https://www.bbc.co.uk/news/articles/c5x2vkddrkrko?at_medium=RSS&at_campaign=rss",
-       "source": "BBC News",
-       "timeAgo": ""
-      }
-     ],
-     "image": "https://ichef.bbci.co.uk/ace/standard/640/cpsprodpb/8c6c/live/9aad8f70-ca31-11f1-9ab2-b325ce61f9d2.jpg",
-     "category": "Health",
-     "date": "",
-     "dateKey": "",
-     "geo": "GLOBAL",
-     "aggregator": true
-    },
-    {
-     "query": "Chelsea's Martinez taken to hospital for 'precautionary tests'",
-     "traffic": "750K+",
-     "trafficValue": 750000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=Chelsea's%20Martinez%20taken%20to%20hospital%20for%20'precautionary%20test&geo=US",
-     "related": [
-      "Chelsea's Martinez taken",
-      "BBC News news"
-     ],
-     "articles": [
-      {
-       "title": "\"Chelsea's Martinez taken to hospital for 'precautionary tests'\" is generating significant online interest. Goalkeeper Emiliano Martinez was taken to hospital a",
-       "url": "https://www.bbc.co.uk/sport/football/articles/c6rryqq00yp4o?at_medium=RSS&at_campaign=rss",
-       "source": "BBC News",
-       "timeAgo": ""
-      }
-     ],
-     "image": "https://ichef.bbci.co.uk/ace/standard/640/cpsprodpb/a3ff/live/157a6f70-ca3c-11f1-9ab2-b325ce61f9d2.jpg",
-     "category": "Health",
      "date": "",
      "dateKey": "",
      "geo": "GLOBAL",
@@ -439,23 +439,23 @@
      "aggregator": true
     },
     {
-     "query": "The Tesla Roadster is far from the first car to use fans for downforce",
+     "query": "How to keep your smart home running even if the internet goes down",
      "traffic": "620K+",
      "trafficValue": 620000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=The%20Tesla%20Roadster%20is%20far%20from%20the%20first%20car%20to%20use%20fans%20for&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=How%20to%20keep%20your%20smart%20home%20running%20even%20if%20the%20internet%20goe&geo=US",
      "related": [
-      "The Tesla Roadster",
+      "How to keep",
       "Engadget news"
      ],
      "articles": [
       {
-       "title": "\"The Tesla Roadster is far from the first car to use fans for downforce\" is generating significant online interest. Here are some of the other, older vehicles t",
-       "url": "https://www.engadget.com/2289646/tesla-roadster-not-first-car-use-fans-for-downforce/",
+       "title": "\"How to keep your smart home running even if the internet goes down\" is generating significant online interest. Smart home products most often harness Wi-Fi to ",
+       "url": "https://www.engadget.com/2284525/how-to-keep-smart-home-running-internet-goes-down/",
        "source": "Engadget",
        "timeAgo": ""
       }
      ],
-     "image": "https://www.engadget.com/img/gallery/the-tesla-roadster-is-far-from-the-first-car-to-use-fans-for-downforce/l-intro-1792267762.jpg",
+     "image": "https://www.engadget.com/img/gallery/how-to-keep-your-smart-home-running-even-if-the-internet-goes-down/l-intro-1791831565.jpg",
      "category": "News",
      "date": "",
      "dateKey": "",
@@ -463,23 +463,47 @@
      "aggregator": true
     },
     {
-     "query": "Leaked gameplay purports to show a canceled Assassin's Creed game set in ancient China",
+     "query": "Why it's important to monitor your PC's background processes",
      "traffic": "610K+",
      "trafficValue": 610000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=Leaked%20gameplay%20purports%20to%20show%20a%20canceled%20Assassin's%20Creed&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=Why%20it's%20important%20to%20monitor%20your%20PC's%20background%20processes&geo=US",
      "related": [
-      "Leaked gameplay purports",
+      "Why it's important",
       "Engadget news"
      ],
      "articles": [
       {
-       "title": "\"Leaked gameplay purports to show a canceled Assassin's Creed game set in ancient China\" is generating significant online interest. At least there's still Assas",
-       "url": "https://www.engadget.com/2289636/leaked-gameplay-purports-to-show-a-canceled-assassins-creed-game-set-in-ancient-china/",
+       "title": "\"Why it's important to monitor your PC's background processes\" is generating significant online interest. What your PC is doing in the background doesn't need t",
+       "url": "https://www.engadget.com/2284465/why-its-important-to-monitor-pc-background-processes/",
        "source": "Engadget",
        "timeAgo": ""
       }
      ],
-     "image": "https://www.engadget.com/img/gallery/leaked-gameplay-purports-to-show-a-canceled-assassins-creed-game-set-in-ancient-china/l-intro-1792264605.jpg",
+     "image": "https://www.engadget.com/img/gallery/why-its-important-to-monitor-your-pcs-background-processes/l-intro-1791830732.jpg",
+     "category": "News",
+     "date": "",
+     "dateKey": "",
+     "geo": "GLOBAL",
+     "aggregator": true
+    },
+    {
+     "query": "Don't throw away your old PlayStation — Do this instead",
+     "traffic": "600K+",
+     "trafficValue": 600000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=Don't%20throw%20away%20your%20old%20PlayStation%20%E2%80%94%20Do%20this%20instead&geo=US",
+     "related": [
+      "Don't throw away",
+      "Engadget news"
+     ],
+     "articles": [
+      {
+       "title": "\"Don't throw away your old PlayStation — Do this instead\" is generating significant online interest. Older PlayStations may be past their prime, but there are s",
+       "url": "https://www.engadget.com/2284423/dont-throw-away-old-playstation-do-this-instead/",
+       "source": "Engadget",
+       "timeAgo": ""
+      }
+     ],
+     "image": "https://www.engadget.com/img/gallery/dont-throw-away-your-old-playstation-do-this-instead/l-intro-1791829152.jpg",
      "category": "Entertainment",
      "date": "",
      "dateKey": "",
@@ -487,23 +511,23 @@
      "aggregator": true
     },
     {
-     "query": "Android Auto can be used outside of your car: Here's how",
+     "query": "Russian Bot Activity Collapses by 84% After Strikes on Yandex Data Centers",
      "traffic": "600K+",
      "trafficValue": 600000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=Android%20Auto%20can%20be%20used%20outside%20of%20your%20car%3A%20Here's%20how&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=Russian%20Bot%20Activity%20Collapses%20by%2084%25%20After%20Strikes%20on%20Yande&geo=US",
      "related": [
-      "Android Auto can",
-      "Engadget news"
+      "Russian Bot Activity",
+      "reddit technology"
      ],
      "articles": [
       {
-       "title": "\"Android Auto can be used outside of your car: Here's how\" is generating significant online interest. It might sound weird to use Android Auto outside of a vehi",
-       "url": "https://www.engadget.com/2284102/how-android-auto-used-outside-of-car/",
-       "source": "Engadget",
+       "title": "\"Russian Bot Activity Collapses by 84% After Strikes on Yandex Data Centers\" is generating significant online interest. submitted by    /u/ArgentineBeauty    to",
+       "url": "https://www.reddit.com/r/technology/comments/1x8kmu7/russian_bot_activity_collapses_by_84_after/",
+       "source": "Reddit r/technology",
        "timeAgo": ""
       }
      ],
-     "image": "https://www.engadget.com/img/gallery/android-auto-can-be-used-outside-of-your-car-heres-how/l-intro-1791824287.jpg",
+     "image": "",
      "category": "News",
      "date": "",
      "dateKey": "",
@@ -512,8 +536,8 @@
     },
     {
      "query": "Just a casual sip of corporate toxicity!",
-     "traffic": "600K+",
-     "trafficValue": 600000,
+     "traffic": "585K+",
+     "trafficValue": 585000,
      "exploreLink": "https://trends.google.com/trends/explore?q=Just%20a%20casual%20sip%20of%20corporate%20toxicity!&geo=US",
      "related": [
       "Just a casual",
@@ -535,43 +559,19 @@
      "aggregator": true
     },
     {
-     "query": "My partner made me these wheel covers for my chair, because they are awesome",
-     "traffic": "585K+",
-     "trafficValue": 585000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=My%20partner%20made%20me%20these%20wheel%20covers%20for%20my%20chair%2C%20because%20&geo=US",
-     "related": [
-      "My partner made",
-      "reddit MadeMeSmile"
-     ],
-     "articles": [
-      {
-       "title": "\"My partner made me these wheel covers for my chair, because they are awesome\" is generating significant online interest. And...I may have a thing for unicorns ",
-       "url": "https://www.reddit.com/r/MadeMeSmile/comments/1x8gnf4/my_partner_made_me_these_wheel_covers_for_my/",
-       "source": "Reddit r/MadeMeSmile",
-       "timeAgo": ""
-      }
-     ],
-     "image": "",
-     "category": "News",
-     "date": "",
-     "dateKey": "",
-     "geo": "GLOBAL",
-     "aggregator": true
-    },
-    {
-     "query": "....and justice for all.",
+     "query": "Well that is one way how to deal with pickpockets",
      "traffic": "570K+",
      "trafficValue": 570000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=....and%20justice%20for%20all.&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=Well%20that%20is%20one%20way%20how%20to%20deal%20with%20pickpockets&geo=US",
      "related": [
-      "....and justice for",
-      "reddit memes"
+      "Well that is",
+      "reddit interestingasfuck"
      ],
      "articles": [
       {
-       "title": "\"....and justice for all.\" is generating significant online interest. submitted by    /u/Total_Volume_1096    to    r/memes   [link]   [comments] Follow credibl",
-       "url": "https://www.reddit.com/r/memes/comments/1x8ebuq/and_justice_for_all/",
-       "source": "Reddit r/memes",
+       "title": "\"Well that is one way how to deal with pickpockets\" is generating significant online interest. submitted by    /u/Due_Yesterday_2850    to    r/interestingasfuc",
+       "url": "https://www.reddit.com/r/interestingasfuck/comments/1x8jwws/well_that_is_one_way_how_to_deal_with_pickpockets/",
+       "source": "Reddit r/interestingasfuck",
        "timeAgo": ""
       }
      ],
@@ -727,23 +727,23 @@
      "aggregator": true
     },
     {
-     "query": "8 Haunted House Books That’ll Keep You Up at Night",
+     "query": "The Odd Jobs Arthur Miller Worked Before Becoming One of America’s Greatest Playwrights",
      "traffic": "380K+",
      "trafficValue": 380000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=8%20Haunted%20House%20Books%20That%E2%80%99ll%20Keep%20You%20Up%20at%20Night&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=The%20Odd%20Jobs%20Arthur%20Miller%20Worked%20Before%20Becoming%20One%20of%20Ame&geo=US",
      "related": [
-      "8 Haunted House",
+      "The Odd Jobs",
       "Mental Floss news"
      ],
      "articles": [
       {
-       "title": "\"8 Haunted House Books That’ll Keep You Up at Night\" is generating significant online interest. From \"The Haunting of Hill House\" to \"The Shining,\" these books ",
-       "url": "https://www.mentalfloss.com/literature/books/scary-haunted-house-books?utm_source=RSS",
+       "title": "\"The Odd Jobs Arthur Miller Worked Before Becoming One of America’s Greatest Playwrights\" is generating significant online interest. Before his fame as a master",
+       "url": "https://www.mentalfloss.com/entertainment/odd-jobs-arthur-miller-worked-before-becoming-america-s-greatest-playwrights?utm_source=RSS",
        "source": "Mental Floss",
        "timeAgo": ""
       }
      ],
-     "image": "https://images2.minutemediacdn.com/image/upload/c_crop,w_968,h_544,x_32,y_0/c_fill,w_2880,ar_16:9,f_auto,q_auto,g_auto/images/voltaxMediaLibrary/mmsport/mentalfloss/01m50ans2n8yyvg2zv6m.jpg",
+     "image": "https://images2.minutemediacdn.com/image/upload/c_crop,w_3504,h_1971,x_0,y_125/c_fill,w_2880,ar_16:9,f_auto,q_auto,g_auto/images/GettyImages/mmsport/mentalfloss/01m4mwjnznc9xk4jkbcz.jpg",
      "category": "News",
      "date": "",
      "dateKey": "",
@@ -776,8 +776,8 @@
     },
     {
      "query": "DeepSeek-v4.1-Flash-1017",
-     "traffic": "302K+",
-     "trafficValue": 301500,
+     "traffic": "319K+",
+     "trafficValue": 318500,
      "exploreLink": "https://trends.google.com/trends/explore?q=DeepSeek-v4.1-Flash-1017&geo=US",
      "related": [
       "DeepSeek-v4.1-Flash-1017",
@@ -799,7 +799,7 @@
      "aggregator": true
     }
    ],
-   "fetchedAt": 1792273739098
+   "fetchedAt": 1792277531936
   },
   "US": {
    "geo": "US",

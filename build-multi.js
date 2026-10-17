@@ -571,8 +571,7 @@ ${opts.body}
     <nav class="foot-links" aria-label="site">
       <a href="${L.prefix}/about.html">${esc(t('关于我们'))}</a><span class="foot-sep">·</span>
       <a href="${L.prefix}/privacy.html">${esc(t('隐私政策'))}</a><span class="foot-sep">·</span>
-      <a href="${L.prefix}/contact.html">${esc(t('联系我们'))}</a><span class="foot-sep">·</span>
-      <a href="/source.txt" target="_blank" rel="noreferrer">${esc(t('数据说明'))}</a>
+      <a href="${L.prefix}/contact.html">${esc(t('联系我们'))}</a>
     </nav>
   </div>
   <div class="foot-note">© 2026 TrendSift · ${esc(t('数据每日更新'))} · ${esc(t('无需注册'))} · ${esc(t('不构成投资建议'))}</div>
@@ -796,7 +795,6 @@ ${top.map((x, i) => cardHtml(lang, x, i)).join('\n')}
         creator: { '@type': 'Organization', name: 'TrendSift' },
         variableMeasured: ['monthly search volume', '90-day growth', '12-month growth', 'seasonality', 'social mentions'],
         temporalCoverage: '2004/2026',
-        license: SITE + '/source.txt',
       },
       {
         '@type': 'FAQPage',
@@ -1040,7 +1038,6 @@ function topicPage(lang, tp, related) {
         creator: { '@type': 'Organization', name: 'TrendSift' },
         temporalCoverage: '2004/2026',
         variableMeasured: ['monthly search volume', '90-day growth', '12-month growth', 'seasonality'],
-        license: SITE + '/source.txt',
       },
       {
         '@type': 'BreadcrumbList',
@@ -1721,7 +1718,6 @@ function buildLlms() {
 - ${SITE}/ko/ — 한국어판
 - ${SITE}/zh-tw/ — 繁體中文版
 - ${SITE}/topics/ — full topic index
-- ${SITE}/source.txt — data provenance and known limitations
 
 ## Data
 Search interest: Google Trends (public relative index, 0-100). Monthly volume: estimated with standard keyword-tool methodology. Growth, seasonality, volatility and scores: computed by TrendSift from the historical curve. Data is not official Google data and is not investment advice.
