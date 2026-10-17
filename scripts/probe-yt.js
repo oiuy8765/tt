@@ -19,11 +19,11 @@
       const body = await r.text();
       const has = body.includes('ytInitialData');
       const vid = (body.match(/"videoId":"([a-zA-Z0-9_-]{11})"/) || [])[1];
-      console.log('== ' + name + ' == HTTP ' + r.status + ' (' + body.length + ' bytes) ytInitialData=' + has + ' videoId=' + (vid || 'none'));
-      const t = body.replace(/\s+/g, ' ');
-      const m = t.match(/<title>([^<]{0,120})/);
-      if (m) console.log('title: ' + m[1]);
-      if (!has) console.log(t.slice(0, 400));
+      const lockups = (body.match(/lockupViewModel/g) || []).length;
+      const cids = (body.match(/"contentId":"([a-zA-Z0-9_-]{11})"/g) || []).length;
+      console.log('== ' + name + ' == HTTP ' + r.status + ' (' + body.length + ' bytes) ytInitialData=' + has + ' videoId=' + (vid || 'none') + ' lockupViewModel=' + lockups + ' contentId=' + cids);
+      const m0 = body.indexOf('lockupViewModel');
+      if (m0 > 0) console.log(body.slice(m0 - 50, m0 + 700).replace(/\s+/g, ' '));
     } catch (e) {
       console.log('== ' + name + ' == ERROR ' + e.message);
     }
