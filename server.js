@@ -387,9 +387,15 @@ function normalizeDaily(json, geo) {
 
 // RSS 兜底：dailytrends 接口对部分地区不可用时使用
 async function dailyFromRss(geo) {
-  const r = await fetchUrl('https://trends.google.com/trends/trendingsearches/daily/rss?geo=' + encodeURIComponent(geo), {
-    accept: 'application/rss+xml, application/xml, text/xml, */*',
-  });
+  // 旧地址 /trends/trendingsearches/daily/rss 已下线（404），Google 现用 /trending/rss
+  let r;
+  try {
+    r = await fetchUrl('https://trends.google.com/trending/rss?geo=' + encodeURIComponent(geo), {
+      accept: 'application/rss+xml, application/xml, text/xml, */*',
+    });
+  } catch (e) {
+    throw new Error('RSS 请求失败：' + e.message);
+  }
   if (r.status !== 200) throw new Error('RSS 返回 HTTP ' + r.status);
   const xml = r.body || '';
   const items = [];
@@ -457,9 +463,15 @@ async function getDailyTrends(geo) {
     items = normalizeDaily(json, geo);
     if (!items.length) throw new Error('该地区暂无数据');
   } catch (e) {
-    // 部分小地区 dailytrends 不返回内容，退回 RSS
-    const rss = await dailyFromRss(geo);
-    if (!rss.length) throw e;
+    // 部分小地区 dailytrends 不返回内容，退回 RSS；两个都失败时把两个错误都带上
+    let rss = [];
+    let rssErr = '';
+    try {
+      rss = await dailyFromRss(geo);
+    } catch (e2) {
+      rssErr = e2.message;
+    }
+    if (!rss.length) throw new Error(e.message + (rssErr ? '；RSS 备用源：' + rssErr : ''));
     items = rss;
     source = 'rss';
   }
