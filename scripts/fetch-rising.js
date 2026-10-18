@@ -117,6 +117,41 @@ async function fetchRising(keyword, geo) {
   return rising;
 }
 
+/** SerpApi 兜底：Google 直连被 429 时，用第三方（1 次请求 = 1 credit）
+ *  https://serpapi.com — 免费 250 次/月，付费 $25/1000 次 */
+let serpApiUsed = 0;
+const SERPAPI_CAP = 25; // 单次运行最多消耗的 credit（保护免费额度）
+
+async function serpApiRising(keyword, geo) {
+  const key = process.env.SERPAPI_KEY;
+  if (!key || serpApiUsed >= SERPAPI_CAP) return null;
+  const u =
+    'https://serpapi.com/search?engine=google_trends&data_type=RELATED_QUERIES' +
+    '&q=' + encodeURIComponent(keyword) +
+    '&geo=' + encodeURIComponent(geo) +
+    '&date=' + encodeURIComponent('today 12-m') +
+    '&api_key=' + encodeURIComponent(key);
+  const r = await new Promise((resolve, reject) => {
+    const req = https.get(u, { headers: { 'User-Agent': UA } }, (res) => {
+      let b = '';
+      res.on('data', (d) => (b += d));
+      res.on('end', () => resolve({ status: res.statusCode, body: b }));
+    });
+    req.on('error', reject);
+    req.setTimeout(25000, () => req.destroy(new Error('timeout')));
+  });
+  if (r.status !== 200) throw new Error('serpapi HTTP ' + r.status);
+  serpApiUsed += 1;
+  const j = JSON.parse(r.body);
+  if (j.error) throw new Error('serpapi: ' + String(j.error).slice(0, 80));
+  const rq = j.related_queries || {};
+  return (rq.rising || []).slice(0, 12).map((x) => ({
+    query: x.query,
+    formattedValue: x.formatted_value || (x.extracted_value != null ? '+' + x.extracted_value + '%' : ''),
+    link: x.link ? (String(x.link).startsWith('http') ? x.link : 'https://trends.google.com' + x.link) : '',
+  }));
+}
+
 async function main() {
   const site = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'site-data.json'), 'utf8'));
   const topics = (site.topics || [])
@@ -167,7 +202,16 @@ async function main() {
     if (!tp) break;
     picked.push(tp.keyword);
     try {
-      const rising = await fetchRising(tp.keyword, tp.reg || 'US');
+      let rising;
+      try {
+        rising = await fetchRising(tp.keyword, tp.reg || 'US');
+      } catch (e) {
+        // Google 直连被限流 → SerpApi 兜底（有 key 且没超预算时）
+        const viaSerp = await serpApiRising(tp.keyword, tp.reg || 'US').catch(() => null);
+        if (viaSerp == null) throw e;
+        rising = viaSerp;
+        console.log('     （经 SerpApi 兜底，已用 ' + serpApiUsed + '/' + SERPAPI_CAP + '）');
+      }
       cache.items[tp.keyword] = { rising: rising, fetchedAt: Date.now() };
       done += 1;
       consecutive429 = 0;

@@ -43,6 +43,8 @@ jobs:
       # 增量抓取话题词的「飙升相关查询」：每天轮换 100 个词，构建时话题页直接读缓存
       - name: Fetch rising related queries (rolling)
         run: node scripts/fetch-rising.js --limit 100 --budget 12
+        env:
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
 
       - name: Build static site
         run: node build-static.js

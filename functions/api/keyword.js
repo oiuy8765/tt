@@ -218,6 +218,47 @@ async function tryDirect(q, geo, time) {
   return result;
 }
 
+/* SerpApi 兜底：Google 直连被限流时用第三方（TIMESERIES + RELATED_QUERIES = 2 credits） */
+async function trySerpApi(q, geo, time, key) {
+  const base =
+    'https://serpapi.com/search?engine=google_trends&q=' + encodeURIComponent(q) +
+    '&geo=' + encodeURIComponent(geo) +
+    '&date=' + encodeURIComponent(time) +
+    '&api_key=' + encodeURIComponent(key);
+  const get = async (extra) => {
+    const r = await fetch(base + extra, { headers: { 'User-Agent': UA_CF } });
+    if (!r.ok) throw new Error('serpapi ' + r.status);
+    const j = await r.json();
+    if (j.error) throw new Error('serpapi: ' + String(j.error).slice(0, 80));
+    return j;
+  };
+  const [ts, rq] = await Promise.all([get('&data_type=TIMESERIES'), get('&data_type=RELATED_QUERIES')]);
+
+  const out = { ok: true, keyword: q, geo: geo, time: time, rising: [], top: [], timeline: [], source: 'serpapi' };
+  const tl = (ts.interest_over_time && ts.interest_over_time.timeline_data) || [];
+  out.timeline = tl.map((p) => ({
+    t: p.date || '',
+    tAxis: p.date || '',
+    v: p.values && p.values[0] ? p.values[0].extracted_value : 0,
+    time: p.timestamp,
+  }));
+  const m = (rq.related_queries && rq.related_queries) || {};
+  out.rising = (m.rising || []).slice(0, 25).map((x) => ({
+    query: x.query,
+    value: x.extracted_value,
+    formattedValue: x.formatted_value || '',
+    link: x.link ? (String(x.link).startsWith('http') ? x.link : 'https://trends.google.com' + x.link) : '',
+  }));
+  out.top = (m.top || []).slice(0, 25).map((x) => ({
+    query: x.query,
+    value: x.extracted_value,
+    link: x.link ? (String(x.link).startsWith('http') ? x.link : 'https://trends.google.com' + x.link) : '',
+  }));
+  out.metrics = computeMetrics(out.timeline);
+  if (!out.timeline.length && !out.rising.length && !out.top.length) return { ok: false, error: 'NO_DATA' };
+  return out;
+}
+
 export async function onRequestGet(context) {
   const { request, env, ctx } = context;
   const url = new URL(request.url);
@@ -257,6 +298,22 @@ export async function onRequestGet(context) {
   }
 
   const token = env && env.GH_TOKEN;
+
+  // 2.5 SerpApi 兜底（有 key 时）：比派发 GitHub Actions 快得多，先试它
+  if (env && env.SERPAPI_KEY) {
+    try {
+      const viaSerp = await trySerpApi(q, geo, time, env.SERPAPI_KEY);
+      if (viaSerp && viaSerp.ok) {
+        const resp = jsonResp(viaSerp, 200, 3600);
+        if (ctx && ctx.waitUntil) ctx.waitUntil(cache.put(cKey, resp.clone()).catch(() => {}));
+        return resp;
+      }
+      if (viaSerp && viaSerp.error === 'NO_DATA') return jsonResp(viaSerp, 200, 1800);
+    } catch (e) {
+      /* 第三方失败继续走 Actions 路径 */
+    }
+  }
+
   if (!token) {
     return jsonResp(
       { ok: false, error: 'UPSTREAM', hint: 'GH_TOKEN not configured for keyword analysis.' },
