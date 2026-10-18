@@ -6,8 +6,11 @@ name: Build & Deploy
 # 也可以在 Actions 页面手动点 Run workflow 立即更新
 on:
   schedule:
-    # 每天一次即可（UTC 22:00 = 北京时间早上 6:00）；省下另一轮构建的 Actions 额度
+    # 每天两次。仓库已公开，Actions 分钟数不计费，不必再为额度牺牲新鲜度：
+    # - UTC 22:00 = 北京时间 06:00（主构建，机会库 + 全站页）
+    # - UTC 10:00 = 北京时间 18:00（补一轮热榜，并多跑一轮飙升查询抓取）
     - cron: '0 22 * * *'
+    - cron: '0 10 * * *'
   workflow_dispatch: {}
 
 # 同一时间只允许一个构建在跑
@@ -40,9 +43,10 @@ jobs:
           sleep 5
           curl -s -m 5 http://127.0.0.1:8787/api/config -o /dev/null -w "server up: %{http_code}\n" || true
 
-      # 增量抓取话题词的「飙升相关查询」：每天轮换 100 个词，构建时话题页直接读缓存
+      # 增量抓取话题词的「飙升相关查询」：每次轮换 100 个词，构建时话题页直接读缓存
+      # --budget 是时间预算（分钟），不是次数也不是钱：Google 限流时多给点时间多试几个
       - name: Fetch rising related queries (rolling)
-        run: node scripts/fetch-rising.js --limit 100 --budget 12
+        run: node scripts/fetch-rising.js --limit 100 --budget 15
         env:
           SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
 
