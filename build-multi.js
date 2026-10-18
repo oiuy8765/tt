@@ -552,6 +552,7 @@ ${jsonld}
   <nav class="mainnav" aria-label="main">
     <a href="${L.prefix}/"${isHome ? ' class="on"' : ''}>${esc(t('机会库'))}</a>
     <a href="${L.prefix}/daily.html"${rel === '/daily' ? ' class="on"' : ''}>${esc(t('今日热榜'))}</a>
+    <a href="${L.prefix}/lookup/"${rel.startsWith('/lookup') ? ' class="on"' : ''}>${esc(t('关键词分析'))}</a>
     <a href="${L.prefix}/topics/"${rel.startsWith('/topics') ? ' class="on"' : ''}>${esc(t('关键词详情'))}</a>
     <a href="${L.prefix}/compare/"${rel.startsWith('/compare') ? ' class="on"' : ''}>${esc(t('对比'))}</a>
     <a href="${L.prefix}/saved.html"${rel === '/saved' ? ' class="on"' : ''}>${esc(t('我的清单'))}</a>
@@ -727,6 +728,8 @@ function homePage(lang) {
   <div class="card card-tight">
     <div class="row row-wrap toolbar">
       <input id="libSearch" class="input" type="search" placeholder="${esc(t('搜索关键词 / 类别'))}" />
+      <button type="button" id="libCsv" class="btn btn-ghost" title="${esc(t('导出当前筛选结果'))}">${esc(t('导出 CSV'))}</button>
+      <a class="btn btn-ghost" href="${L.prefix}/lookup/">${esc(t('实时查词'))}</a>
       <select id="libSpan" class="input input-sm" title="${esc(t('观察窗口'))}">
         <option value="">${esc(t('不限'))}</option>
         <option value="1">${esc(t('近 1 个月'))}</option>
@@ -1305,10 +1308,70 @@ function comparePage(lang) {
   });
 }
 
+/* ------------------------------ 实时关键词分析页 ------------------------------ */
+
+function lookupPage(lang) {
+  const t = ui(lang);
+  const L = LANGS.find((x) => x.code === lang);
+  const title = t('关键词分析');
+  const lead = t('输入任意关键词，实时查它的关注度曲线、飙升相关查询与增速指标。');
+
+  const times = [
+    ['now 1-d', '过去 24 小时'],
+    ['now 7-d', '过去 7 天'],
+    ['now 30-d', '过去 30 天'],
+    ['now 3-m', '过去 90 天'],
+    ['now 12-m', '近 12 个月'],
+    ['today 5-y', '近 5 年（含今天）'],
+  ];
+  const timeOpts = times
+    .map(
+      (x) =>
+        '<option value="' + x[0] + '"' + (x[0] === 'today 5-y' ? ' selected' : '') + '>' +
+        esc(t(x[1])) + '</option>'
+    )
+    .join('');
+
+  const body = `<main class="wrap doc-main">
+  <nav class="crumbs" aria-label="breadcrumb">
+    <a href="${L.prefix}/">${esc(t('机会库'))}</a><span>›</span><span class="cur">${esc(title)}</span>
+  </nav>
+
+  <section>
+    <div class="doc-eyebrow">${esc(t('实时查词'))}</div>
+    <h1>${esc(title)}</h1>
+    <p class="doc-lead">${esc(lead)}</p>
+
+    <div class="notice">${esc(t('数据由云端实时查询 Google Trends（首次约 1 分钟内出结果），结果缓存 1 小时。'))}</div>
+
+    <div class="card card-tight">
+      <div class="row row-wrap">
+        <input id="kwInput" class="input input-grow" type="text" autocomplete="off" spellcheck="false"
+               placeholder="${esc(t('输入关键词，例如：ai agent / 露营装备 / 宠物推车'))}" />
+        <select id="kwGeo" class="input input-sm" aria-label="${esc(t('地区'))}"></select>
+        <select id="kwTime" class="input input-sm">${timeOpts}</select>
+        <button id="btnKw" class="btn btn-primary">${esc(t('分析'))}</button>
+      </div>
+      <p class="hint">
+        ${esc(t('「飙升相关查询」给的是官方口径的涨幅百分比——最容易捕捉到刚出现的词；「热门相关查询」用来判断市场规模。先用「近 5 年」看长期趋势，再用「过去 90 天」看短期波动。'))}
+      </p>
+    </div>
+    <div id="kwResult" class="kw-result"></div>
+  </section>
+</main>`;
+
+  return layout(lang, {
+    rel: '/lookup/',
+    title: title + ' · TrendSift',
+    desc: lead,
+    body,
+    script: '/lookup.js?v=' + CACHE_VER,
+  });
+}
+
 /* ------------------------------ 索引页 ------------------------------ */
 
-function indexPage(lang, pageNo, pages, list) {
-  const t = ui(lang);
+function indexPage(lang, pageNo, pages, list) {  const t = ui(lang);
   const L = LANGS.find((x) => x.code === lang);
   const total = SITE_DATA.topics.length;
   const rows = list
@@ -1848,6 +1911,10 @@ async function main() {
 
     // 词对比页：每个语言一份，前端读 data/hist.json 画图
     write(path.join(dir, 'compare', 'index.html'), comparePage(l.code));
+    count++;
+
+    // 实时关键词分析页：前端调 /api/keyword（Pages Function + GitHub Actions）
+    write(path.join(dir, 'lookup', 'index.html'), lookupPage(l.code));
     count++;
   }
 
