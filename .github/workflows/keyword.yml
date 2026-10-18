@@ -1,0 +1,54 @@
+name: Keyword analyze
+
+on:
+  repository_dispatch:
+    types: [keyword-analyze]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kw-cache
+  cancel-in-progress: false
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Fetch and store keyword analysis
+        env:
+          KW: ${{ github.event.client_payload.q }}
+          GEO: ${{ github.event.client_payload.geo }}
+          TIME: ${{ github.event.client_payload.time }}
+        run: |
+          H=$(node scripts/analyze-keyword.js "$KW" "$GEO" "$TIME" --out kw)
+          echo "hash=$H" >> "$GITHUB_OUTPUT"
+
+      - name: Commit result to kw-cache branch
+        env:
+          KW: ${{ github.event.client_payload.q }}
+        run: |
+          git config user.name "kw-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git fetch origin kw-cache || true
+          if git rev-parse --verify origin/kw-cache >/dev/null 2>&1; then
+            git checkout kw-cache
+            git pull origin kw-cache --rebase || true
+          else
+            git checkout -b kw-cache
+          fi
+          mkdir -p kw
+          git add kw
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+          else
+            git commit -m "kw analysis: $KW"
+            git push origin kw-cache
+          fi

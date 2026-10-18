@@ -40,6 +40,12 @@ const REGIONS = [
 const GEO_LABEL = { GLOBAL: '全球', HISTORY: '历史累积' };
 REGIONS.forEach((r) => (GEO_LABEL[r.code] = r.label));
 
+/* UI 文案：构建时注入各语言词典（window.__T__），缺省回退中文 */
+const T = window.__T__ || {};
+function t(s) {
+  return T[s] || s;
+}
+
 const state = {
   geos: ['US', 'GB', 'JP', 'HK', 'TW', 'SG'],
   data: {},          // { US: { items:[], source, error } }
@@ -171,7 +177,11 @@ async function api(path, opts) {
       });
       return { ok: true, map: map, static: true, provider: 'static' };
     }
-    throw new Error('这是静态站点，该操作需要在本地运行服务');
+    if (path.indexOf('/api/keyword') === 0) {
+      // 关键词分析由 Cloudflare Pages Function 实时提供，静态模式下也直接请求
+    } else {
+      throw new Error('这是静态站点，该操作需要在本地运行服务');
+    }
   }
 
   const res = await fetch(path, opts);
@@ -713,7 +723,7 @@ function renderKeyword(data) {
       </tr>`
         )
         .join('')
-    : `<tr><td colspan="3" class="skeleton">该关键词在所选时间范围内没有飙升相关查询。</td></tr>`;
+    : `<tr><td colspan="3" class="skeleton">${esc(t('该关键词在所选时间范围内没有飙升相关查询。'))}</td></tr>`;
 
   const topRows = data.top.length
     ? data.top
@@ -730,7 +740,24 @@ function renderKeyword(data) {
       </tr>`
         )
         .join('')
-    : `<tr><td colspan="3" class="skeleton">没有热门相关查询。</td></tr>`;
+    : `<tr><td colspan="3" class="skeleton">${esc(t('没有热门相关查询。'))}</td></tr>`;
+
+  const m = data.metrics || {};
+  const metricChips = [];
+  if (typeof m.g90 === 'number')
+    metricChips.push(
+      `<div class="num"><b class="${m.g90 > 0 ? 'up' : 'down'}">${esc(pctText(m.g90))}</b><span>${esc(t('90 天增长'))}</span></div>`
+    );
+  if (typeof m.g12 === 'number')
+    metricChips.push(
+      `<div class="num"><b class="${m.g12 > 0 ? 'up' : 'down'}">${esc(pctText(m.g12))}</b><span>${esc(t('12 个月增长'))}</span></div>`
+    );
+  if (m.peakMonth != null)
+    metricChips.push(
+      `<div class="num"><b>${esc(String(m.peakMonth + 1))}</b><span>${esc(t('季节峰值月'))}</span></div>`
+    );
+  if (typeof m.latest === 'number')
+    metricChips.push(`<div class="num"><b>${m.latest}</b><span>${esc(t('当前热度'))}</span></div>`);
 
   box.innerHTML = `
     <div class="card">
@@ -738,27 +765,32 @@ function renderKeyword(data) {
         <h2>「${esc(data.keyword)}」</h2>
         <span class="badge badge-geo">${esc(GEO_LABEL[data.geo] || data.geo)}</span>
         <span class="badge">${esc(data.time)}</span>
-        <span class="badge">飙升词 ${data.rising.length} 个</span>
+        <span class="badge">${esc(t('飙升词'))} ${data.rising.length}</span>
       </div>
+      ${
+        metricChips.length
+          ? `<div class="opp-nums" style="margin-top:10px">${metricChips.join('')}</div>`
+          : ''
+      }
     </div>
     <div class="chart-wrap">
       ${svgChart(data.timeline)}
-      <div class="chart-cap">关注度指数（0–100）随时间变化，仅供趋势参考</div>
+      <div class="chart-cap">${esc(t('关注度指数（0–100）随时间变化，仅供趋势参考'))}</div>
     </div>
     <div class="kw-cols">
       <div class="card">
-        <h2 class="card-title" style="color:var(--rise)">📈 飙升相关查询（RISING）</h2>
-        <p class="hint" style="margin-bottom:8px">搜索量在所选时间范围内增幅最大，最容易是新出现的词。</p>
+        <h2 class="card-title" style="color:var(--rise)">📈 ${esc(t('飙升相关查询（RISING）'))}</h2>
+        <p class="hint" style="margin-bottom:8px">${esc(t('搜索量在所选时间范围内增幅最大，最容易是新出现的词。'))}</p>
         <table class="tbl">
-          <thead><tr><th>查询词</th><th class="num">涨幅</th><th></th></tr></thead>
+          <thead><tr><th>${esc(t('查询词'))}</th><th class="num">${esc(t('涨幅'))}</th><th></th></tr></thead>
           <tbody>${risingRows}</tbody>
         </table>
       </div>
       <div class="card">
-        <h2 class="card-title">🔍 热门相关查询（TOP）</h2>
-        <p class="hint" style="margin-bottom:8px">该关键词下搜索量最高的相关词。</p>
+        <h2 class="card-title">🔍 ${esc(t('热门相关查询（TOP）'))}</h2>
+        <p class="hint" style="margin-bottom:8px">${esc(t('该关键词下搜索量最高的相关词。'))}</p>
         <table class="tbl">
-          <thead><tr><th>查询词</th><th class="num">热度</th><th></th></tr></thead>
+          <thead><tr><th>${esc(t('查询词'))}</th><th class="num">${esc(t('热度'))}</th><th></th></tr></thead>
           <tbody>${topRows}</tbody>
         </table>
       </div>
@@ -769,22 +801,42 @@ function renderKeyword(data) {
 
 async function runKeyword() {
   const q = $('#kwInput').value.trim();
-  if (!q) return toast('请输入关键词');
+  if (!q) return toast(t('请输入关键词'));
   const geo = $('#kwGeo').value;
   const time = $('#kwTime').value;
   const box = $('#kwResult');
-  box.innerHTML = `<div class="loading"><span class="spinner"></span>正在分析「${esc(q)}」…</div>`;
+  box.innerHTML = `<div class="loading"><span class="spinner"></span>${esc(t('正在分析'))}「${esc(q)}」…</div>`;
+  const fetchKw = () =>
+    api('/api/keyword?q=' + encodeURIComponent(q) + '&geo=' + geo + '&time=' + encodeURIComponent(time));
   try {
-    const r = await api(
-      '/api/keyword?q=' + encodeURIComponent(q) + '&geo=' + geo + '&time=' + encodeURIComponent(time)
-    );
+    let r = await fetchKw();
+
+    // 云端排队：GitHub Actions 分析中，每 12 秒轮询一次，最多 ~2.5 分钟
+    if (!r.ok && r.error === 'QUEUED') {
+      box.innerHTML = `<div class="loading"><span class="spinner"></span>${esc(t('云端计算中，约需 1 分钟，请稍候…'))}</div>`;
+      for (let i = 0; i < 12; i++) {
+        await new Promise((res) => setTimeout(res, (r.retryAfter || 12) * 1000));
+        r = await fetchKw();
+        if (r.ok || (r.error !== 'QUEUED' && r.error !== 'UPSTREAM')) break;
+        if (r.error === 'UPSTREAM') break;
+      }
+    }
+
     if (!r.ok) {
+      const ERR_TEXT = {
+        NO_DATA: '没有找到相关数据，这个词的搜索量可能太低，换个词试试。',
+        RATE_LIMITED: 'Google Trends 暂时限流，请过一两分钟再试。',
+        UPSTREAM: '云端分析暂时不可用，请稍后再试。',
+        QUEUED: '云端分析超时了，请再点一次「分析」（结果通常已缓存好，第二次会很快）。',
+        'missing q': '请输入关键词',
+      };
+      const errText = ERR_TEXT[r.error] ? t(ERR_TEXT[r.error]) : r.hint || r.error || t('分析失败');
       const matches = r.localMatches || [];
       box.innerHTML =
-        `<div class="err-box">⚠️ ${esc(r.error || '分析失败')}${r.hint ? '\n\n' + esc(r.hint) : ''}</div>` +
+        `<div class="err-box">⚠️ ${esc(errText)}</div>` +
         (matches.length
-          ? `<div class="card"><h2 class="card-title">相关话题</h2>
-             <table class="tbl"><thead><tr><th>话题</th><th class="num">热度</th><th>类别</th></tr></thead><tbody>
+          ? `<div class="card"><h2 class="card-title">${esc(t('相关话题'))}</h2>
+             <table class="tbl"><thead><tr><th>${esc(t('话题'))}</th><th class="num">${esc(t('热度'))}</th><th>${esc(t('类别'))}</th></tr></thead><tbody>
              ${matches
                .map(
                  (m) => `<tr><td>${

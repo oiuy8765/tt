@@ -96,6 +96,7 @@
     <div class="card card-tight">
       <div class="row row-wrap toolbar">
         <input id="libSearch" class="input" type="search" placeholder="搜索关键词 / 类别…" />
+        <button id="libCsv" class="btn btn-ghost" title="把当前筛选结果导出为 CSV 表格">导出 CSV</button>
         <select id="libForm" class="input input-sm" title="建议做成什么形态" hidden>
           <option value="all">全部形态</option>
           <option value="saas">SaaS / B 端工具</option>
@@ -261,8 +262,8 @@
   <!-- ============ 关键词分析 ============ -->
   <section id="panel-keyword" class="panel">
     <div class="notice">
-      输入一个词，看它的<b>飙升相关查询</b>与关注度曲线。这一项需要实时访问官方搜索趋势接口，<b>仅本地版可用</b>；
-      在线版已把同样的历史曲线内置到「机会库」里，不用查也能看到每个词的走势。
+      输入一个词，看它的<b>关注度曲线</b>与<b>飙升相关查询</b>，再结合 90 天涨幅、12 个月涨幅和季节峰值，
+      快速判断这个词值不值得做。数据由云端实时查询 Google Trends（首次约 1 分钟内出结果），结果缓存 1 小时。
     </div>
     <div class="card">
       <div class="row row-wrap">
@@ -280,8 +281,9 @@
         <button id="btnKw" class="btn btn-primary">分析</button>
       </div>
       <p class="hint">
-        返回该关键词的「飙升相关查询（RISING，带涨幅百分比）」与「热门相关查询（TOP）」，并绘制关注度曲线。
-        它的价值是能给出官方口径的涨幅百分比和任意时间窗——比如某个词过去 90 天里在涨的相关查询。
+        「飙升相关查询」给的是官方口径的涨幅百分比——最容易捕捉到刚出现的词；
+        「热门相关查询」给的是该词下搜索量最高的词，用来判断市场规模。
+        时间范围建议先用「近 5 年」看长期趋势，再用「过去 90 天」看短期波动。
       </p>
     </div>
     <div id="kwResult" class="kw-result"></div>

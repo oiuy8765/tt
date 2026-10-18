@@ -448,6 +448,41 @@
         render();
       });
 
+    var csvBtn = $('#libCsv');
+    if (csvBtn)
+      csvBtn.addEventListener('click', function () {
+        var rows = filtered().map(function (x) {
+          return [
+            tx(x.keyword),
+            Math.round(x.carrier === 'web' ? x.buildScore || 0 : x.score || 0),
+            Math.round(x.vol || 0),
+            x.g90,
+            x.g12,
+            t(x.stageLabel || ''),
+            t(x.windowLabel || ''),
+            (x.categories || []).map(catText).join(' / '),
+            String(x.descShort || '').replace(/\s+/g, ' ').trim(),
+          ];
+        });
+        var head = ['keyword', 'score', 'monthly_searches', 'growth_90d_pct', 'growth_12m_pct', 'stage', 'window', 'categories', 'note'].join(',');
+        var body = rows
+          .map(function (r) {
+            return r
+              .map(function (c) {
+                return '"' + String(c == null ? '' : c).replace(/"/g, '""') + '"';
+              })
+              .join(',');
+          })
+          .join('\r\n');
+        var blob = new Blob(['\uFEFF' + head + '\r\n' + body], { type: 'text/csv;charset=utf-8' });
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'trendsift-opportunities.csv';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      });
+
     var more = $('#libMore');
     if (more)
       more.addEventListener('click', function () {
