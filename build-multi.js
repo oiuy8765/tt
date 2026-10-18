@@ -352,10 +352,12 @@ function dualSpan(lang, text) {
   if (!text) return '';
   const tr = tx(lang, text);
   if (!tr || tr === text) return esc(text);
+  if (lang === 'en') return esc(tr);
   return '<span class="tr-o">' + esc(text) + '</span><span class="tr-t">' + esc(tr) + '</span>';
 }
 
 // 简介双语：原文/译文各自查整段词典后再截断，避免「先截断再查词典查不到译文」
+// 英文页直接显示英文（访客不需要中文对照），其余语言用原文/译文双视图
 function dualDescSpan(lang, text, max) {
   if (!text) return '';
   const full = String(text);
@@ -363,6 +365,7 @@ function dualDescSpan(lang, text, max) {
   const o = full.length > max ? full.slice(0, max) + '…' : full;
   const t2 = tr && tr !== full ? (tr.length > max ? tr.slice(0, max) + '…' : tr) : '';
   if (!t2) return esc(o);
+  if (lang === 'en') return esc(t2);
   return '<span class="tr-o">' + esc(o) + '</span><span class="tr-t">' + esc(t2) + '</span>';
 }
 
@@ -424,9 +427,9 @@ function seasonBarHtml(lang, tp) {
   );
 }
 
-// 原文/译文切换按钮（英文页无译文，不显示）
+// 原文/译文切换按钮（简中是源语言、英文页直接显示英文，都不需要切换）
 function trToggleHtml(lang) {
-  if (lang === 'en') return '';
+  if (lang === 'zh-CN' || lang === 'en') return '';
   const t = ui(lang);
   return (
     '<div class="daily-ctl tr-ctl" id="trToggle" role="group" aria-label="' + esc(t('显示译文')) + '">' +

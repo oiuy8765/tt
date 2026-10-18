@@ -90,6 +90,7 @@
     var o = full.length > max ? full.slice(0, max) + '…' : full;
     var t2 = tr && tr !== full ? (tr.length > max ? tr.slice(0, max) + '…' : tr) : '';
     if (!t2) return esc(o);
+    if (LANG === 'en') return esc(t2);
     return '<span class="tr-o">' + esc(o) + '</span><span class="tr-t">' + esc(t2) + '</span>';
   }
 
@@ -170,11 +171,13 @@
   }
 
   // 双视图：原文为主、译文可选（body.tr-on 时显示译文），与详情页保持一致
+  // 英文页直接显示英文（访客不需要中文对照）
   function dualHtml(s) {
     s = String(s == null ? '' : s);
     if (!s) return '';
     var t = CONTENT[s];
     if (!t || t === s) return esc(s);
+    if (LANG === 'en') return esc(t);
     return '<span class="tr-o">' + esc(s) + '</span><span class="tr-t">' + esc(t) + '</span>';
   }
 
@@ -519,8 +522,10 @@
           try { localStorage.setItem('gt_tr', on ? '1' : '0'); } catch (e) {}
         });
       });
-      var trOn = false;
-      try { trOn = localStorage.getItem('gt_tr') === '1'; } catch (e) {}
+      var trStored = null;
+      try { trStored = localStorage.getItem('gt_tr'); } catch (e) {}
+      // 英文页默认显示译文（访客看不懂中文原文），其他语言默认原文
+      var trOn = trStored != null ? trStored === '1' : LANG === 'en';
       applyTr(trOn);
     }
 
