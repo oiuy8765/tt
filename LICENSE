@@ -1,0 +1,29 @@
+Copyright (c) 2026 TrendSift
+
+All rights reserved.
+
+This repository is made public for reading and learning purposes only.
+
+Permission is granted to view, clone, and study the source code. Any of the
+following requires prior written permission from the copyright holder:
+
+1. Commercial use of this software, in whole or in substantial part.
+2. Redistribution, sublicensing, or publishing of modified versions.
+3. Deployment of this codebase, its data pipeline, or its generated content
+   as a publicly accessible product or service, including any derivative
+   "trend analysis" website.
+
+Data and analysis published on https://trendsift.site are derived from
+publicly available Google Trends endpoints. TrendSift is not affiliated with,
+endorsed by, or sponsored by Google. All computed metrics are secondary
+interpretations of public data and do not constitute investment, legal, or
+business advice.
+
+Content may be quoted or cited with clear attribution and a link back to
+https://trendsift.site.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM THE
+USE OF THE SOFTWARE.
