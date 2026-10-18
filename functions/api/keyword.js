@@ -41,7 +41,7 @@ async function trendsJson(path) {
     e.status = r.status;
     throw e;
   }
-  return JSON.parse(text.replace(/^\)\]\}',\s*/, ''));
+  return JSON.parse(text.replace(/^\)\]\}'[,\n]?\s*/, ''));
 }
 
 function fmtGain(v) {

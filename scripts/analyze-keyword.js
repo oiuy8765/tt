@@ -74,7 +74,7 @@ async function trendsJson(p, referer) {
       Referer: referer || 'https://trends.google.com/trends/explore',
     });
     if (r.status === 200) {
-      return JSON.parse(r.body.replace(/^\)\]\}',\s*/, ''));
+      return JSON.parse(r.body.replace(/^\)\]\}'[,\n]?\s*/, ''));
     }
     if (i < 3) await sleep(5000 + 5000 * i);
   }
