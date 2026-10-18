@@ -232,6 +232,11 @@
   /* ---------------------------- 启动 ---------------------------- */
 
   fillGeo();
+  // 支持 /lookup/?q=<词> 预填（话题页「实时查词」入口跳转过来）
+  try {
+    var qp = new URLSearchParams(location.search).get('q');
+    if (qp && $('#kwInput')) $('#kwInput').value = qp;
+  } catch (e) {}
   if ($('#btnKw')) $('#btnKw').addEventListener('click', runKeyword);
   if ($('#kwInput'))
     $('#kwInput').addEventListener('keydown', function (e) {

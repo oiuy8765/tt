@@ -3625,3 +3625,13 @@ body.tr-on .tr-t {
 
 .tr-ctl { margin-top: 12px; }
 .toolbar .tr-ctl { margin-top: 0; }
+
+/* 话题页「飙升相关查询」列表：涨幅徽标 */
+.rise-list .rise-gain {
+  margin-left: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #dc3f3b;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}

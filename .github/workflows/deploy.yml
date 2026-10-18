@@ -40,6 +40,10 @@ jobs:
           sleep 5
           curl -s -m 5 http://127.0.0.1:8787/api/config -o /dev/null -w "server up: %{http_code}\n" || true
 
+      # 增量抓取话题词的「飙升相关查询」：每天轮换 100 个词，构建时话题页直接读缓存
+      - name: Fetch rising related queries (rolling)
+        run: node scripts/fetch-rising.js --limit 100 --budget 12
+
       - name: Build static site
         run: node build-static.js
         env:

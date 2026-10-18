@@ -346,6 +346,11 @@ const UI = {
   '实时查词': 'Live lookup',
   '导出当前筛选结果': 'Export current filtered results',
   '暂无关注度曲线数据': 'No interest-over-time data',
+  // 话题页「飙升相关查询」（CI 增量抓取 + 内链网络）
+  '飙升相关查询': 'Rising related searches',
+  '实时查这个词的飙升相关查询': 'Look up rising related searches for this term live',
+  '该词的飙升相关查询还没有被轮询抓取，可以实时查询：': 'Rising related searches for this term are not cached yet — look it up live:',
+  '数据来自 Google Trends 官方「相关查询」口径，每日轮询更新。': 'From the official Google Trends "related queries" API, refreshed on a rolling daily schedule.',
   '显示译文': 'Translated',
   '显示原文': 'Original',
 };

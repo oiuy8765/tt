@@ -321,6 +321,11 @@ function loadDicts() {
 
 const CONTENT = {};
 
+// 「飙升相关查询」缓存：scripts/fetch-rising.js 在 CI 里增量抓取（data/rising-cache.json）
+const RISING = readJSON(path.join(ROOT, 'data', 'rising-cache.json'), { items: {} }).items || {};
+// 关键词规范化索引（norm → topic），在构建循环里赋值，topicPage 用于站内链接匹配
+let KW_INDEX = {};
+
 function loadContentDicts() {
   for (const l of LANGS) {
     if (l.code === 'zh-CN') {
@@ -840,6 +845,43 @@ function topicPage(lang, tp, related) {
   const isWeb = tp.carrier === 'web';
   const formText = tp.formLabel ? t(tp.formLabel) : '';
 
+  // 飙升相关查询（官方口径，CI 每日增量抓取）：
+  // 相关词若命中站内话题 → 站内链接（内链网络）；否则外链 Google Trends explore
+  const risingData = RISING[tp.keyword];
+  const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const risingHtml = (() => {
+    const rows = risingData && risingData.rising ? risingData.rising : [];
+    if (!rows.length) {
+      // 还没轮到抓取的词：引导去实时分析页（预填当前词）
+      return (
+        '<p class="chart-note">' + esc(t('该词的飙升相关查询还没有被轮询抓取，可以实时查询：')) + '</p>' +
+        '<p><a class="btn btn-ghost" href="' + L.prefix + '/lookup/?q=' + encodeURIComponent(tp.keyword) + '">' +
+        esc(t('实时查这个词的飙升相关查询')) + '</a></p>'
+      );
+    }
+    const lis = rows
+      .map((r) => {
+        const hit = KW_INDEX[norm(r.query)];
+        const inner = dualSpan(lang, r.query);
+        const href = hit
+          ? L.prefix + '/topics/' + hit.slug + '.html'
+          : r.link || 'https://trends.google.com/trends/explore?q=' + encodeURIComponent(r.query);
+        const ext = hit ? '' : ' target="_blank" rel="nofollow noopener"';
+        return (
+          '<li><a href="' + href + '"' + ext + '>' + inner + '</a>' +
+          '<span class="rise-gain">' + esc(r.formattedValue || '') + '</span></li>'
+        );
+      })
+      .join('');
+    return (
+      '<ul class="rel-list rise-list">' + lis + '</ul>' +
+      '<p class="chart-note">' + esc(t('数据来自 Google Trends 官方「相关查询」口径，每日轮询更新。')) + ' ' +
+      '<a href="' + L.prefix + '/lookup/?q=' + encodeURIComponent(tp.keyword) + '">' + esc(t('实时查词')) + '</a></p>'
+    );
+  })();
+  const risingSection =
+    '<h2>' + esc(t('飙升相关查询')) + '</h2>' + risingHtml;
+
   // 占位符大小写不敏感：翻译接口会把 [[MONTHS]] 改成 [[months]]
   const fill = (s, map) => {
     const up = {};
@@ -1022,6 +1064,8 @@ function topicPage(lang, tp, related) {
 
     <h2>${esc(t('同类机会'))}</h2>
     <ul class="rel-list">${relHtml}</ul>
+
+    ${risingSection}
 
     <h2>${esc(t('常见问题'))}</h2>
     ${faq
@@ -1826,11 +1870,15 @@ async function main() {
   // 同类目索引
   const byCat = {};
   const slugMap = {};
+  const kwIndex = {};
+  const normKw = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
   for (const tp of topics) {
     slugMap[tp.slug] = tp;
+    kwIndex[normKw(tp.keyword)] = tp;
     for (const c of tp.categories || []) {
       (byCat[c] = byCat[c] || []).push(tp);
     }
+    KW_INDEX = kwIndex;
   }
 
   const sorted = topics.slice().sort((a, b) => (b.vol || 0) - (a.vol || 0));
