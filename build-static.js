@@ -237,6 +237,24 @@ function fetchLocal(apiPath) {
     }
   }
   if (daily && daily.ok) {
+    // ── 全球聚合源：与各地区数据并存，作为「全球」tab（排第一）
+    //    hottrends 聚合实时热搜，即使 Google 各地区都抓成功也保留这一块，
+    //    用户可以自己选看「全球」还是某个国家。抓不到就只渲染地区，不影响页面。
+    if (daily.mode === 'google') {
+      try {
+        const agg = await fetchLocal('/api/aggregator');
+        if (agg && agg.ok && agg.data && Array.isArray(agg.data.items) && agg.data.items.length) {
+          const ordered = { GLOBAL: agg.data };
+          for (const k of Object.keys(daily.data || {})) ordered[k] = daily.data[k];
+          daily.data = ordered;
+          console.log('  daily.json：附加全球聚合源 ' + agg.data.items.length + ' 条');
+        } else {
+          console.log('  daily.json：全球聚合源未返回数据（' + (agg ? agg.error || 'empty' : '本地服务未响应') + '）');
+        }
+      } catch (e) {
+        console.log('  daily.json：全球聚合源不可用（' + e.message + '），只渲染地区');
+      }
+    }
     // ── 地区数据持久化：Google 模式下每个地区的数据块存入 data/daily-best.json。
     //    之后某次构建时 Google 接口不可达（只剩 GLOBAL 聚合源），
     //    上次抓到的地区数据仍会合并进来渲染（带「数据截至」日期标注）。
@@ -250,7 +268,7 @@ function fetchLocal(apiPath) {
       const b = blocks[g];
       if (!b || !Array.isArray(b.items) || !b.items.length) continue;
       const src = String(b.source || 'google');
-      if (g === 'GLOBAL' || src === 'demo' || src === 'hottrends') continue; // 聚合/演示数据不入库
+      if (src === 'demo') continue; // 演示数据不入库（GLOBAL 聚合源现在常驻，一并入库做兜底）
       best.geos[g] = {
         geo: g,
         source: b.source || 'google',
