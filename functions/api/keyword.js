@@ -123,8 +123,14 @@ async function readResult(hash, token) {
   return null;
 }
 
-/* 派发 GitHub Actions 分析任务 */
-async function dispatch(q, geo, time, token) {
+/* 派发去重：同一 hash 2 分钟内只派发一次（轮询期间不重复触发 workflow） */
+const recentDispatch = {};
+
+async function dispatch(q, geo, time, token, hash) {
+  const now = Date.now();
+  if (recentDispatch[hash] && now - recentDispatch[hash] < 2 * 60 * 1000) {
+    return true; // 已派发过，直接让前端继续轮询
+  }
   const r = await fetch('https://api.github.com/repos/' + REPO + '/dispatches', {
     method: 'POST',
     headers: {
@@ -138,6 +144,12 @@ async function dispatch(q, geo, time, token) {
     const t = await r.text();
     throw new Error('dispatch ' + r.status + ' ' + t.slice(0, 120));
   }
+  recentDispatch[hash] = now;
+  // 清理过期记录，防止 Map 无限增长
+  for (const k of Object.keys(recentDispatch)) {
+    if (now - recentDispatch[k] > 10 * 60 * 1000) delete recentDispatch[k];
+  }
+  return true;
 }
 
 /* 直连 Google（成功率取决于 Cloudflare 出口 IP 是否被限流） */
@@ -276,7 +288,7 @@ export async function onRequestGet(context) {
   // 4. 派发任务，让前端轮询
   let dispatched = true;
   try {
-    await dispatch(q, geo, time, token);
+    await dispatch(q, geo, time, token, hash);
   } catch (e) {
     dispatched = false;
   }

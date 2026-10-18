@@ -151,7 +151,7 @@
   }
 
   function loadDict() {
-    if (LANG === 'zh-CN') return Promise.resolve();
+    // 简中也需要词典：关键词/简介原文是英文，译文开关要查 topics-zh-CN.json
     return fetch(dictUrl())
       .then(function (r) {
         return r.ok ? r.json() : {};

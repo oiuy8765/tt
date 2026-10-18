@@ -7,10 +7,6 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: kw-cache
-  cancel-in-progress: false
-
 jobs:
   analyze:
     runs-on: ubuntu-latest
@@ -40,7 +36,8 @@ jobs:
           git fetch origin kw-cache || true
           if git rev-parse --verify origin/kw-cache >/dev/null 2>&1; then
             git checkout kw-cache
-            git pull origin kw-cache --rebase || true
+            # 并行运行时可能有其他任务先提交，重试 rebase 拿到最新分支
+            for i in 1 2 3; do git pull origin kw-cache --rebase && break || sleep 3; done
           else
             git checkout -b kw-cache
           fi
@@ -50,5 +47,5 @@ jobs:
             echo "nothing to commit"
           else
             git commit -m "kw analysis: $KW"
-            git push origin kw-cache
+            for i in 1 2 3; do git push origin kw-cache && break || sleep 3; done
           fi
