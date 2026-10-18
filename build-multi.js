@@ -427,9 +427,9 @@ function seasonBarHtml(lang, tp) {
   );
 }
 
-// 原文/译文切换按钮（简中是源语言、英文页直接显示英文，都不需要切换）
+// 原文/译文切换按钮（英文页直接显示英文，无需切换；其余语言包括简中都有双语内容）
 function trToggleHtml(lang) {
-  if (lang === 'zh-CN' || lang === 'en') return '';
+  if (lang === 'en') return '';
   const t = ui(lang);
   return (
     '<div class="daily-ctl tr-ctl" id="trToggle" role="group" aria-label="' + esc(t('显示译文')) + '">' +
