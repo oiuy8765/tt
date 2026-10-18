@@ -68,7 +68,7 @@ function request(url, extraHeaders) {
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function trendsJson(p) {
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 2; i++) {
     const r = await request('https://trends.google.com' + p, {
       Accept: 'application/json, text/plain, */*',
       Referer: 'https://trends.google.com/trends/explore',
@@ -76,7 +76,7 @@ async function trendsJson(p) {
     if (r.status === 200) {
       return JSON.parse(r.body.replace(/^\)\]\}'[,\n]?\s*/, ''));
     }
-    if (i < 2) await sleep(r.status === 429 ? 30000 : 5000);
+    if (i < 1) await sleep(r.status === 429 ? 10000 : 5000);
   }
   const e = new Error('HTTP 429/failed after retries');
   e.status = 429;
@@ -146,12 +146,22 @@ async function main() {
   const budgetMs = BUDGET_MIN * 60 * 1000;
   let done = 0;
   let failed = 0;
+  let consecutive429 = 0;
   const picked = [];
 
   for (let i = 0; i < LIMIT && done < LIMIT; i++) {
     if (Date.now() - started > budgetMs) {
       console.log('时间预算用完，提前收工');
       break;
+    }
+    // 连续被限流说明当前出口 IP 已被 Google 拉黑：快速放弃，明天换新 IP 再来
+    if (consecutive429 >= 20) {
+      console.log('连续 20 次限流，当前 IP 已被封，本次放弃（数据明天继续累积）');
+      break;
+    }
+    if (consecutive429 >= 8 && consecutive429 % 4 === 0) {
+      console.log('连续限流，冷却 90 秒再试…');
+      await sleep(90000);
     }
     const tp = topics[(cursor + i) % topics.length];
     if (!tp) break;
@@ -160,12 +170,14 @@ async function main() {
       const rising = await fetchRising(tp.keyword, tp.reg || 'US');
       cache.items[tp.keyword] = { rising: rising, fetchedAt: Date.now() };
       done += 1;
+      consecutive429 = 0;
       console.log('[' + (done + '').padStart(3) + '] ' + tp.keyword + ' → ' + rising.length + ' 条飙升词');
     } catch (e) {
       failed += 1;
+      if (e.status === 429) consecutive429 += 1;
       console.log('[skip] ' + tp.keyword + ' → ' + e.message);
     }
-    await sleep(2500);
+    await sleep(8000);
   }
 
   cursor = (cursor + done + failed) % Math.max(1, topics.length);
