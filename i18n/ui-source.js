@@ -8,6 +8,7 @@
 
 const UI = {
   // 品牌 / 导航
+  'Google Trends 上升词 · 选品 / 建站 / 投放趋势分析': 'Google Trends rising searches · product / site / ads trend analysis',
   'Google Trends 上升词 · 选品 / 建站 / 投放': 'Google Trends rising searches · products / sites / ads',
   '机会库': 'Opportunities',
   '今日热榜': 'Daily trends',

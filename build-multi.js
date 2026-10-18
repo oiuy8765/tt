@@ -809,7 +809,7 @@ ${top.map((x, i) => cardHtml(lang, x, i)).join('\n')}
 
   return layout(lang, {
     rel: '/',
-    title: 'TrendSift · ' + t('什么在涨，而且现在还来得及') + ' | Google Trends',
+    title: 'TrendSift · ' + t('Google Trends 上升词 · 选品 / 建站 / 投放趋势分析'),
     desc: t('数据来自 Google Trends 的搜索热度，只收搜索量持续上升的产品、品类、服务与工具，每条都带 22 年月度历史曲线。') + ' ' + t('不是新闻热搜，而是未来半年什么会更好卖。'),
     body,
     jsonld,
