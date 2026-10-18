@@ -38,6 +38,18 @@ const LANGS = [
 
 const EN_MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
+// Cloudflare Web Analytics：data/analytics.json 里配 {"cfToken":"..."} 才会输出统计脚本，
+// 没配就完全不注入（不拖慢页面，也不留死代码）
+function analyticsTag() {
+  try {
+    const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'analytics.json'), 'utf8'));
+    if (cfg && cfg.cfToken && /^[\w-]{16,}$/.test(cfg.cfToken)) {
+      return '<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=\'{"token": "' + cfg.cfToken + '"}\'></script>';
+    }
+  } catch (e) {}
+  return '';
+}
+
 const MONTHS = {
   'zh-CN': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
   'zh-TW': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
@@ -539,11 +551,20 @@ ${altLinks(rel)}
 <meta property="og:description" content="${esc(desc)}" />
 <meta property="og:url" content="${canonical}" />
 <meta property="og:locale" content="${L.htmlLang.replace('-', '_')}" />
+<meta property="og:image" content="${SITE}/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="TrendSift — Google Trends rising searches" />
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="${esc(title)}" />
+<meta name="twitter:description" content="${esc(desc)}" />
+<meta name="twitter:image" content="${SITE}/og.png" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="32x32" />
 <link rel="apple-touch-icon" href="/logo.svg" />
 <link rel="stylesheet" href="/styles.css?v=${CACHE_VER}" />
 ${jsonld}
+${analyticsTag()}
 </head>
 <body data-lang="${lang}" data-base="${L.prefix}">
 <header class="topbar">

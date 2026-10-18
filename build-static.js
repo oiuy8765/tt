@@ -131,7 +131,7 @@ function fetchLocal(apiPath) {
   fs.mkdirSync(path.join(DIST, 'data'), { recursive: true });
 
   console.log('[2/5] 复制前端…');
-  const FILES = ['index.html', 'about.html', 'privacy.html', 'contact.html', 'app.js', 'lang.js', 'compare.js', 'lookup.js', 'styles.css', 'logo.svg', 'favicon.svg'];
+  const FILES = ['index.html', 'about.html', 'privacy.html', 'contact.html', 'app.js', 'lang.js', 'compare.js', 'lookup.js', 'styles.css', 'logo.svg', 'favicon.svg', 'favicon.ico', 'og.png'];
   for (const f of FILES) {
     const src = path.join(ROOT, 'public', f);
     if (!fs.existsSync(src)) {
@@ -382,6 +382,52 @@ function fetchLocal(apiPath) {
   } catch (e) {
     console.log('  多语言页面生成失败：' + e.message);
   }
+
+  // 自定义 404 页：没有它，Cloudflare Pages 会把所有不存在的路径当首页返回 200（软 404），
+  // 搜索引擎会把任意垃圾 URL 收录成首页副本。Pages 检测到 404.html 会自动返回 404 状态。
+  // 样式全部内联：404 页绝不依赖外部资源，什么时候都能打开。
+  fs.writeFileSync(
+    path.join(DIST, '404.html'),
+    `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>404 · TrendSift</title>
+<style>
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+    font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;
+    background:linear-gradient(35deg,#0c0d1c,#261c6c);color:#fff;text-align:center;padding:24px;box-sizing:border-box}
+  .card{max-width:520px}
+  .code{font-size:88px;font-weight:800;letter-spacing:2px;line-height:1;
+    background:linear-gradient(45deg,#5145e5,#9270ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  h1{font-size:24px;margin:20px 0 8px}
+  p{color:#b2b0d8;font-size:15px;margin:4px 0}
+  a.btn{display:inline-block;margin-top:28px;padding:12px 30px;border-radius:10px;text-decoration:none;
+    background:linear-gradient(45deg,#5145e5,#7c5cf6);color:#fff;font-weight:600;font-size:15px}
+  .langs{margin-top:22px;font-size:13px;color:#8f8cb8}
+  .langs a{color:#b9b6e6;text-decoration:none;margin:0 7px}
+  .langs a:hover{color:#fff}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="code">404</div>
+  <h1>页面不存在 / Page not found</h1>
+  <p>这个地址没有对应的页面，可能已被移动或删除。</p>
+  <p>This address doesn't match any page. It may have been moved or removed.</p>
+  <a class="btn" href="/">回到机会库 &nbsp;/&nbsp; Back to TrendSift</a>
+  <div class="langs">
+    <a href="/">简体中文</a><a href="/en/">English</a><a href="/zh-tw/">繁體中文</a><a href="/ja/">日本語</a><a href="/ko/">한국어</a>
+  </div>
+</div>
+</body>
+</html>
+`,
+    'utf8'
+  );
+  console.log('[7/6] 404.html 已生成（Pages 将对未知路径返回 404 状态）');
 
   const size = (f) => Math.round(fs.statSync(path.join(DIST, f)).size / 1024) + ' KB';
   console.log('\n构建完成 → dist/');
