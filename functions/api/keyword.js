@@ -56,7 +56,8 @@ function computeMetrics(timeline) {
     .map((p) => ({ t: Number(p.time), v: p.v }));
   if (pts.length < 5) return null;
   const spanDays = (pts[pts.length - 1].t - pts[0].t) / 86400;
-  const monthly = spanDays > 300;
+  const avgGap = spanDays / Math.max(1, pts.length - 1);
+  const monthly = avgGap > 20; // 点间距 > 20 天视为月度（周粒度 5 年数据 ≈ 7 天）
   const n = pts.length;
   const last = pts[n - 1];
   const growth = (back) => {
@@ -66,10 +67,16 @@ function computeMetrics(timeline) {
     if (!base) return null;
     return Math.round(((last.v - base) / base) * 100);
   };
-  const out = { granularity: monthly ? 'monthly' : 'daily', latest: last.v, g90: null, g12: null, peakMonth: null, seasonStrength: null };
+  const out = { granularity: monthly ? 'monthly' : avgGap > 1.5 ? 'weekly' : 'daily', latest: last.v, g90: null, g12: null, peakMonth: null, seasonStrength: null };
   if (monthly) {
     out.g90 = growth(3);
     out.g12 = growth(12);
+  } else if (spanDays > 300) {
+    // 周粒度长跨度：按实际点间距换算 90 天 / 12 个月前的位置
+    out.g90 = growth(Math.max(1, Math.round(90 / avgGap)));
+    out.g12 = growth(Math.max(1, Math.round(365 / avgGap)));
+  }
+  if (out.g90 != null || out.g12 != null) {
     if (n >= 24) {
       const sum = new Array(12).fill(0);
       const cnt = new Array(12).fill(0);
@@ -90,24 +97,30 @@ function computeMetrics(timeline) {
   return out;
 }
 
-/* 从 kw-cache 分支读结果（Contents API，PAT 认证，5000 req/h） */
+/* 从 kw-cache 分支读结果（raw.githubusercontent，PAT 认证） */
+let lastReadErr = '';
 async function readResult(hash, token) {
+  lastReadErr = '';
   const r = await fetch(
-    'https://api.github.com/repos/' + REPO + '/contents/kw/' + hash + '.json?ref=' + BRANCH,
+    'https://raw.githubusercontent.com/' + REPO + '/' + BRANCH + '/kw/' + hash + '.json?t=' + Date.now(),
     {
       headers: {
         Authorization: 'Bearer ' + token,
-        Accept: 'application/vnd.github+json',
         'User-Agent': 'trendsift-worker',
       },
-      cf: { cacheTtl: 15, cacheEverything: false },
     }
   );
-  if (r.status === 404) return null;
-  if (!r.ok) throw new Error('github ' + r.status);
-  const j = await r.json();
-  const content = j && j.content ? j.content.replace(/\n/g, '') : '';
-  return JSON.parse(atob(content));
+  if (r.status === 200) {
+    try {
+      return JSON.parse(await r.text());
+    } catch (e) {
+      lastReadErr = 'parse ' + (e.message || '').slice(0, 60);
+      return null;
+    }
+  }
+  const body = await r.text().catch(() => '');
+  lastReadErr = 'http ' + r.status + ' ' + body.slice(0, 80);
+  return null;
 }
 
 /* 派发 GitHub Actions 分析任务 */
@@ -248,9 +261,9 @@ export async function onRequestGet(context) {
     /* 读失败当作没有 */
   }
   if (saved) {
-    // 失败结果只保留 10 分钟，之后允许重新派发分析
+    // 失败结果只保留 10 分钟，过期则丢弃并允许重新派发；成功结果直接用
     const failed = saved && saved.ok === false && saved.error && saved.error !== 'NO_DATA';
-    if (!failed || !saved.fetchedAt || Date.now() - saved.fetchedAt > 10 * 60 * 1000) {
+    if (failed && (!saved.fetchedAt || Date.now() - saved.fetchedAt > 10 * 60 * 1000)) {
       saved = null;
     }
   }
@@ -271,7 +284,11 @@ export async function onRequestGet(context) {
     return jsonResp({ ok: false, error: 'UPSTREAM', hint: 'Failed to queue analysis job.' }, 502, 60);
   }
 
-  const queued = jsonResp({ ok: false, error: 'QUEUED', job: hash, retryAfter: 12 }, 202, 10);
+  const queued = jsonResp(
+    { ok: false, error: 'QUEUED', job: hash, retryAfter: 12, dbg: lastReadErr || 'miss' },
+    202,
+    10
+  );
   if (ctx && ctx.waitUntil) ctx.waitUntil(cache.put(cKey, queued.clone()).catch(() => {}));
   return queued;
 }

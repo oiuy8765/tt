@@ -95,7 +95,8 @@ function computeMetrics(timeline) {
     .map((p) => ({ t: Number(p.time), v: p.v }));
   if (pts.length < 5) return null;
   const spanDays = (pts[pts.length - 1].t - pts[0].t) / 86400;
-  const monthly = spanDays > 300;
+  const avgGap = spanDays / Math.max(1, pts.length - 1);
+  const monthly = avgGap > 20; // 点间距 > 20 天视为月度（周粒度 5 年数据 ≈ 7 天）
   const n = pts.length;
   const last = pts[n - 1];
   const growth = (back) => {
@@ -105,10 +106,16 @@ function computeMetrics(timeline) {
     if (!base) return null;
     return Math.round(((last.v - base) / base) * 100);
   };
-  const out = { granularity: monthly ? 'monthly' : 'daily', latest: last.v, g90: null, g12: null, peakMonth: null, seasonStrength: null };
+  const out = { granularity: monthly ? 'monthly' : avgGap > 1.5 ? 'weekly' : 'daily', latest: last.v, g90: null, g12: null, peakMonth: null, seasonStrength: null };
   if (monthly) {
     out.g90 = growth(3);
     out.g12 = growth(12);
+  } else if (spanDays > 300) {
+    // 周粒度长跨度：按实际点间距换算 90 天 / 12 个月前的位置
+    out.g90 = growth(Math.max(1, Math.round(90 / avgGap)));
+    out.g12 = growth(Math.max(1, Math.round(365 / avgGap)));
+  }
+  if (out.g90 != null || out.g12 != null) {
     if (n >= 24) {
       const sum = new Array(12).fill(0);
       const cnt = new Array(12).fill(0);
