@@ -17,3 +17,6 @@ _rebuild.js
 test-selftest.js
 similar.js.bak
 .dist-trash-*
+
+# 视频录制产物
+scripts/video/out/
