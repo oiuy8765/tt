@@ -16,33 +16,71 @@ const path = require('path');
 const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36';
 
-function trendsJson(p) {
+// 简易 Cookie 罐：先访问 Trends 页面拿 NID 等 Cookie，再调 explore 接口（降低 429 概率）
+const cookieJar = {};
+
+function request(url, extraHeaders) {
   return new Promise((resolve, reject) => {
-    const req = https.get(
+    const u = new URL(url);
+    const headers = Object.assign(
       {
-        hostname: 'trends.google.com',
-        path: p,
-        headers: { 'User-Agent': UA, Accept: 'application/json', 'Accept-Language': 'en-US,en;q=0.9' },
+        'User-Agent': UA,
+        Accept: 'text/html,application/xhtml+xml,application/json;q=0.9,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9',
       },
+      extraHeaders || {}
+    );
+    if (Object.keys(cookieJar).length) {
+      headers.Cookie = Object.entries(cookieJar)
+        .map(([k, v]) => k + '=' + v)
+        .join('; ');
+    }
+    const req = https.get(
+      { hostname: u.hostname, path: u.pathname + u.search, headers },
       (r) => {
+        (r.headers['set-cookie'] || []).forEach((c) => {
+          const m = c.match(/^([^=]+)=([^;]*)/);
+          if (m) cookieJar[m[1]] = m[2];
+        });
         let b = '';
         r.on('data', (d) => (b += d));
-        r.on('end', () => {
-          if (r.statusCode !== 200) {
-            reject(new Error('HTTP ' + r.statusCode + ' ' + b.slice(0, 100)));
-            return;
-          }
-          try {
-            resolve(JSON.parse(b.replace(/^\)\]\}',\s*/, '')));
-          } catch (e) {
-            reject(new Error('parse failed: ' + b.slice(0, 80)));
-          }
-        });
+        r.on('end', () => resolve({ status: r.statusCode, body: b }));
       }
     );
     req.on('error', reject);
     req.setTimeout(20000, () => req.destroy(new Error('timeout')));
   });
+}
+
+async function sleep(ms) {
+  return new Promise((r) => setTimeout(r, ms));
+}
+
+// 预热：访问 Trends 页面建立会话 Cookie
+async function warmup(geo) {
+  try {
+    await request('https://trends.google.com/trends/explore?geo=' + geo, {
+      'Upgrade-Insecure-Requests': '1',
+    });
+  } catch (e) {
+    /* 预热失败不阻塞主流程 */
+  }
+}
+
+async function trendsJson(p, referer) {
+  for (let i = 0; i < 4; i++) {
+    const r = await request('https://trends.google.com' + p, {
+      Accept: 'application/json, text/plain, */*',
+      Referer: referer || 'https://trends.google.com/trends/explore',
+    });
+    if (r.status === 200) {
+      return JSON.parse(r.body.replace(/^\)\]\}',\s*/, ''));
+    }
+    if (i < 3) await sleep(5000 + 5000 * i);
+  }
+  const e = new Error('HTTP 429 (after retries)');
+  e.status = 429;
+  throw e;
 }
 
 function fmtGain(v) {
@@ -91,31 +129,18 @@ function computeMetrics(timeline) {
   return out;
 }
 
-async function sleep(ms) {
-  return new Promise((r) => setTimeout(r, ms));
-}
-
 async function analyze(q, geo, time) {
+  await warmup(geo);
+  const referer = 'https://trends.google.com/trends/explore?geo=' + geo;
   const reqObj = {
     comparisonItem: [{ keyword: q, geo: geo, time: time, category: 0 }],
     category: 0,
     property: '',
   };
-  let widgets = null;
-  let lastErr = null;
-  for (let i = 0; i < 3; i++) {
-    try {
-      widgets = await trendsJson(
-        '/trends/api/explore?hl=en-US&tz=480&req=' + encodeURIComponent(JSON.stringify(reqObj))
-      );
-      lastErr = null;
-      break;
-    } catch (e) {
-      lastErr = e;
-      await sleep(3000 * (i + 1));
-    }
-  }
-  if (lastErr) throw lastErr;
+  const widgets = await trendsJson(
+    '/trends/api/explore?hl=en-US&tz=480&req=' + encodeURIComponent(JSON.stringify(reqObj)),
+    referer
+  );
 
   const list = (widgets && widgets.widgets) || [];
   const result = { ok: true, keyword: q, geo: geo, time: time, rising: [], top: [], timeline: [] };
