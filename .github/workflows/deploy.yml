@@ -6,8 +6,8 @@ name: Build & Deploy
 # 也可以在 Actions 页面手动点 Run workflow 立即更新
 on:
   schedule:
+    # 每天一次即可（UTC 22:00 = 北京时间早上 6:00）；省下另一轮构建的 Actions 额度
     - cron: '0 22 * * *'
-    - cron: '0 10 * * *'
   workflow_dispatch: {}
 
 # 同一时间只允许一个构建在跑
