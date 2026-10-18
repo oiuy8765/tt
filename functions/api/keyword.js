@@ -248,7 +248,14 @@ export async function onRequestGet(context) {
     /* 读失败当作没有 */
   }
   if (saved) {
-    const resp = jsonResp(saved, 200, 3600);
+    // 失败结果只保留 10 分钟，之后允许重新派发分析
+    const failed = saved && saved.ok === false && saved.error && saved.error !== 'NO_DATA';
+    if (!failed || !saved.fetchedAt || Date.now() - saved.fetchedAt > 10 * 60 * 1000) {
+      saved = null;
+    }
+  }
+  if (saved) {
+    const resp = jsonResp(saved, 200, saved.ok ? 3600 : 600);
     if (ctx && ctx.waitUntil) ctx.waitUntil(cache.put(cKey, resp.clone()).catch(() => {}));
     return resp;
   }
