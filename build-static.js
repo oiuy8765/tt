@@ -413,6 +413,14 @@ function fetchLocal(apiPath) {
     'utf8'
   );
 
+  // IndexNow 密钥文件：/34ce....txt（内容即密钥），Bing/Yandex 用它验证推送身份
+  try {
+    const inKey = fs.readFileSync(path.join(ROOT, 'data', 'indexnow-key.txt'), 'utf8').trim();
+    if (/^[0-9a-f]{8,64}$/.test(inKey)) {
+      fs.writeFileSync(path.join(DIST, inKey + '.txt'), inKey, 'utf8');
+    }
+  } catch (e) {}
+
   fs.writeFileSync(
     path.join(DIST, 'sitemap.xml'),
     '<?xml version="1.0" encoding="UTF-8"?>\n' +
