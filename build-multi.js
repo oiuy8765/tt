@@ -1546,31 +1546,38 @@ async function buildDailyTranslations() {
     if (/[\u3040-\u30FF]/.test(v)) return 'ja';
     return 'en';
   };
-  const push = (s) => {
+  const pushRaw = (bucket, s) => {
     const v = String(s || '').replace(/\s+/g, ' ').trim();
     // 太长、纯中文、话题标签、HTML 转义残留的都不翻
     if (!v || v.length > 280 || seen.has(v)) return;
     if (/^#/.test(v) || /[\u4e00-\u9fa5]/.test(v)) return;
     seen.add(v);
-    texts.push(v);
-    bySrc[detectSrc(v)].push(v);
+    bucket.push(v);
   };
+  // 标题（query）和摘要分两轮收集：额度不够时先把所有地区的标题翻完，
+  // 用户看到的是「每条都有译文」，而不是「有的条目全英文」。
+  const qTexts = [];
+  const sTexts = [];
   for (const g of Object.keys(blocks)) {
     for (const it of (blocks[g] && blocks[g].items) || []) {
-      push(it.query);
+      pushRaw(qTexts, it.query);
       // 页面实际显示的是 dailySnippet() 处理后的摘要，不是原始文章标题；
       // 只翻「会显示的那一条」，既省额度又保证键能命中
       const one = (it.articles || [])[0];
-      if (one && one.title) push(dailySnippet(it.query, one.title));
+      if (one && one.title) pushRaw(sTexts, dailySnippet(it.query, one.title));
     }
   }
   // YouTube 热门视频标题也走同一套翻译（键必须与渲染时一致：slice(0,140)）
   const ytRaw = readJSON(path.join(DIST, 'data', 'yt.json'), null);
   for (const g of Object.keys((ytRaw && ytRaw.data) || {})) {
     for (const v of (ytRaw.data[g].items || []).slice(0, 10)) {
-      push(String(v.title || '').replace(/\s+/g, ' ').trim().slice(0, 140));
+      pushRaw(sTexts, String(v.title || '').replace(/\s+/g, ' ').trim().slice(0, 140));
     }
   }
+  [...qTexts, ...sTexts].forEach((v) => {
+    texts.push(v);
+    bySrc[detectSrc(v)].push(v);
+  });
   if (!texts.length) return;
   // transmart 的简中代码是 zh（zh-CN 会报 Unrecognized target language）
   // 接口按 IP 限频：一次构建大约只够翻 400–500 条，4 种语言全量（~1100 条）翻不完。
