@@ -1184,6 +1184,17 @@ input[type="search"].input::-webkit-search-cancel-button {
   overflow: hidden;
 }
 
+/* 卡片简介只有两行：切译文时直接替换原文，而不是追加（追加会被行数截断裁掉） */
+body.tr-on .opp-desc .tr-o {
+  display: none;
+}
+body.tr-on .opp-desc .tr-t {
+  margin-top: 0;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
 .opp-cats {
   display: flex;
   flex-wrap: wrap;
