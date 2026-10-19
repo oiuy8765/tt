@@ -1,5 +1,5 @@
 {
- "savedAt": 1792382189707,
+ "savedAt": 1792384019614,
  "geos": {
   "GLOBAL": {
    "geo": "GLOBAL",
@@ -415,30 +415,6 @@
      "aggregator": true
     },
     {
-     "query": "Four people killed in ‘violent, fast-moving’ fire at Canadian military base",
-     "traffic": "630K+",
-     "trafficValue": 630000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=Four%20people%20killed%20in%20%E2%80%98violent%2C%20fast-moving%E2%80%99%20fire%20at%20Canadia&geo=US",
-     "related": [
-      "Four people killed",
-      "The Guardian news"
-     ],
-     "articles": [
-      {
-       "title": "\"Four people killed in ‘violent, fast-moving’ fire at Canadian military base\" is generating significant online interest. Prime minister Mark Carney describes bl",
-       "url": "https://www.theguardian.com/world/2026/oct/18/serious-incident-alberta-military-base-deaths-injuries-canada-carney-cfb-wainwright",
-       "source": "The Guardian",
-       "timeAgo": ""
-      }
-     ],
-     "image": "https://i.guim.co.uk/img/media/fd2fce9d5801c1379f2c9034bd7fd12e94a8a1be/1408_22_5652_4521/master/5652.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=d0ae93ec314abf587a38476a01cc10a1",
-     "category": "Weather & Environment",
-     "date": "",
-     "dateKey": "",
-     "geo": "GLOBAL",
-     "aggregator": true
-    },
-    {
      "query": "What do all the lights on your Netgear router mean, and which ones actually matter?",
      "traffic": "620K+",
      "trafficValue": 620000,
@@ -456,54 +432,6 @@
       }
      ],
      "image": "https://www.engadget.com/img/gallery/what-do-all-the-lights-on-your-netgear-router-mean-and-which-ones-actually-matter/l-intro-1792009377.jpg",
-     "category": "News",
-     "date": "",
-     "dateKey": "",
-     "geo": "GLOBAL",
-     "aggregator": true
-    },
-    {
-     "query": "What does the orange dot on your Samsung Galaxy Watch mean?",
-     "traffic": "610K+",
-     "trafficValue": 610000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=What%20does%20the%20orange%20dot%20on%20your%20Samsung%20Galaxy%20Watch%20mean%3F&geo=US",
-     "related": [
-      "What does the",
-      "Engadget news"
-     ],
-     "articles": [
-      {
-       "title": "\"What does the orange dot on your Samsung Galaxy Watch mean?\" is generating significant online interest. You might sometimes see an orange dot on the left side ",
-       "url": "https://www.engadget.com/2287060/samsung-galaxy-watch-orange-dot-meaning/",
-       "source": "Engadget",
-       "timeAgo": ""
-      }
-     ],
-     "image": "https://www.engadget.com/img/gallery/what-does-the-orange-dot-on-your-samsung-galaxy-watch-mean/l-intro-1792007262.jpg",
-     "category": "News",
-     "date": "",
-     "dateKey": "",
-     "geo": "GLOBAL",
-     "aggregator": true
-    },
-    {
-     "query": "Why you should never point a laser pointer at a security camera",
-     "traffic": "600K+",
-     "trafficValue": 600000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=Why%20you%20should%20never%20point%20a%20laser%20pointer%20at%20a%20security%20cam&geo=US",
-     "related": [
-      "Why you should",
-      "Engadget news"
-     ],
-     "articles": [
-      {
-       "title": "\"Why you should never point a laser pointer at a security camera\" is generating significant online interest. Laser pointers are known to damage security cameras",
-       "url": "https://www.engadget.com/2286993/why-never-point-laser-pointer-at-security-camera/",
-       "source": "Engadget",
-       "timeAgo": ""
-      }
-     ],
-     "image": "https://www.engadget.com/img/gallery/why-you-should-never-point-a-laser-pointer-at-a-security-camera/l-intro-1792005987.jpg",
      "category": "News",
      "date": "",
      "dateKey": "",
@@ -583,19 +511,19 @@
      "aggregator": true
     },
     {
-     "query": "Next level Halloween costume on the street",
+     "query": "Absolutely-not-me",
      "traffic": "570K+",
      "trafficValue": 570000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=Next%20level%20Halloween%20costume%20on%20the%20street&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=Absolutely-not-me&geo=US",
      "related": [
-      "Next level Halloween",
-      "reddit MadeMeSmile"
+      "Absolutely-not-me",
+      "reddit absolutelynotme_irl"
      ],
      "articles": [
       {
-       "title": "\"Next level Halloween costume on the street\" is generating significant online interest. submitted by    /u/Main_Locksmith_2543    to    r/MadeMeSmile   [link]  ",
-       "url": "https://www.reddit.com/r/MadeMeSmile/comments/1x9i0nx/next_level_halloween_costume_on_the_street/",
-       "source": "Reddit r/MadeMeSmile",
+       "title": "\"Absolutely-not-me\" is generating significant online interest. submitted by    /u/abi-el    to    r/absolutelynotme_irl   [link]   [comments] Follow credible ne",
+       "url": "https://www.reddit.com/r/absolutelynotme_irl/comments/1x9jyof/absolutelynotme/",
+       "source": "Reddit r/absolutelynotme_irl",
        "timeAgo": ""
       }
      ],
@@ -655,24 +583,24 @@
      "aggregator": true
     },
     {
-     "query": "Inde Navarrette on Meeting Pamela Anderson, Hosting ‘SNL’ and X-Men Stunt Training",
+     "query": "‘Other Desert Cities’ Broadway Review: Julia Louis-Dreyfus, Ed Harris and Allison Janney Lead a Resounding Family Drama",
      "traffic": "440K+",
      "trafficValue": 440000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=Inde%20Navarrette%20on%20Meeting%20Pamela%20Anderson%2C%20Hosting%20%E2%80%98SNL%E2%80%99%20an&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=%E2%80%98Other%20Desert%20Cities%E2%80%99%20Broadway%20Review%3A%20Julia%20Louis-Dreyfus%2C%20&geo=US",
      "related": [
-      "Inde Navarrette on",
+      "‘Other Desert Cities’",
       "Variety news"
      ],
      "articles": [
       {
-       "title": "\"Inde Navarrette on Meeting Pamela Anderson, Hosting ‘SNL’ and X-Men Stunt Training\" is generating significant online interest. “Obsession” star Inde Navarrette",
-       "url": "https://variety.com/2026/film/news/inde-navarrette-hosting-snl-x-men-stunt-training-1236916105/",
+       "title": "\"‘Other Desert Cities’ Broadway Review: Julia Louis-Dreyfus, Ed Harris and Allison Janney Lead a Resounding Family Drama\" is generating significant online inter",
+       "url": "https://variety.com/2026/legit/reviews/other-desert-cities-broadway-review-1236915150/",
        "source": "Variety",
        "timeAgo": ""
       }
      ],
-     "image": "https://variety.com/wp-content/uploads/2026/10/GettyImages-2300360108.jpg",
-     "category": "Entertainment",
+     "image": "https://variety.com/wp-content/uploads/2026/10/Other-Desert-Cities_Allison-Janney-as-Silda-Grauman-Julia-Louis-Dreyfus-as-Polly-Wyeth_by-Emilio-Madrid_6098-1000.jpg",
+     "category": "Politics",
      "date": "",
      "dateKey": "",
      "geo": "GLOBAL",
@@ -776,8 +704,8 @@
     },
     {
      "query": "Someone behind the software",
-     "traffic": "174K+",
-     "trafficValue": 173500,
+     "traffic": "177K+",
+     "trafficValue": 176500,
      "exploreLink": "https://trends.google.com/trends/explore?q=Someone%20behind%20the%20software&geo=US",
      "related": [
       "Someone behind the",
@@ -785,7 +713,7 @@
      ],
      "articles": [
       {
-       "title": "\"Someone behind the software\" is generating significant online interest. Trending on Hacker News with 347 points and 141 comments. Posted by tosh. Follow credib",
+       "title": "\"Someone behind the software\" is generating significant online interest. Trending on Hacker News with 353 points and 142 comments. Posted by tosh. Follow credib",
        "url": "https://karrisaarinen.com/posts/someone-behind-the-software/",
        "source": "Hacker News",
        "timeAgo": ""
@@ -799,7 +727,7 @@
      "aggregator": true
     }
    ],
-   "fetchedAt": 1792382189706
+   "fetchedAt": 1792384019612
   },
   "US": {
    "geo": "US",
@@ -807,26 +735,26 @@
    "sourceName": "",
    "items": [
     {
-     "query": "nfc east",
-     "traffic": "5000+",
-     "trafficValue": 5000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=nfc%20east&geo=US",
+     "query": "nfc north standings",
+     "traffic": "100000+",
+     "trafficValue": 100000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=nfc%20north%20standings&geo=US",
      "related": [],
      "articles": [
       {
-       "title": "NFL Week 6: NFC East under pressure, AFC South truth-teller, Chiefs trap alert",
-       "url": "https://www.nytimes.com/athletic/7693498/2026/10/18/nfl-week-6-sunday-preview-schedule-key-matchups/",
+       "title": "NFL Week 6: Big takeaways, questions and fantasy spin from Sunday&apos;s games",
+       "url": "https://www.espn.com/nfl/story/_/id/50181469/week-6-sunday-games-takeaways-questions-2026",
+       "source": "ESPN"
+      },
+      {
+       "title": "NFL Week 6 overreactions: Rams collapse, Browns are contenders?!",
+       "url": "https://www.usatoday.com/videos/sports/sports-seriously/2026/10/18/nfl-week-6-overreactions-rams-in-trouble-browns-afc-north-favorites/92325051007/",
+       "source": "USA Today"
+      },
+      {
+       "title": "NFL experts’ Week 6 takeaways: J.J. McCarthy time? Are the Browns good? Are the Rams bad? - The Athletic",
+       "url": "https://www.nytimes.com/athletic/7701313/2026/10/18/nfl-takeaways-week-6-results-scores/",
        "source": "The New York Times"
-      },
-      {
-       "title": "Both QBs, Travis Hunter shine in wild Texans-Jaguars London game. Here are the key fantasy football takeaways",
-       "url": "https://sports.yahoo.com/fantasy/article/both-qbs-travis-hunter-shine-in-wild-texans-jaguars-london-game-here-are-the-key-fantasy-football-takeaways-183101829.html",
-       "source": "Yahoo Sports"
-      },
-      {
-       "title": "Texans beat Jaguars at the last, Bears beat Falcons and Browns stun Ravens: NFL week six – as it happened",
-       "url": "https://www.theguardian.com/sport/live/2026/oct/18/texans-v-jaguars-nfl-week-six-live",
-       "source": "The Guardian"
       }
      ],
      "image": "",
@@ -865,26 +793,55 @@
      "viaRss": true
     },
     {
-     "query": "chris jones confrontation kansas city",
+     "query": "sinja kraus",
      "traffic": "2000+",
      "trafficValue": 2000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=chris%20jones%20confrontation%20kansas%20city&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=sinja%20kraus&geo=US",
      "related": [],
      "articles": [
       {
-       "title": "Kansas City Chiefs star defensive lineman Chris Jones caught in screaming match with coaches on sidelines",
-       "url": "https://www.foxnews.com/outkick-sports/kansas-city-chiefs-star-defensive-lineman-chris-jones-caught-screaming-match-coaches-sidelines",
-       "source": "Fox News"
+       "title": "Tennis bad boy batters racket and cuts hand… then wins",
+       "url": "https://www.telegraph.co.uk/tennis/2026/10/12/tennis-bad-boy-batters-racket-and-cuts-hand-then-wins/",
+       "source": "The Telegraph"
       },
       {
-       "title": "Chiefs’ Chris Jones spotted yelling at position coach during Sunday’s NFL game",
-       "url": "https://www.kansascity.com/sports/nfl/kansas-city-chiefs/article317668383.html",
-       "source": "Kansas City Star"
-      },
-      {
-       "title": "‘A Screaming Match’ — NFL Reporter Details Chiefs Superstar’s Heated Exchange With Coach During Win vs. Chargers",
-       "url": "https://sports.yahoo.com/articles/screaming-match-nfl-reporter-details-030040221.html",
+       "title": "Andy Roddick’s Unfiltered Take on Frances Tiafoe and Alexander Bublik’s Angry Meltdowns",
+       "url": "https://sports.yahoo.com/articles/andy-roddick-unfiltered-frances-tiafoe-200423404.html",
        "source": "Yahoo Sports"
+      },
+      {
+       "title": "October 19, 2026: Kayla Day vs Kimberly Birrell: Set 1 Winner Tennis Prediction Market",
+       "url": "https://robinhood.com/us/en/prediction-markets/tennis/events/kayla-day-vs-kimberly-birrell-set-1-winner-oct-19-2026/",
+       "source": "Robinhood"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "US",
+     "viaRss": true
+    },
+    {
+     "query": "nfc north",
+     "traffic": "1000+",
+     "trafficValue": 1000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=nfc%20north&geo=US",
+     "related": [],
+     "articles": [
+      {
+       "title": "NFC North rankings: How do Bears, Lions, Packers and Vikings stack up in highly competitive division?",
+       "url": "https://www.nfl.com/news/nfc-north-rankings-how-do-bears-lions-packers-and-vikings-stack-up-in-highly-competitive-division",
+       "source": "NFL.com"
+      },
+      {
+       "title": "NFC NORTH: Where all four teams stand heading into Week 6",
+       "url": "https://www.detroitlions.com/news/nfc-north-where-all-four-teams-stand-heading-into-week-6-gibbs-goff-murray-love",
+       "source": "Detroit Lions"
+      },
+      {
+       "title": "All NFC North teams are above .500; Bears 5th-best NFC Playoff odds",
+       "url": "https://www.windycitygridiron.com/chicago-bears-odds/125397/all-nfc-north-teams-are-above-500-bears-5th-best-nfc-playoff-odds",
+       "source": "Windy City Gridiron"
       }
      ],
      "image": "",
@@ -895,8 +852,8 @@
     },
     {
      "query": "américa - pachuca",
-     "traffic": "500+",
-     "trafficValue": 500,
+     "traffic": "1000+",
+     "trafficValue": 1000,
      "exploreLink": "https://trends.google.com/trends/explore?q=am%C3%A9rica%20-%20pachuca&geo=US",
      "related": [],
      "articles": [
@@ -923,26 +880,26 @@
      "viaRss": true
     },
     {
-     "query": "lukas van ness",
+     "query": "monday night football this week",
      "traffic": "500+",
      "trafficValue": 500,
-     "exploreLink": "https://trends.google.com/trends/explore?q=lukas%20van%20ness&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=monday%20night%20football%20this%20week&geo=US",
      "related": [],
      "articles": [
       {
-       "title": "Lukas Van Ness continuing to fade puts Packers future in question",
-       "url": "https://dairylandexpress.com/lukas-van-ness-continuing-to-fade-puts-packers-future-in-question-01m4w11wqey9",
-       "source": "Dairyland Express"
+       "title": "Morning Report: Five Things to Know Before the Week 6 Primetime Matchup 🗞️",
+       "url": "https://www.49ers.com/news/morning-reports/morning-report-five-things-to-know-before-the-week-6-primetime-matchup",
+       "source": "San Francisco 49ers"
       },
       {
-       "title": "Join Insider Tom Silverstein for a live chat during Packers vs Cowboys Week 6 game",
-       "url": "https://www.jsonline.com/story/sports/nfl/packers/2026/10/18/join-tom-silverstein-for-live-chat-during-packers-vs-cowboys-game/92312863007/",
-       "source": "Milwaukee Journal Sentinel"
+       "title": "Five pressing Commanders questions that must be answered (by you) in Week 6 vs. 49ers",
+       "url": "https://www.hogshaven.com/washington-commanders-discussion/449797/commanders-49ers-preview-five-questions-dan-quinn-jayden-daniels",
+       "source": "Hogs Haven"
       },
       {
-       "title": "How to bet Cowboys-Packers: Analysis, tips and top prop plays",
-       "url": "https://www.espn.com/espn/betting/story/_/id/50179851/nfl-week-6-odds-betting-tips-picks-cowboys-packers",
-       "source": "ESPN"
+       "title": "Commanders vs. 49ers Weather Forecast for Monday Night Football",
+       "url": "https://sports.yahoo.com/articles/commanders-vs-49ers-weather-forecast-233142597.html",
+       "source": "Yahoo Sports"
       }
      ],
      "image": "",
@@ -952,26 +909,26 @@
      "viaRss": true
     },
     {
-     "query": "liudmila samsonova",
-     "traffic": "500+",
-     "trafficValue": 500,
-     "exploreLink": "https://trends.google.com/trends/explore?q=liudmila%20samsonova&geo=US",
+     "query": "eugenio derbez",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=eugenio%20derbez&geo=US",
      "related": [],
      "articles": [
       {
-       "title": "Tararudee vs. Quevedo Prediction at the Kinoshita Group Japan Open – Sunday, October 18",
-       "url": "https://www.bleachernation.com/picks/2026/10/18/tararudee-vs-quevedo-prediction-at-the-kinoshita-group-japan-open-sunday-october-18/",
-       "source": "Bleacher Nation"
+       "title": "Eugenio Derbez piensa en mudarse a Madrid después de 12 años en Hollywood: &quot;ya cumplí el sueño de Estados Unidos&quot;",
+       "url": "https://es-us.vida-estilo.yahoo.com/eugenio-derbez-piensa-madrid-12-150416145.html",
+       "source": "Yahoo en Español Vida y Estilo"
       },
       {
-       "title": "WTA Osaka Day 1 Predictions Including Lilli Tagger vs Liudmila Samsonova",
-       "url": "https://lastwordonsports.com/tennis/2026/10/18/wta-osaka-day-1-predictions-tagger-vs-samsonova/",
-       "source": "Last Word On Sports"
+       "title": "Eugenio Derbez, actor: “Quizá lo idealicé demasiado. Creo que ya cumplí el sueño de Estados Unidos, el sueño americano”",
+       "url": "https://www.marca.com/mx/trending/celebrities/2026/10/12/eugenio-derbez-actor-quiza-idealice-demasiado-creo-cumpli-sueno-estados-unidos-sueno-americano.html",
+       "source": "MARCA"
       },
       {
-       "title": "Lilli Tagger vs. Liudmila Samsonova prediction, odds, picks for WTA Japan Open 2026",
-       "url": "https://www.dimers.com/tennis/news/lilli-tagger-vs-liudmila-samsonova-tennis-prediction-wta-japan-open-2026-ac",
-       "source": "Dimers"
+       "title": "Eugenio Derbez se cansó de Hollywood y cambia de país, ¿regresará a México?",
+       "url": "https://www.lavozarizona.com/story/entretenimiento/2026/10/12/eugenio-derbez-se-cansa-de-hollywood-y-cambia-de-pais-con-su-familia/92214576007/",
+       "source": "azcentral.com and The Arizona Republic"
       }
      ],
      "image": "",
@@ -981,26 +938,26 @@
      "viaRss": true
     },
     {
-     "query": "charlie cox",
-     "traffic": "500+",
-     "trafficValue": 500,
-     "exploreLink": "https://trends.google.com/trends/explore?q=charlie%20cox&geo=US",
+     "query": "aaron sorkin",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=aaron%20sorkin&geo=US",
      "related": [],
      "articles": [
       {
-       "title": "Charlie Cox Shares 6-Year-Old Son’s Reaction to ‘Daredevil’ Ending (Exclusive)",
-       "url": "https://people.com/charlie-cox-says-6-year-old-son-was-devastated-when-he-found-out-daredevil-was-ending-exclusive-12175439",
-       "source": "People.com"
+       "title": "‘The Social Reckoning’ Bombs With $5.5 Million Debut",
+       "url": "https://www.forbes.com/sites/zacharyfolk/2026/10/11/the-social-reckoning-bombs-with-55-million-debut/",
+       "source": "Forbes"
       },
       {
-       "title": "Marvel TV Boss Says Daredevil: Born Again Was Always Meant to End With Season 3, Despite Previously Suggesting Otherwise",
-       "url": "https://www.yahoo.com/entertainment/tv/articles/marvel-tv-boss-says-daredevil-234904668.html",
-       "source": "Yahoo"
+       "title": "Aaron Sorkin Got ‘The Social Reckoning’ Half Right",
+       "url": "https://www.bloomberg.com/opinion/articles/2026-10-17/aaron-sorkin-got-the-social-reckoning-half-right",
+       "source": "Bloomberg.com"
       },
       {
-       "title": "Does A Daredevil Movie Make Box Office Sense For Marvel After Born Again&apos;s Cancellation?",
-       "url": "https://www.slashfilm.com/2289146/daredevil-movie-box-office-sense-marvel-born-again-cancellation/",
-       "source": "SlashFilm"
+       "title": "‘The Social Reckoning’ Bombs With $5.5 Million Opening, Horror ‘Other Mommy’ Rules Weekend’ – Box Office Update",
+       "url": "https://deadline.com/2026/10/box-office-other-mommy-social-reckoning-1237151001/",
+       "source": "Deadline"
       }
      ],
      "image": "",
@@ -1027,9 +984,9 @@
        "source": "KLAS 8 News Now"
       },
       {
-       "title": "Tucson eyes active pattern with cooling temperatures ahead",
-       "url": "https://www.kold.com/2026/10/18/tucson-eyes-active-pattern-with-cooling-temperatures-ahead/",
-       "source": "KOLD"
+       "title": "MOST ACCURATE FORECAST: Weekend clouds and rain, with more storms on the way this week",
+       "url": "https://www.abc15.com/weather/most-accurate-forecast-weekend-clouds-and-rain-with-more-storms-on-the-way-this-week",
+       "source": "ABC15 Arizona"
       }
      ],
      "image": "",
@@ -1039,55 +996,21 @@
      "viaRss": true
     },
     {
-     "query": "cowboys.",
+     "query": "liu wen",
      "traffic": "200+",
      "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=cowboys.&geo=US",
+     "exploreLink": "https://trends.google.com/trends/explore?q=liu%20wen&geo=US",
      "related": [],
      "articles": [
       {
-       "title": "Updates: Joey Porter Jr. active for SNF vs. GB",
-       "url": "https://www.dallascowboys.com/news/updates-october-2026",
-       "source": "Dallas Cowboys | Official Site of the Dallas Cowboys"
+       "title": "Jing Boran’s Girlfriend Liu Wen Walks at the Victoria’s Secret 2026 Fashion Show",
+       "url": "https://metro.style/fashion/2026/10/19/jing-boran-girlfriend-liu-wen-victorias-secret-fashion-show-2026-0930",
+       "source": "Metro.Style"
       },
       {
-       "title": "NFL news roundup: Cowboys activate guard Tyler Smith from IR for Thursday&apos;s game vs. Buccaneers",
-       "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-thursday-oct-8",
-       "source": "NFL.com"
-      },
-      {
-       "title": "Cowboys Add 2 in Roster Shuffle Before Week 5 vs. Buccaneers",
-       "url": "https://sports.yahoo.com/articles/cowboys-add-2-roster-shuffle-221649489.html",
-       "source": "Yahoo Sports"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "US",
-     "viaRss": true
-    },
-    {
-     "query": "cyberpunk edgerunners season 2",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=cyberpunk%20edgerunners%20season%202&geo=US",
-     "related": [],
-     "articles": [
-      {
-       "title": "Bartosz Sztybor Warns Fans Not To Get Too Attached to ‘Cyberpunk: Edgerunners 2&apos;",
-       "url": "https://hypebeast.com/2026/10/cyberpunk-edgerunners-2-cd-projekt-red-bartosz-sztybor-showrunner-interview",
-       "source": "Hypebeast"
-      },
-      {
-       "title": "Cyberpunk: Edgerunners 2 Anime Deploys New Characters in Latest Visual",
-       "url": "https://www.crunchyroll.com/news/latest/2026/10/14/cyberpunk-edgerunners-2-anime-visual",
-       "source": "Crunchyroll"
-      },
-      {
-       "title": "Netflix Reveals New Trailers, Cast for ‘Cyberpunk,’ ‘Bass X Machina’ and ‘Blue Eye Samurai’",
-       "url": "https://www.animationmagazine.net/2026/10/netflix-reveals-new-trailers-cast-for-cyberpunk-bass-x-machina-and-blue-eye-samurai/",
-       "source": "Animation Magazine"
+       "title": "Victoria&apos;s Secret&apos;s First Asian Model Liu Wen Is Oh-So Stunning Today",
+       "url": "https://www.glam.com/2289085/victorias-secret-first-asian-model-liu-wen-stunning-today/",
+       "source": "Glam"
       }
      ],
      "image": "",
@@ -1097,7 +1020,7 @@
      "viaRss": true
     }
    ],
-   "fetchedAt": 1792382182894
+   "fetchedAt": 1792384012711
   },
   "GB": {
    "geo": "GB",
@@ -1106,8 +1029,8 @@
    "items": [
     {
      "query": "kylie jenner",
-     "traffic": "1000+",
-     "trafficValue": 1000,
+     "traffic": "2000+",
+     "trafficValue": 2000,
      "exploreLink": "https://trends.google.com/trends/explore?q=kylie%20jenner&geo=GB",
      "related": [],
      "articles": [
@@ -1117,14 +1040,72 @@
        "source": "Vogue"
       },
       {
-       "title": "Kylie Jenner models $50 million Fantasy Bra at Victoria&apos;s Secret Fashion Show",
-       "url": "https://www.usatoday.com/story/entertainment/style/2026/10/18/kylie-jenner-victorias-secret-fashion-show-2026-fantasy-bra/92266856007/",
-       "source": "USA Today"
+       "title": "Kylie Jenner Wore Victoria’s Secret’s First Fantasy Bra Since 2018, and Timothée Chalamet Saw It",
+       "url": "https://www.elle.com/fashion/a74137418/victorias-secret-fashion-show-2026-review/",
+       "source": "ELLE"
       },
       {
-       "title": "See Timothée Chalamet’s reaction to girlfriend Kylie Jenner’s surprise Victoria’s Secret Fashion Show debut",
-       "url": "https://pagesix.com/2026/10/18/celebrity-news/see-timothee-chalamet-react-to-kylie-jenners-victorias-secret-fashion-show-debut/",
-       "source": "Page Six"
+       "title": "Kylie makes surprise VS debut in $71m bra",
+       "url": "https://www.news.com.au/lifestyle/fashion/fashion-shows/supermodel-alessandra-ambrosio-makes-her-return-to-victorias-secret-runway/image-gallery/955a1d5b24252a3bde1e84813390420b",
+       "source": "News.com.au"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "GB",
+     "viaRss": true
+    },
+    {
+     "query": "trump news",
+     "traffic": "500+",
+     "trafficValue": 500,
+     "exploreLink": "https://trends.google.com/trends/explore?q=trump%20news&geo=GB",
+     "related": [],
+     "articles": [
+      {
+       "title": "Graham Breaks With Trump Over Russia Sanctions Law Her Brother Championed",
+       "url": "https://www.nytimes.com/2026/10/17/us/politics/graham-trump-russia-sanctions-law.html",
+       "source": "The New York Times"
+      },
+      {
+       "title": "Ukraine war briefing: Trump’s sanctions waiver is a ‘60-day pause’ to analyse economic impact, says Rubio",
+       "url": "https://www.theguardian.com/world/2026/oct/18/ukraine-war-briefing-trumps-sanctions-waiver-is-a-60-day-pause-to-analyse-economic-impact-says-rubio",
+       "source": "The Guardian"
+      },
+      {
+       "title": "Oil slips as Trump&apos;s sanction waiver may lead to more Russian fuel supplies",
+       "url": "https://www.reuters.com/business/energy/oil-slips-trumps-sanction-waiver-may-lead-more-russian-fuel-supplies-2026-10-18/",
+       "source": "Reuters"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "GB",
+     "viaRss": true
+    },
+    {
+     "query": "sony playstation",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=sony%20playstation&geo=GB",
+     "related": [],
+     "articles": [
+      {
+       "title": "PS6 RAM and Storage Alone Reportedly Cost Sony Over $680, Claims Leaker",
+       "url": "https://www.techpowerup.com/353834/ps6-ram-and-storage-alone-reportedly-cost-sony-over-usd-680-claims-leaker",
+       "source": "TechPowerUp"
+      },
+      {
+       "title": "PlayStation 6’s memory costs alone exceed $680 per console, it’s claimed",
+       "url": "https://www.videogameschronicle.com/news/playstation-6s-memory-costs-alone-exceed-680-per-console-its-claimed/",
+       "source": "Video Games Chronicle"
+      },
+      {
+       "title": "PS6 Price Tag Facing $1,000+ Nightmare as AI Data Centres Send Component Costs Soaring",
+       "url": "https://www.pushsquare.com/news/2026/10/ps6-price-tag-facing-usd1000plus-nightmare-as-ai-data-centres-send-component-costs-soaring",
+       "source": "Push Square"
       }
      ],
      "image": "",
@@ -1163,6 +1144,35 @@
      "viaRss": true
     },
     {
+     "query": "uc",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=uc&geo=GB",
+     "related": [],
+     "articles": [
+      {
+       "title": "Plays That Changed the Game: WVU vs Cincinnati",
+       "url": "https://247sports.com/college/west-virginia/longformarticle/plays-that-changed-the-game-wvu-vs-cincinnati-291383464/",
+       "source": "247Sports"
+      },
+      {
+       "title": "Cassidy&apos;s Walkoff Field Goal Downs Cincinnati",
+       "url": "https://wvusports.com/news/2026/10/17/football-cassidys-kick-downs-cincinnati",
+       "source": "West Virginia University Athletics"
+      },
+      {
+       "title": "West Virginia 45-42 Cincinnati (Oct 17, 2026) Game Recap",
+       "url": "https://www.espn.com/college-football/recap/_/gameId/401856829",
+       "source": "ESPN"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "GB",
+     "viaRss": true
+    },
+    {
      "query": "gemini",
      "traffic": "200+",
      "trafficValue": 200,
@@ -1192,35 +1202,6 @@
      "viaRss": true
     },
     {
-     "query": "green bay packers",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=green%20bay%20packers&geo=GB",
-     "related": [],
-     "articles": [
-      {
-       "title": "Davante Adams limited to three grabs in Week 6",
-       "url": "https://www.usatoday.com/story/sports/fantasy/player-updates/2026/10/18/fantasy-rams-wr-davante-adams-held-in-check-by-arizona/92324415007/",
-       "source": "USA Today"
-      },
-      {
-       "title": "Ex-Packers All-Timer Limps Off Field With Non-Contact Injury",
-       "url": "https://sports.yahoo.com/articles/ex-packers-timer-limps-off-030604377.html",
-       "source": "Yahoo Sports"
-      },
-      {
-       "title": "Davante Adams Modest outing in Week 6",
-       "url": "https://www.thefantasyfootballers.com/news/643210/davante-adams-modest-outing-in-week-6/",
-       "source": "Fantasy Footballers Podcast"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "GB",
-     "viaRss": true
-    },
-    {
      "query": "gisele bündchen",
      "traffic": "200+",
      "trafficValue": 200,
@@ -1233,14 +1214,14 @@
        "source": "TMZ"
       },
       {
-       "title": "Gisele Bündchen makes surprise cameo during Victoria’s Secret Fashion Show 2026",
-       "url": "https://pagesix.com/2026/10/18/style/gisele-bundchen-makes-surprise-cameo-during-victorias-secret-fashion-show-2026/",
-       "source": "Page Six"
+       "title": "Gisele Bündchen Makes Surprise Cameo in 2026 Victoria’s Secret Fashion Show 20 Years After Last Runway",
+       "url": "https://people.com/gisele-bundchen-2026-victorias-secret-fashion-show-surprise-cameo-photos-12181012",
+       "source": "People.com"
       },
       {
-       "title": "Gisele Bundchen&apos;s health status: Tom Brady&apos;s ex-wife suffers a mishap with consequences",
-       "url": "https://www.marca.com/en/lifestyle/celebrities/2026/10/18/gisele-bundchen-s-health-status-tom-brady-s-ex-wife-suffers-mishap-with-consequences.html",
-       "source": "MARCA"
+       "title": "Gisele Bündchen, 46, Rocks Pink Lace Lingerie in Surprise 2026 Victoria’s Secret Fashion Show Appearance",
+       "url": "https://www.usmagazine.com/stylish/news/gisele-bundchen-rocks-lingerie-in-surprise-vs-appearance/",
+       "source": "Us Weekly"
       }
      ],
      "image": "",
@@ -1308,64 +1289,6 @@
      "viaRss": true
     },
     {
-     "query": "sony playstation",
-     "traffic": "100+",
-     "trafficValue": 100,
-     "exploreLink": "https://trends.google.com/trends/explore?q=sony%20playstation&geo=GB",
-     "related": [],
-     "articles": [
-      {
-       "title": "PS6 RAM and Storage Alone Reportedly Cost Sony Over $680, Claims Leaker",
-       "url": "https://www.techpowerup.com/353834/ps6-ram-and-storage-alone-reportedly-cost-sony-over-usd-680-claims-leaker",
-       "source": "TechPowerUp"
-      },
-      {
-       "title": "PlayStation 6’s memory costs alone exceed $680 per console, it’s claimed",
-       "url": "https://www.videogameschronicle.com/news/playstation-6s-memory-costs-alone-exceed-680-per-console-its-claimed/",
-       "source": "Video Games Chronicle"
-      },
-      {
-       "title": "PS6 Price Tag Facing $1,000+ Nightmare as AI Data Centres Send Component Costs Soaring",
-       "url": "https://www.pushsquare.com/news/2026/10/ps6-price-tag-facing-usd1000plus-nightmare-as-ai-data-centres-send-component-costs-soaring",
-       "source": "Push Square"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "GB",
-     "viaRss": true
-    },
-    {
-     "query": "uc",
-     "traffic": "100+",
-     "trafficValue": 100,
-     "exploreLink": "https://trends.google.com/trends/explore?q=uc&geo=GB",
-     "related": [],
-     "articles": [
-      {
-       "title": "Plays That Changed the Game: WVU vs Cincinnati",
-       "url": "https://247sports.com/college/west-virginia/longformarticle/plays-that-changed-the-game-wvu-vs-cincinnati-291383464/",
-       "source": "247Sports"
-      },
-      {
-       "title": "Cassidy&apos;s Walkoff Field Goal Downs Cincinnati",
-       "url": "https://wvusports.com/news/2026/10/17/football-cassidys-kick-downs-cincinnati",
-       "source": "West Virginia University Athletics"
-      },
-      {
-       "title": "West Virginia 45-42 Cincinnati (Oct 17, 2026) Game Recap",
-       "url": "https://www.espn.com/college-football/recap/_/gameId/401856829",
-       "source": "ESPN"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "GB",
-     "viaRss": true
-    },
-    {
      "query": "jason statham",
      "traffic": "100+",
      "trafficValue": 100,
@@ -1395,7 +1318,7 @@
      "viaRss": true
     }
    ],
-   "fetchedAt": 1792382183525
+   "fetchedAt": 1792384013417
   },
   "JP": {
    "geo": "JP",
@@ -1403,26 +1326,26 @@
    "sourceName": "",
    "items": [
     {
-     "query": "ヴァンフォーレ甲府",
-     "traffic": "5000+",
-     "trafficValue": 5000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=%E3%83%B4%E3%82%A1%E3%83%B3%E3%83%95%E3%82%A9%E3%83%BC%E3%83%AC%E7%94%B2%E5%BA%9C&geo=JP",
+     "query": "キオクシア",
+     "traffic": "10000+",
+     "trafficValue": 10000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=%E3%82%AD%E3%82%AA%E3%82%AF%E3%82%B7%E3%82%A2&geo=JP",
      "related": [],
      "articles": [
       {
-       "title": "痛恨の0-5大敗で監督謝罪「申し訳ない」 J2最下位…厳しい状況「我々の完敗です」（FOOTBALL ZONE）",
-       "url": "https://news.yahoo.co.jp/articles/50510fde4e2c070922d22e87307a8bb10ffc2b27",
-       "source": "Yahoo!ニュース"
+       "title": "キオクシア株の戻り阻む信用買い残9200億円、全銘柄最大－売買減で解消に時間",
+       "url": "https://www.bloomberg.com/jp/news/articles/2026-10-18/TMVOEQT96OSI00",
+       "source": "Bloomberg.com"
       },
       {
-       "title": "【公式】いわきが怒涛のゴールラッシュで5発大勝！敗れた甲府は最下位に転落【サマリー：明治安田Ｊ２ 第11節】",
-       "url": "https://www.jleague.jp/news/article/35142/?navicode=j2",
-       "source": "Ｊリーグ公式サイト"
+       "title": "キオクシアＨＤ－売り気配 米ハイテク株安を嫌気 コアウィーブ株が急落(トレーダーズ・ウェブ)",
+       "url": "https://finance.yahoo.co.jp/news/detail/f40c3028c7b9baf395db08840b583d2e92df1c6d",
+       "source": "Yahoo!ファイナンス"
       },
       {
-       "title": "いわき vs 甲府 : 第11節 【明治安田J2リーグ】",
-       "url": "https://abema.tv/live-event/65148469-5161-4dfc-abb4-a4a57773393a",
-       "source": "ABEMA"
+       "title": "キオクシア、4カ月で時価総額3分の1 中国メモリー台頭に警戒",
+       "url": "https://www.nikkei.com/article/DGXZQOUB1517F0V11C26A0000000/",
+       "source": "日本経済新聞"
       }
      ],
      "image": "",
@@ -1432,26 +1355,26 @@
      "viaRss": true
     },
     {
-     "query": "明瀬諒介",
-     "traffic": "1000+",
-     "trafficValue": 1000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=%E6%98%8E%E7%80%AC%E8%AB%92%E4%BB%8B&geo=JP",
+     "query": "沢田亜矢子",
+     "traffic": "2000+",
+     "trafficValue": 2000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=%E6%B2%A2%E7%94%B0%E4%BA%9C%E7%9F%A2%E5%AD%90&geo=JP",
      "related": [],
      "articles": [
       {
-       "title": "日本ハム 梅林優貴ら３選手に戦力外通告 今季は２試合の出場にとどまる「ＮＰＢでオファーがなかったときには」",
-       "url": "https://news.yahoo.co.jp/articles/a4a21fb526c9f3a91a14280a926f42caae3df714",
-       "source": "Yahoo!ニュース"
+       "title": "沢田亜矢子、今夏に熱中症で命の危険。「反省した」その顛末を語る",
+       "url": "https://post.tv-asahi.co.jp/post-872677/",
+       "source": "テレ朝POST"
       },
       {
-       "title": "【日本ハム】松岡洸希、梅林優貴、明瀬諒介の3選手と来季の契約を結ばないと発表",
-       "url": "https://topics.smt.docomo.ne.jp/article/chuspo/sports/chuspo-1327192",
+       "title": "本日10月19日「徹子の部屋」ゲスト情報",
+       "url": "https://topics.smt.docomo.ne.jp/article/ggtnews/entertainment/ggtnews-WaepA",
        "source": "ｄメニューニュース"
       },
       {
-       "title": "日本ハム 梅林優貴らに戦力外通告 今季は２試合の出場にとどまる「ＮＰＢでオファーがなかったときには」",
-       "url": "https://www.daily.co.jp/baseball/2026/10/19/0020944920.shtml",
-       "source": "デイリースポーツ"
+       "title": "志村けんさんとの「夫婦コント」で人気を博した58歳俳優 アイドル歌手としてデビューも「人前で歌うのが苦手」だった【徹子の部屋】",
+       "url": "https://maidonanews.jp/article/16970986",
+       "source": "まいどなニュース"
       }
      ],
      "image": "",
@@ -1461,84 +1384,55 @@
      "viaRss": true
     },
     {
-     "query": "jr",
+     "query": "細野 豪志",
      "traffic": "500+",
      "trafficValue": 500,
-     "exploreLink": "https://trends.google.com/trends/explore?q=jr&geo=JP",
+     "exploreLink": "https://trends.google.com/trends/explore?q=%E7%B4%B0%E9%87%8E%20%E8%B1%AA%E5%BF%97&geo=JP",
      "related": [],
      "articles": [
       {
-       "title": "JR東日本 運転士が鍵を紛失し列車遅延（tbc東北放送）",
-       "url": "https://news.yahoo.co.jp/articles/f9203a2915ba680725bdf632f99cc66e213298d5",
-       "source": "Yahoo!ニュース"
+       "title": "なぜ首相の隣は細野氏？ 閣議前や記念撮影、自民で「初入閣」なのに [高市早苗首相 自民党総裁][自由民主党（自民党）]",
+       "url": "https://www.asahi.com/articles/ASVBJ3CXHVBJUTFK01PM.html",
+       "source": "朝日新聞"
       },
       {
-       "title": "JR東日本 運転士が鍵を紛失し列車遅延",
-       "url": "https://newsdig.tbs.co.jp/articles/-/3020073",
-       "source": "TBS NEWS DIG"
-      },
-      {
-       "title": "JR東日本 運転士が鍵を紛失し列車遅延",
-       "url": "https://newsdig.tbs.co.jp/articles/tbc/3020073",
-       "source": "TBS NEWS DIG"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "JP",
-     "viaRss": true
-    },
-    {
-     "query": "森下龍矢",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=%E6%A3%AE%E4%B8%8B%E9%BE%8D%E7%9F%A2&geo=JP",
-     "related": [],
-     "articles": [
-      {
-       "title": "「足を引きずっていた」イングランド古豪に激震！全試合先発で２G２Aの日本代表経験者が負傷…指揮官は懸念「ダメージがあるかもしれない」（SOCCER DIGEST Web）",
-       "url": "https://news.yahoo.co.jp/articles/801afae2479f686a22674c48807c2e676b2dbbea",
-       "source": "Yahoo!ニュース"
-      },
-      {
-       "title": "ブラックバーン森下龍矢が負傷 足首捻挫か 「悪くないことを祈る」と指揮官",
-       "url": "https://www.sponichi.co.jp/soccer/news/2026/10/18/kiji/20261018s00002021105000c.html",
-       "source": "スポニチ Sponichi Annex"
-      },
-      {
-       "title": "森下龍矢、相手選手のタックルで負傷交代…指揮官は足首捻挫の可能性を指摘「ひどい状態ではないことを願おう」",
-       "url": "https://news.livedoor.com/article/detail/32594462/",
-       "source": "ライブドアニュース"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "JP",
-     "viaRss": true
-    },
-    {
-     "query": "中道改革連合",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=%E4%B8%AD%E9%81%93%E6%94%B9%E9%9D%A9%E9%80%A3%E5%90%88&geo=JP",
-     "related": [],
-     "articles": [
-      {
-       "title": "民主改革の小川代表、中道にただ１人残留させた渡辺創氏の地元で謝罪「どれだけ頭を下げても足りない」",
-       "url": "https://www.yomiuri.co.jp/politics/20261019-GYT1T00116/",
-       "source": "読売新聞"
-      },
-      {
-       "title": "中道改革連合への政党交付金「納得できない」が7割超 「民主改革の会」の支持率0.1％ FNN世論調査",
-       "url": "https://news.yahoo.co.jp/articles/c9209303c561178b0c00fb4f5e767f9f5f094e23",
-       "source": "Yahoo!ニュース"
-      },
-      {
-       "title": "どっちらけ政界再編劇、あしたはどっちだ 「中道」関係者の視点",
-       "url": "https://mainichi.jp/articles/20261015/k00/00m/010/236000c",
+       "title": "みんなの広場：除染土再利用 公正に判断せよ＝大学教員・濱岡豊・63",
+       "url": "https://mainichi.jp/articles/20261014/ddm/005/200/039000c",
        "source": "毎日新聞"
+      },
+      {
+       "title": "復興相就任から１カ月 細野豪志氏に聞く 福島のため権限生かす 防災庁に経験、知見反映",
+       "url": "https://www.minpo.jp/articles/-/251698",
+       "source": "福島民報デジタル"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "JP",
+     "viaRss": true
+    },
+    {
+     "query": "高校野球 関東大会",
+     "traffic": "500+",
+     "trafficValue": 500,
+     "exploreLink": "https://trends.google.com/trends/explore?q=%E9%AB%98%E6%A0%A1%E9%87%8E%E7%90%83%20%E9%96%A2%E6%9D%B1%E5%A4%A7%E4%BC%9A&geo=JP",
+     "related": [],
+     "articles": [
+      {
+       "title": "【高校野球】山梨学院－慶応 健大高崎がコールド勝ちで４強 センバツ前進／速報中",
+       "url": "https://www.nikkansports.com/baseball/highschool/news/202610190000022.html",
+       "source": "日刊スポーツ"
+      },
+      {
+       "title": "【高校野球】健大高崎がセンバツ当確！２年ぶり４強入り 主将でエースの石垣聡志が完封（日刊スポーツ）",
+       "url": "https://news.yahoo.co.jp/articles/e49c704e500a2ea3851757a6e07536f085bedb5c",
+       "source": "Yahoo!ニュース"
+      },
+      {
+       "title": "慶応が佐野日大に勝利 湯本琢心が７回無失点、山梨学院との準々決勝へ 高校野球 秋季関東大会",
+       "url": "https://www.kanaloco.jp/sports/baseball/hsbaseball/article-1313245.html",
+       "source": "カナロコ"
       }
      ],
      "image": "",
@@ -1549,8 +1443,8 @@
     },
     {
      "query": "ヴィクトリーナ姫路",
-     "traffic": "200+",
-     "trafficValue": 200,
+     "traffic": "500+",
+     "trafficValue": 500,
      "exploreLink": "https://trends.google.com/trends/explore?q=%E3%83%B4%E3%82%A3%E3%82%AF%E3%83%88%E3%83%AA%E3%83%BC%E3%83%8A%E5%A7%AB%E8%B7%AF&geo=JP",
      "related": [],
      "articles": [
@@ -1577,34 +1471,26 @@
      "viaRss": true
     },
     {
-     "query": "午後のロードショー",
+     "query": "ボクシング",
      "traffic": "200+",
      "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=%E5%8D%88%E5%BE%8C%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89%E3%82%B7%E3%83%A7%E3%83%BC&geo=JP",
-     "related": [],
-     "articles": [],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "JP",
-     "viaRss": true
-    },
-    {
-     "query": "mgsd クシャトリヤ",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=mgsd%20%E3%82%AF%E3%82%B7%E3%83%A3%E3%83%88%E3%83%AA%E3%83%A4&geo=JP",
+     "exploreLink": "https://trends.google.com/trends/explore?q=%E3%83%9C%E3%82%AF%E3%82%B7%E3%83%B3%E3%82%B0&geo=JP",
      "related": [],
      "articles": [
       {
-       "title": "抽選販売「MGSD クシャトリヤ【2次：2026年12月発送】」本日10月19日より申込受付スタート！",
-       "url": "https://gundam-official.com/news/uf98uwcrvb3apuljjfr7ftl2",
-       "source": "GUNDAM Official"
+       "title": "相手が体重超過→試合中止の悪夢 亀田和毅が本音「この文章を打ちながら、涙が止まりません」 実感した周囲の支え",
+       "url": "https://news.yahoo.co.jp/articles/cb0ac61395f08c9aac51e23b8d5608f8c0342ee3",
+       "source": "Yahoo!ニュース"
       },
       {
-       "title": "「機動戦士ガンダムUC」ガンプラ「MGSD クシャトリヤ」が抽選販売実施！巨体を圧倒的なディテール表現と可動性能で再現",
-       "url": "https://news.yahoo.co.jp/articles/6c28a12ada2990ca8be08ead28d31fedcfe31f33",
-       "source": "Yahoo!ニュース"
+       "title": "亀田和毅のタイトル戦中止 「まだチャンスある」―ＷＢＡフェザー級",
+       "url": "https://www.jiji.com/jc/article?k=2026101800159&g=spo",
+       "source": "時事ドットコム"
+      },
+      {
+       "title": "【ボクシング】亀田和毅、米ラスベガスでの世界戦当日中止から一夜明け「涙が止まりません。心から応援してくれる方が、全世界にこんなにもたくさんいる」と感謝",
+       "url": "https://www.sanspo.com/article/20261019-DRU52KXNSVODLORVKJ6LZKVHPM/?outputType=theme_fight",
+       "source": "サンスポ"
       }
      ],
      "image": "",
@@ -1614,26 +1500,16 @@
      "viaRss": true
     },
     {
-     "query": "岩井勇気",
+     "query": "black lagoon",
      "traffic": "200+",
      "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=%E5%B2%A9%E4%BA%95%E5%8B%87%E6%B0%97&geo=JP",
+     "exploreLink": "https://trends.google.com/trends/explore?q=black%20lagoon&geo=JP",
      "related": [],
      "articles": [
       {
-       "title": "岩井勇気、番組のオンライン会議を盗み聞き 「嫌なもん聞いたな」呼び捨てにされた人気コンビは…",
-       "url": "https://sirabee.com/2026/10/19/20163591756/",
-       "source": "Sirabee"
-      },
-      {
-       "title": "ハライチ岩井勇気、日テレでスタッフ会議を聞き「俺らは番組の駒の1つに過ぎない」と再認識",
-       "url": "https://entametalk.com/news/207329/",
-       "source": "エンタのおはなし"
-      },
-      {
-       "title": "「ぽかぽか」岩井の“代打MC”はなんと体調不良明け 河合郁人「間に合いました」先週は生放送欠席も（スポニチアネックス）",
-       "url": "https://news.yahoo.co.jp/articles/02db5d3fe146eb1e2ec1c44dfd67eb1ea371c293",
-       "source": "Yahoo!ニュース"
+       "title": "「BLACK LAGOON」25周年を記念した郵便局のグッズ ラグーン商会のツールボックスなど",
+       "url": "https://natalie.mu/comic/news/694248",
+       "source": "ナタリー"
       }
      ],
      "image": "",
@@ -1643,12 +1519,86 @@
      "viaRss": true
     },
     {
-     "query": "野村克也",
+     "query": "リコール",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=%E3%83%AA%E3%82%B3%E3%83%BC%E3%83%AB&geo=JP",
+     "related": [],
+     "articles": [
+      {
+       "title": "パナソニックのドラム式洗濯機64万台超リコール、国内で6件の発煙／発火事故",
+       "url": "https://monoist.itmedia.co.jp/mn/articles/2610/16/news068.html",
+       "source": "MONOist"
+      },
+      {
+       "title": "パナソニック、洗濯機62万台をリコール 火災につながる恐れ",
+       "url": "https://news.yahoo.co.jp/articles/5b1bb0a75f96ddbb5a75761763ec5d5a063867eb",
+       "source": "Yahoo!ニュース"
+      },
+      {
+       "title": "手のひらサイズでハイパワー。快適な眠りを提供する布団乾燥機がここまで小さくなりました (ギズモード・ジャパン)",
+       "url": "https://newspicks.com/news/17718616/",
+       "source": "NewsPicks"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "JP",
+     "viaRss": true
+    },
+    {
+     "query": "逮捕令状",
      "traffic": "100+",
      "trafficValue": 100,
-     "exploreLink": "https://trends.google.com/trends/explore?q=%E9%87%8E%E6%9D%91%E5%85%8B%E4%B9%9F&geo=JP",
+     "exploreLink": "https://trends.google.com/trends/explore?q=%E9%80%AE%E6%8D%95%E4%BB%A4%E7%8A%B6&geo=JP",
      "related": [],
-     "articles": [],
+     "articles": [
+      {
+       "title": "逮捕状の「電子令状」4都県から",
+       "url": "https://news.yahoo.co.jp/pickup/6599313",
+       "source": "Yahoo!ニュース"
+      },
+      {
+       "title": "逮捕状のオンライン請求 2027年3月までに1都3県で一部事件での運用開始 相次ぐサイバー攻撃踏まえ新たな管理システムを導入",
+       "url": "https://www.fnn.jp/articles/-/1135291",
+       "source": "FNNプライムオンライン"
+      },
+      {
+       "title": "逮捕状のオンライン請求・発付「電子令状」、覚醒剤事件対象に年度内４都県から…来夏に全国・全事件で",
+       "url": "https://topics.smt.docomo.ne.jp/article/yomiuri/nation/20261018-567-GYT1T00337?utm_source=dnews&utm_medium=article&utm_campaign=contentsmatch2",
+       "source": "ｄメニューニュース"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "JP",
+     "viaRss": true
+    },
+    {
+     "query": "スクーター",
+     "traffic": "100+",
+     "trafficValue": 100,
+     "exploreLink": "https://trends.google.com/trends/explore?q=%E3%82%B9%E3%82%AF%E3%83%BC%E3%82%BF%E3%83%BC&geo=JP",
+     "related": [],
+     "articles": [
+      {
+       "title": "免許不要で乗れる「新型スクーター」登場！ 最大約100kmの航続距離を実現 「フューチャースマート1」予約開始",
+       "url": "https://bike-news.jp/post/481206",
+       "source": "バイクのニュース"
+      },
+      {
+       "title": "「免許不要」で乗れる新型「スクーター」登場！ 航続100km＆最高20キロの新モビリティ「Future smart 1」予約販売開始",
+       "url": "https://topics.smt.docomo.ne.jp/article/kurumanews/trend/kurumanews-1126484",
+       "source": "ｄメニューニュース"
+      },
+      {
+       "title": "プレスリリース：ビジネス用特定小型原付「Future smart 1」をジャパンモビリティショーで公開 16歳以上免許不要・最大荷重150kg！（PR TIMES）",
+       "url": "https://mainichi.jp/articles/20261015/pr2/00m/020/104000c",
+       "source": "毎日新聞"
+      }
+     ],
      "image": "",
      "date": "",
      "dateKey": "",
@@ -1656,42 +1606,13 @@
      "viaRss": true
     }
    ],
-   "fetchedAt": 1792382187357
+   "fetchedAt": 1792384017199
   },
   "CA": {
    "geo": "CA",
    "source": "rss",
    "sourceName": "",
    "items": [
-    {
-     "query": "cason wallace",
-     "traffic": "2000+",
-     "trafficValue": 2000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=cason%20wallace&geo=CA",
-     "related": [],
-     "articles": [
-      {
-       "title": "Thunder agree to five-year, $139M extension with Cason Wallace",
-       "url": "https://www.espn.com/nba/story/_/id/50215968/thunder-agree-five-year-139m-extension-cason-wallace",
-       "source": "ESPN"
-      },
-      {
-       "title": "Everything we Know About Cason Wallace’s Contract Situation with the OKC Thunder",
-       "url": "https://www.si.com/nba/thunder/onsi/everything-we-know-about-cason-wallace-s-contract-situation-with-the-okc-thunder",
-       "source": "Sports Illustrated"
-      },
-      {
-       "title": "Report: Thunder agree to five-year, $139M extension with Cason Wallace",
-       "url": "https://www.sportsnet.ca/nba/article/report-thunder-agree-to-five-year-139m-extension-with-cason-wallace/",
-       "source": "Sportsnet.ca"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "CA",
-     "viaRss": true
-    },
     {
      "query": "catholic priest killed by cross",
      "traffic": "2000+",
@@ -1705,14 +1626,14 @@
        "source": "Fox News"
       },
       {
-       "title": "Catholic priest killed by falling cross during livestreamed Mass in Ecuador",
-       "url": "https://abcnews.com/International/wireStory/catholic-priest-killed-falling-cross-livestreamed-mass-ecuador-137362694",
-       "source": "ABC News - Breaking News, Latest News and Videos"
-      },
-      {
        "title": "Priest in Ecuador dies after crucifix falls on him during livestreamed Mass",
        "url": "https://www.nbcnews.com/world/ecuador/priest-ecuador-dies-crucifix-falls-livestreamed-mass-rcna604211",
        "source": "NBC News"
+      },
+      {
+       "title": "Catholic priest killed by falling cross during livestreamed Mass in Ecuador",
+       "url": "https://abcnews.com/International/wireStory/catholic-priest-killed-falling-cross-livestreamed-mass-ecuador-137362694",
+       "source": "ABC News - Breaking News, Latest News and Videos"
       }
      ],
      "image": "",
@@ -1723,8 +1644,8 @@
     },
     {
      "query": "mark carney alberta referendum comments",
-     "traffic": "2000+",
-     "trafficValue": 2000,
+     "traffic": "500+",
+     "trafficValue": 500,
      "exploreLink": "https://trends.google.com/trends/explore?q=mark%20carney%20alberta%20referendum%20comments&geo=CA",
      "related": [],
      "articles": [
@@ -1751,26 +1672,113 @@
      "viaRss": true
     },
     {
-     "query": "emmanuel macron allocution",
-     "traffic": "1000+",
-     "trafficValue": 1000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=emmanuel%20macron%20allocution&geo=CA",
+     "query": "orionid meteor shower",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=orionid%20meteor%20shower&geo=CA",
      "related": [],
      "articles": [
       {
-       "title": "France | Choc et récriminations au lendemain des émeutes",
-       "url": "https://www.lapresse.ca/international/europe/2026-10-18/france/choc-et-recriminations-au-lendemain-des-emeutes.php",
-       "source": "La Presse"
+       "title": "Halley’s Comet Is About To Send ‘Shooting Stars’ Across The Sky",
+       "url": "https://www.forbes.com/sites/jamiecartereurope/2026/10/18/halleys-comet-will-send-shooting-stars-across-the-sky-this-week---when-to-look/",
+       "source": "Forbes"
       },
       {
-       "title": "Mobilisation du 17 octobre : Emmanuel Macron tente de réaffirmer son autorité, ébranlée par les violences et les mouvements sociaux",
-       "url": "https://www.lemonde.fr/politique/article/2026/10/19/mobilisation-du-17-octobre-emmanuel-macron-tente-de-reaffirmer-son-autorite-ebranlee-par-les-violences-et-les-mouvements-sociaux_6797402_823448.html",
-       "source": "Le Monde.fr"
+       "title": "The Orionid meteor shower peaks next week! Here&apos;s what to expect",
+       "url": "https://www.space.com/stargazing/meteor-showers/the-orionid-meteor-shower-peaks-oct-21-22-2026-heres-what-to-expect",
+       "source": "Space"
       },
       {
-       "title": "Violences en France: Macron promet la fermeté, nouvelles tensions à Paris et Lyon",
-       "url": "https://www.tvanouvelles.ca/2026/10/18/violences-en-france-macron-promet-la-fermete-nouvelles-tensions-a-paris-et-lyon",
-       "source": "TVA Nouvelles"
+       "title": "October skies bring celestial events as people remember Margaret Hamilton",
+       "url": "https://www.thelamron.com/news/october-skies-bring-celestial-events-as-people-remember-margaret-hamiltonnbsp",
+       "source": "The Lamron"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "CA",
+     "viaRss": true
+    },
+    {
+     "query": "wendy&apos;s company",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=wendy%26apos%3Bs%20company&geo=CA",
+     "related": [],
+     "articles": [
+      {
+       "title": "10 more Wendy&apos;s stores could close this weekend, even though the fast food chain tried to save them. See the list",
+       "url": "https://www.fastcompany.com/91621298/wendys-store-closures-list-update-locations-tried-to-save",
+       "source": "Fast Company"
+      },
+      {
+       "title": "Wendy’s Closed Nearly 300 U.S. Restaurants in Months. Here’s What’s Behind the Collapse",
+       "url": "https://www.inc.com/amaya-nichole/wendys-closures-2026-expert-analysis/91421259",
+       "source": "Inc.com"
+      },
+      {
+       "title": "Wendy&apos;s disappearing from Oklahoma as franchisee goes bankrupt",
+       "url": "https://www.oklahoman.com/story/business/2026/10/13/wendys-okc-metro-locations-close-down-after-franchisee-bankruptcy/92222206007/",
+       "source": "The Oklahoman"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "CA",
+     "viaRss": true
+    },
+    {
+     "query": "jon husted",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=jon%20husted&geo=CA",
+     "related": [],
+     "articles": [
+      {
+       "title": "‘I will not comment on his anatomy’: Ohio Republicans buzz about Trump’s analysis of a senator’s body",
+       "url": "https://www.cnn.com/2026/10/18/politics/trump-body-comments-jon-husted-ohio",
+       "source": "CNN"
+      },
+      {
+       "title": "In Midterm Campaign’s Final Stretch, Trump Can’t Stop Praising Men’s Bodies",
+       "url": "https://www.nytimes.com/2026/10/17/us/politics/trump-men-physical-appearance-comments.html",
+       "source": "The New York Times"
+      },
+      {
+       "title": "Trump’s new pitch for Republican candidates — they’re really good looking",
+       "url": "https://apnews.com/article/trump-collins-ossoff-gallrein-midterm-handsome-983036048002554d8c12e84285683734",
+       "source": "AP News"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "CA",
+     "viaRss": true
+    },
+    {
+     "query": "packers game",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=packers%20game&geo=CA",
+     "related": [],
+     "articles": [
+      {
+       "title": "Dak Prescott tosses two picks in loss against the Packers",
+       "url": "https://www.espn.com/video/clip/_/id/50216190/dak-prescott-tosses-two-picks-loss-packers",
+       "source": "ESPN"
+      },
+      {
+       "title": "Packers rookie Brandon Cisse records first NFL pick after embarrassing CeeDee Lamb slip",
+       "url": "https://sports.yahoo.com/articles/packers-rookie-brandon-cisse-records-031928781.html",
+       "source": "Yahoo Sports"
+      },
+      {
+       "title": "Prescott&apos;s second red-zone INT of the night goes into Brandon Cisse&apos;s hands in second quarter",
+       "url": "https://www.nfl.com/videos/prescott-s-second-red-zone-int-of-the-night-goes-into-brandon-cisse-s-hands-in-second-quarter",
+       "source": "NFL.com"
       }
      ],
      "image": "",
@@ -1787,19 +1795,48 @@
      "related": [],
      "articles": [
       {
-       "title": "Maple Leafs&apos; Tavares out week-to-week with lower-body injury",
-       "url": "https://www.cbc.ca/sports/hockey/nhl/maple-leafs-tavares-injury-9.7385369",
-       "source": "CBC"
+       "title": "Flames’ Frost caps off beauty tic-tac-toe play for goal in 400th game",
+       "url": "https://www.sportsnet.ca/nhl/video/flames-frost-caps-off-beauty-tic-tac-toe-play-for-goal-in-400th-game/",
+       "source": "Sportsnet.ca"
       },
       {
-       "title": "NHL Status Report: Tavares week to week for Maple Leafs",
-       "url": "https://www.nhl.com/news/nhl-status-report-news-and-notes-october-17-2026",
+       "title": "Morgan Frost News: Earns pair of points Sunday",
+       "url": "https://www.rotowire.com/hockey/headlines/morgan-frost-news-earns-pair-of-points-sunday-596498",
+       "source": "RotoWire"
+      },
+      {
+       "title": "Frost scores on the rush",
+       "url": "https://www.nhl.com/video/ana-cgy-frost-scores-goal-against-ville-husso-6406629930112",
        "source": "NHL.com"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "CA",
+     "viaRss": true
+    },
+    {
+     "query": "kda",
+     "traffic": "100+",
+     "trafficValue": 100,
+     "exploreLink": "https://trends.google.com/trends/explore?q=kda&geo=CA",
+     "related": [],
+     "articles": [
+      {
+       "title": "K/DA Returns After 6 Years, Unveils New Song &apos;FIRESTARTER&apos;",
+       "url": "https://www.invenglobal.com/articles/27340/kda-returns-after-6-years-unveils-new-song-firestarter",
+       "source": "Inven Global"
       },
       {
-       "title": "Leafs Ice Chips: Hiller calls on Cowan with Tavares out; Tanev back on the ice",
-       "url": "https://www.tsn.ca/nhl/video/2026/10/17/leafs-ice-chips-hiller-calls-on-cowan-with-tavares-out-tanev-back-on-the-ice/",
-       "source": "TSN"
+       "title": "Costco&apos;s Exclusive &apos;KPop Demon Hunters&apos; Trading Card Set Includes 11 Rarity Levels & A Character-Inspired Frame",
+       "url": "https://www.billboard.com/culture/product-recommendations/kpop-demon-hunters-costco-exclusive-trading-cards-shop-1236360008/",
+       "source": "Billboard"
+      },
+      {
+       "title": "K/DA Reactivates Social Accounts, Fueling Rumors of the Virtual K-Pop Group’s Comeback After 6 Years",
+       "url": "https://sea.ign.com/league-of-legends/250289/kda-reactivates-social-accounts-fueling-rumors-of-the-virtual-k-pop-groups-comeback-after-6-years",
+       "source": "IGN Southeast Asia"
       }
      ],
      "image": "",
@@ -1838,64 +1875,6 @@
      "viaRss": true
     },
     {
-     "query": "jon husted",
-     "traffic": "100+",
-     "trafficValue": 100,
-     "exploreLink": "https://trends.google.com/trends/explore?q=jon%20husted&geo=CA",
-     "related": [],
-     "articles": [
-      {
-       "title": "‘I will not comment on his anatomy’: Ohio Republicans buzz about Trump’s analysis of a senator’s body",
-       "url": "https://www.cnn.com/2026/10/18/politics/trump-body-comments-jon-husted-ohio",
-       "source": "CNN"
-      },
-      {
-       "title": "In Midterm Campaign’s Final Stretch, Trump Can’t Stop Praising Men’s Bodies",
-       "url": "https://www.nytimes.com/2026/10/17/us/politics/trump-men-physical-appearance-comments.html",
-       "source": "The New York Times"
-      },
-      {
-       "title": "Trump’s new pitch for Republican candidates — they’re really good looking",
-       "url": "https://apnews.com/article/trump-collins-ossoff-gallrein-midterm-handsome-983036048002554d8c12e84285683734",
-       "source": "AP News"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "CA",
-     "viaRss": true
-    },
-    {
-     "query": "packers game",
-     "traffic": "100+",
-     "trafficValue": 100,
-     "exploreLink": "https://trends.google.com/trends/explore?q=packers%20game&geo=CA",
-     "related": [],
-     "articles": [
-      {
-       "title": "Prescott&apos;s second red-zone INT of the night goes into Brandon Cisse&apos;s hands in second quarter",
-       "url": "https://www.nfl.com/videos/prescott-s-second-red-zone-int-of-the-night-goes-into-brandon-cisse-s-hands-in-second-quarter",
-       "source": "NFL.com"
-      },
-      {
-       "title": "Packers rookie Brandon Cisse records first NFL pick after embarrassing CeeDee Lamb slip",
-       "url": "https://sports.yahoo.com/articles/packers-rookie-brandon-cisse-records-031928781.html",
-       "source": "Yahoo Sports"
-      },
-      {
-       "title": "Prescott throws second interception vs. Packers",
-       "url": "https://www.nbcsports.com/watch/nfl/cowboys-dak-prescott-throws-second-interception-of-game-vs-packers",
-       "source": "NBC Sports"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "CA",
-     "viaRss": true
-    },
-    {
      "query": "matvei gridin",
      "traffic": "100+",
      "trafficValue": 100,
@@ -1903,48 +1882,19 @@
      "related": [],
      "articles": [
       {
-       "title": "Klapped Back",
-       "url": "https://www.nhl.com/flames/news/flames-exact-revenge-on-ducks-with-4-2-win",
+       "title": "Postgame Gridin - 18.10.26",
+       "url": "https://www.nhl.com/flames/video/postgame-gridin-18-10-26-6407065628112",
        "source": "NHL.com"
       },
       {
-       "title": "Notes from last game: Adam Klapka and Aydar Suniev score again in Flames’ first win of 2026-27",
-       "url": "https://flamesnation.ca/news/calgary-flames-anaheim-ducks-takeaways-first-win-suniev-wolf-2026",
-       "source": "Flames Nation"
+       "title": "Matvei Gridin News: Buries goal in win",
+       "url": "https://www.rotowire.com/hockey/headlines/matvei-gridin-news-buries-goal-in-win-596499",
+       "source": "RotoWire"
       },
       {
-       "title": "Game #6: Ducks vs. Flames Gameday Preview (10/13/26)",
-       "url": "https://thehockeynews.com/nhl/anaheim-ducks/game-day/game-6-ducks-vs-flames-gameday-preview-10-13-26",
-       "source": "The Hockey News"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "CA",
-     "viaRss": true
-    },
-    {
-     "query": "bob saget",
-     "traffic": "100+",
-     "trafficValue": 100,
-     "exploreLink": "https://trends.google.com/trends/explore?q=bob%20saget&geo=CA",
-     "related": [],
-     "articles": [
-      {
-       "title": "Jodie Sweetin Says Full House Dad Bob Saget Got Her to Safety During a Real-Life Drive-By Shooting",
-       "url": "https://people.com/jodie-sweetin-says-bob-saget-got-her-to-safety-during-a-drive-by-shooting-12180863",
-       "source": "People.com"
-      },
-      {
-       "title": "&apos;Full House&apos; star recalls surviving alleged &apos;drive by&apos; shooting with Bob Saget",
-       "url": "https://www.freep.com/videos/entertainment/2026/10/18/full-house-star-recalls-surviving-drive-by-shooting-bob-saget/92321949007/",
-       "source": "Detroit Free Press"
-      },
-      {
-       "title": "Jodie Sweeten says Bob Saget once whisked her away from a drive-by shooting: ‘They shot the window out of the car’",
-       "url": "https://www.yahoo.com/entertainment/celebrity/articles/jodie-sweeten-says-bob-saget-010833595.html",
-       "source": "Yahoo"
+       "title": "Flames&apos; Matvei Gridin looks like he&apos;s finding his game",
+       "url": "https://calgaryherald.com/sports/hockey/nhl/calgary-flames/calgary-flames-matvei-gridin-finding-his-game",
+       "source": "Calgary Herald"
       }
      ],
      "image": "",
@@ -1954,7 +1904,7 @@
      "viaRss": true
     }
    ],
-   "fetchedAt": 1792382184150
+   "fetchedAt": 1792384013846
   },
   "AU": {
    "geo": "AU",
@@ -1962,55 +1912,26 @@
    "sourceName": "",
    "items": [
     {
-     "query": "victoria secret fashion show performers",
-     "traffic": "5000+",
-     "trafficValue": 5000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=victoria%20secret%20fashion%20show%20performers&geo=AU",
-     "related": [],
-     "articles": [
-      {
-       "title": "Feathers, glitter, diamonds and a $71 million bra: All the jaw-dropping looks from the Victoria’s Secret Fashion Show",
-       "url": "https://www.nine.com.au/lifestyle/fashion-beauty/victorias-secret-fashion-show-2026-best-looks-runway-moments-fantasy-bra-20261019-p616q8.html",
-       "source": "Nine.com.au"
-      },
-      {
-       "title": "Kobe Bryant’s Daughter Natalia Walks the Victoria’s Secret Runway for the First Time",
-       "url": "https://www.harpersbazaar.com/celebrity/latest/a74171631/natalia-bryant-victorias-secret-fashion-show-2026-runway-photos/",
-       "source": "Harper&apos;s BAZAAR"
-      },
-      {
-       "title": "Where To Watch The 2026 Victoria’s Secret Runway Show In Australia Today",
-       "url": "https://www.marieclaire.com.au/fashion/runway/watch-2026-victorias-secret-runway-australia/",
-       "source": "Marie Claire"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "AU",
-     "viaRss": true
-    },
-    {
-     "query": "butcher",
+     "query": "murray davis",
      "traffic": "2000+",
      "trafficValue": 2000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=butcher&geo=AU",
+     "exploreLink": "https://trends.google.com/trends/explore?q=murray%20davis&geo=AU",
      "related": [],
      "articles": [
       {
-       "title": "Butcher fined over free snags for homeless",
-       "url": "https://www.news.com.au/finance/business/retail/just-wrong-council-shuts-down-butchers-free-sausage-sizzle-threatens-16k-fine/news-story/8f7afc11567a1a30eda404f29b88a906",
-       "source": "News.com.au"
+       "title": "Contender for Lions job rules himself out as hot favourite firms",
+       "url": "https://www.theaustralian.com.au/sport/afl/crows-assistant-murray-davis-pulls-out-of-brisbane-coaching-race/news-story/82c5dbc3312217cbc026f505a5c72726",
+       "source": "The Australian"
       },
       {
-       "title": "&apos;Devastated&apos;: Local community furious as charity sausage sizzle shut down",
-       "url": "https://www.news24.com.au/news/local/devastated-local-gold-coast-community-furious-as-charitable-sausage-sizzle-shut-down-by-council-despite-feeding-homeless/news-story/9c8391d21299aa8d1a1049e9ae2c3037",
-       "source": "Sky News Australia"
+       "title": "Speculation surrounding Fagan’s next move",
+       "url": "https://sen.com.au/news/2026/10/18/afl-news-chris-fagan-next-club-collingwood-role-carlton-rumours",
+       "source": "SEN"
       },
       {
-       "title": "Council shuts down beloved free sausage sizzle",
-       "url": "https://7news.com.au/video/news/council-shuts-down-beloved-free-sausage-sizzle-bc-6407057057112",
-       "source": "7NEWS"
+       "title": "Biggest hint yet on Lions’ next coach as wide net of options cast",
+       "url": "https://www.couriermail.com.au/sport/afl/where-brisbanes-search-to-replace-chris-fagan-as-senior-coach-sits/news-story/62be4af375201e6b0cb9f56bc8908f2c",
+       "source": "The Courier Mail"
       }
      ],
      "image": "",
@@ -2020,55 +1941,26 @@
      "viaRss": true
     },
     {
-     "query": "sebastian fundora wbc title defense knockout",
+     "query": "brisbane broncos",
      "traffic": "1000+",
      "trafficValue": 1000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=sebastian%20fundora%20wbc%20title%20defense%20knockout&geo=AU",
+     "exploreLink": "https://trends.google.com/trends/explore?q=brisbane%20broncos&geo=AU",
      "related": [],
      "articles": [
       {
-       "title": "Sebastian Fundora retains title with last-second KO of Ermal Hadribeaj",
-       "url": "https://www.espn.com/boxing/story/_/id/50208058/sebastian-fundora-retains-title-last-second-ko-ermal-hadribeaj",
-       "source": "ESPN"
+       "title": "Fallen giant among rivals eyeing Panthers superstar as $1m bidding war set to erupt",
+       "url": "https://www.foxsports.com.au/nrl/nrl-premiership/nrl-2026-brisbane-broncos-and-cronulla-sharks-keen-on-penrth-panthers-forward-liam-martion-ahead-of-november-1-contract-1-million-negotiations-matt-cameron/news-story/dbb8c6a17542a34841ad16387519cba6",
+       "source": "Fox Sports"
       },
       {
-       "title": "Sebastian Fundora brutally KOs Ermal Hadribeaj to retain WBC title, set up potential &apos;Boots&apos; Ennis fight",
-       "url": "https://sports.yahoo.com/boxing/live/sebastian-fundora-brutally-kos-ermal-hadribeaj-to-retain-wbc-title-set-up-potential-boots-ennis-fight-162707450.html",
-       "source": "Yahoo Sports"
-      },
-      {
-       "title": "Here&apos;s Where to Watch Sebastian Fundora vs. Ermal Hadribeaj Title Boxing Match Live Online for Free",
-       "url": "https://variety.com/2026/shopping/news/how-to-watch-fundora-vs-hadribeaj-boxing-live-online-free-1236909640/",
-       "source": "Variety"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "AU",
-     "viaRss": true
-    },
-    {
-     "query": "catherine, princess of wales",
-     "traffic": "1000+",
-     "trafficValue": 1000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=catherine%2C%20princess%20of%20wales&geo=AU",
-     "related": [],
-     "articles": [
-      {
-       "title": "The Princess of Wales announces exciting new project",
-       "url": "https://www.nine.com.au/lifestyle/royals/videos/the-princess-of-wales-announces-exciting-new-project/cmve8lp2o00270gpdhwj5znyr",
+       "title": "Broncos great stunned after ‘alarming’ $1m contract snub",
+       "url": "https://www.nine.com.au/sport/nrl/news-xavier-willison-contract-brisbane-broncos-future-corey-parker-open-market-new-zealand-world-cup-20261019-p616qe.html",
        "source": "Nine.com.au"
       },
       {
-       "title": "Catherine says nature can help children&apos;s emotional growth",
-       "url": "https://www.bbc.com/news/articles/cmly0n4nzq5qo",
-       "source": "BBC"
-      },
-      {
-       "title": "Kate Middleton Debuts a Meaningful New Project in a Cozy Fair Isle Sweater",
-       "url": "https://www.townandcountrymag.com/society/tradition/a74157979/kate-middleton-me-em-fair-isle-sweater-shop/",
-       "source": "Town & Country Magazine"
+       "title": "Market Watch: Broncos eye star Panther as Willison talks freeze",
+       "url": "https://www.codesports.com.au/nrl/sam-walker-set-for-6m-roosters-extension-after-leading-club-to-nrl-premiership/news-story/b94dd56fa64c59b25734a6b848a3b248",
+       "source": "CODE Sports"
       }
      ],
      "image": "",
@@ -2085,19 +1977,19 @@
      "related": [],
      "articles": [
       {
-       "title": "Andy Burnham launches campaign against ‘headphone dodgers’ on public transport",
-       "url": "https://www.theguardian.com/politics/2026/oct/19/andy-burnham-launches-campaign-against-headphone-dodgers-on-public-transport",
+       "title": "Britain cannot deal effectively with geopolitical crises without rejoining EU, says thinktank",
+       "url": "https://www.theguardian.com/world/2026/oct/19/britain-geopolitical-crises-rejoin-eu-thinktank",
        "source": "The Guardian"
       },
       {
-       "title": "People playing loud music on buses could face £100 fine",
-       "url": "https://www.bbc.com/news/articles/cm89z008x7xdo",
-       "source": "BBC"
+       "title": "Burnham’s Brexit foolishness is an insult to his constituents and bad for Britain",
+       "url": "https://www.telegraph.co.uk/news/2026/10/16/burnham-brexit-trade-business-european-union/",
+       "source": "The Telegraph"
       },
       {
-       "title": "Louts face £100 fines for vaping, littering and threatening behaviour on buses in new government crackdown",
-       "url": "https://www.thesun.co.uk/news/40722173/louts-fines-vaping-littering-threatening-behaviour-bus/",
-       "source": "The Sun"
+       "title": "&apos;Burnham ready to sign new EU deal&apos; and &apos;Hand of Gord&apos;",
+       "url": "https://www.bbc.co.uk/news/articles/cqkg51v2135jo",
+       "source": "BBC"
       }
      ],
      "image": "",
@@ -2119,7 +2011,7 @@
        "source": "ABC News & Headlines – Australian Broadcasting Corporation"
       },
       {
-       "title": "‘Enough is enough’: Lambie slams Hanson’s latest crass cartoon attack",
+       "title": "‘Get over it’: Hanson dismisses Lambie’s anger over crass cartoon attack on her health",
        "url": "https://www.smh.com.au/politics/federal/enough-is-enough-lambie-slams-hanson-s-latest-crass-cartoon-attack-20261019-p616nl.html",
        "source": "SMH.com.au"
       },
@@ -2127,6 +2019,93 @@
        "title": "Cross-party condemnation for One Nation&apos;s nasty cartoon",
        "url": "https://www.canberratimes.com.au/story/9371033/cross-party-condemnation-for-one-nations-nasty-cartoon/",
        "source": "The Canberra Times"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "AU",
+     "viaRss": true
+    },
+    {
+     "query": "murray bridge",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=murray%20bridge&geo=AU",
+     "related": [],
+     "articles": [
+      {
+       "title": "Body of man found floating at river reserve identified",
+       "url": "https://www.adelaidenow.com.au/news/south-australia/murray-bridge-emergency-response-after-body-found-in-river-at-sturt-reserve/news-story/005cfa8ec22420eb13f717fbe06d73d1",
+       "source": "Adelaide Now"
+      },
+      {
+       "title": "Body found floating at popular river reserve",
+       "url": "https://www.couriermail.com.au/news/south-australia/murray-bridge-emergency-response-after-body-found-in-river-at-sturt-reserve/news-story/005cfa8ec22420eb13f717fbe06d73d1",
+       "source": "The Courier Mail"
+      },
+      {
+       "title": "Man found dead in Murray",
+       "url": "https://murrayvalleystandard.com.au/news/2026/10/19/man-found-dead-in-murray/",
+       "source": "The Murray Valley Standard"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "AU",
+     "viaRss": true
+    },
+    {
+     "query": "jesse eisenberg",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=jesse%20eisenberg&geo=AU",
+     "related": [],
+     "articles": [
+      {
+       "title": "Jesse Eisenberg Says He ‘Couldn’t Get Movie Studio Parts Anymore’ After Winning a Razzie for ‘Batman v Superman’: ‘The Industry Did Not Want Me to Be in a Superhero Movie’",
+       "url": "https://variety.com/2026/film/global/jesse-eisenberg-razzie-batman-v-superman-1236915876/",
+       "source": "Variety"
+      },
+      {
+       "title": "Jesse Eisenberg Reveals Why He Was Shut Out of Studio Movies",
+       "url": "https://www.imdb.com/it/news/ni66069131/?ref_=nwc_art_perm",
+       "source": "IMDb"
+      },
+      {
+       "title": "&apos;I Saw the Trajectory&apos; — Jesse Eisenberg Says He Struggled to Land Studio Roles After Winning Worst Supporting Actor for Batman v. Superman",
+       "url": "https://www.ign.com/articles/jesse-eisenberg-says-he-couldnt-get-movie-studio-parts-after-winning-his-batman-v-superman-razzie",
+       "source": "IGN"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "AU",
+     "viaRss": true
+    },
+    {
+     "query": "sebastian fundora wbc title defense knockout",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=sebastian%20fundora%20wbc%20title%20defense%20knockout&geo=AU",
+     "related": [],
+     "articles": [
+      {
+       "title": "Legends fume at KO punch after the bell, Aussie dudded in Vegas",
+       "url": "https://www.nine.com.au/sport/combat-sports/boxing-news-sebastian-fundora-knockout-punch-video-controversy-aussie-koen-mazoudier-results-20261019-p616mf.html",
+       "source": "Nine.com.au"
+      },
+      {
+       "title": "Terence Crawford sums up Jaron Ennis chances of beating Sebastian Fundora at 154lbs",
+       "url": "https://boxingnewsonline.net/news/crawford-on-ennis-fundora-chances/",
+       "source": "Boxing News Online"
+      },
+      {
+       "title": "Legends fume as fighter not saved by bell",
+       "url": "https://www.news.com.au/sport/boxing/legends-fume-as-crazy-sebastian-fundora-buzzer-beater-kostuns/news-story/1f57730fb4e1e4a25f719e79bf670d48",
+       "source": "News.com.au"
       }
      ],
      "image": "",
@@ -2172,9 +2151,9 @@
      "related": [],
      "articles": [
       {
-       "title": "Vics rookie tears through Tassie",
-       "url": "https://www.news.com.au/sport/cricket/sheffield-shield-202627-victorian-harry-hoekstra-continues-dazzling-domestic-debut-season/news-story/3df3688b652d7eb4df9b3f82a8f44948",
-       "source": "News.com.au"
+       "title": "Emerging Victorian quick leaves Tasmania in tatters",
+       "url": "https://www.theaustralian.com.au/sport/cricket/victorian-harry-hoekstra-takes-five-wickets-against-tasmania/news-story/02edd1314abc378bd781608d696d2091",
+       "source": "The Australian"
       },
       {
        "title": "How Harry Hoekstra is making a splash in Tasmania",
@@ -2182,9 +2161,9 @@
        "source": "Sentinel-Times"
       },
       {
-       "title": "Emerging Victorian quick leaves Tasmania in tatters",
-       "url": "https://www.themercury.com.au/sport/victorian-harry-hoekstra-takes-five-wickets-against-tasmania/news-story/02edd1314abc378bd781608d696d2091",
-       "source": "The Mercury"
+       "title": "Vics rookie tears through Tassie",
+       "url": "https://www.theaustralian.com.au/news/latest-news/sheffield-shield-202627-victorian-harry-hoekstra-continues-dazzling-domestic-debut-season/news-story/3df3688b652d7eb4df9b3f82a8f44948",
+       "source": "The Australian"
       }
      ],
      "image": "",
@@ -2194,55 +2173,26 @@
      "viaRss": true
     },
     {
-     "query": "marshawn lloyd",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=marshawn%20lloyd&geo=AU",
+     "query": "prince harry meghan markle public engagements",
+     "traffic": "100+",
+     "trafficValue": 100,
+     "exploreLink": "https://trends.google.com/trends/explore?q=prince%20harry%20meghan%20markle%20public%20engagements&geo=AU",
      "related": [],
      "articles": [
       {
-       "title": "Dallas Cowboys fans tense in high-stakes Sunday game against Green Bay Packers",
-       "url": "https://www.wfaa.com/video/sports/nfl/cowboys/dallas-cowboys-fans-tense-high-stakes-sunday-game-green-bay-packers/287-6665926d-1ef8-4398-bd11-e11e007afb60",
-       "source": "WFAA"
+       "title": "The success of Harry and Meghan’s return to popularity will hit the royals smack in the face",
+       "url": "https://www.nine.com.au/lifestyle/royals/prince-harry-meghan-markle-nottingham-public-return-success-popularity-will-hit-the-royal-family-in-the-face-20261016-p6160n.html",
+       "source": "Nine.com.au"
       },
       {
-       "title": "Cowboys | Dak Prescott takes shot to ribs, ‘appears to be fine’ after staff checks on him",
-       "url": "https://www.fantasyguru.com/cowboys-dak-prescott-takes-shot-to-ribs-appears-to-be-fine-after-staff-checks-on-him",
-       "source": "Fantasy Guru"
+       "title": "Harry, Meg’s plan laid bare: ‘What they want’",
+       "url": "https://www.news.com.au/entertainment/celebrity-life/royals/prince-harry-and-meghans-uk-plans-laid-bare-by-insider-doing-what-they-want/news-story/da69121ddcf7fdd0c49c440057fba100",
+       "source": "News.com.au"
       },
       {
-       "title": "FOOTBALL-NFL-GB-DAL/",
-       "url": "https://madison.com/image_7d64ded5-7ec5-45bc-8dc0-8af896268811.html",
-       "source": "Wisconsin State Journal"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "AU",
-     "viaRss": true
-    },
-    {
-     "query": "george pickens",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=george%20pickens&geo=AU",
-     "related": [],
-     "articles": [
-      {
-       "title": "Is CeeDee Lamb Playing Today? Update on Cowboys WR Injury",
-       "url": "https://www.si.com/nfl/cowboys/onsi/is-ceedee-lamb-playing-nfl-week-6-dallas-cowboys-wr-injury-update",
-       "source": "Sports Illustrated"
-      },
-      {
-       "title": "George Pickens Brings a 130-Yard Week Into Lambeau, Where Xavier McKinney Is Waiting",
-       "url": "https://athlonsports.com/nfl/dallas-cowboys/george-pickens-brings-a-130-yard-week-into-lambeau-where-xavier-mckinney-is-waiting",
-       "source": "Athlon Sports"
-      },
-      {
-       "title": "FOOTBALL-NFL-GB-DAL/",
-       "url": "https://madison.com/image_558a34a7-b596-48d1-97ae-0a9313de0f57.html",
-       "source": "Wisconsin State Journal"
+       "title": "Why Harry and Meghan&apos;s UK relaunch felt so much like a royal engagement",
+       "url": "https://www.bbc.com/news/articles/cwvgdnjqpyvmo",
+       "source": "BBC"
       }
      ],
      "image": "",
@@ -2252,7 +2202,7 @@
      "viaRss": true
     }
    ],
-   "fetchedAt": 1792382184849
+   "fetchedAt": 1792384014645
   },
   "IN": {
    "geo": "IN",
@@ -2260,26 +2210,26 @@
    "sourceName": "",
    "items": [
     {
-     "query": "upstox login",
+     "query": "yes bank share price",
      "traffic": "2000+",
      "trafficValue": 2000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=upstox%20login&geo=IN",
+     "exploreLink": "https://trends.google.com/trends/explore?q=yes%20bank%20share%20price&geo=IN",
      "related": [],
      "articles": [
       {
-       "title": "Indian shares seen muted; lenders&apos; earnings take centre stage",
-       "url": "https://www.reuters.com/world/india/indian-shares-seen-muted-lenders-earnings-take-centre-stage-2026-10-19/",
+       "title": "India&apos;s top court voids Yes Bank&apos;s $880 million AT-1 bond write-off",
+       "url": "https://www.reuters.com/world/india/india-supreme-court-rules-yes-banks-at1-bond-write-off-illegal-2026-10-15/",
        "source": "Reuters"
       },
       {
-       "title": "Stocks to Watch Today: ICICI Bank, HDFC Bank, Axis Bank, GPT Infra, RailTel, ACME Solar, Yes Bank, Urban...",
-       "url": "https://www.moneycontrol.com/news/business/markets/stocks-to-watch-today-icici-bank-hdfc-bank-axis-bank-gpt-infra-railtel-acme-solar-yes-bank-urban-company-ixigo-lcc-projects-zen-tech-in-focus-on-19-october-14054929.html",
-       "source": "Moneycontrol.com"
+       "title": "Yes Bank AT-1 bonds verdict shows why bank rescues must follow the law",
+       "url": "https://theprint.in/opinion/yes-bank-at1-bond-verdict-bank-resolution-framework/3075495/",
+       "source": "ThePrint"
       },
       {
-       "title": "First Tick: Top global cues to watch in today&apos;s trade",
-       "url": "https://www.tradingview.com/news/moneycontrol:898c578b9094b:0-first-tick-top-global-cues-to-watch-in-today-s-trade/",
-       "source": "TradingView"
+       "title": "Yes Bank Q2 net profit rises 63% to ₹1,084 crore",
+       "url": "https://www.thehindu.com/business/Industry/yes-bank-q2-net-profit-rises-63-to-1084-crore/article71597630.ece",
+       "source": "The Hindu"
       }
      ],
      "image": "",
@@ -2289,223 +2239,54 @@
      "viaRss": true
     },
     {
-     "query": "zetwerk ipo gmp",
-     "traffic": "500+",
-     "trafficValue": 500,
-     "exploreLink": "https://trends.google.com/trends/explore?q=zetwerk%20ipo%20gmp&geo=IN",
+     "query": "nestle india share price",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=nestle%20india%20share%20price&geo=IN",
      "related": [],
      "articles": [
       {
-       "title": "Mega Jio Platforms IPO to lead Rs 31,663 crore offerings this week; 9 listings lined up",
-       "url": "https://m.economictimes.com/markets/ipos/fpos/mega-jio-platforms-ipo-to-lead-rs-31663-crore-offerings-this-week-9-listings-lined-up/articleshow/135024121.cms",
+       "title": "Nestle India flags food, commodity inflation after profit surges 36%",
+       "url": "https://www.reuters.com/world/india/nestle-indias-quarterly-profit-rises-demand-packaged-foods-stays-firm-2026-10-15/",
+       "source": "Reuters"
+      },
+      {
+       "title": "With EPS Growth And More, Nestlé India (NSE:NESTLEIND) Makes An Interesting Case",
+       "url": "https://simplywall.st/stocks/in/food-beverage-tobacco/nse-nestleind/nestle-india-shares/news/with-eps-growth-and-more-nestl-india-nsenestleind-makes-an-i",
+       "source": "Simply Wall Street"
+      },
+      {
+       "title": "For Nestle India, is the best in the past?",
+       "url": "https://www.livemint.com/market/mark-to-market/nestle-india-quarterly-results-financials-review-11792313011906.html",
+       "source": "Livemint"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "IN",
+     "viaRss": true
+    },
+    {
+     "query": "idbi bank share price",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=idbi%20bank%20share%20price&geo=IN",
+     "related": [],
+     "articles": [
+      {
+       "title": "India’s IDBI Bank falls 7% as government announces $5.5 billion stake sale to Canada&apos;s Fairfax",
+       "url": "https://www.cnbc.com/2026/10/15/india-canada-fairfax-idbi-fdi.html",
+       "source": "CNBC"
+      },
+      {
+       "title": "Pivot to Privatisation 2.0: Why IDBI Bank’s sale should rev up India’s push to privatise remaining non-str",
+       "url": "https://m.economictimes.com/opinion/et-commentary/pivot-to-privatisation-2-0-why-idbi-banks-sale-should-rev-up-indias-push-to-privatise-remaining-psus/articleshow/135033678.cms",
        "source": "The Economic Times"
       },
       {
-       "title": "Big IPO week ahead: Only 2 IPOs to hit Dalal Street, including much-awaited Jio Platforms",
-       "url": "https://www.moneycontrol.com/news/business/ipo/big-ipo-week-ahead-only-2-ipos-to-hit-dalal-street-including-much-awaited-jio-platforms-14054580.html",
-       "source": "Moneycontrol.com"
-      },
-      {
-       "title": "Which two mainboard IPOs will open for subscription next week? | GMP for Jio stands at ₹221 or 19.75% | Inshorts",
-       "url": "https://inshorts.com/en/news/which-two-mainboard-ipos-will-open-for-subscription-next-week--1792220833773",
-       "source": "Inshorts"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "IN",
-     "viaRss": true
-    },
-    {
-     "query": "icici bank share",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=icici%20bank%20share&geo=IN",
-     "related": [],
-     "articles": [
-      {
-       "title": "India&apos;s ICICI Bank Q2 profit rises 20.1%, beats estimates",
-       "url": "https://www.reuters.com/world/india/indias-icici-bank-q2-profit-rises-201-beats-estimates-2026-10-17/",
-       "source": "Reuters"
-      },
-      {
-       "title": "ICICI Bank stock: Brokerages bullish after Q2 earnings beat, raise targets; Goldman Sachs sees 45% upside",
-       "url": "https://www.moneycontrol.com/news/business/markets/icici-bank-stock-brokerages-bullish-after-q2-earnings-beat-raise-targets-goldman-sachs-sees-45-upside-14054982.html",
-       "source": "Moneycontrol.com"
-      },
-      {
-       "title": "ICICI Bank Q2 PAT rises 20.1% to ₹14,843 crore, NIM down to 4.18%",
-       "url": "https://www.thehindu.com/business/icici-bank-q2-pat-rises-201-to-14843-crore-nim-down-to-418/article71596780.ece",
-       "source": "The Hindu"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "IN",
-     "viaRss": true
-    },
-    {
-     "query": "axis bank share price",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=axis%20bank%20share%20price&geo=IN",
-     "related": [],
-     "articles": [
-      {
-       "title": "Axis Bank posts Q2 net profit of ₹7,003 crore, up 38%",
-       "url": "https://www.thehindu.com/incoming/axis-bank-posts-q2-net-profit-of-7003-crore-up-38/article71596071.ece",
-       "source": "The Hindu"
-      },
-      {
-       "title": "Earnings call transcript: Axis Bank posts strong Q2 2026 profit growth",
-       "url": "https://in.investing.com/news/stock-market-news/earnings-call-transcript-axis-bank-posts-strong-q2-2026-profit-growth-93CH-5638561",
-       "source": "Investing.com India"
-      },
-      {
-       "title": "Axis Bank to use Rs 1 lakh crore FCNR(B) funds to cut deposit costs or fund loan growth",
-       "url": "https://www.moneycontrol.com/news/business/banks/axis-bank-to-use-rs-1-lakh-crore-fcnr-b-funds-to-cut-deposit-costs-or-fund-loan-growth-14054537.html",
-       "source": "Moneycontrol.com"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "IN",
-     "viaRss": true
-    },
-    {
-     "query": "ಧನ್ವೀರ್ ಗೌಡ",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=%E0%B2%A7%E0%B2%A8%E0%B3%8D%E0%B2%B5%E0%B3%80%E0%B2%B0%E0%B3%8D%20%E0%B2%97%E0%B3%8C%E0%B2%A1&geo=IN",
-     "related": [],
-     "articles": [
-      {
-       "title": "&apos;ಯಾವ ನಾಯಿ-ನರಿಗಳು ಕುತಂತ್ರ ಮಾಡಿದ್ರೂ ಡಿ ಬಾಸ್‌ನ ಏನೂ ಮಾಡೋಕಾಗಲ್ಲ, ಹೊರಗೆ ಬಂದೇ ಬರ್ತಾರೆ&apos;: ನಟ ಧನ್ವೀರ್!",
-       "url": "https://kannada.asianetnews.com/entertainment/actor-dhanveer-gowda-emotional-speech-on-actor-darshan-at-chamarajanagar-dasara-stage-sat/articleshow-7f1gqne",
-       "source": "Asianet News Kannada"
-      },
-      {
-       "title": "Actor Darshan-Dhanveer: &apos;ನಾಯಿ-ನರಿಗಳು ಕುತಂತ್ರ ಮಾಡಿದ್ರೂ ದರ್ಶನ್ ಆಚೆ ಬರ್ತಾರೆ&apos;! ದಸರಾ ವೇದಿಕೆ ಮೇಲೆ ಧನ್ವೀರ್ ಘೋಷಣೆ",
-       "url": "https://kannada.news18.com/news/entertainment/actor-dhanveer-gowda-s-statement-regarding-darshans-release-ach-ws-l-2510318.html",
-       "source": "News18 Kannada"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "IN",
-     "viaRss": true
-    },
-    {
-     "query": "liudmila samsonova",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=liudmila%20samsonova&geo=IN",
-     "related": [],
-     "articles": [
-      {
-       "title": "Tararudee vs. Quevedo Prediction at the Kinoshita Group Japan Open – Sunday, October 18",
-       "url": "https://www.bleachernation.com/picks/2026/10/18/tararudee-vs-quevedo-prediction-at-the-kinoshita-group-japan-open-sunday-october-18/",
-       "source": "Bleacher Nation"
-      },
-      {
-       "title": "WTA Osaka Day 1 Predictions Including Lilli Tagger vs Liudmila Samsonova",
-       "url": "https://lastwordonsports.com/tennis/2026/10/18/wta-osaka-day-1-predictions-tagger-vs-samsonova/",
-       "source": "Last Word On Sports"
-      },
-      {
-       "title": "Lilli Tagger vs. Liudmila Samsonova prediction, odds, picks for WTA Japan Open 2026",
-       "url": "https://www.dimers.com/tennis/news/lilli-tagger-vs-liudmila-samsonova-tennis-prediction-wta-japan-open-2026-ac",
-       "source": "Dimers"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "IN",
-     "viaRss": true
-    },
-    {
-     "query": "sahajanand medical technologies ipo",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=sahajanand%20medical%20technologies%20ipo&geo=IN",
-     "related": [],
-     "articles": [
-      {
-       "title": "Sahajanand Medical Technologies IPO Day 2: Subscription Status, Timeline & Key Issue Details",
-       "url": "https://groww.in/blog/sahajanand-medical-technologies-ipo-day-2-subscription-status",
-       "source": "Groww"
-      },
-      {
-       "title": "News by CNBC TV18 on TradingView, 2026-10-15 — cnbctv:af378483f094b:0",
-       "url": "https://www.tradingview.com/news/cnbctv:af378483f094b:0/",
-       "source": "TradingView"
-      },
-      {
-       "title": "SMT plans to raise ₹200 crore in pre-IPO round",
-       "url": "https://medicalbuyer.co.in/smt-plans-to-raise-%E2%82%B9200-crore-in-pre-ipo-round/",
-       "source": "Medical Buyer"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "IN",
-     "viaRss": true
-    },
-    {
-     "query": "new south wales vs western australia",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=new%20south%20wales%20vs%20western%20australia&geo=IN",
-     "related": [],
-     "articles": [
-      {
-       "title": "Complete Sheffield Shield squads for round two",
-       "url": "https://www.cricket.com.au/news/4593819/all-the-sheffield-shield-squads-for-round-two-nsw-south-wales-nsw-queensland-bulls-tasmania-tigers-south-australia-victoria-western",
-       "source": "cricket.com.au"
-      },
-      {
-       "title": "The Wrights&apos; special Scott Mason connection",
-       "url": "https://www.crickettas.com.au/news/4593888/the-wrights-special-scott-mason-connection",
-       "source": "Cricket Tasmania"
-      },
-      {
-       "title": "VIC vs TAS 4th Match, 19 Oct 2026 Fantasy AI Predictions",
-       "url": "https://www.ai11.in/cricket/series/sheffield-shield-2026-27/match/tasmania-vs-victoria-4th-match-2026",
-       "source": "AI11"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "IN",
-     "viaRss": true
-    },
-    {
-     "query": "jio platforms ipo gmp",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=jio%20platforms%20ipo%20gmp&geo=IN",
-     "related": [],
-     "articles": [
-      {
-       "title": "A few more things about the Jio Platforms IPO",
-       "url": "https://finshots.in/archive/a-few-more-things-about-the-jio-platforms-ipo/",
-       "source": "Finshots"
-      },
-      {
-       "title": "Ambani Taps Massive Reliance Workforce to Boost Jio’s Record IPO",
-       "url": "https://www.bloomberg.com/news/articles/2026-10-16/ambani-taps-massive-reliance-workforce-to-boost-jio-s-record-ipo",
-       "source": "Bloomberg.com"
-      },
-      {
-       "title": "With 524 million customers and 268.5 million on 5G, Jio steps out of Reliance&apos;s results",
-       "url": "https://timesofindia.indiatimes.com/business/with-524-million-customers-and-268-5-million-on-5g-jio-steps-out-of-reliances-results/articleshow/135024938.cms",
+       "title": "Rethinking India’s disinvestment policy: From asset sales to strategic ownership",
+       "url": "https://timesofindia.indiatimes.com/toi-blogs/policy-prices/rethinking-indias-disinvestment-policy-from-asset-sales-to-strategic-ownership/articleshow/135018392.cms",
        "source": "The Times of India"
       }
      ],
@@ -2516,26 +2297,200 @@
      "viaRss": true
     },
     {
-     "query": "dr",
-     "traffic": "100+",
-     "trafficValue": 100,
-     "exploreLink": "https://trends.google.com/trends/explore?q=dr&geo=IN",
+     "query": "urban company share price",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=urban%20company%20share%20price&geo=IN",
      "related": [],
      "articles": [
       {
-       "title": "Congo’s fast-moving Ebola outbreak spreads to eighth province",
-       "url": "https://www.nbcnews.com/world/africa/dr-congos-fast-moving-ebola-outbreak-spreads-eighth-province-rcna604234",
-       "source": "NBC News"
+       "title": "UC Eyes More Capital, Burma Burma’s IPO & More",
+       "url": "https://inc42.com/buzz/uc-eyes-more-capital-burma-burmas-ipo-more/",
+       "source": "Inc42"
       },
       {
-       "title": "Congo confirms Ebola outbreak has spread to eighth province",
-       "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/congo-confirms-ebola-outbreak-spreads-eighth-province-2026-10-18/",
-       "source": "Reuters"
+       "title": "Instant house-help race heats up as losses mount",
+       "url": "https://timesofindia.indiatimes.com/business/india-business/instant-house-help-race-heats-up-as-losses-mount/articleshow/135002106.cms",
+       "source": "The Times of India"
       },
       {
-       "title": "1 in 4 Ebola deaths are children in Democratic Republic of Congo&apos;s worst outbreak",
-       "url": "https://www.cbc.ca/news/health/ebola-congo-children-deaths-9.7384641",
-       "source": "CBC"
+       "title": "Urban Company Q2 loss widens to Rs 182.48 crore as revenue rises 41 per cent",
+       "url": "https://indiantelevision.com/mam/urban-company-q2-loss-widens-to-rs-182-48-crore-as-revenue-rises-41-per-cent/",
+       "source": "Indian Television Dot Com"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "IN",
+     "viaRss": true
+    },
+    {
+     "query": "south indian bank share",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=south%20indian%20bank%20share&geo=IN",
+     "related": [],
+     "articles": [
+      {
+       "title": "South Indian Bank records highest-ever quarterly net profit of ₹426.13 crore",
+       "url": "https://www.thehindu.com/news/national/kerala/south-indian-bank-records-highest-ever-quarterly-net-profit-of-42613-crore/article71592982.ece",
+       "source": "The Hindu"
+      },
+      {
+       "title": "South Indian Bank aims 16 pc loan growth in FY27; bets big on retail, agri and MSME financing",
+       "url": "https://bfsi.economictimes.indiatimes.com/news/banking/south-indian-bank-aims-16-pc-loan-growth-in-fy27-bets-big-on-retail-agri-and-msme-financing/134990861",
+       "source": "bfsi.economictimes.indiatimes.com"
+      },
+      {
+       "title": "What South Indian Bank Buyers Were Betting On",
+       "url": "https://simplywall.st/stocks/in/banks/nse-southbank/south-indian-bank-shares/news/what-south-indian-bank-buyers-were-betting-on",
+       "source": "Simply Wall Street"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "IN",
+     "viaRss": true
+    },
+    {
+     "query": "ril share",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=ril%20share&geo=IN",
+     "related": [],
+     "articles": [
+      {
+       "title": "RIL nears technical breakout amid Jio IPO buzz: Anand James shares the outlook",
+       "url": "https://m.economictimes.com/markets/expert-view/ril-nears-technical-breakout-amid-jio-ipo-buzz-anand-james-shares-the-outlook/articleshow/135037937.cms",
+       "source": "The Economic Times"
+      },
+      {
+       "title": "Reliance (RELIANCE.NS) Gains +1.60% — Support Holds at ₹1127.08 2026-10-05 - OBV Breakout",
+       "url": "https://www.siam.in/aticles-market/Reliance-RELIANCENS-Gains-160-Support-Holds-at-112708-20261005-62-3036",
+       "source": "https://www.siam.in/"
+      },
+      {
+       "title": "Reliance: My Last Analysis Was Spot On. What Comes Next? Plus, TCS & Maruti Suzuki",
+       "url": "https://in.investing.com/analysis/reliance-my-last-analysis-was-spot-on-what-comes-next-plus-tcs--maruti-suzuki-200640402",
+       "source": "Investing.com India"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "IN",
+     "viaRss": true
+    },
+    {
+     "query": "ltm share price",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=ltm%20share%20price&geo=IN",
+     "related": [],
+     "articles": [
+      {
+       "title": "LTM boss sees short-tenure AI deals fuelling quicker revenue boost in H2",
+       "url": "https://m.economictimes.com/tech/information-tech/ltm-boss-sees-short-tenure-ai-deals-fuelling-quicker-revenue-boost-in-h2/articleshow/135033636.cms",
+       "source": "The Economic Times"
+      },
+      {
+       "title": "Hold LTM; target of Rs 4240: Prabhudas Lilladher",
+       "url": "https://www.moneycontrol.com/news/business/earnings/hold-ltm-target-of-rs-4240-prabhudas-lilladher-14055085.html",
+       "source": "Moneycontrol.com"
+      },
+      {
+       "title": "LTM Q2 revenue grows 4.7% to $1.2 bn in Q2; AI biz revenue up 47%",
+       "url": "https://timesofindia.indiatimes.com/business/india-business/ltm-q2-revenue-grows-4-7-to-1-2-bn-in-q2-ai-biz-revenue-up-47/articleshow/134997250.cms",
+       "source": "The Times of India"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "IN",
+     "viaRss": true
+    },
+    {
+     "query": "persistent share price",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=persistent%20share%20price&geo=IN",
+     "related": [],
+     "articles": [
+      {
+       "title": "Earnings Miss: Persistent Systems Limited Missed EPS By 37% And Analysts Are Revising Their Forecasts",
+       "url": "https://simplywall.st/stocks/in/software/nse-persistent/persistent-systems-shares/news/earnings-miss-persistent-systems-limited-missed-eps-by-37-an",
+       "source": "Simply Wall Street"
+      },
+      {
+       "title": "Persistent Systems stock slides 3% after Q2 profit slump, margin miss; brokerages divided on outlook",
+       "url": "https://www.moneycontrol.com/news/business/markets/persistent-systems-stock-slides-3-after-q2-profit-slump-margin-miss-brokerages-divided-on-outlook-14053817.html",
+       "source": "Moneycontrol.com"
+      },
+      {
+       "title": "Persistent’s Software, Hi-Tech Revenue Grows 28.5% as It",
+       "url": "https://analyticsindiamag.com/ai-news/persistents-software-hi-tech-revenue-grows-285-as-it-expands-ai-services",
+       "source": "analyticsindiamag.com"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "IN",
+     "viaRss": true
+    },
+    {
+     "query": "idbi bank share",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=idbi%20bank%20share&geo=IN",
+     "related": [],
+     "articles": [
+      {
+       "title": "IDBI Q2 net slips 39% to ₹2,205 crore operating expenses, provisions",
+       "url": "https://www.thehindu.com/incoming/idbi-q2-net-slips-39-to-2205-crore-operating-expenses-provisions/article71596262.ece",
+       "source": "The Hindu"
+      },
+      {
+       "title": "IDBI Bank shares in focus as Q2 net profit falls 39%; NII tanks nearly 50% YoY",
+       "url": "https://m.economictimes.com/markets/stocks/news/idbi-bank-shares-in-focus-as-q2-net-profit-falls-39-nii-tanks-nearly-50-yoy/articleshow/135038766.cms",
+       "source": "The Economic Times"
+      },
+      {
+       "title": "IDBI Bank Q2 Profit Drops 39% Amid Fairfax Acquisition",
+       "url": "https://money.rediff.com/news/market/idbi-bank-q2-profit-down-39-fairfax-acquires-60-72-stake/56421320261017",
+       "source": "Rediff MoneyWiz"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "IN",
+     "viaRss": true
+    },
+    {
+     "query": "పంట",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=%E0%B0%AA%E0%B0%82%E0%B0%9F&geo=IN",
+     "related": [],
+     "articles": [
+      {
+       "title": "యాసంగిలో యాతన పడొద్దు",
+       "url": "https://www.eenadu.net/telugu-news/districts/nalgonda-news/534/126188904",
+       "source": "Eenadu"
+      },
+      {
+       "title": "రైతులు యాసంగి సాగు చేయొద్దు",
+       "url": "https://www.andhrajyothy.com/2026/telangana/farmers-should-not-undertake-cultivation-for-the-rabi-yasangi-season-1568396.html",
+       "source": "Andhrajyothy"
+      },
+      {
+       "title": "తెలంగాణలో కరువు మంటలు.. రేవంత్‌ సర్కార్‌కు సవాల్‌!",
+       "url": "https://www.sakshi.com/telugu-news/telangana/kommineni-srinivasa-rao-comments-revanth-reddy-power-crisis-2934701",
+       "source": "Sakshi"
       }
      ],
      "image": "",
@@ -2545,7 +2500,7 @@
      "viaRss": true
     }
    ],
-   "fetchedAt": 1792382185337
+   "fetchedAt": 1792384015275
   },
   "DE": {
    "geo": "DE",
@@ -2553,26 +2508,26 @@
    "sourceName": "",
    "items": [
     {
-     "query": "big brother 2026",
-     "traffic": "10000+",
-     "trafficValue": 10000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=big%20brother%202026&geo=DE",
+     "query": "schnee",
+     "traffic": "2000+",
+     "trafficValue": 2000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=schnee&geo=DE",
      "related": [],
      "articles": [
       {
-       "title": "Nach Tag 13: Wer ist raus bei „Promi Big Brother“? – Diese Kandidaten sind gegangen",
-       "url": "https://www.volksfreund.de/nachrichten/boulevard/entertainment/promi-big-brother-wer-ist-raus-garten-wird-immer-leerer_aid-155853379",
-       "source": "Volksfreund"
+       "title": "Bauernregel gibt Schnee-Prognose für Weihnachten – Wetter an einem Tag entscheidend",
+       "url": "https://www.wa.de/nordrhein-westfalen/bauernregel-gibt-schnee-prognose-fuer-weihnachten-wetter-an-einem-tag-entscheidend-zr-94546676.html",
+       "source": "WA.de"
       },
       {
-       "title": "Wie es Nina nach ihrem &quot;Promi Big Brother&quot;-Auszug geht",
-       "url": "https://web.de/magazine/unterhaltung/tv-shows/promi-big-brother/nina-promi-big-brother-auszug-42847898",
-       "source": "WEB.DE"
+       "title": "Bauernregel verbindet Ursulatag mit Schnee an Weihnachten",
+       "url": "https://suaragarut.id/de/ursulatag-bauernregel-weihnachtsschnee",
+       "source": "SuaraGarut.ID"
       },
       {
-       "title": "&quot;Promi Big Brother&quot;: Anouschka Renzi verabschiedet sich",
-       "url": "https://www.gala.de/lifestyle/film-tv-musik/-promi-big-brother---anouschka-renzi-verabschiedet-sich-24697700.html",
-       "source": "GALA.de"
+       "title": "Schnee-Hammer diesen Winter? Ausgerechnet hier könnten plötzlich 1 Meter Neuschnee fallen",
+       "url": "https://www.daswetter.com/nachrichten/vorhersage/schnee-hammer-diesen-winter-ausgerechnet-hier-konnten-plotzlich-1-meter-neuschnee-fallen.html",
+       "source": "Daswetter.com"
       }
      ],
      "image": "",
@@ -2582,26 +2537,26 @@
      "viaRss": true
     },
     {
-     "query": "schnee",
-     "traffic": "2000+",
-     "trafficValue": 2000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=schnee&geo=DE",
+     "query": "radsport",
+     "traffic": "1000+",
+     "trafficValue": 1000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=radsport&geo=DE",
      "related": [],
      "articles": [
       {
-       "title": "Schnee-Hammer diesen Winter? Ausgerechnet hier könnten plötzlich 1 Meter Neuschnee fallen",
-       "url": "https://www.daswetter.com/nachrichten/vorhersage/schnee-hammer-diesen-winter-ausgerechnet-hier-konnten-plotzlich-1-meter-neuschnee-fallen.html",
-       "source": "Daswetter.com"
+       "title": "Bahnrad-WM in Shanghai: Gold für Teutenberg und Silber für Friedrich bei Bahnrad-WM",
+       "url": "https://www.zeit.de/sport/2026-10/bahnrad-wm-shanghai-tim-torn-teutenberg-ausscheidungsfahren-gold-gxe",
+       "source": "DIE ZEIT"
       },
       {
-       "title": "„Ist der Oktober warm und fein“: Bauernregel für Winter-Wetter hat es in sich",
-       "url": "https://www.wa.de/nordrhein-westfalen/ist-der-oktober-warm-und-fein-bauernregel-fuer-winter-wetter-hat-es-in-sich-zr-94545438.html",
-       "source": "WA.de"
+       "title": "Bahnrad-WM in Shanghai: Bahnrad-WM: Friedrich gewinnt Keirin-Silber, Kluge holt Bronze im Madison",
+       "url": "https://www.sportschau.de/regional/rbb/rbb-bahnrad-wm-friedrich-gewinnt-keirin-silber-kluge-holt-bronze-im-madison-100.html",
+       "source": "sportschau.de"
       },
       {
-       "title": "Autobahnen versinken, Dächer brechen ein, Strom fällt aus: Wie ein Meter Neuschnee im Norden entstehen könnte",
-       "url": "https://www.merkur.de/deutschland/neuschnee-in-norddeutschland-wie-realistisch-ist-ein-meter-schnee-zr-94545524.html",
-       "source": "Merkur"
+       "title": "Pauline Grabosch aus Magdeburg sichert sich WM-Gold im Bahnrad-Zeitfahren",
+       "url": "https://www.mdr.de/sport/andere_sportarten/grabosch-weltmeisterin-im-zeitfahren,bahnrad-wm-grabosch-100.html",
+       "source": "MDR.de"
       }
      ],
      "image": "",
@@ -2612,8 +2567,8 @@
     },
     {
      "query": "cyberangriff",
-     "traffic": "200+",
-     "trafficValue": 200,
+     "traffic": "500+",
+     "trafficValue": 500,
      "exploreLink": "https://trends.google.com/trends/explore?q=cyberangriff&geo=DE",
      "related": [],
      "articles": [
@@ -2641,20 +2596,20 @@
     },
     {
      "query": "rechenzentrum",
-     "traffic": "200+",
-     "trafficValue": 200,
+     "traffic": "500+",
+     "trafficValue": 500,
      "exploreLink": "https://trends.google.com/trends/explore?q=rechenzentrum&geo=DE",
      "related": [],
      "articles": [
       {
-       "title": "Chef hinter KI-Rechenzentrum in Amberg: „Glaube, dass wir bei KI-Nutzung erst am Anfang stehen“",
-       "url": "https://www.augsburger-allgemeine.de/mindelheim/das-steckt-hinter-dem-riesigen-geplanten-rechenzentrum-im-allgaeu-4-115327145",
-       "source": "Augsburger Allgemeine"
+       "title": "Megaprojekt mit 384 Dieselgeneratoren: Anwohner wehren sich gegen gigantischen Datenzentrum-Campus",
+       "url": "https://www.focus.de/panorama/welt/megaprojekt-mit-384-dieselgeneratoren-anwohner-wehren-sich-gegen-gigantischen-datenzentrum-campus_634075b6-2ea0-4643-8872-d8352094cbaa.html",
+       "source": "FOCUS online"
       },
       {
-       "title": "Rechenzentrum bei Amberg – Wasser wird nicht „verbraucht“",
-       "url": "https://rt1.imsueden.de/rechenzentrum-bei-amberg-wasser-wird-nicht-verbraucht-893643/",
-       "source": "HITRADIO RT1"
+       "title": "Anwohner wehren sich gegen Rechenzentrum mit 384 Dieselgeneratoren",
+       "url": "https://suaragarut.id/de/rechenzentrum-wagga-wagga-anwohner-protest",
+       "source": "SuaraGarut.ID"
       },
       {
        "title": "Bau von KI-Rechenzentren kommt in den USA ins Stocken",
@@ -2669,26 +2624,26 @@
      "viaRss": true
     },
     {
-     "query": "swr1",
+     "query": "radio",
      "traffic": "200+",
      "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=swr1&geo=DE",
+     "exploreLink": "https://trends.google.com/trends/explore?q=radio&geo=DE",
      "related": [],
      "articles": [
       {
-       "title": "Jetzt live mitfiebern und nix verpassen bei der SWR1 Hitparade 2025 in Baden-Württemberg!",
-       "url": "https://www.swr.de/swr1/bw/videostream-zur-swr1-hitparade-baden-wuerttemberg-2026-100.html",
-       "source": "SWR"
+       "title": "Congress is weighing an AM radio mandate. Broadcasters say it’s still a lifeline across Arizona.",
+       "url": "https://cronkitenews.azpbs.org/2026/10/17/braccio-am-radio-mandate/",
+       "source": "Cronkite News"
       },
       {
-       "title": "Live-Sendung am Marktplatz: SWR1-Hitparade macht Station in Pfullingen",
-       "url": "https://www.swp.de/lokales/reutlingen/live-sendung-am-marktplatz-swr1-hitparade-macht-station-in-pfullingen-79577114.html",
-       "source": "swp.de"
+       "title": "Why (Digital) Radio Remains Essential in the Car",
+       "url": "https://www.radioworld.com/columns-and-views/guest-commentaries/why-digital-radio-remains-essential-in-the-car",
+       "source": "Radio World"
       },
       {
-       "title": "Montag: Eure Geschichten, eure Bilder, eure Momente im Hitparaden-Blog",
-       "url": "https://www.swr.de/swr1/bw/blog-2026-montag-swr1-bw-hitparade-100.html",
-       "source": "SWR"
+       "title": "Grassley Maps The AM Act’s Hopes To Pass Through Senate",
+       "url": "https://radioink.com/2026/10/12/grassley-maps-the-am-acts-hopes-to-pass-through-senate/",
+       "source": "Radio Ink"
       }
      ],
      "image": "",
@@ -2698,26 +2653,55 @@
      "viaRss": true
     },
     {
-     "query": "tierkreiszeichen",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=tierkreiszeichen&geo=DE",
+     "query": "jo gerner",
+     "traffic": "100+",
+     "trafficValue": 100,
+     "exploreLink": "https://trends.google.com/trends/explore?q=jo%20gerner&geo=DE",
      "related": [],
      "articles": [
       {
-       "title": "Der November bringt Bewegung ins Leben dieser 5 Sternzeichen",
-       "url": "https://www.desired.de/astrologie/der-november-bringt-bewegung-ins-leben-dieser-5-sternzeichen--01M4TFYGH40VE2KERHW2740AJ8",
-       "source": "desired.de"
+       "title": "GZSZ-Vorschau vom 22. Oktober bei RTL: Gerner setzt Nihat auf Katrin und Kaltenbach an",
+       "url": "https://www.rtl.de/sendungen/gzsz/gzsz-vorschau-vom-22-oktober-bei-rtl-gerner-setzt-nihat-auf-katrin-und-kaltenbach-an-id31418606.html",
+       "source": "RTL.de"
       },
       {
-       "title": "Juhu! Für dieses Sternzeichen wird der November 2026 zum besten Monat des Jahres",
-       "url": "https://www.harpersbazaar.de/horoskop/juhu-fuer-dieses-sternzeichen-november-2026-besten-monat-jahres",
-       "source": "Harper’s BAZAAR"
+       "title": "Vorschau GZSZ Folge 8636: Jo Gerner fliegt raus",
+       "url": "https://www.swp.de/unterhaltung/gzsz/gute-zeiten-schlechte-zeiten-seifenoper-jo-gerner-wolgang-bahro-katrin-flemming-ulrike-frank-rtl-79580955.html",
+       "source": "swp.de"
       },
       {
-       "title": "Mehr Leichtigkeit, neue Chancen: Für diese 5 Sternzeichen wird der November zum Glücksmonat",
-       "url": "https://www.familie.de/familienleben/mehr-leichtigkeit-neue-chancen-fuer-diese-5-sternzeichen-wird-der-november-zum-gluecksmonat--01M4ZMTKZP61C9YB6ZY4J04N6K",
-       "source": "familie.de"
+       "title": "GZSZ-Vorschau vom 22. Oktober 2026 bei RTL: Gerner lässt Katrin und Richard heimlich überwachen",
+       "url": "https://www.rtl.de/sendungen/gzsz/videos/gzsz-vorschau-vom-22-oktober-2026-bei-rtl-gerner-laesst-katrin-und-richard-heimlich-ueberwachen-6ace3d18b456528be7003fc1.html",
+       "source": "RTL.de"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "DE",
+     "viaRss": true
+    },
+    {
+     "query": "del2",
+     "traffic": "100+",
+     "trafficValue": 100,
+     "exploreLink": "https://trends.google.com/trends/explore?q=del2&geo=DE",
+     "related": [],
+     "articles": [
+      {
+       "title": "Eishockey DEL: Blitz-Tor kann Düsseldorfer EG nicht stoppen",
+       "url": "https://www.bild.de/sport/mehr-sport/eishockey-del-blitz-tor-kann-duesseldorfer-eg-nicht-stoppen-6ad52600199dc15f1abd8a60",
+       "source": "BILD"
+      },
+      {
+       "title": "3:5-Rückstand in Bietigheim gedreht – DEG kommt mit einem blauen Auge davon",
+       "url": "https://rp-online.de/sport/eishockey/deg/6-5-in-bietigheim-deg-kommt-mit-einem-blauen-auge-davon_aid-156774389",
+       "source": "RP Online"
+      },
+      {
+       "title": "Rekordstart und Punktgewinn gegen den Spitzenreiter",
+       "url": "https://steelers.de/news/rekordstart-und-punktgewinn-gegen-den-spitzenreiter",
+       "source": "Bietigheim Steelers"
       }
      ],
      "image": "",
@@ -2732,21 +2716,34 @@
      "trafficValue": 100,
      "exploreLink": "https://trends.google.com/trends/explore?q=green%20bay%20packers&geo=DE",
      "related": [],
+     "articles": [],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "DE",
+     "viaRss": true
+    },
+    {
+     "query": "haberler",
+     "traffic": "100+",
+     "trafficValue": 100,
+     "exploreLink": "https://trends.google.com/trends/explore?q=haberler&geo=DE",
+     "related": [],
      "articles": [
       {
-       "title": "Game Photos from the Patriots win over the Jets | Regular Season Game 6 presented by Sony",
-       "url": "https://www.patriots.com/photos/game-photos-from-the-patriots-win-over-the-jets-regular-season-game-6-presented-by-sony",
-       "source": "Patriots.com"
+       "title": "Mısır&apos;dan bölgede dengeleri değiştirecek karar: Türkiye, Pakistan ve Suudi Arabistan ile koordinasyonu artırma mesajı",
+       "url": "https://www.hurriyet.com.tr/dunya/misirdan-bolgede-dengeleri-degistirecek-karar-turkiye-pakistan-ve-suudi-arabistan-ile-koordinasyonu-artirma-mesaji-43346281",
+       "source": "Hürriyet"
       },
       {
-       "title": "Instant analysis from the Ravens’ 30-23 overtime win vs. Falcons in Week 5",
-       "url": "https://www.baltimoresun.com/2026/10/12/instant-analysis-ravens-30-23-overtime-win-over-falcons-sunday-night-football/",
-       "source": "Baltimore Sun"
+       "title": "Bir ülke daha savaşa dahil oluyor! Husiler acil kodlu mesaj yolladı: Endişe duyuyoruz",
+       "url": "https://www.haber7.com/dunya/haber/3668996-bir-ulke-daha-savasa-dahil-oluyor-husiler-acil-kodlu-mesaj-yolladi-endise-duyuyoruz",
+       "source": "Haber 7"
       },
       {
-       "title": "Tyler Huntley Delivers (Again) With the Faith of His Teammates in Atlanta Win",
-       "url": "https://www.baltimoreravens.com/news/tyler-huntley-smile-faith-teammates-atlanta-overtime-win-ravens-falcons-2026",
-       "source": "Baltimore Ravens"
+       "title": "Suudiler Mısır&apos;ın Vaatleriyle Dalga Geçti: Sizi Daha Önce Denedik!",
+       "url": "https://www.tasnimnews.ir/tr/news/2026/10/18/3725965/suudiler-m%C4%B1s%C4%B1r-%C4%B1n-vaatleriyle-dalga-ge%C3%A7ti-sizi-daha-%C3%B6nce-denedik",
+       "source": "تسنیم"
       }
      ],
      "image": "",
@@ -2756,84 +2753,26 @@
      "viaRss": true
     },
     {
-     "query": "bargeld",
+     "query": "sacha boey",
      "traffic": "100+",
      "trafficValue": 100,
-     "exploreLink": "https://trends.google.com/trends/explore?q=bargeld&geo=DE",
+     "exploreLink": "https://trends.google.com/trends/explore?q=sacha%20boey&geo=DE",
      "related": [],
      "articles": [
       {
-       "title": "Bargeld: Wer das nicht meldet, zahlt Strafe – &quot;ordnungswidrig&quot;",
-       "url": "https://www.futurezone.de/digital-life/verbraucher/article526854/bargeld-zollmeldung-kein-bescheid-dann-macht-man-sich-straffaellig-tabelle-meldet.html",
-       "source": "futurezone.de"
+       "title": "So plant der FC Bayern mit Boey: Darum setzt Kompany plötzlich auf Abwehr-Flop",
+       "url": "https://sportbild.bild.de/fussball/fc-bayern-muenchen/so-plant-der-fc-bayern-mit-boey-darum-setzt-kompany-ploetzlich-auf-abwehr-flop-6ad4f9cd15f4f374d6f86472",
+       "source": "Sport Bild"
       },
       {
-       "title": "Aus dem Polizeibericht: Bargeld aus einer Wohnung in Genthin gestohlen",
-       "url": "https://www.volksstimme.de/blaulicht/genthin/bargeld-aus-einer-wohnung-in-genthin-gestohlen-4341137",
-       "source": "Volksstimme"
+       "title": "Nach Boey-Überraschung: So plant der FC Bayern",
+       "url": "https://www.fussballtransfers.com/a781548768784352364-boey-ueberraschung-so-plant-der-fc-bayern",
+       "source": "Fussball Transfers"
       },
       {
-       "title": "Bald kein Bargeld mehr? Warum beim Bäcker heute jeder Zweite mit Karte bezahlt",
-       "url": "https://www.augsburger-allgemeine.de/mindelheim/bargeld-oder-karte-mindelheimer-geschaefte-bieten-kunden-viele-zahlungsarten-an-93-114484306",
-       "source": "Augsburger Allgemeine"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "DE",
-     "viaRss": true
-    },
-    {
-     "query": "ice 596",
-     "traffic": "100+",
-     "trafficValue": 100,
-     "exploreLink": "https://trends.google.com/trends/explore?q=ice%20596&geo=DE",
-     "related": [],
-     "articles": [
-      {
-       "title": "Deutsche Bahn: ICE verpasst Halt und fährt an hessischer Stadt vorbei",
-       "url": "https://www.bild.de/regional/hessen/deutsche-bahn-ice-verpasst-halt-und-faehrt-an-hessischer-stadt-vorbei-6ad4e248199dc15f1abd8777",
-       "source": "BILD"
-      },
-      {
-       "title": "Voll, verspätet und dann das : Lokführer vergisst Halt - ICE fährt an Fulda vorbei",
-       "url": "https://www.n-tv.de/panorama/Lokfuehrer-vergisst-Halt-ICE-faehrt-an-Fulda-vorbei-id31432063.html",
-       "source": "n-tv.de"
-      },
-      {
-       "title": "Erneute Bahn-Panne: ICE-Lokführer verpasst Halt in Osthessen",
-       "url": "https://www.zeit.de/news/2026-10/18/ice-lokfuehrer-verpasst-halt-und-rauscht-an-fulda-vorbei",
-       "source": "DIE ZEIT"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "DE",
-     "viaRss": true
-    },
-    {
-     "query": "uhren umstellen",
-     "traffic": "100+",
-     "trafficValue": 100,
-     "exploreLink": "https://trends.google.com/trends/explore?q=uhren%20umstellen&geo=DE",
-     "related": [],
-     "articles": [
-      {
-       "title": "Schaltsekunde abgeschafft - kommt dafür die Schaltstunde?",
-       "url": "https://www.tagesschau.de/wissen/forschung/schaltsekunde-abschaffung-100.html",
-       "source": "tagesschau.de"
-      },
-      {
-       "title": "Weltweite Zeitänderung beschlossen: Ab 2027 gilt Koordinierte Weltzeit",
-       "url": "https://www.merkur.de/verbraucher/zeitumstellung-beschlossen-ab-2027-gilt-koordinierte-weltzeit-94543537.html",
-       "source": "Merkur"
-      },
-      {
-       "title": "Weltweite Zeitanpassung 2027: Die Schaltsekunde wird abgeschafft",
-       "url": "https://web.de/magazine/wissen/zeitumstellung/weltweite-zeitanpassung-2027-schaltsekunde-abgeschafft-42839902",
-       "source": "WEB.DE"
+       "title": "Kim musste gegen Leipzig angeschlagen raus",
+       "url": "https://www.ligainsider.de/minjae-kim_27022/kim-musste-gegen-leipzig-angeschlagen-raus-419350/",
+       "source": "LigaInsider"
       }
      ],
      "image": "",
@@ -2843,13 +2782,158 @@
      "viaRss": true
     }
    ],
-   "fetchedAt": 1792382186052
+   "fetchedAt": 1792384016053
   },
   "FR": {
    "geo": "FR",
    "source": "rss",
    "sourceName": "",
    "items": [
+    {
+     "query": "secret fashion show",
+     "traffic": "5000+",
+     "trafficValue": 5000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=secret%20fashion%20show&geo=FR",
+     "related": [],
+     "articles": [
+      {
+       "title": "See All the Stars Arriving on the Pink Carpet at the 2026 Victoria’s Secret Fashion Show",
+       "url": "https://people.com/2026-victorias-secret-fashion-show-arrivals-12180896",
+       "source": "People.com"
+      },
+      {
+       "title": "Victoria&apos;s Secret Fashion Show struts through the seasons in Los Angeles",
+       "url": "https://www.yahoo.com/entertainment/articles/victorias-secret-fashion-show-struts-035344929.html",
+       "source": "Yahoo"
+      },
+      {
+       "title": "Victoria’s Secret Fashion Show 2026 runway: The best model moments",
+       "url": "https://pagesix.com/2026/10/18/photos/victorias-secret-fashion-show-2026-runway-the-best-model-moments/",
+       "source": "Page Six"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "FR",
+     "viaRss": true
+    },
+    {
+     "query": "ukraine",
+     "traffic": "5000+",
+     "trafficValue": 5000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=ukraine&geo=FR",
+     "related": [],
+     "articles": [
+      {
+       "title": "De nouvelles frappes croisées, Zelensky « reconnaissant » de la reprise du renseignement",
+       "url": "https://www.20minutes.fr/monde/ukraine/4255362-20261018-guerre-ukraine-nouvelles-frappes-croisees-zelensky-reconnaissant-reprise-partage-renseignement",
+       "source": "20 Minutes"
+      },
+      {
+       "title": "L’Ukraine défie Donald Trump en bombardant lourdement la Russie",
+       "url": "https://www.courrierinternational.com/article/geopolitique-l-ukraine-defie-donald-trump-en-bombardant-lourdement-la-russie_279678",
+       "source": "Courrier international"
+      },
+      {
+       "title": "Guerre en Ukraine : L&apos;opération M&M&apos;s qui cible les aéroports russes ne fait que commencer, préviennent les Ukrainiens",
+       "url": "https://www.lindependant.fr/2026/10/16/guerre-en-ukraine-loperation-mms-qui-cible-les-aeroports-russes-ne-fait-que-commencer-previennent-les-ukrainiens-13604108.php",
+       "source": "L&apos;Indépendant"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "FR",
+     "viaRss": true
+    },
+    {
+     "query": "le figaro",
+     "traffic": "2000+",
+     "trafficValue": 2000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=le%20figaro&geo=FR",
+     "related": [],
+     "articles": [
+      {
+       "title": "Mobilisation du 17 octobre : Trump et le Kremlin main dans la main pour dénoncer le « chaos migratoire » et la « décadence » de l’Europe",
+       "url": "https://www.lemonde.fr/international/article/2026/10/19/mobilisation-du-17-octobre-trump-et-le-kremlin-main-dans-la-main-pour-denoncer-le-chaos-migratoire-et-la-decadence-de-l-europe_6797410_3210.html",
+       "source": "Le Monde.fr"
+      },
+      {
+       "title": "Le billet. Comme un air de Révolution française",
+       "url": "https://www.ledauphine.com/societe/2026/10/19/comme-un-air-de-revolution-francaise",
+       "source": "Le Dauphiné Libéré"
+      },
+      {
+       "title": "Manifestations du 17 octobre: le vice-président américain JD Vance accuse l&apos;immigration dans les violences en France",
+       "url": "https://www.bfmtv.com/societe/manifestations/manifestations-du-17-octobre-le-vice-president-americain-jd-vance-accuse-l-immigration-dans-les-violences-en-france_AD-202610180055.html",
+       "source": "BFM"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "FR",
+     "viaRss": true
+    },
+    {
+     "query": "lamour est dans le pré",
+     "traffic": "2000+",
+     "trafficValue": 2000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=lamour%20est%20dans%20le%20pr%C3%A9&geo=FR",
+     "related": [],
+     "articles": [
+      {
+       "title": "L&apos;amour est dans le pré : Épisode 9 - Partie 1 12-10-2026",
+       "url": "https://www.m6.fr/l-amour-est-dans-le-pre-p_857/episode-9-partie-1-c_13199704",
+       "source": "M6+"
+      },
+      {
+       "title": "&quot;J&apos;ai préféré bouleverser le planning&quot; : Benoît de &quot;L&apos;amour est dans le pré&quot; 2026 décide de chambouler la journée prévue pour renvoyer une prétendante chez elle",
+       "url": "https://fr.news.yahoo.com/jai-pr%C3%A9f%C3%A9r%C3%A9-bouleverser-planning-beno%C3%AEt-190500714.html",
+       "source": "Yahoo Actualités"
+      },
+      {
+       "title": "L’amour est dans le pré : coup de théâtre chez Manon, Kévin tente de tricher pour évincer Sébastien et se fait griller",
+       "url": "https://www.telestar.fr/actu_tv/lamour-est-dans-le-pre-coup-de-theatre-chez-manon-kevin-tente-de-tricher-pour-evincer-sebastien-et-se-fait-griller-1787811",
+       "source": "Télé Star"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "FR",
+     "viaRss": true
+    },
+    {
+     "query": "david lisnard présidentielle 2027",
+     "traffic": "2000+",
+     "trafficValue": 2000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=david%20lisnard%20pr%C3%A9sidentielle%202027&geo=FR",
+     "related": [],
+     "articles": [
+      {
+       "title": "David Lisnard, la surprise libérale",
+       "url": "https://www.lepoint.fr/politique/david-lisnard-la-surprise-liberale-K3Y3O4R7AREPNMJPDXPMW7UH6A/",
+       "source": "Le Point"
+      },
+      {
+       "title": "&quot;L&apos;idée, c&apos;était de gagner en notoriété&quot; : se passe-t-il vraiment &quot;quelque chose&quot; autour de la candidature de David Lisnard à la présidentielle",
+       "url": "https://www.franceinfo.fr/elections/presidentielle/l-idee-c-etait-de-gagner-en-notoriete-se-passe-t-il-vraiment-quelque-chose-autour-de-la-candidature-de-david-lisnard-a-la-presidentielle_8238541.html",
+       "source": "franceinfo"
+      },
+      {
+       "title": "Présidentielle 2027 : autour de la candidature de David Lisnard, « il se passe quelque chose », mais quoi ?",
+       "url": "https://www.lemonde.fr/politique/article/2026/10/17/presidentielle-2027-autour-de-la-candidature-de-david-lisnard-il-se-passe-quelque-chose-mais-quoi_6796307_823448.html",
+       "source": "Le Monde.fr"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "FR",
+     "viaRss": true
+    },
     {
      "query": "princesse maria carolina de bourbon des deux-siciles",
      "traffic": "1000+",
@@ -2880,35 +2964,6 @@
      "viaRss": true
     },
     {
-     "query": "david lisnard présidentielle 2027",
-     "traffic": "1000+",
-     "trafficValue": 1000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=david%20lisnard%20pr%C3%A9sidentielle%202027&geo=FR",
-     "related": [],
-     "articles": [
-      {
-       "title": "David Lisnard, la surprise libérale",
-       "url": "https://www.lepoint.fr/politique/david-lisnard-la-surprise-liberale-K3Y3O4R7AREPNMJPDXPMW7UH6A/",
-       "source": "Le Point"
-      },
-      {
-       "title": "&quot;L&apos;idée, c&apos;était de gagner en notoriété&quot; : se passe-t-il vraiment &quot;quelque chose&quot; autour de la candidature de David Lisnard à la présidentielle",
-       "url": "https://www.franceinfo.fr/elections/presidentielle/l-idee-c-etait-de-gagner-en-notoriete-se-passe-t-il-vraiment-quelque-chose-autour-de-la-candidature-de-david-lisnard-a-la-presidentielle_8238541.html",
-       "source": "franceinfo"
-      },
-      {
-       "title": "Présidentielle 2027 : autour de la candidature de David Lisnard, « il se passe quelque chose », mais quoi ?",
-       "url": "https://www.lemonde.fr/politique/article/2026/10/17/presidentielle-2027-autour-de-la-candidature-de-david-lisnard-il-se-passe-quelque-chose-mais-quoi_6796307_823448.html",
-       "source": "Le Monde.fr"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "FR",
-     "viaRss": true
-    },
-    {
      "query": "kylie jenner",
      "traffic": "500+",
      "trafficValue": 500,
@@ -2921,43 +2976,14 @@
        "source": "Vogue"
       },
       {
-       "title": "The 8 Most Expensive Fantasy Bras in Victoria’s Secret History—Starting at $3 Million",
-       "url": "https://www.instyle.com/most-expensive-victorias-secret-fantasy-bras-12178057",
-       "source": "InStyle"
-      },
-      {
        "title": "Kylie Jenner Wore Victoria’s Secret’s First Fantasy Bra Since 2018, and Timothée Chalamet Saw It",
        "url": "https://www.elle.com/fashion/a74137418/victorias-secret-fashion-show-2026-review/",
        "source": "ELLE"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "FR",
-     "viaRss": true
-    },
-    {
-     "query": "tate mcrae",
-     "traffic": "500+",
-     "trafficValue": 500,
-     "exploreLink": "https://trends.google.com/trends/explore?q=tate%20mcrae&geo=FR",
-     "related": [],
-     "articles": [
-      {
-       "title": "Tate McRae Went for Red Hot Monochrome Lingerie at Victoria&apos;s Secret Fashion Show 2026",
-       "url": "https://www.teenvogue.com/story/tate-mcrae-victorias-secret-fashion-show-10-18-2026",
-       "source": "Teen Vogue"
       },
       {
-       "title": "Tate McRae shows off her abs in daring bra and hip-high slit on the Victoria’s Secret Fashion Show 2026 red carpet",
-       "url": "https://pagesix.com/2026/10/18/style/tate-mcrae-shows-off-her-abs-in-a-bra-on-the-victorias-secret-fashion-show-2026-red-carpet/",
-       "source": "Page Six"
-      },
-      {
-       "title": "Tate McRae Gives First Live Performance of New Single ‘Housewife’ at Victoria’s Secret Fashion Show 2026",
-       "url": "https://www.yahoo.com/entertainment/music/articles/tate-mcrae-gives-first-live-004801662.html",
-       "source": "Yahoo"
+       "title": "Victoria’s Secret Fantasy Bra Returns for 2026 Fashion Show After 8 Years – Here’s What We Know",
+       "url": "https://www.imdb.com/es/news/ni66069142/?ref_=nwc_art_perm",
+       "source": "IMDb"
       }
      ],
      "image": "",
@@ -2996,113 +3022,26 @@
      "viaRss": true
     },
     {
-     "query": "alex consani",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=alex%20consani&geo=FR",
+     "query": "meteo toulon",
+     "traffic": "100+",
+     "trafficValue": 100,
+     "exploreLink": "https://trends.google.com/trends/explore?q=meteo%20toulon&geo=FR",
      "related": [],
      "articles": [
       {
-       "title": "Alex Consani Returns to the Victoria’s Secret Fashion Show—This Time in a Puffy Pink Cape",
-       "url": "https://www.harpersbazaar.com/celebrity/latest/a74162843/alex-consani-victorias-secret-fashion-show-2026-runway-photos/",
-       "source": "Harper&apos;s BAZAAR"
+       "title": "Météo. Quel temps fera-t-il à Toulon et ses environs le lundi 19 octobre 2026 ?",
+       "url": "https://www.ouest-france.fr/meteo/provence-alpes-cote-dazur/toulon-83000/la-meteo-du-jour-a-toulon-4e37f9c7-78dc-495d-9880-a03bb7dbe63f",
+       "source": "Ouest-France"
       },
       {
-       "title": "Alex Consani Returns to the Victoria’s Secret Fashion Show—This Time in a Puffy Pink Cape",
-       "url": "https://www.aol.com/articles/alex-consani-returns-victoria-secret-235805000.html",
-       "source": "AOL.com"
+       "title": "Météo. Quel temps fera-t-il à Toulon et ses environs le dimanche 18 octobre 2026 ?",
+       "url": "https://www.ouest-france.fr/meteo/provence-alpes-cote-dazur/toulon-83000/la-meteo-du-jour-a-toulon-98bbc52a-0a31-4808-a1ee-4d5e4fc2a60c",
+       "source": "Ouest-France"
       },
       {
-       "title": "In Albania, solidarity grows in response to police violence",
-       "url": "https://www.lemonde.fr/en/international/article/2026/10/18/in-albania-solidarity-grows-in-response-to-police-violence_6758728_4.html",
-       "source": "Le Monde.fr"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "FR",
-     "viaRss": true
-    },
-    {
-     "query": "megan moroney",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=megan%20moroney&geo=FR",
-     "related": [],
-     "articles": [
-      {
-       "title": "Megan Moroney Performs 3 Songs at Victoria’s Secret Fashion Show 2026 – Setlist & Lyrics Meanings Explained!",
-       "url": "https://www.imdb.com/es/news/ni66069185/?ref_=nwc_art_perm",
-       "source": "IMDb"
-      },
-      {
-       "title": "Megan Moroney Performs 3 Songs at Victoria&apos;s Secret Fashion Show 2026 - Setlist & Lyrics Meanings Explained!",
-       "url": "https://www.justjared.com/2026/10/18/megan-moroney-victorias-secret-fashion-show-2026-setlist-lyrics-meaning/",
-       "source": "Just Jared"
-      },
-      {
-       "title": "Megan Moroney is the girl’s girl",
-       "url": "https://www.hercampus.com/school/mizzou/megan-moroney-is-the-girls-girl/",
-       "source": "Her Campus"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "FR",
-     "viaRss": true
-    },
-    {
-     "query": "snap",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=snap&geo=FR",
-     "related": [],
-     "articles": [
-      {
-       "title": "Carr leads Michigan over Penn State after Underwood benched",
-       "url": "https://www.espn.com/college-football/story/_/id/50204643/carr-leads-michigan-penn-state-underwood-benched",
-       "source": "ESPN"
-      },
-      {
-       "title": "Penn State HC Matt Campbell on Chance of Benching QB Rocco Becht",
-       "url": "https://sports.yahoo.com/articles/penn-state-hc-matt-campbell-005920012.html",
-       "source": "Yahoo Sports"
-      },
-      {
-       "title": "Blame Bryce Underwood for his play on the field, but the rest of the circus was not his doing",
-       "url": "https://www.nytimes.com/athletic/7699977/2026/10/18/bryce-underwood-michigan-tommy-carr/",
-       "source": "The New York Times"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "FR",
-     "viaRss": true
-    },
-    {
-     "query": "flamengo",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=flamengo&geo=FR",
-     "related": [],
-     "articles": [
-      {
-       "title": "Bahia x Flamengo: onde assistir ao vivo, horário e escalações",
-       "url": "https://ge.globo.com/ba/futebol/brasileirao-serie-a/noticia/2026/10/18/bahia-x-flamengo-onde-assistir-ao-vivo-horario-e-escalacoes.ghtml",
-       "source": "ge"
-      },
-      {
-       "title": "Paulo Vinicius Coelho (PVC): Flamengo massacra o Bahia, vence cansaço e viagens para manter liderança",
-       "url": "https://www.uol.com.br/esporte/colunas/pvc/2026/10/18/flamengo-vence-o-bahia-o-cansaco-e-as-viagens-para-manter-lideranca.htm",
-       "source": "UOL"
-      },
-      {
-       "title": "Rossi interrompe Ronaldo e o parabeniza pela partida: “Grande jogo&quot;",
-       "url": "https://atarde.com.br/esportes/rossi-interrompe-ronaldo-e-o-parabeniza-pela-partida-grande-jogo-1406187",
-       "source": "A TARDE"
+       "title": "Premières gelées de la saison, baisse des températures et fortes pluies… la météo de ce lundi 19 octobre",
+       "url": "https://www.bfmtv.com/replay-emissions/bfm-premiere/video-premieres-gelees-de-la-saison-baisse-des-temperatures-et-fortes-pluies-la-meteo-de-ce-lundi-19-octobre_VN-202610190053.html",
+       "source": "BFM"
       }
      ],
      "image": "",
@@ -3141,42 +3080,13 @@
      "viaRss": true
     }
    ],
-   "fetchedAt": 1792382187132
+   "fetchedAt": 1792384016245
   },
   "KR": {
    "geo": "KR",
    "source": "rss",
    "sourceName": "",
    "items": [
-    {
-     "query": "박혜연",
-     "traffic": "20000+",
-     "trafficValue": 20000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=%EB%B0%95%ED%98%9C%EC%97%B0&geo=KR",
-     "related": [],
-     "articles": [
-      {
-       "title": "53세 김승수, 39세 아나운서 박혜연과 커플 됐다",
-       "url": "https://www.newsis.com/view/NISX20261019_0003830764",
-       "source": "뉴시스"
-      },
-      {
-       "title": "김승수♥박혜연 최종 커플 성사…예상 뒤엎은 결과에 서장훈도 &apos;입이 떡&apos; (&apos;미우새&apos;)",
-       "url": "https://www.osen.co.kr/article/G1112894787",
-       "source": "OSEN"
-      },
-      {
-       "title": "“실제로 번호 교환했다더라” 김승수♥박혜연 ‘합숙맞선’ 최종 커플 탄생 (‘미우새’)[종합]",
-       "url": "https://www.mk.co.kr/news/broadcasting-service/12179133",
-       "source": "매일경제"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "KR",
-     "viaRss": true
-    },
     {
      "query": "황현희",
      "traffic": "1000+",
@@ -3224,67 +3134,9 @@
        "source": "제민일보"
       },
       {
-       "title": "[오늘의 운세] 10월 19일 월요일 (음력 9월 9일 丙寅)",
-       "url": "https://www.chosun.com/national/national_general/2026/10/18/4NJRJQIIQVH4LDVB2KBOICUN5M/",
-       "source": "조선일보"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "KR",
-     "viaRss": true
-    },
-    {
-     "query": "소형모듈원자로",
-     "traffic": "1000+",
-     "trafficValue": 1000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=%EC%86%8C%ED%98%95%EB%AA%A8%EB%93%88%EC%9B%90%EC%9E%90%EB%A1%9C&geo=KR",
-     "related": [],
-     "articles": [
-      {
-       "title": "&quot;한국 없인 안돼&quot;…체코 SMR &apos;독자 수주&apos; 대박 낸 K원전 [김리안의 에네르기파WAR]",
-       "url": "https://www.hankyung.com/article/202610154699i",
-       "source": "한국경제"
-      },
-      {
-       "title": "체코, 첫 SMR 인허가 시동… 원전 도입 넘어 &apos;세계 부품시장&apos; 정조준",
-       "url": "https://www.esnews.kr/news/articleView.html?idxno=6761",
-       "source": "에너지안전신문"
-      },
-      {
-       "title": "체코 SMR 사업, 환경 영향 평가 절차 돌입... 두산에너빌 수주 가시화",
-       "url": "https://www.theguru.co.kr/news/article.html?no=108229",
-       "source": "더구루"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "KR",
-     "viaRss": true
-    },
-    {
-     "query": "독도",
-     "traffic": "1000+",
-     "trafficValue": 1000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=%EB%8F%85%EB%8F%84&geo=KR",
-     "related": [],
-     "articles": [
-      {
-       "title": "[태화강]미래를 여는 바다 동해, 그리고 독도",
-       "url": "https://www.ksilbo.co.kr/news/articleView.html?idxno=1069827",
-       "source": "경상일보"
-      },
-      {
-       "title": "울릉도에 &apos;독도교육원&apos; 들어선다…2028년 9월 준공 목표",
-       "url": "https://www.newsis.com/view/NISX20261019_0003830966",
-       "source": "뉴시스"
-      },
-      {
-       "title": "울릉도에 &apos;독도교육원&apos; 착공…&quot;현장체험형 독도 교육의 중심 역할&quot;",
-       "url": "https://www.asiae.co.kr/article/2026101909505022570",
-       "source": "아시아경제"
+       "title": "[부산일보 오늘의 운세]10월 20일(음 9월 10일)",
+       "url": "https://www.busan.com/view/busan/view.php?code=2026101909345064456",
+       "source": "부산일보"
       }
      ],
      "image": "",
@@ -3295,8 +3147,8 @@
     },
     {
      "query": "심영순",
-     "traffic": "500+",
-     "trafficValue": 500,
+     "traffic": "1000+",
+     "trafficValue": 1000,
      "exploreLink": "https://trends.google.com/trends/explore?q=%EC%8B%AC%EC%98%81%EC%88%9C&geo=KR",
      "related": [],
      "articles": [],
@@ -3307,9 +3159,38 @@
      "viaRss": true
     },
     {
+     "query": "수류탄",
+     "traffic": "500+",
+     "trafficValue": 500,
+     "exploreLink": "https://trends.google.com/trends/explore?q=%EC%88%98%EB%A5%98%ED%83%84&geo=KR",
+     "related": [],
+     "articles": [
+      {
+       "title": "중고 행사 ’득템 상자’ 열었더니…2차 대전 수류탄 ’우르르’",
+       "url": "https://www.yonhapnewstv.co.kr/news/AKR202610151418469Yr",
+       "source": "연합뉴스TV"
+      },
+      {
+       "title": "&quot;이게 왜 여기서 나와?&quot;…중고거래 상자에 수류탄 6개, 폭발물 처리반 출동 - 머니투데이",
+       "url": "https://www.mt.co.kr/world/2026/10/19/2026101910303211646",
+       "source": "머니투데이"
+      },
+      {
+       "title": "&quot;중고 물품 샀는데 수류탄이 우르르&quot;…80년 묵은 폭발물이었다",
+       "url": "https://www.hankyung.com/article/202610199560H",
+       "source": "한국경제"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "KR",
+     "viaRss": true
+    },
+    {
      "query": "정재훈",
-     "traffic": "200+",
-     "trafficValue": 200,
+     "traffic": "500+",
+     "trafficValue": 500,
      "exploreLink": "https://trends.google.com/trends/explore?q=%EC%A0%95%EC%9E%AC%ED%9B%88&geo=KR",
      "related": [],
      "articles": [
@@ -3327,6 +3208,35 @@
        "title": "&apos;KS 우승 3회&apos; 김태룡 시대 15년 만에 막 내린다...두산 정재훈 신임단장 선임 [공식발표]",
        "url": "https://www.osen.co.kr/article/G1112894969",
        "source": "OSEN"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "KR",
+     "viaRss": true
+    },
+    {
+     "query": "kda",
+     "traffic": "500+",
+     "trafficValue": 500,
+     "exploreLink": "https://trends.google.com/trends/explore?q=kda&geo=KR",
+     "related": [],
+     "articles": [
+      {
+       "title": "K/DA Returns After 6 Years, Unveils New Song &apos;FIRESTARTER&apos;",
+       "url": "https://www.invenglobal.com/articles/27340/kda-returns-after-6-years-unveils-new-song-firestarter",
+       "source": "Inven Global"
+      },
+      {
+       "title": "Costco&apos;s Exclusive &apos;KPop Demon Hunters&apos; Trading Card Set Includes 11 Rarity Levels & A Character-Inspired Frame",
+       "url": "https://www.billboard.com/culture/product-recommendations/kpop-demon-hunters-costco-exclusive-trading-cards-shop-1236360008/",
+       "source": "Billboard"
+      },
+      {
+       "title": "K/DA drops FIRESTARTER, new artists join i-dle members for tracks",
+       "url": "https://esports.gg/news/league-of-legends/kda-firestarter-mv/",
+       "source": "Esports.gg"
       }
      ],
      "image": "",
@@ -3378,26 +3288,26 @@
      "viaRss": true
     },
     {
-     "query": "한화",
+     "query": "전영현",
      "traffic": "100+",
      "trafficValue": 100,
-     "exploreLink": "https://trends.google.com/trends/explore?q=%ED%95%9C%ED%99%94&geo=KR",
+     "exploreLink": "https://trends.google.com/trends/explore?q=%EC%A0%84%EC%98%81%ED%98%84&geo=KR",
      "related": [],
      "articles": [
       {
-       "title": "한글점자 훈맹정음 반포 100주년…한화, 점자달력 4만부 배포",
-       "url": "https://www.yna.co.kr/view/AKR20261019022600003",
-       "source": "연합뉴스"
+       "title": "최창원 SK수펙스 의장 유임 가닥…SK그룹 이달 중 정기 사장단 인사",
+       "url": "https://www.donga.com/news/Economy/article/all/20261018/134863051/1",
+       "source": "동아일보"
       },
       {
-       "title": "&quot;시각장애인도 새해의 기쁨 함께&quot;…한화, 점자달력 4만부 배포",
-       "url": "https://www.yonhapnewstv.co.kr/news/AKR20261019095132Cu9",
-       "source": "연합뉴스TV"
+       "title": "[단독] 비핵심 덜어낸 SK그룹 &apos;AI중심 성장&apos; 가속",
+       "url": "https://www.mk.co.kr/news/business/12179034",
+       "source": "매일경제"
       },
       {
-       "title": "[천자춘추] 훈민정음에 담긴 농사 일상",
-       "url": "https://www.kyeonggi.com/article/20261018580116",
-       "source": "경기일보"
+       "title": "[출근길 브리핑-10월 19일] 주요 그룹 사장단 인사시즌·KAI 경영권 갈등 &apos;법리·행정 검증&apos; 국면으로·佛 전국서 시위 격화·트럼프 대러제제 유예에 십자포화·與野 주말 내내 &apos;약점 물어뜯기&apos;",
+       "url": "https://www.newsworks.co.kr/news/articleView.html?idxno=856811",
+       "source": "뉴스웍스"
       }
      ],
      "image": "",
@@ -3405,9 +3315,22 @@
      "dateKey": "",
      "geo": "KR",
      "viaRss": true
+    },
+    {
+     "query": "정예인",
+     "traffic": "100+",
+     "trafficValue": 100,
+     "exploreLink": "https://trends.google.com/trends/explore?q=%EC%A0%95%EC%98%88%EC%9D%B8&geo=KR",
+     "related": [],
+     "articles": [],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "KR",
+     "viaRss": true
     }
    ],
-   "fetchedAt": 1792382187622
+   "fetchedAt": 1792384017566
   },
   "BR": {
    "geo": "BR",
@@ -3435,6 +3358,35 @@
        "title": "Corinthians Feminino 7 x Caracas Feminino 0 | Libertadores Feminina 2026",
        "url": "https://www.gazetaesportiva.com/minuto-a-minuto/libertadores-feminina-2026/corinthians-feminino-x-caracas-feminino/248534/",
        "source": "Gazeta Esportiva"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "BR",
+     "viaRss": true
+    },
+    {
+     "query": "bomba",
+     "traffic": "5000+",
+     "trafficValue": 5000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=bomba&geo=BR",
+     "related": [],
+     "articles": [
+      {
+       "title": "Esquadrão antibombas analisa pacote encontrado em área próxima ao estúdio da Band após debate entre Flávio e Lula",
+       "url": "https://oglobo.globo.com/politica/eleicoes-2026/noticia/2026/10/18/esquadrao-antibombas-analisa-pacote-encontrado-em-area-proxima-ao-estudio-da-band-apos-debate-entre-flavio-e-lula.ghtml",
+       "source": "O GLOBO"
+      },
+      {
+       "title": "Radar da Eleição: Primeiro debate entre Lula e Flávio é marcado por ataques",
+       "url": "https://noticias.uol.com.br/ao-vivo/2026/10/18/radar-das-eleicoes-lula-e-flavio-se-enfrentam-em-1-debate-do-2-turno.htm",
+       "source": "UOL Notícias"
+      },
+      {
+       "title": "Gate cerca estacionamento da Band por suspeita de bomba em carro de Flávio",
+       "url": "https://www.cnnbrasil.com.br/eleicoes/gate-cerca-estacionamento-da-band-por-suspeita-de-bomba-apos-debate/",
+       "source": "CNN Brasil"
       }
      ],
      "image": "",
@@ -3502,19 +3454,6 @@
      "viaRss": true
     },
     {
-     "query": "packers",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=packers&geo=BR",
-     "related": [],
-     "articles": [],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "BR",
-     "viaRss": true
-    },
-    {
      "query": "suits",
      "traffic": "200+",
      "trafficValue": 200,
@@ -3563,6 +3502,35 @@
      "viaRss": true
     },
     {
+     "query": "misoginia",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=misoginia&geo=BR",
+     "related": [],
+     "articles": [
+      {
+       "title": "A misoginia de diálogos de Vorcaro e CEO que expôs atrizes: “Mulher não pode fazer isso”",
+       "url": "https://apublica.org/2026/10/globo-vorcaro-e-misoginia-o-que-contam-mensagens-de-fred-kachar/",
+       "source": "Agência Pública"
+      },
+      {
+       "title": "Outro Canal: Sabrina Sato condena falas de ex-executivo da Globo e Daniel Vorcaro: &apos;Inadmissível&apos;",
+       "url": "https://f5.folha.uol.com.br/colunistas/outro-canal/2026/10/sabrina-sato-condena-falas-de-ex-executivo-da-globo-e-daniel-vorcaro-inadmissivel.shtml",
+       "source": "UOL"
+      },
+      {
+       "title": "Deborah Secco rebate comentários de Vorcaro e ex-executivo da Globo",
+       "url": "https://www.metropoles.com/colunas/lucas-pasin/deborah-secco-rebate-comentarios-de-vorcaro-e-ex-executivo-da-globo",
+       "source": "Metrópoles"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "BR",
+     "viaRss": true
+    },
+    {
      "query": "horóscopo semanal",
      "traffic": "200+",
      "trafficValue": 200,
@@ -3599,48 +3567,19 @@
      "related": [],
      "articles": [
       {
-       "title": "Nicole Scherzinger looks incredible in leopard print after horror burn injuries",
-       "url": "https://www.the-sun.com/entertainment/17165675/nicole-scherzinger-leopard-print-catsuit-burn-injuries-tour/",
-       "source": "The Sun"
+       "title": "The Pussycat Dolls falam ao Fantástico sobre vinda ao Brasil pela 1ª vez",
+       "url": "https://g1.globo.com/fantastico/video/the-pussycat-dolls-falam-ao-fantastico-sobre-vinda-ao-brasil-pela-1a-vez-15100164.ghtml",
+       "source": "G1"
       },
       {
-       "title": "Nicole Scherzinger bounces back from suffering horrific burns as she leaps around the stage in a sparkly bikini as The Pussycat Dolls&apos; problem-ridden reunion tour hits London",
-       "url": "https://www.dailymail.com/tvshowbiz/article-16207647/Nicole-Scherzinger-Pussycat-Dolls-tour-London.html",
-       "source": "Daily Mail"
+       "title": "Nicole Scherzinger cobra R$ 4,4 mil em Meet & Greet em São Paulo",
+       "url": "https://portalpopline.com.br/nicole-scherzinger-cobra-r-44-mil-em-meet-greet-em-sao-paulo/",
+       "source": "POPLine"
       },
       {
-       "title": "Nicole Scherzinger, 48, stuns in skintight leopard-print catsuit on night out",
-       "url": "https://www.hellomagazine.com/us/929692/nicole-scherzinger-48-stuns-in-skintight-leopard-print-catsuit-on-night-out/",
-       "source": "HELLO! Magazine"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "BR",
-     "viaRss": true
-    },
-    {
-     "query": "misoginia",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=misoginia&geo=BR",
-     "related": [],
-     "articles": [
-      {
-       "title": "A misoginia de diálogos de Vorcaro e CEO que expôs atrizes: “Mulher não pode fazer isso”",
-       "url": "https://apublica.org/2026/10/globo-vorcaro-e-misoginia-o-que-contam-mensagens-de-fred-kachar/",
-       "source": "Agência Pública"
-      },
-      {
-       "title": "Outro Canal: Sabrina Sato condena falas de ex-executivo da Globo e Daniel Vorcaro: &apos;Inadmissível&apos;",
-       "url": "https://f5.folha.uol.com.br/colunistas/outro-canal/2026/10/sabrina-sato-condena-falas-de-ex-executivo-da-globo-e-daniel-vorcaro-inadmissivel.shtml",
-       "source": "UOL"
-      },
-      {
-       "title": "Deborah Secco rebate comentários de Vorcaro e ex-executivo da Globo",
-       "url": "https://www.metropoles.com/colunas/lucas-pasin/deborah-secco-rebate-comentarios-de-vorcaro-e-ex-executivo-da-globo",
-       "source": "Metrópoles"
+       "title": "Budweiser, Itaú e 30e armam encontro exclusivo com Pussycat Dolls em SP",
+       "url": "https://jornaldebrasilia.com.br/entretenimento/katia-flavia/budweiser-itau-e-30e-armam-encontro-exclusivo-com-pussycat-dolls-em-sp/",
+       "source": "Jornal de Brasília"
       }
      ],
      "image": "",
@@ -3679,7 +3618,7 @@
      "viaRss": true
     }
    ],
-   "fetchedAt": 1792382188630
+   "fetchedAt": 1792384018264
   },
   "MX": {
    "geo": "MX",
@@ -3688,8 +3627,8 @@
    "items": [
     {
      "query": "américa - pachuca",
-     "traffic": "10000+",
-     "trafficValue": 10000,
+     "traffic": "20000+",
+     "trafficValue": 20000,
      "exploreLink": "https://trends.google.com/trends/explore?q=am%C3%A9rica%20-%20pachuca&geo=MX",
      "related": [],
      "articles": [
@@ -3704,9 +3643,9 @@
        "source": "Yahoo"
       },
       {
-       "title": "A qué hora y dónde ver América vs. Pachuca de la Liga MX Femenil",
-       "url": "https://www.tudn.com/futbol-femenino/liga-mx-femenil/a-que-hora-y-donde-ver-partido-america-vs-pachuca-de-la-liga-mx-femenil",
-       "source": "TUDN"
+       "title": "Retoma América Femenil su vuelo y da duro golpe a las Tuzas",
+       "url": "https://www.reforma.com/retoma-america-femenil-su-vuelo-y-da-duro-golpe-a-las-tuzas/ar3297408",
+       "source": "Reforma"
       }
      ],
      "image": "",
@@ -3716,84 +3655,26 @@
      "viaRss": true
     },
     {
-     "query": "jaime camil",
-     "traffic": "2000+",
-     "trafficValue": 2000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=jaime%20camil&geo=MX",
-     "related": [],
-     "articles": [
-      {
-       "title": "U2 ANUNCIA CARNAVAL DE LUZ PRESENTS: THE GREATEST SHOW ON EARTH WORLD TOUR 2027",
-       "url": "https://www.allaccess.com.ar/event/u2",
-       "source": "All Access"
-      },
-      {
-       "title": "U2 en México 2027: fechas, precios de boletos y cuándo comienza la preventa para sus conciertos",
-       "url": "https://es-us.noticias.yahoo.com/u2-m%C3%A9xico-2027-fechas-precios-230000155.html",
-       "source": "Yahoo"
-      },
-      {
-       "title": "¿Cuánto cuestan los boletos para U2 en CDMX? Lista OFICIAL de precios en el Estadio GNP Seguros",
-       "url": "https://www.elfinanciero.com.mx/entretenimiento/2026/10/17/cuanto-cuestan-los-boletos-para-u2-en-cdmx-lista-oficial-de-precios-en-el-estadio-gnp-seguros/",
-       "source": "El Financiero"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "MX",
-     "viaRss": true
-    },
-    {
-     "query": "samadhi zendejas",
+     "query": "eugenio derbez",
      "traffic": "1000+",
      "trafficValue": 1000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=samadhi%20zendejas&geo=MX",
+     "exploreLink": "https://trends.google.com/trends/explore?q=eugenio%20derbez&geo=MX",
      "related": [],
      "articles": [
       {
-       "title": "Gabito Ballesteros y Samadhi Zendejas derrochan amor y presumen su relación sentimental",
-       "url": "https://heraldodemexico.com.mx/espectaculos/2026/10/18/gabito-ballesteros-samadhi-zendejas-derrochan-amor-presumen-su-relacion-sentimental-911135.html",
-       "source": "El Heraldo de México"
+       "title": "Eugenio Derbez piensa en mudarse a Madrid después de 12 años en Hollywood: &quot;ya cumplí el sueño de Estados Unidos&quot;",
+       "url": "https://es-us.vida-estilo.yahoo.com/eugenio-derbez-piensa-madrid-12-150416145.html",
+       "source": "Yahoo en Español Vida y Estilo"
       },
       {
-       "title": "Gabito y Samadhi reaparecen juntos",
-       "url": "https://www.expreso.com.mx/estelar/musica/gabito-ballesteros-y-samadhi-zendejas-reaparecen-juntos-/266653",
-       "source": "Expreso"
-      },
-      {
-       "title": "Gabito Ballesteros y Samadhi Zendejas reaparecen juntos y disipan rumores de ruptura amorosa",
-       "url": "https://lamejor.com.mx/news/2026/10/16/gabito-ballesteros-y-samadhi-zendejas-reaparecen-juntos-y-disipan-rumores-de-ruptura-amorosa-28577.html",
-       "source": "La Mejor FM"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "MX",
-     "viaRss": true
-    },
-    {
-     "query": "natalia alcocer",
-     "traffic": "1000+",
-     "trafficValue": 1000,
-     "exploreLink": "https://trends.google.com/trends/explore?q=natalia%20alcocer&geo=MX",
-     "related": [],
-     "articles": [
-      {
-       "title": "Pablo Montero le roba un beso a Natalia Alcocer en La Granja VIP: ¿es un acto romántico o acoso?",
-       "url": "https://www.tvynovelas.com/famosos/pablo-montero-le-roba-un-beso-a-natalia-alcocer-en-la-granja-vip-es-un-acto-romantico-o-acoso",
-       "source": "TVyNovelas"
-      },
-      {
-       "title": "¿Romance confirmado en &apos;La granja VIP&apos;? Natalia Alcocer habla de ser novia de Pablo Montero: &quot;Soy tu novia&quot; V",
-       "url": "https://www.tvnotas.com.mx/espectaculos-mexico/romance-confirmado-en-la-granja-vip-natalia-alcocer-habla-de-ser-novia-de-pablo-montero-soy-tu-novia-video",
+       "title": "Eugenio Derbez considera dejar Estados Unidos para mudarse a España, ¿para retirarse?",
+       "url": "https://www.tvnotas.com.mx/espectaculos-mexico/eugenio-derbez-considera-dejar-estados-unidos-para-mudarse-a-espana-para-retirarse",
        "source": "TVNotas"
       },
       {
-       "title": "Natalia Alcocer manda &apos;al congelador&apos; a Pablo Montero",
-       "url": "https://info7.mx/espectaculos/natalia-alcocer-manda-al-congelador-a-pablo-montero/7756530414",
-       "source": "INFO7"
+       "title": "Eugenio Derbez revela sus planes de mudarse a España con Alessandra y Aitana",
+       "url": "https://zonafranca.mx/tendencias/eugenio-derbez-revela-sus-planes-de-mudarse-a-espana-con-alessandra-y-aitana/",
+       "source": "Zona Franca"
       }
      ],
      "image": "",
@@ -3803,10 +3684,97 @@
      "viaRss": true
     },
     {
-     "query": "julio camejo",
+     "query": "karely ruiz",
+     "traffic": "1000+",
+     "trafficValue": 1000,
+     "exploreLink": "https://trends.google.com/trends/explore?q=karely%20ruiz&geo=MX",
+     "related": [],
+     "articles": [
+      {
+       "title": "Karely Ruiz invita a fanáticos a su lujosa y exclusiva fiesta de cumpleaños",
+       "url": "https://heraldodemexico.com.mx/espectaculos/2026/10/18/karely-ruiz-invita-fanaticos-su-lujosa-exclusiva-fiesta-de-cumpleanos-911108.html",
+       "source": "El Heraldo de México"
+      },
+      {
+       "title": "Karely Ruiz invitaría a sus fans a su exclusiva fiesta de cumpleaños número 26",
+       "url": "https://www.infobae.com/mexico/2026/10/19/karely-ruiz-invitaria-a-sus-fans-a-su-exclusiva-fiesta-de-cumpleanos-numero-26/",
+       "source": "Infobae"
+      },
+      {
+       "title": "Karely Ruiz celebra 26 años con fiesta exclusiva de mascarada",
+       "url": "https://netnoticias.mx/espectaculos/prepara-karely-ruiz-fiesta-exclusiva-por-sus-26-anos",
+       "source": "Netnoticias"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "MX",
+     "viaRss": true
+    },
+    {
+     "query": "monza vs",
      "traffic": "200+",
      "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=julio%20camejo&geo=MX",
+     "exploreLink": "https://trends.google.com/trends/explore?q=monza%20vs&geo=MX",
+     "related": [],
+     "articles": [
+      {
+       "title": "Monza vs Cagliari: Italian Serie A stats & head-to-head",
+       "url": "https://www.bbc.com/sport/football/live/c32l4ke1zly1t",
+       "source": "BBC"
+      },
+      {
+       "title": "Monday’s Serie A betting tips: Expert predictions from Italy’s top flight",
+       "url": "https://mrfixitstips.co.uk/monday-serie-a-predictions-19-10-2026/",
+       "source": "MrFixitsTips"
+      },
+      {
+       "title": "Monza vs Cagliari at Stadio Brianteo | Serie A Tickets",
+       "url": "https://karlobag.eu/en/sports/news/monza-vs-cagliari-at-stadio-brianteo-serie-a-tickets-13eyx/",
+       "source": "KarloBag.eu"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "MX",
+     "viaRss": true
+    },
+    {
+     "query": "landon donovan",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=landon%20donovan&geo=MX",
+     "related": [],
+     "articles": [
+      {
+       "title": "Desafortunada casualidad: detienen a Landon Donovan en la Ciudad de México y las redes estallan en memes",
+       "url": "https://www.record.com.mx/historia/desafortunada-casualidad-detienen-a-landon-donovan-en-la-ciudad-de-mexico-y-las-redes-estallan-en-memes-2026101722424494219",
+       "source": "Récord"
+      },
+      {
+       "title": "¿Landon Donovan detenido en México? La coincidencia que desató burlas en redes",
+       "url": "https://ovaciones.com/noticias/nacional/landon-donovan-detenido-en-mexico-la-coincidencia-que-desato-burlas-en-redes/1012806",
+       "source": "Ovaciones"
+      },
+      {
+       "title": "Detienen a Landon Donovan en Milpa Alta y el internet no perdonó",
+       "url": "https://soyreferee.com/tendencias/2026/10/17/detienen-a-landon-donovan-en-milpa-alta-y-el-internet-no-perdono-60081.html",
+       "source": "Soy Referee"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "MX",
+     "viaRss": true
+    },
+    {
+     "query": "bebeshita",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=bebeshita&geo=MX",
      "related": [],
      "articles": [
       {
@@ -3832,55 +3800,26 @@
      "viaRss": true
     },
     {
-     "query": "carro tesla roadster",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=carro%20tesla%20roadster&geo=MX",
+     "query": "kda",
+     "traffic": "100+",
+     "trafficValue": 100,
+     "exploreLink": "https://trends.google.com/trends/explore?q=kda&geo=MX",
      "related": [],
      "articles": [
       {
-       "title": "Por qué Elon Musk no dejó que nadie condujera el carro volador de Tesla: Descubre la razón",
-       "url": "https://www.univision.com/local/dallas-kuvn/carro-volador-tesla-roadster-quien-conducia-waco",
-       "source": "Univision"
+       "title": "K/DA Returns After 6 Years, Unveils New Song &apos;FIRESTARTER&apos;",
+       "url": "https://www.invenglobal.com/articles/27340/kda-returns-after-6-years-unveils-new-song-firestarter",
+       "source": "Inven Global"
       },
       {
-       "title": "Lo que debe saber sobre el auto ‘volador’ que Tesla presentó. ¿Cuándo pudiera estar a la venta?",
-       "url": "https://www.telemundo.com/noticias/noticias-telemundo/ciencia-y-tecnologia/tesla-elon-musk-roadster-rocket-rcna603986",
-       "source": "Telemundo"
+       "title": "Costco&apos;s Exclusive &apos;KPop Demon Hunters&apos; Trading Card Set Includes 11 Rarity Levels & A Character-Inspired Frame",
+       "url": "https://www.billboard.com/culture/product-recommendations/kpop-demon-hunters-costco-exclusive-trading-cards-shop-1236360008/",
+       "source": "Billboard"
       },
       {
-       "title": "¿El Tesla Roadster no vuela? 6 autos voladores pioneros que ya se adelantaron a Elon Musk",
-       "url": "https://www.debate.com.mx/el-tesla-roadster-no-vuela-6-autos-voladores-pioneros-que-ya-se-adelantaron-a-elon-musk-t202610170001.html",
-       "source": "Debate"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "MX",
-     "viaRss": true
-    },
-    {
-     "query": "mauricio ochmann",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=mauricio%20ochmann&geo=MX",
-     "related": [],
-     "articles": [
-      {
-       "title": "¿Aislinn Derbez se casa de nuevo? El comentario de Eugenio Derbez que desató rumores",
-       "url": "https://www.milenio.com/espectaculos/famosos/aislinn-derbez-se-casa-comentario-eugenio-derbez-desata-rumores",
-       "source": "Milenio"
-      },
-      {
-       "title": "¿Aislinn Derbez se vuelve a casar? Desata rumores de boda por comentario de Eugenio Derbez",
-       "url": "https://www.razon.com.mx/entretenimiento/2026/10/18/aislinn-derbez-se-vuelve-a-casar-desata-rumores-de-boda-por-comentario-de-eugenio-derbez/",
-       "source": "La Razón de México"
-      },
-      {
-       "title": "&quot;Aislinn se vuelva a casar&quot;: el comentario de Eugenio Derbez que desató rumores de boda",
-       "url": "https://www.excelsior.com.mx/espectaculos/aislinn-vuelva-casar-comentario-eugenio-derbez-que-desato-rumores-boda",
-       "source": "Excélsior"
+       "title": "K/DA drops FIRESTARTER, new artists join i-dle members for tracks",
+       "url": "https://esports.gg/news/league-of-legends/kda-firestarter-mv/",
+       "source": "Esports.gg"
       }
      ],
      "image": "",
@@ -3919,35 +3858,6 @@
      "viaRss": true
     },
     {
-     "query": "christian horner",
-     "traffic": "100+",
-     "trafficValue": 100,
-     "exploreLink": "https://trends.google.com/trends/explore?q=christian%20horner&geo=MX",
-     "related": [],
-     "articles": [
-      {
-       "title": "Christian Horner: ‘Not all teams act that way. You don’t see the same brutality as when I left’",
-       "url": "https://www.theguardian.com/sport/2026/oct/12/christian-horner-red-bull-formula-one",
-       "source": "The Guardian"
-      },
-      {
-       "title": "Max Verstappen casts Red Bull-Ford verdict as Horner feels &apos;robbed&apos;",
-       "url": "https://www.planetf1.com/news/max-verstappen-red-bull-ford-engine-christian-horner",
-       "source": "PlanetF1"
-      },
-      {
-       "title": "Christian Horner reveals impact of Red Bull axe and £67m payout",
-       "url": "https://www.oxfordmail.co.uk/news/26642567.christian-horner-breaks-silence-red-bull-axe-67m-payout/",
-       "source": "Oxford Mail"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "MX",
-     "viaRss": true
-    },
-    {
      "query": "parma vs torino",
      "traffic": "100+",
      "trafficValue": 100,
@@ -3975,9 +3885,38 @@
      "dateKey": "",
      "geo": "MX",
      "viaRss": true
+    },
+    {
+     "query": "christian horner",
+     "traffic": "100+",
+     "trafficValue": 100,
+     "exploreLink": "https://trends.google.com/trends/explore?q=christian%20horner&geo=MX",
+     "related": [],
+     "articles": [
+      {
+       "title": "Christian Horner: ‘Not all teams act that way. You don’t see the same brutality as when I left’",
+       "url": "https://www.theguardian.com/sport/2026/oct/12/christian-horner-red-bull-formula-one",
+       "source": "The Guardian"
+      },
+      {
+       "title": "Max Verstappen casts Red Bull-Ford verdict as Horner feels &apos;robbed&apos;",
+       "url": "https://www.planetf1.com/news/max-verstappen-red-bull-ford-engine-christian-horner",
+       "source": "PlanetF1"
+      },
+      {
+       "title": "Christian Horner reveals impact of Red Bull axe and £67m payout",
+       "url": "https://www.oxfordmail.co.uk/news/26642567.christian-horner-breaks-silence-red-bull-axe-67m-payout/",
+       "source": "Oxford Mail"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "MX",
+     "viaRss": true
     }
    ],
-   "fetchedAt": 1792382189091
+   "fetchedAt": 1792384018898
   },
   "ID": {
    "geo": "ID",
@@ -4043,67 +3982,9 @@
      "viaRss": true
     },
     {
-     "query": "goto saham",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=goto%20saham&geo=ID",
-     "related": [],
-     "articles": [
-      {
-       "title": "Manuver Morgan Stanley Sebelum MSCI Tebar Ancaman",
-       "url": "https://www.emitennews.com/news/manuver-morgan-stanley-sebelum-msci-tebar-ancaman",
-       "source": "Emitennews.com"
-      },
-      {
-       "title": "Morgan Stanley Terciduk Asik Jual-Beli Saham GOTO, Cuan Berapa?",
-       "url": "https://www.cnbcindonesia.com/market/20261015165234-17-776574/morgan-stanley-terciduk-asik-jual-beli-saham-goto-cuan-berapa",
-       "source": "CNBC Indonesia"
-      },
-      {
-       "title": "Antusiasme vs Realitas: Pelajaran Berharga dari Perjalanan Saham GOTO Halaman 1",
-       "url": "https://www.kompasiana.com/ditacitra1600/6ad4edaced64150d784d1067/antusiasme-vs-realitas-pelajaran-berharga-dari-perjalanan-saham-goto",
-       "source": "Kompasiana.com"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "ID",
-     "viaRss": true
-    },
-    {
-     "query": "bren",
-     "traffic": "200+",
-     "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=bren&geo=ID",
-     "related": [],
-     "articles": [
-      {
-       "title": "BREN-CUAN Anggarkan Buyback hingga Rp2,5 T - Market",
-       "url": "https://www.bloombergtechnoz.com/detail-news/124973/bren-cuan-anggarkan-buyback-hingga-rp2-5-t",
-       "source": "Bloomberg Technoz"
-      },
-      {
-       "title": "BREN Umumkan Buyback Rp1 T Usai Disorot OJK Soal Penjatahan IPO",
-       "url": "https://www.cnbcindonesia.com/market/20261019085330-17-777322/bren-umumkan-buyback-rp1-t-usai-disorot-ojk-soal-penjatahan-ipo",
-       "source": "CNBC Indonesia"
-      },
-      {
-       "title": "Emiten BRPT Siapkan Rp 1 Triliun Buat Buyback Saham",
-       "url": "https://www.liputan6.com/saham/read/8316101/emiten-brpt-siapkan-rp-1-triliun-buat-buyback-saham",
-       "source": "Liputan6.com"
-      }
-     ],
-     "image": "",
-     "date": "",
-     "dateKey": "",
-     "geo": "ID",
-     "viaRss": true
-    },
-    {
      "query": "marsha aruan",
-     "traffic": "200+",
-     "trafficValue": 200,
+     "traffic": "500+",
+     "trafficValue": 500,
      "exploreLink": "https://trends.google.com/trends/explore?q=marsha%20aruan&geo=ID",
      "related": [],
      "articles": [
@@ -4130,26 +4011,84 @@
      "viaRss": true
     },
     {
-     "query": "usd hari ini",
+     "query": "saham bren",
      "traffic": "200+",
      "trafficValue": 200,
-     "exploreLink": "https://trends.google.com/trends/explore?q=usd%20hari%20ini&geo=ID",
+     "exploreLink": "https://trends.google.com/trends/explore?q=saham%20bren&geo=ID",
      "related": [],
      "articles": [
       {
-       "title": "Seberapa besar kemungkinan carry trade yen berbalik arah?",
-       "url": "https://id.investing.com/news/forex-news/seberapa-besar-kemungkinan-carry-trade-yen-berbalik-arah-3097634",
-       "source": "Investing.com Indonesia"
+       "title": "BREN-CUAN Anggarkan Buyback hingga Rp2,5 T - Market",
+       "url": "https://www.bloombergtechnoz.com/detail-news/124973/bren-cuan-anggarkan-buyback-hingga-rp2-5-t",
+       "source": "Bloomberg Technoz"
       },
       {
-       "title": "Imbal Hasil Obligasi Melonjak, Yen Melemah",
-       "url": "https://www.metrotvnews.com/read/N6GCXR7R-imbal-hasil-obligasi-melonjak-yen-melemah",
-       "source": "MetroTVNews.com"
+       "title": "BREN Umumkan Buyback Rp1 T Usai Disorot OJK Soal Penjatahan IPO",
+       "url": "https://www.cnbcindonesia.com/market/20261019085330-17-777322/bren-umumkan-buyback-rp1-t-usai-disorot-ojk-soal-penjatahan-ipo",
+       "source": "CNBC Indonesia"
       },
       {
-       "title": "BOJ hadapi tekanan naikkan suku bunga karena in...",
-       "url": "https://pluang.com/news-feed/perkiraan-suku-bunga-boj-fokus-kenaikan-desember-menjelang-cpi-jepang",
-       "source": "Pluang"
+       "title": "CUAN Gelar Buyback Rp500 Miliar, Gara-Gara Saham Ambruk?",
+       "url": "https://emitennews.com/news/cuan-gelar-buyback-rp500-miliar-gara-gara-saham-ambruk",
+       "source": "Emitennews.com"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "ID",
+     "viaRss": true
+    },
+    {
+     "query": "goto saham",
+     "traffic": "200+",
+     "trafficValue": 200,
+     "exploreLink": "https://trends.google.com/trends/explore?q=goto%20saham&geo=ID",
+     "related": [],
+     "articles": [
+      {
+       "title": "Manuver Morgan Stanley Sebelum MSCI Tebar Ancaman",
+       "url": "https://www.emitennews.com/news/manuver-morgan-stanley-sebelum-msci-tebar-ancaman",
+       "source": "Emitennews.com"
+      },
+      {
+       "title": "Antusiasme vs Realitas: Pelajaran Berharga dari Perjalanan Saham GOTO Halaman all",
+       "url": "https://www.kompasiana.com/ditacitra1600/6ad4edaced64150d784d1067/antusiasme-vs-realitas-pelajaran-berharga-dari-perjalanan-saham-goto?page=all",
+       "source": "Kompasiana.com"
+      },
+      {
+       "title": "Alasan Boy Thohir enggan jual rugi saham GOTO meski harga ambles",
+       "url": "https://www.idnfinancials.com/id/news/70189/alasan-boy-thohir-enggan-jual-rugi-saham-goto-meski-harga-ambles",
+       "source": "IDNFinancials"
+      }
+     ],
+     "image": "",
+     "date": "",
+     "dateKey": "",
+     "geo": "ID",
+     "viaRss": true
+    },
+    {
+     "query": "pastor",
+     "traffic": "100+",
+     "trafficValue": 100,
+     "exploreLink": "https://trends.google.com/trends/explore?q=pastor&geo=ID",
+     "related": [],
+     "articles": [
+      {
+       "title": "Pastor Tewas Tertimpa Salib saat Pimpin Misa di Ekuador",
+       "url": "https://news.detik.com/internasional/d-8713109/pastor-tewas-tertimpa-salib-saat-pimpin-misa-di-ekuador",
+       "source": "detikNews"
+      },
+      {
+       "title": "Pastor Meninggal Tertimpa Salib Besar Saat Pimpin Misa di Ekuador",
+       "url": "https://video.kompas.com/watch/1962153/pastor-meninggal-tertimpa-salib-besar-saat-pimpin-misa-di-ekuador?source=KOMPASCOM&position=tren_terkini__player_1",
+       "source": "Kompas.com"
+      },
+      {
+       "title": "Tragis! Pastor Tewas Tertimpa Salib Saat Pimpin Misa di Gereja",
+       "url": "https://www.beritasatu.com/internasional/3034749/tragis-pastor-tewas-tertimpa-salib-saat-pimpin-misa-di-gereja",
+       "source": "BeritaSatu.com"
       }
      ],
      "image": "",
@@ -4205,9 +4144,9 @@
        "source": "L&apos;essentiel"
       },
       {
-       "title": "Guillaume Guerin, maire de Limoges, menace de démissionner si l&apos;État ne finance pas la reconstruction de l&apos;hôtel de ville, le Premier ministre promet des moyens",
-       "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/haute-vienne/limoges/guillaume-guerin-maire-de-limoges-menace-de-demissionner-si-l-etat-ne-finance-pas-la-reconstruction-de-l-hotel-de-ville-le-premier-ministre-promet-des-moyens-3435414.html",
-       "source": "France 3 Régions"
+       "title": "Rassemblement et marche symbolique des élus et citoyens jusqu’à l’Hôtel de ville",
+       "url": "https://www.limoges.fr/actualites/rassemblement-et-marche-symbolique-des-elus-et-citoyens-jusqua-lhotel-de-ville",
+       "source": "Ville de Limoges"
       }
      ],
      "image": "",
@@ -4258,14 +4197,14 @@
        "source": "Vogue"
       },
       {
-       "title": "The 8 Most Expensive Fantasy Bras in Victoria’s Secret History—Starting at $3 Million",
-       "url": "https://www.instyle.com/most-expensive-victorias-secret-fantasy-bras-12178057",
-       "source": "InStyle"
-      },
-      {
        "title": "Kylie Jenner Wore Victoria’s Secret’s First Fantasy Bra Since 2018, and Timothée Chalamet Saw It",
        "url": "https://www.elle.com/fashion/a74137418/victorias-secret-fashion-show-2026-review/",
        "source": "ELLE"
+      },
+      {
+       "title": "Victoria’s Secret Fantasy Bra Returns for 2026 Fashion Show After 8 Years – Here’s What We Know",
+       "url": "https://www.imdb.com/es/news/ni66069142/?ref_=nwc_art_perm",
+       "source": "IMDb"
       }
      ],
      "image": "",
@@ -4275,7 +4214,7 @@
      "viaRss": true
     }
    ],
-   "fetchedAt": 1792382189421
+   "fetchedAt": 1792384019449
   }
  }
 }
