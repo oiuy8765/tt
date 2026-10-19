@@ -1048,6 +1048,9 @@ const CAT_LABEL = {
   hr: '人力资源',
   'artificial-intelligence': '人工智能',
   'developer-tools': '开发者工具',
+  'consumer-electronics': '消费电子',
+  'social-media': '社交媒体',
+  media: '媒体',
   unclassified: '未分类',
 };
 

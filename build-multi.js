@@ -408,11 +408,25 @@ const CAT_LABEL = {
   construction: '建筑', manufacturing: '制造', logistics: '物流', security: '安防',
   photography: '摄影', music: '音乐', art: '艺术', books: '图书', office: '办公',
   tools: '工具', hardware: '硬件', electronics: '电子', appliances: '家电',
+  'consumer-electronics': '消费电子', media: '媒体', 'social-media': '社交媒体',
+  telecommunication: '通信', workplace: '职场', 'dating-relationships': '两性关系',
   sleep: '睡眠', drink: '饮品', snacks: '零食', outdoor: '户外',
 };
+
+// 品类名不走上游机器翻译：几个高频词的机翻结果明显跑偏（科技 → "science and technology"），
+// 这里给人工译文，剩下的才回落到词典。
+const CAT_TEXT_FIX = {
+  'consumer-electronics': { en: 'Consumer electronics', ja: '民生用電子機器', ko: '소비자 가전', 'zh-TW': '消費電子' },
+  media: { en: 'media', ja: 'メディア', ko: '미디어', 'zh-TW': '媒體' },
+  'social-media': { en: 'social media', ja: 'SNS', ko: '소셜 미디어', 'zh-TW': '社群媒體' },
+  technology: { en: 'Technology', ja: 'テクノロジー', ko: '기술', 'zh-TW': '科技' },
+};
+
 function catText(lang, c) {
   const zh = CAT_LABEL[c] || c;
   if (lang === 'zh-CN') return zh;
+  const fixed = CAT_TEXT_FIX[c];
+  if (fixed && fixed[lang]) return fixed[lang];
   return tx(lang, zh) || zh;
 }
 
@@ -688,7 +702,10 @@ function homePage(lang) {
   const t = ui(lang);
   const L = LANGS.find((x) => x.code === lang);
   const topics = (SITE_DATA.topics || []).slice();
-  const scored = topics.slice().sort((a, b) => (b.buildScore || b.score || 0) - (a.buildScore || a.score || 0));
+  // 排序必须用卡片上显示的那个分数：线上看建站分、实物看选品分。
+  // 之前一律按建站分排，会出现「实物卡片显示 60 分却排在 80 分前面」。
+  const shownScore = (x) => (x.carrier === 'web' ? x.buildScore || 0 : x.score || 0);
+  const scored = topics.slice().sort((a, b) => shownScore(b) - shownScore(a));
   const top = scored.slice(0, 60);
   const counts = SITE_DATA.counts || {};
 

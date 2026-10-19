@@ -552,7 +552,7 @@ const PHY_CAT =
 
 /* 实物名词（出现在关键词里基本就是卖货的） */
 const PHY_KW =
-  /\b(chair|mattress|powder|gum|strip|printer|camera|monitor|pan|cooker|racket|shoes|dress|cream|serum|bottle|bag|mug|blanket|pillow|lamp|sofa|table|knife|blender|vacuum|stroller|panel|battery|charger|cable|watch|bracelet|jacket|hoodie|jeans|sneaker|perfume|shampoo|vitamin|protein|snack|coffee|wine|beer|meat|cheese|file)\b/i;
+  /\b(chair|mattress|powder|gum|strip|printer|camera|monitor|pan|cooker|racket|shoes|dress|cream|serum|toner|bottle|bag|mug|blanket|pillow|lamp|sofa|table|knife|blender|vacuum|stroller|panel|battery|charger|cable|watch|bracelet|jacket|hoodie|jeans|sneaker|perfume|shampoo|vitamin|protein|snack|coffee|wine|beer|meat|cheese|file)\b/i;
 
 /* 数字/线上品类 */
 const DIG_CAT =
@@ -578,6 +578,17 @@ const SERVICE_KW =
 /* 强实物后缀：即使命中通用品类词，也几乎确定是卖货 */
 const PHY_STRONG =
   /\b(mattress|stroller|vacuum|printer|sprayer|blender|cooker|kettle|toaster|air ?fryer|purifier|humidifier|dehumidifier|heater|fan|heater|sofa|recliner|dresser|wardrobe|headboard|curtain|rug|mug|tumbler|bottle|flask|backpack|handbag|purse|wallet|luggage|suitcase|jeans|blazer|dress|skirt|hoodie|sweater|jacket|leggings|sneaker|boot|sandal|slipper|watch|necklace|earring|ring|bracelet|perfume|cologne|shampoo|conditioner|serum|cream|lotion|sunscreen|toothpaste|razor|trimmer|dryer|straightener|curler|treadmill|dumbbell|kettlebell|yoga mat|tent|sleeping bag|cooler|grill|smoker|planter|hose|sprinkler|generator|chainsaw|drill|saw|toolbox|ladder|tile|flooring|paint|caulk|insulation)\b/i;
+
+/* 消费电子 / 硬件：这类词即使挂在 technology 类目下、描述里满是 digital，
+   最终也是卖货（USB-C DAC、扩展坞、监听耳机）。单独一张表，
+   是因为它还要用来打「消费电子」标签——混进 PHY_KW 会把护肤品 toner 也打上电子标签。 */
+const HARDWARE_KW =
+  /\b(dac|dongle|docking station|usb hub|ssd|hdd|nas|router|modem|webcam|microphone|soundbar|projector|headphones?|headset|earbuds?|earphones?|keyboard|power bank|power strip|surge protector|smartwatch|dash ?cam|action camera|security camera|cctv camera|graphics card|motherboard|hdmi|ethernet|phone case|laptop stand|monitor stand|tripod|gimbal|ring light|desk lamp|flip phone|e-?reader|kindle)\b/i;
+
+/* 描述里的实物特征：套装清单、配件、材质、「是一台设备」。
+   软件描述不会出现「kit includes a brick/sensors」这类句子。 */
+const PHY_DESC =
+  /\b(kit includes|includes [^.]{0,40}(brick|sensors?|cables?|charger|controller)|offering a range of [^.]{0,40}(equipment|rackets?|accessories|products)|(?:is|are) (?:a|an) [^.]{0,60}\b(?:device|gadget|hardware|accessory)\b(?=\s*(?:that|which|with|for|used|designed|built|featuring|made)\b|[.,;])|accessories for (?:laptops?|tablets?|smartphones?|phones?|cameras?|mobile devices?)|made (?:of|from) (?:steel|aluminum|aluminium|leather|cotton|fabric|silicone|wood|bamboo|ceramic))\b/i;
 
 const B2B_HINT =
   /\b(business|businesses|companies|teams|organizations|enterprise|workflow|employee|payroll|invoice|billing|compliance|hr|sales|supply chain|logistics|inventory|clients|agencies)\b/i;
@@ -901,9 +912,10 @@ function kindOf(t) {
 
   // 实物商品：需要供应链，既不是能直接做的软件需求，也不是可对标的软件公司。
   // 注意要排除同时带线上意图词的（如 "employee monitoring software" 里的 monitor）。
-  const kwPhy = PHY_KW.test(kw) || PHY_STRONG.test(kw);
+  const kwPhy = PHY_KW.test(kw) || PHY_STRONG.test(kw) || HARDWARE_KW.test(kw);
   const catPhy = PHY_CAT.test((t.categories || []).join(' '));
-  if ((kwPhy || catPhy) && !DIG_KW.test(kw)) return 'goods';
+  const descPhy = PHY_DESC.test(desc);
+  if ((kwPhy || catPhy || descPhy) && !DIG_KW.test(kw)) return 'goods';
 
   // 描述以「产品名词 + designed to / that ...」开头（不带冠词），是在介绍某个具体产品
   if (
@@ -944,20 +956,22 @@ function digitalOf(t) {
   const digK = DIG_KW.test(kw);
   const digC = DIG_CAT.test(cats);
   const digD = DIG_DESC.test(desc);
+  const hwK = HARDWARE_KW.test(kw);
   const phyC = PHY_CAT.test(cats);
-  const phyK = PHY_KW.test(kw);
+  const phyK = PHY_KW.test(kw) || hwK;
+  const phyD = PHY_DESC.test(desc);
 
   let digital = 0.15;
   if (digK) digital += 0.4;
   if (digC) digital += 0.22;
   if (digD) digital += 0.18;
   // 非实物品类：本身就可以用内容/社区/工具去承接，给一个及格基线
-  if (!phyC && !phyK) digital += 0.12;
+  if (!phyC && !phyK && !phyD) digital += 0.12;
   if (phyC) digital -= 0.34;
-  if (phyK) digital -= 0.42;
+  if (phyK || phyD) digital -= 0.42;
   digital = Math.max(0, Math.min(1, digital));
   // 实物品类且没有一丁点线上意图 → 直接排除出「数字机会」
-  if ((phyC || phyK) && !digK) digital = Math.min(digital, 0.3);
+  if ((phyC || phyK || phyD) && !digK) digital = Math.min(digital, 0.3);
   digital = Math.round(digital * 100) / 100;
 
   /* 形态 */
@@ -980,7 +994,9 @@ function digitalOf(t) {
   if (digK) reasons.push('关键词本身就是线上产品意图');
   if (digC) reasons.push('所属品类可纯线上交付');
   if (phyC) reasons.push('品类偏向实物，需要供应链');
-  if (phyK) reasons.push('关键词指向实物商品');
+  if (hwK) reasons.push('关键词指向硬件 / 消费电子，要靠卖货承接');
+  else if (phyK) reasons.push('关键词指向实物商品');
+  if (phyD && !hwK && !phyK) reasons.push('简介描述的是实体产品');
 
   return { digital, form, kind, reasons };
 }
@@ -1285,7 +1301,7 @@ function carrierOf(t) {
 
   if (kind === 'goods') return 'goods';
   if (digital >= 0.4) return 'web';
-  const physical = PHY_KW.test(kw) || PHY_STRONG.test(kw) || PHY_CAT.test(cats);
+  const physical = PHY_KW.test(kw) || PHY_STRONG.test(kw) || HARDWARE_KW.test(kw) || PHY_DESC.test(String(t.desc || '')) || PHY_CAT.test(cats);
   return physical ? 'goods' : 'web';
 }
 
@@ -1299,6 +1315,14 @@ function applyDigital(t) {
   t.digitalScore = digitalScore(t, d);
   t.carrier = carrierOf(t);
   t.carrierLabel = CARRIER_LABEL[t.carrier] || '';
+
+  // 硬件词补一个「消费电子」品类：Google Trends 给的 technology/art/media 说明不了这是一台设备。
+  // 只补标签、不改判定，同时把 art/media 这类对硬件毫无意义的噪音标签去掉。
+  if (t.carrier === 'goods' && HARDWARE_KW.test(String(t.keyword || ''))) {
+    const NOISE = ['art', 'media', 'social-media', 'entertainment', 'lifestyle', 'dating-relationships', 'luxury'];
+    const kept = (t.categories || []).filter((c) => NOISE.indexOf(c) < 0);
+    t.categories = ['consumer-electronics'].concat(kept.filter((c) => c !== 'consumer-electronics')).slice(0, 5);
+  }
 
   // 建议文案：动作 + 时机，由这条词自己的关键词与数据生成
   t.advice = adviceOf(t);
