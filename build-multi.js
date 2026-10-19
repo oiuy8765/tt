@@ -607,6 +607,7 @@ ${altLinks(rel)}
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="32x32" />
 <link rel="apple-touch-icon" href="/logo.svg" />
+<link rel="alternate" type="application/rss+xml" title="TrendSift RSS" href="${SITE}${L.prefix}/rss.xml" />
 <link rel="stylesheet" href="/styles.css?v=${CACHE_VER}" />
 ${jsonld}
 ${analyticsTag()}
@@ -1705,12 +1706,18 @@ function trDaily(lang, s) {
   return v && v !== s ? v : '';
 }
 
-function dailyPage(lang) {  const t = ui(lang);
+function dailyPage(lang, arch) {
+  const t = ui(lang);
   const L = LANGS.find((x) => x.code === lang);
-  const raw = readJSON(path.join(DIST, 'data', 'daily.json'), null);
-  const blocks = (raw && raw.data) || {};
+  // arch = { date: 'YYYY-MM-DD' } 时渲染历史归档页；否则渲染今天（读当次构建的 dist 数据）
+  const raw = arch
+    ? readJSON(path.join(ROOT, 'data', 'daily-snapshots', arch.date + '.json'), null)
+    : readJSON(path.join(DIST, 'data', 'daily.json'), null);
+  const blocks = (raw && ((raw.daily && raw.daily.data) || raw.data)) || {};
   const geos = Object.keys(blocks).filter((g) => blocks[g] && (blocks[g].items || []).length);
-  const ytraw = readJSON(path.join(DIST, 'data', 'yt.json'), null);
+  const ytraw = raw
+    ? raw.yt || { ok: false, data: {} }
+    : readJSON(path.join(DIST, 'data', 'yt.json'), null);
   const ytBlocks = (ytraw && ytraw.data) || {};
 
   // 每个地区区块底部的 YouTube 热门视频子区块（免 Key 抓 youtube.com/feed/trending）
@@ -1813,11 +1820,30 @@ function dailyPage(lang) {  const t = ui(lang);
       '</div>';
   }
 
+  // 归档页的日期本地化（'2026-10-19' → 各语言长日期）
+  function fmtDay(iso) {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso || ''));
+    if (!m) return String(iso || '');
+    const mo = Number(m[2]);
+    if (lang === 'en') {
+      const MON = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      return MON[mo - 1] + ' ' + Number(m[3]) + ', ' + m[1];
+    }
+    if (lang === 'ko') return m[1] + '년 ' + mo + '월 ' + Number(m[3]) + '일';
+    return m[1] + '年' + mo + '月' + Number(m[3]) + '日';
+  }
+  const isArch = !!(arch && arch.date);
+  const archLink =
+    '<p class="doc-nav"><a href="' + L.prefix + '/daily/">' + esc(t('历史榜单')) + '</a>' +
+    (isArch ? ' · <a href="' + L.prefix + '/daily.html">' + esc(t('回到今天')) + '</a>' : '') +
+    '</p>';
+
   const body = '<main class="wrap">' +
-    '<header class="doc-hero"><div class="doc-eyebrow">' + esc(t('今日热榜')) + '</div>' +
-    '<h1>' + esc(t('今天什么词被搜爆了')) + '</h1>' +
+    '<header class="doc-hero"><div class="doc-eyebrow">' + esc(isArch ? t('今日热榜') + ' · ' + t('历史榜单') : t('今日热榜')) + '</div>' +
+    '<h1>' + esc(isArch ? fmtDay(arch.date) + ' · ' + t('热榜档案') : t('今天什么词被搜爆了')) + '</h1>' +
     '<p class="doc-lead">' + esc(t('各地区此刻搜索量突增的词与相关资讯，偏新闻，热度往往一两天就过去。')) + '</p>' +
-    (lang !== 'en'
+    archLink +
+    (!isArch && lang !== 'en'
       ? '<div class="daily-ctl" id="dailyTrToggle" role="group" aria-label="' + esc(t('显示译文')) + '">' +
         '<button type="button" class="seg on" data-mode="orig">' + esc(t('显示原文')) + '</button>' +
         '<button type="button" class="seg" data-mode="tr">' + esc(t('显示译文')) + '</button></div>'
@@ -1828,9 +1854,64 @@ function dailyPage(lang) {  const t = ui(lang);
     '</main>';
 
   return layout(lang, {
-    rel: '/daily',
-    title: t('今天什么词被搜爆了') + ' · Google Trends | TrendSift',
+    rel: isArch ? '/daily/' + arch.date : '/daily',
+    title: (isArch ? fmtDay(arch.date) + ' · ' + t('热榜档案') + ' · Google Trends | TrendSift' : t('今天什么词被搜爆了') + ' · Google Trends | TrendSift'),
     desc: t('各地区此刻搜索量突增的词与相关资讯，偏新闻，热度往往一两天就过去。'),
+    body,
+  });
+}
+
+/* ------------------------ 热榜档案索引 ------------------------ */
+
+function dailyArchiveIndex(lang, dates) {
+  const t = ui(lang);
+  const L = LANGS.find((x) => x.code === lang);
+  // 按月分组：2026-10 → [19, 18, ...]
+  const byMonth = {};
+  for (const d of dates) {
+    const k = d.slice(0, 7);
+    (byMonth[k] = byMonth[k] || []).push(d);
+  }
+  const months = Object.keys(byMonth).sort().reverse();
+  const fmtMonth = (k) => {
+    const [y, m] = k.split('-').map(Number);
+    if (lang === 'en') {
+      const MON = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      return MON[m - 1] + ' ' + y;
+    }
+    if (lang === 'ko') return y + '년 ' + m + '월';
+    return y + '年' + m + '月';
+  };
+  const fmtD = (iso) => {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
+    if (!m) return iso;
+    if (lang === 'en') return Number(m[2]) + '/' + Number(m[3]);
+    if (lang === 'ko') return m[2] + '월 ' + Number(m[3]) + '일';
+    return m[2] + '月' + Number(m[3]) + '日';
+  };
+  const list = months
+    .map(
+      (k) =>
+        '<section class="arch-month"><h2>' + esc(fmtMonth(k)) + '</h2><ul class="arch-days">' +
+        byMonth[k]
+          .map((d) => '<li><a href="' + L.prefix + '/daily/' + d + '.html">' + esc(fmtD(d)) + '</a></li>')
+          .join('') +
+        '</ul></section>'
+    )
+    .join('');
+  const body =
+    '<main class="wrap">' +
+    '<header class="doc-hero"><div class="doc-eyebrow">' + esc(t('今日热榜')) + '</div>' +
+    '<h1>' + esc(t('历史榜单')) + '</h1>' +
+    '<p class="doc-lead">' + esc(t('每天一页，热度已定格，适合回看某个词是哪天开始爆的。')) + '</p>' +
+    '<p class="doc-nav"><a href="' + L.prefix + '/daily.html">' + esc(t('回到今天')) + '</a></p>' +
+    '</header>' +
+    (list || '<p class="empty">' + esc(t('没有数据')) + '</p>') +
+    '</main>';
+  return layout(lang, {
+    rel: '/daily/',
+    title: t('历史榜单') + ' · Google Trends | TrendSift',
+    desc: t('每天一页，热度已定格，适合回看某个词是哪天开始爆的。'),
     body,
   });
 }
@@ -1901,6 +1982,114 @@ function write(rel, html) {
   fs.writeFileSync(p, html, 'utf8');
 }
 
+// data/daily-snapshots/ 里可用的归档日期，新 → 旧
+function dailySnapDates() {
+  try {
+    return fs
+      .readdirSync(path.join(ROOT, 'data', 'daily-snapshots'))
+      .filter((f) => /^\d{4}-\d\d-\d\d\.json$/.test(f))
+      .map((f) => f.slice(0, 10))
+      .sort()
+      .reverse();
+  } catch (e) {
+    return [];
+  }
+}
+
+/* ------------------------------ RSS ------------------------------ */
+
+function xmlEsc(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function rssChannel(lang, title, link, desc, items) {
+  const L = LANGS.find((x) => x.code === lang);
+  const now = new Date().toUTCString();
+  const body = items
+    .map((tp) => {
+      const url = SITE + L.prefix + '/topics/' + tp.slug;
+      // pubDate 用最近爆发月（recentBreak → inflection，'YYYY-MM'）；都没有就用构建时间
+      const at = (tp.recentBreak && tp.recentBreak.at) || (tp.inflection && tp.inflection.at) || '';
+      const pd = /^\d{4}-\d{2}$/.test(at) ? new Date(at + '-01T00:00:00Z').toUTCString() : now;
+      return (
+        '    <item>' +
+        '<title>' + xmlEsc(tp.keyword) + '</title>' +
+        '<link>' + xmlEsc(url) + '</link>' +
+        '<guid isPermaLink="true">' + xmlEsc(url) + '</guid>' +
+        '<pubDate>' + pd + '</pubDate>' +
+        '<category>' + xmlEsc(pcatText(lang, tp.primaryCat)) + '</category>' +
+        '<description>' + xmlEsc(tp.descShort || tp.desc || tp.keyword) + '</description>' +
+        '</item>'
+      );
+    })
+    .join('\n');
+  return (
+    '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<rss version="2.0"><channel>' +
+    '<title>' + xmlEsc(title) + '</title>' +
+    '<link>' + xmlEsc(link) + '</link>' +
+    '<description>' + xmlEsc(desc) + '</description>' +
+    '<language>' + L.htmlLang + '</language>' +
+    '<lastBuildDate>' + now + '</lastBuildDate>' +
+    '<generator>TrendSift</generator>\n' +
+    body +
+    '\n</channel></rss>'
+  );
+}
+
+function buildRss() {
+  // 排序：最近爆发月新的在前，同月按搜索量
+  const recency = (tp) => (tp.recentBreak && tp.recentBreak.at) || (tp.inflection && tp.inflection.at) || '';
+  const byNew = (a, b) => {
+    const r = recency(b).localeCompare(recency(a));
+    return r !== 0 ? r : (b.vol || 0) - (a.vol || 0);
+  };
+  const sorted = SITE_DATA.topics.slice().sort(byNew);
+  const byPcat = {};
+  for (const tp of SITE_DATA.topics) {
+    const k = tp.primaryCat || 'other';
+    (byPcat[k] = byPcat[k] || []).push(tp);
+  }
+  const RSS_DESC_KEY =
+    '数据来自 Google Trends 的搜索热度，只收搜索量持续上升的产品、品类、服务与工具，每条都带 22 年月度历史曲线。';
+  let n = 0;
+  for (const l of LANGS) {
+    const dir = l.prefix ? l.prefix.slice(1) : '';
+    const rssDesc = ui(l.code)(RSS_DESC_KEY);
+    write(
+      path.join(dir, 'rss.xml'),
+      rssChannel(
+        l.code,
+        'TrendSift — Google Trends rising searches',
+        SITE + (l.prefix || ''),
+        rssDesc,
+        sorted.slice(0, 40)
+      )
+    );
+    n++;
+    // 分类 feed：与 sitemap 同阈值（≥6 个词才建）
+    for (const k of Object.keys(byPcat)) {
+      if (byPcat[k].length < 6) continue;
+      write(
+        path.join(dir, 'rss', k + '.xml'),
+        rssChannel(
+          l.code,
+          'TrendSift · ' + pcatText(l.code, k),
+          SITE + l.prefix + '/categories/' + k,
+          rssDesc,
+          byPcat[k].slice().sort(byNew).slice(0, 40)
+        )
+      );
+      n++;
+    }
+  }
+  console.log('  RSS：' + n + ' 个 feed（每语言全站 1 + 分类）');
+}
+
 function buildSitemaps() {
   const urls = [];
   for (const l of LANGS) {
@@ -1918,6 +2107,8 @@ function buildSitemaps() {
     push('/');
     push('/topics/');
     push('/daily');
+    push('/daily/');
+    for (const d of dailySnapDates()) push('/daily/' + d);
     push('/compare/');
     push('/categories/');
     push('/about');
@@ -2021,6 +2212,9 @@ async function main() {
   const sorted = topics.slice().sort((a, b) => (b.vol || 0) - (a.vol || 0));
   const pages = Math.ceil(sorted.length / PER_PAGE);
 
+  // 每日热榜归档：data/daily-snapshots/ 里有哪些日期，就为每种语言生成哪些永久页
+  const snapDates = dailySnapDates();
+
   let count = 0;
   for (const l of LANGS) {
     const dir = l.prefix ? l.prefix.slice(1) : '';
@@ -2028,6 +2222,11 @@ async function main() {
     count++;
     write(path.join(dir, 'daily.html'), dailyPage(l.code));
     count++;
+    if (snapDates.length) {
+      write(path.join(dir, 'daily', 'index.html'), dailyArchiveIndex(l.code, snapDates));
+      for (const d of snapDates) write(path.join(dir, 'daily', d + '.html'), dailyPage(l.code, { date: d }));
+      count += snapDates.length + 1;
+    }
     write(path.join(dir, 'saved.html'), savedPage(l.code));
     count++;
 
@@ -2145,6 +2344,7 @@ async function main() {
 
   // 法务与热榜页由 build-static 生成中文版；其他语言先复用英文版的占位链接
   buildSitemaps();
+  buildRss();
   buildLlms();
   buildRobots();
 

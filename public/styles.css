@@ -2265,6 +2265,48 @@ body.tr-on .opp-desc .tr-t {
   max-width: 700px;
 }
 
+/* 热榜档案：面包屑行 + 按月分组的日期列表 */
+.doc-nav {
+  margin: 14px 0 0;
+  font-size: 13px;
+}
+.doc-nav a {
+  color: var(--accent, #5145e5);
+  text-decoration: none;
+}
+.doc-nav a:hover {
+  text-decoration: underline;
+}
+.arch-month {
+  margin: 26px 0 8px;
+}
+.arch-month h2 {
+  font-size: 15px;
+  margin: 0 0 10px;
+  color: var(--ink-2);
+}
+.arch-days {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.arch-days a {
+  display: inline-block;
+  padding: 5px 12px;
+  border: 1px solid var(--line, #e4e2ef);
+  border-radius: 999px;
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--ink-1, #1c1a2e);
+}
+.arch-days a:hover {
+  border-color: var(--accent, #5145e5);
+  color: var(--accent, #5145e5);
+}
+
 .doc-meta {
   margin-top: 14px;
   display: flex;

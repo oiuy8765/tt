@@ -341,6 +341,36 @@ function fetchLocal(apiPath) {
     console.log('  yt.json：无可用数据（YouTube 热门区块会隐藏）');
   }
 
+  // ── 每日归档快照：把当天的热榜 + 视频数据存进 data/daily-snapshots/，
+  //    构建链用它生成 /daily/YYYY-MM-DD.html 永久页。保留最近 60 天，旧的自动清理。
+  //    日期按北京时间取：早上 6 点的构建（UTC 22:00）不能被算成前一天。
+  if (daily && daily.ok) {
+    try {
+      const bjDate = new Date(Date.now() + 8 * 3600 * 1000).toISOString().slice(0, 10);
+      const snapDir = path.join(ROOT, 'data', 'daily-snapshots');
+      fs.mkdirSync(snapDir, { recursive: true });
+      const snap = {
+        date: bjDate,
+        savedAt: new Date().toISOString(),
+        daily: scrubDaily(daily),
+        yt: ytOut,
+      };
+      fs.writeFileSync(path.join(snapDir, bjDate + '.json'), JSON.stringify(snap), 'utf8');
+      const snaps = fs
+        .readdirSync(snapDir)
+        .filter((f) => /^\d{4}-\d\d-\d\d\.json$/.test(f))
+        .sort();
+      while (snaps.length > 60) {
+        const old = snaps.shift();
+        fs.rmSync(path.join(snapDir, old), { force: true });
+        console.log('  daily-snapshots：清理过期归档 ' + old);
+      }
+      console.log('  daily-snapshots：已归档 ' + bjDate + '（共 ' + Math.min(snaps.length, 60) + ' 天）');
+    } catch (e) {
+      console.log('  daily-snapshots：归档失败 ' + e.message);
+    }
+  }
+
   // 热榜翻译要赶在主题词典之前跑：主题词典单次要翻 800+ 条，会先把腾讯接口的
   // 限频额度吃掉，导致热榜后半段地区没有译文（实测 zh 只到 161/430，后面三种语言几乎全失败）。
   try {
