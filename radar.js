@@ -598,7 +598,13 @@ const MOBILE_HINT = /\b(app|mobile|ios|android|iphone|smartphone)\b/i;
 const TOOL_SUFFIX =
   /\b(generator|calculator|converter|remover|downloader|editor|checker|maker|builder|template|tracker|formatter|compressor|transcriber|summarizer|translator|extractor|parser|validator|detector|scanner|remover)\b/i;
 
-const FORM_LABEL = { saas: 'SaaS / B 端工具', app: '消费级 APP', tool: '工具站', content: '内容站 / 数据库' };
+const FORM_LABEL = {
+  saas: 'SaaS / B 端工具',
+  app: '消费级 APP',
+  tool: '工具站',
+  content: '内容站 / 数据库',
+  goods: '实物商品',
+};
 
 /* ------------------------------------------------------------------ */
 /* 「可以做什么」建议：组合式生成                                       */
@@ -989,6 +995,8 @@ function digitalOf(t) {
   else form = 'content';
 
   const kind = kindOf(t);
+  // 实物商品没有「线上形态」：否则会出现 载体=实体产品、形态=内容站 的矛盾标签
+  if (kind === 'goods') form = 'goods';
 
   const reasons = [];
   if (digK) reasons.push('关键词本身就是线上产品意图');
