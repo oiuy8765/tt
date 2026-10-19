@@ -1600,7 +1600,8 @@ async function buildDailyTranslations() {
     let newCount = 0;
     let deferred = 0;
     let failed = 0;
-    for (const src of ['en', 'ja', 'ko']) {
+    // 日/韩词条数量少（各 10 条上下），先翻它们，保证不会被英文组的额度挤掉
+    for (const src of ['ja', 'ko', 'en']) {
       const list = bySrc[src];
       if (!list.length || budget <= 0 || src === l) continue; // 同语言不翻
       try {
