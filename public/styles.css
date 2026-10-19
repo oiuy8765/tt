@@ -807,6 +807,59 @@ input[type="search"].input::-webkit-search-cancel-button {
   margin-top: 11px;
 }
 
+/* 一级分类 chips（首页第 2 步） */
+.pcat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pcat {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font: inherit;
+  font-size: 13.5px;
+  color: var(--ink-2);
+  padding: 7px 13px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.16s ease, background 0.16s ease, color 0.16s ease;
+}
+
+.pcat i {
+  font-style: normal;
+  font-size: 12px;
+  color: var(--ink-3);
+  background: var(--surface-3);
+  border-radius: 999px;
+  padding: 1px 7px;
+  line-height: 1.5;
+}
+
+.pcat:hover {
+  border-color: #cfd2e6;
+  color: var(--ink);
+}
+
+.pcat.on {
+  color: var(--brand);
+  border-color: var(--brand);
+  background: #f7f6ff;
+}
+
+.pcat.on i {
+  color: var(--brand);
+  background: rgba(81, 69, 229, 0.1);
+}
+
+.pcat[hidden] {
+  display: none;
+}
+
+
 .chint {
   font-size: 12.5px;
   line-height: 1.85;

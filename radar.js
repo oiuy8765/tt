@@ -595,6 +595,118 @@ const B2B_HINT =
 
 const MOBILE_HINT = /\b(app|mobile|ios|android|iphone|smartphone)\b/i;
 
+/* ------------------------------------------------------------------ */
+/* 一级分类：人工精选的浏览入口                                          */
+/*                                                                     */
+/* 上游给的 91 个标签没法直接当导航用：business 一项就占 448 条（全站    */
+/* 一半），nailcare / gambling 只有 1 条。这里收敛成十几个「用户脑子里  */
+/* 有的类目」，每条话题只归一个 primaryCat，规则按顺序匹配：             */
+/*   1) 关键词强特征（最可信）  2) 上游标签映射  3) 载体/形态兜底        */
+/* ------------------------------------------------------------------ */
+
+const PRIMARY_CATS = [
+  {
+    key: 'pets',
+    label: '宠物',
+    kw: /\b(dog|puppy|cat\b|kitten(?! heels)|pet\b|pets|aquarium|hamster|parrot|bird ?feeder|litter|leash|dog bed|cat tree|pet hair|grain.?free)\b/i,
+    cats: /\bpets\b/i,
+  },
+  {
+    key: 'baby',
+    label: '母婴',
+    kw: /\b(baby|infant|toddler|diaper|stroller|nursing|pacifier|crib|baby ?monitor|montessori)\b/i,
+    cats: /\bbaby\b/i,
+  },
+  {
+    key: 'home',
+    label: '家居生活',
+    kw: /\b(mattress|pillow|blanket|bedding|sofa|couch|recliner|dresser|wardrobe|shelf|shelves|curtain|rug|lamp|mirror|desk\b|chair|table|kitchen|cookware|pan\b|pot\b|blender|air ?fryer|cooker|kettle|toaster|cutlery|knife|mug|tumbler|bottle|vase|planter|garden|gardening|cleaning|laundry|detergent|vacuum|mop|storage|organizer|declutter|home ?decor|furniture|humidifier|purifier|diffuser|candle|shower head|bathroom|toilet)\b/i,
+    cats: /\bhome\b|home-decor|furniture|kitchen|sleep|garden|cleaning/i,
+  },
+  {
+    key: 'food',
+    label: '食品饮料',
+    kw: /\b(coffee|tea\b|snack|chocolate|wine|beer|whisk?ey|vodka|cocktail|juice|soda|energy ?drink|hot ?sauce|olive ?oil|honey|spice|seasoning|cereal|pasta|sauce|baking|cookbook|recipe|matcha|yerba|kombucha|gummy|jerky)\b/i,
+    cats: /food|beverage|cooking|grocery|alcohol|diets/i,
+  },
+  {
+    key: 'fashion',
+    label: '服饰鞋包',
+    kw: /\b(shirt|t-?shirt|blouse|dress|skirt|jeans|pants|trousers|shorts|blazer|jacket|hoodie|sweater|cardigan|leggings|bra\b|underwear|socks|swimwear|bikini|coat|shoes|sneakers?|boots?|sandals?|slippers|heels|handbag|purse|wallet|backpack|luggage|suitcase|belt|scarf|beanie|hat\b|cap\b|sunglasses|jewelry|necklace|earring|bracelet|fashion|outfit|wardrobe|barrel leg|silk ?slip)\b/i,
+    cats: /fashion|clothing|shoes|jewelry|luxury|apparel|textile/i,
+  },
+  {
+    key: 'beauty',
+    label: '美妆个护',
+    kw: /\b(makeup|cosmetic|lipstick|mascara|eyeliner|foundation|blush|skincare|skin ?care|serum|moisturizer|face ?mask|eye ?cream|sunscreen|haircare|hair ?care|shampoo|conditioner|hair ?oil|fragrance|perfume|cologne|nail|manicure|beauty|toner|lotion|body ?wash|deodorant|retinol|niacinamide|glycolic|hyaluronic|rose ?water|whitening|dermaplan)\w*\b/i,
+    cats: /beauty|skincare|haircare|makeup|fragrance|nailcare/i,
+  },
+  {
+    key: 'health',
+    label: '健康健身',
+    kw: /\b(supplement|vitamin|protein|collagen|probiotic|magnesium|creatine|weight loss|keto|diet|insomnia|therapy|therapist|mental health|anxiety|meditation|dental|dentist|injury|pain relief|posture|blood pressure|glucose|menopause|testosterone|electrolyte|greens powder)\b/i,
+    cats: /health|healthcare|nutrition|supplements|mental-health|pharma|fitness/i,
+  },
+  {
+    key: 'auto',
+    label: '汽车配件',
+    kw: /\b(car\b|cars|truck|suv|motorcycle|automotive|car seat|car wash|tire|brake|engine|carplay|ev charger|truck bed|rack|obd|vinyl wrap)\b/i,
+    cats: /automotive/i,
+  },
+  {
+    key: 'outdoor',
+    label: '户外运动',
+    kw: /\b(camping|camp\b|tent|hiking|fishing|kayak|paddleboard|surf|bike|bicycle|cycling|e-?bike|golf|tennis|padel|pickleball|ski|snowboard|running|marathon|yoga|gym|workout|treadmill|dumbbell|kettlebell|sport|sports|outdoor|trail)\b/i,
+    cats: /sports-outdoors|sports|fitness|outdoor/i,
+  },
+  {
+    key: 'gaming',
+    label: '游戏娱乐',
+    kw: /\b(gaming|game\b|games|console|xbox|playstation|nintendo|roblox|minecraft|twitch|esports|controller|vr headset|anime|manga|toy|toys|lego|puzzle|board ?game|plush|doll|action ?figure|ev3)\b/i,
+    cats: /gaming|entertainment|streaming|vr-ar|toys/i,
+  },
+  {
+    key: 'electronics',
+    label: '消费电子',
+    kw: HARDWARE_KW,
+    kwExtra: /\b(drone|printer|bluetooth speaker|smart ?tv|e-?reader|soundbar|projector|gps tracker)\b/i,
+    cats: /consumer-electronics/i,
+  },
+  {
+    key: 'tools',
+    label: '工具与软件',
+    kw: /\b(ai\b|chatgpt|chatbot|saas|software|app\b|apps|website|template|notion|figma|excel|automation|crm|seo\b|no-?code|api\b|extension|plugin|tool\b|tools|generator|dashboard|browser|chrome|downloader|converter|calculator)\b/i,
+    cats: /\bai\b|software|automation|programming|cybersecurity|developer|saas/i,
+  },
+  {
+    key: 'edu-office',
+    label: '教育办公',
+    kw: /\b(course|learn|learning|study|exam|certification|resume|cv\b|interview|productivity|notes?|planner|journal|language|english|writing|essay|math|flashcard)\b/i,
+    cats: /education|productivity|design|workplace|\bhr\b/i,
+  },
+  {
+    key: 'business',
+    label: '商业金融',
+    kw: /\b(business|startup|ecommerce|dropshipping|amazon fba|shopify|marketing|invoice|payroll|accounting|tax|loan|insurance|mortgage|stocks?|investing|crypto|bitcoin|trading|real estate|recruit|leads?|email marketing|b2b)\b/i,
+    cats: /business|finance|banking|investing|insurance|legal|marketing|ecommerce|real-estate|supply-chain|startup|sales|blockchain|crypto/i,
+  },
+];
+
+/* 每条话题只归一个一级分类：按 PRIMARY_CATS 顺序，先关键词后标签，都不中就 other */
+function primaryCatOf(t) {
+  const kw = String(t.keyword || '');
+  const cats = (t.categories || []).join(' ');
+  for (const c of PRIMARY_CATS) {
+    if (c.kw.test(kw)) return c.key;
+    if (c.kwExtra && c.kwExtra.test(kw)) return c.key;
+    if (c.cats && c.cats.test(cats)) return c.key;
+  }
+  // 纯线上需求（工具/内容/平台）归 tools，其余进 other
+  if (t.carrier === 'web' && DIG_KW.test(kw)) return 'tools';
+  return 'other';
+}
+
+
 const TOOL_SUFFIX =
   /\b(generator|calculator|converter|remover|downloader|editor|checker|maker|builder|template|tracker|formatter|compressor|transcriber|summarizer|translator|extractor|parser|validator|detector|scanner|remover)\b/i;
 
@@ -1323,6 +1435,7 @@ function applyDigital(t) {
   t.digitalScore = digitalScore(t, d);
   t.carrier = carrierOf(t);
   t.carrierLabel = CARRIER_LABEL[t.carrier] || '';
+  t.primaryCat = primaryCatOf(t);
 
   // 硬件词补一个「消费电子」品类：Google Trends 给的 technology/art/media 说明不了这是一台设备。
   // 只补标签、不改判定，同时把 art/media 这类对硬件毫无意义的噪音标签去掉。
@@ -1756,6 +1869,8 @@ module.exports = {
   digitalOf,
   digitalScore,
   applyDigital,
+  primaryCatOf,
+  PRIMARY_CATS,
   FORM_LABEL,
   shortDesc,
   // 便于自测

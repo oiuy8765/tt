@@ -209,6 +209,7 @@
   var S = {
     topics: [],
     carrier: 'all',
+    pcat: 'all',
     q: '',
     span: '',
     sort: 'auto',
@@ -216,6 +217,19 @@
     nobrand: false,
     shown: PAGE,
   };
+
+  // 一级分类（primaryCat）：首页 chips + 卡片主标签
+  var PC_LABEL = {
+    pets: '宠物', baby: '母婴', home: '家居生活', food: '食品饮料', fashion: '服饰鞋包',
+    beauty: '美妆个护', health: '健康健身', auto: '汽车配件', outdoor: '户外运动',
+    gaming: '游戏娱乐', electronics: '消费电子', tools: '工具与软件', 'edu-office': '教育办公',
+    business: '商业金融', other: '其他',
+  };
+  function pcText(k) {
+    var zh = PC_LABEL[k] || k;
+    if (LANG === 'zh-CN') return zh;
+    return DICT[zh] || zh;
+  }
 
   var FORM_CLASS = { content: 'f-content', app: 'f-app', saas: 'f-saas', tool: 'f-tool' };
 
@@ -237,6 +251,10 @@
 
   function filtered() {
     var list = pool();
+    if (S.pcat && S.pcat !== 'all')
+      list = list.filter(function (x) {
+        return (x.primaryCat || 'other') === S.pcat;
+      });
     if (S.nobrand)
       list = list.filter(function (x) {
         return x.type !== 'brand';
@@ -314,6 +332,33 @@
     return list;
   }
 
+  /* 一级分类 chips：数量随当前载体动态变化，空的隐藏 */
+  function updatePcat() {
+    var pr = $('#pcatRow');
+    if (!pr) return;
+    var base = pool();
+    var counts = { all: base.length };
+    base.forEach(function (x) {
+      var k = x.primaryCat || 'other';
+      counts[k] = (counts[k] || 0) + 1;
+    });
+    $$('#pcatRow .pcat').forEach(function (b) {
+      var k = b.dataset.pcat || 'all';
+      var n = counts[k] || 0;
+      b.hidden = k !== 'all' && !n;
+      var i = b.querySelector('i');
+      if (i) i.textContent = n;
+      b.classList.toggle('on', (S.pcat || 'all') === k);
+    });
+    // 当前选中的分类在换载体后没有词了 → 回到全部
+    if (S.pcat && S.pcat !== 'all' && !(counts[S.pcat] > 0)) {
+      S.pcat = 'all';
+      $$('#pcatRow .pcat').forEach(function (b) {
+        b.classList.toggle('on', b.dataset.pcat === 'all');
+      });
+    }
+  }
+
   /* ---------------------------- 渲染 ---------------------------- */
 
   function card(x, i) {
@@ -329,10 +374,10 @@
     if (x.windowLabel) chips.push('<span class="mchip win w-' + esc(x.windowKey) + '">' + esc(t(x.windowLabel)) + '</span>');
     if (x.platform) chips.push('<span class="mchip plat">' + esc(x.platform) + '</span>');
     if (x.evergreen) chips.push('<span class="mchip evg">' + esc(t('长青词')) + '</span>');
-    var cats = (x.categories || [])
-      .slice(0, 3)
-      .map(function (c) { return '<span class="cat-tag">' + esc(catText(c)) + '</span>'; })
-      .join('');
+    var cats = x.primaryCat
+      ? '<a class="cat-tag pcat" href="' + BASE + '/categories/' + esc(x.primaryCat) + '.html">' +
+        esc(pcText(x.primaryCat)) + '</a>'
+      : '';
 
     var form =
       x.carrier === 'web' && x.formLabel
@@ -374,6 +419,7 @@
   }
 
   function render() {
+    updatePcat();
     var list = filtered();
     var box = $('#libList');
     if (!box) return;
@@ -403,6 +449,16 @@
   /* ---------------------------- 事件 ---------------------------- */
 
   function bind() {
+    var pr = $('#pcatRow');
+    if (pr)
+      pr.addEventListener('click', function (e) {
+        var b = e.target && e.target.closest ? e.target.closest('.pcat') : null;
+        if (!b) return;
+        S.pcat = b.dataset.pcat || 'all';
+        S.shown = PAGE;
+        render();
+      });
+
     $$('#carrierPick .carrier').forEach(function (b) {
       b.addEventListener('click', function () {
         $$('#carrierPick .carrier').forEach(function (x) {

@@ -413,6 +413,37 @@ const CAT_LABEL = {
   sleep: '睡眠', drink: '饮品', snacks: '零食', outdoor: '户外',
 };
 
+// 一级分类（radar.js PRIMARY_CATS 算出的 primaryCat）：首页浏览入口 + 卡片主标签。
+// 每条话题只归一个，数量在构建期统计。
+const PC_LABEL = {
+  pets: '宠物',
+  baby: '母婴',
+  home: '家居生活',
+  food: '食品饮料',
+  fashion: '服饰鞋包',
+  beauty: '美妆个护',
+  health: '健康健身',
+  auto: '汽车配件',
+  outdoor: '户外运动',
+  gaming: '游戏娱乐',
+  electronics: '消费电子',
+  tools: '工具与软件',
+  'edu-office': '教育办公',
+  business: '商业金融',
+  other: '其他',
+};
+// 首页 chips 的展示顺序（其他放最后）
+const PC_ORDER = [
+  'beauty', 'home', 'food', 'fashion', 'health', 'tools', 'gaming', 'pets',
+  'baby', 'outdoor', 'electronics', 'auto', 'edu-office', 'business', 'other',
+];
+
+function pcatText(lang, key) {
+  const zh = PC_LABEL[key] || key;
+  if (lang === 'zh-CN') return zh;
+  return ui(lang)(zh) || zh;
+}
+
 // 品类名不走上游机器翻译：几个高频词的机翻结果明显跑偏（科技 → "science and technology"），
 // 这里给人工译文，剩下的才回落到词典。
 const CAT_TEXT_FIX = {
@@ -652,10 +683,13 @@ function cardHtml(lang, tp, i) {
   if (tp.windowLabel) chips.push('<span class="mchip win w-' + esc(tp.windowKey) + '">' + esc(t(tp.windowLabel)) + '</span>');
   if (tp.platformLabel) chips.push('<span class="mchip plat">' + esc(tp.platform) + '</span>');
   if (tp.evergreen) chips.push('<span class="mchip evg">' + esc(t('长青词')) + '</span>');
-  const cats = (tp.categories || [])
-    .slice(0, 3)
-    .map((c) => '<span class="cat-tag">' + esc(catText(lang, c)) + '</span>')
-    .join('');
+  // 卡片只带一个一级分类标签：既是信息，也链到对应品类页
+  const cats =
+    tp.primaryCat && PC_LABEL[tp.primaryCat]
+      ? '<a class="cat-tag pcat" href="' +
+        LANGS.find((l) => l.code === lang).prefix + '/categories/' + esc(tp.primaryCat) + '.html">' +
+        esc(pcatText(lang, tp.primaryCat)) + '</a>'
+      : '';
 
   const formBadge =
     tp.carrier === 'web' && tp.formLabel
@@ -708,6 +742,22 @@ function homePage(lang) {
   const scored = topics.slice().sort((a, b) => shownScore(b) - shownScore(a));
   const top = scored.slice(0, 60);
   const counts = SITE_DATA.counts || {};
+
+  // 一级分类 chips（构建期算好数量，前端交互层再按当前载体动态更新）
+  const pcatCounts = {};
+  for (const x of topics) {
+    const k = x.primaryCat || 'other';
+    pcatCounts[k] = (pcatCounts[k] || 0) + 1;
+  }
+  const pcatChips =
+    '<button type="button" class="pcat on" data-pcat="all">' + esc(t('全部')) + '<i>' + topics.length + '</i></button>' +
+    PC_ORDER.map((k) => {
+      const n = pcatCounts[k] || 0;
+      return (
+        '<button type="button" class="pcat" data-pcat="' + k + '"' + (n ? '' : ' hidden') + '>' +
+        esc(pcatText(lang, k)) + '<i>' + n + '</i></button>'
+      );
+    }).join('');
 
   const stats = [
     { n: topics.length, k: '全站话题' },
@@ -767,7 +817,10 @@ function homePage(lang) {
     </button>
   </div>
 
-  <div class="step-label"><b>2</b> ${esc(t('在结果里挑'))}</div>
+  <div class="step-label"><b>2</b> ${esc(t('挑个方向'))}</div>
+  <div class="pcat-row" id="pcatRow" role="group" aria-label="${esc(t('分类'))}">${pcatChips}</div>
+
+  <div class="step-label"><b>3</b> ${esc(t('在结果里挑'))}</div>
   <div class="card card-tight">
     <div class="row row-wrap toolbar">
       <input id="libSearch" class="input" type="search" placeholder="${esc(t('搜索关键词 / 类别'))}" />
@@ -1212,7 +1265,8 @@ function categoryPage(lang, cat, list, relatedCats) {
   const slug = catSlug(cat);
   const st = catStats(list);
   const season = catSeason(list);
-  const catName = cat === '未分类' ? t('未分类') : cat;
+  // cat 现在是一级分类的 key（pets / beauty …），显示名走五语言词表
+  const catName = pcatText(lang, cat);
 
   const rows = list
     .slice()
@@ -1299,9 +1353,9 @@ function categoryIndexPage(lang, cats) {
   const L = LANGS.find((x) => x.code === lang);
   const rows = cats
     .map((c) => {
-      const nm = c.cat === '未分类' ? t('未分类') : c.cat;
+      const nm = pcatText(lang, c.cat);
       return (
-        '<li><a href="' + L.prefix + '/categories/' + catSlug(c.cat) + '.html">' + esc(nm) + '</a>' +
+        '<li><a href="' + L.prefix + '/categories/' + esc(c.cat) + '.html">' + esc(nm) + '</a>' +
         '<span class="ix-num">' + c.n + ' ' + esc(t('个词')) + '</span>' +
         '<span class="ix-g ' + (c.avg > 0 ? 'up' : 'down') + '">' + pct(c.avg) + '</span></li>'
       );
@@ -1869,16 +1923,14 @@ function buildSitemaps() {
     push('/about');
     push('/privacy');
     push('/contact');
-    // 品类页：与页面生成同一条阈值（≥6 个词才建页），否则会写进不存在的 URL
-    const catCount = {};
+    // 品类页：与页面生成同一条阈值（≥6 个词才建页），且现在按一级分类建页
+    const pcatCount = {};
     for (const tp of SITE_DATA.topics) {
-      for (const c of tp.categories || []) catCount[c] = (catCount[c] || 0) + 1;
+      const k = tp.primaryCat || 'other';
+      pcatCount[k] = (pcatCount[k] || 0) + 1;
     }
-    for (const c of Object.keys(catCount)) {
-      if (catCount[c] >= 6) {
-        const sl = catSlug(c);
-        if (sl) push('/categories/' + sl);
-      }
+    for (const c of Object.keys(pcatCount)) {
+      if (pcatCount[c] >= 6) push('/categories/' + c);
     }
     for (const tp of SITE_DATA.topics) push('/topics/' + tp.slug);
     lines.push('</urlset>');
@@ -2010,10 +2062,16 @@ async function main() {
       count++;
     }
 
-    // 品类页：只给词数够的类目建页。太薄的页面（2~3 个词）对 SEO 是负担，也撑不起广告展示
+    // 品类页：按一级分类（primaryCat）生成，不再按上游 91 个碎标签。
+    // 相似机会兜底仍用原始 byCat；浏览入口只保留有内容的大类。
+    const byPcat = {};
+    for (const tp of topics) {
+      const k = tp.primaryCat || 'other';
+      (byPcat[k] = byPcat[k] || []).push(tp);
+    }
     const catList = [];
-    for (const c of Object.keys(byCat)) {
-      const arr = byCat[c];
+    for (const c of Object.keys(byPcat)) {
+      const arr = byPcat[c];
       if (arr.length < 6) continue;
       catList.push({
         cat: c,
@@ -2036,7 +2094,7 @@ async function main() {
         .filter((o) => o.shared > 0)
         .sort((a, b) => b.shared - a.shared)
         .slice(0, 6);
-      write(path.join(dir, 'categories', catSlug(c.cat) + '.html'), categoryPage(l.code, c.cat, byCat[c.cat], rel));
+      write(path.join(dir, 'categories', esc(c.cat) + '.html'), categoryPage(l.code, c.cat, byPcat[c.cat], rel));
       count++;
     }
     write(path.join(dir, 'categories', 'index.html'), categoryIndexPage(l.code, catList));
@@ -2049,6 +2107,40 @@ async function main() {
     // 实时关键词分析页：前端调 /api/keyword（Pages Function + GitHub Actions）
     write(path.join(dir, 'lookup', 'index.html'), lookupPage(l.code));
     count++;
+  }
+
+  // 旧品类页（上游 91 个碎标签里词数够的那些）301 到新的一级分类页，避免 SEO 断链
+  try {
+    const byPcat2 = {};
+    for (const tp of topics) {
+      const k = tp.primaryCat || 'other';
+      (byPcat2[k] = byPcat2[k] || []).push(tp);
+    }
+    const newKeys = new Set(Object.keys(byPcat2).filter((k) => (byPcat2[k] || []).length >= 6));
+    const oldMap = {};
+    for (const tp of topics) {
+      const target = tp.primaryCat || 'other';
+      if (!newKeys.has(target)) continue;
+      for (const c of tp.categories || []) {
+        const sl = catSlug(c);
+        if (!sl || newKeys.has(sl) || oldMap[sl]) continue;
+        oldMap[sl] = target;
+      }
+    }
+    const prefixes = ['', '/zh-tw', '/en', '/ja', '/ko'];
+    const lines = [];
+    for (const [sl, target] of Object.entries(oldMap)) {
+      for (const p of prefixes) {
+        lines.push(p + '/categories/' + sl + '.html ' + p + '/categories/' + target + '.html 301');
+        lines.push(p + '/categories/' + sl + ' ' + p + '/categories/' + target + '.html 301');
+      }
+    }
+    if (lines.length) {
+      fs.writeFileSync(path.join(DIST, '_redirects'), lines.join('\n') + '\n');
+      console.log('  _redirects：' + Object.keys(oldMap).length + ' 个旧品类 URL → 新分类');
+    }
+  } catch (e) {
+    console.log('  _redirects 生成失败：' + e.message);
   }
 
   // 法务与热榜页由 build-static 生成中文版；其他语言先复用英文版的占位链接
