@@ -1,0 +1,46 @@
+name: Translate daily headlines
+
+# 每 2 小时补译一次热榜（只写翻译缓存，不构建页面）。
+# 理由：翻译接口按 IP 限频，单次构建翻不完整天新增的词条（4 语言 × ~270 条），
+# 拆成小任务后缓存逐步累积，构建时命中缓存即可呈现全译页面。
+on:
+  schedule:
+    - cron: '40 */2 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: translate-daily
+  cancel-in-progress: false
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Translate headlines into cached languages
+        env:
+          DAILY_TR_LIMIT: '110'
+        run: node scripts/translate-daily.js
+
+      - name: Commit caches
+        run: |
+          git config user.name "translate-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/i18n
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+            exit 0
+          fi
+          git commit -m "chore: refresh headline translation cache"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin main && break || sleep 5
+          done
