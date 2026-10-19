@@ -19,7 +19,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { translate } = require('./i18n/translate');
+const { translate, loadCache } = require('./i18n/translate');
 
 const ROOT = __dirname;
 const DIST = path.join(ROOT, 'dist');
@@ -1564,17 +1564,29 @@ async function buildDailyTranslations() {
   }
   if (!texts.length) return;
   // transmart 的简中代码是 zh（zh-CN 会报 Unrecognized target language）
-  // 语言间冷却 15s：腾讯接口按 IP 限频，连续 4 种语言不做间隔容易整段 429
+  // 接口按 IP 限频：一次构建大约只够翻 400–500 条，4 种语言全量（~1100 条）翻不完。
+  // 策略：每次构建按「当前覆盖率最低的语言优先」排队，并给每种语言设新译上限，
+  // 未被翻到的下次构建继续（缓存累积），几轮之后所有语言追平。
   const DAILY_LANGS = ['zh', 'zh-TW', 'ja', 'ko'];
-  for (let li = 0; li < DAILY_LANGS.length; li++) {
-    const l = DAILY_LANGS[li];
-    if (li) await new Promise((r) => setTimeout(r, 15000));
+  // 手动补译时可放开：DAILY_TR_LIMIT=9999 node -e "require('./build-multi').buildDailyTranslations()"
+  const PER_LANG_LIMIT = Number(process.env.DAILY_TR_LIMIT) || 150;
+  const cacheHit = (l) => {
+    const c = loadCache('en', l);
+    return texts.filter((s) => c[s]).length;
+  };
+  const order = DAILY_LANGS.slice().sort((a, b) => cacheHit(a) / texts.length - cacheHit(b) / texts.length);
+  const before = {};
+  DAILY_LANGS.forEach((l) => (before[l] = cacheHit(l)));
+  for (let li = 0; li < order.length; li++) {
+    const l = order[li];
+    if (li) await new Promise((r) => setTimeout(r, 12000));
     try {
-      const r = await translate(texts, { from: 'en', to: l, batch: 40 });
+      const r = await translate(texts, { from: 'en', to: l, batch: 40, limit: PER_LANG_LIMIT });
       DAILY_TR[l === 'zh' ? 'zh-CN' : l] = r.map || {};
       console.log(
         '  热榜翻译 ' + l + '：' + Object.keys(r.map || {}).length + '/' + texts.length +
-        '（新译 ' + r.pending + (r.failed ? '，失败 ' + r.failed : '') + '）'
+        '（本轮新译 ' + r.pending + (r.deferred ? '，顺延 ' + r.deferred : '') +
+        (r.failed ? '，失败 ' + r.failed : '') + '）'
       );
     } catch (e) {
       console.log('  热榜翻译 ' + l + ' 失败，回退原文：' + e.message);

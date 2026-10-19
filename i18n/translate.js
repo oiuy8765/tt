@@ -205,7 +205,11 @@ async function translate(texts, opts) {
     uniq.push(s);
   }
 
-  const pending = uniq.filter((s) => !cache[s]);
+  const pendingAll = uniq.filter((s) => !cache[s]);
+  // opts.limit：单次调用最多翻多少条（超额部分下次构建再翻，用于规避接口按 IP 限频）
+  const limit = Number(opts.limit) > 0 ? Number(opts.limit) : 0;
+  const pending = limit ? pendingAll.slice(0, limit) : pendingAll;
+  const deferred = pendingAll.length - pending.length;
   let failed = 0;
 
   if (pending.length) {
@@ -292,7 +296,7 @@ async function translate(texts, opts) {
 
   const map = {};
   for (const s of uniq) if (cache[s]) map[s] = cache[s];
-  return { map, cached: uniq.length - pending.length, pending: pending.length, failed };
+  return { map, cached: uniq.length - pendingAll.length, pending: pending.length, failed, deferred };
 }
 
-module.exports = { translate, tencentTranslate, LANG_NAME, cachePath };
+module.exports = { translate, tencentTranslate, LANG_NAME, cachePath, loadCache };
