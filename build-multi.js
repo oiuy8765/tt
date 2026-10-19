@@ -1537,7 +1537,15 @@ async function buildDailyTranslations() {
   const raw = readJSON(path.join(DIST, 'data', 'daily.json'), null);
   const blocks = (raw && raw.data) || {};
   const texts = [];
+  const bySrc = { en: [], ja: [], ko: [] };
   const seen = new Set();
+  // 各地区原始词条语言不同：日本是日文、韩国是韩文，其余按英文处理。
+  // 用错源语言会把「harga emas antam hari ini」翻成「最后一天」，所以先分组。
+  const detectSrc = (v) => {
+    if (/[\uAC00-\uD7AF\u1100-\u11FF]/.test(v)) return 'ko';
+    if (/[\u3040-\u30FF]/.test(v)) return 'ja';
+    return 'en';
+  };
   const push = (s) => {
     const v = String(s || '').replace(/\s+/g, ' ').trim();
     // 太长、纯中文、话题标签、HTML 转义残留的都不翻
@@ -1545,6 +1553,7 @@ async function buildDailyTranslations() {
     if (/^#/.test(v) || /[\u4e00-\u9fa5]/.test(v)) return;
     seen.add(v);
     texts.push(v);
+    bySrc[detectSrc(v)].push(v);
   };
   for (const g of Object.keys(blocks)) {
     for (const it of (blocks[g] && blocks[g].items) || []) {
@@ -1570,27 +1579,41 @@ async function buildDailyTranslations() {
   const DAILY_LANGS = ['zh', 'zh-TW', 'ja', 'ko'];
   // 手动补译时可放开：DAILY_TR_LIMIT=9999 node -e "require('./build-multi').buildDailyTranslations()"
   const PER_LANG_LIMIT = Number(process.env.DAILY_TR_LIMIT) || 150;
-  const cacheHit = (l) => {
-    const c = loadCache('en', l);
-    return texts.filter((s) => c[s]).length;
+  const hitOf = (src, l) => {
+    const c = loadCache(src, l);
+    return bySrc[src].filter((s) => c[s]).length;
   };
+  const cacheHit = (l) => ['en', 'ja', 'ko'].reduce((n, src) => n + hitOf(src, l), 0);
   const order = DAILY_LANGS.slice().sort((a, b) => cacheHit(a) / texts.length - cacheHit(b) / texts.length);
-  const before = {};
-  DAILY_LANGS.forEach((l) => (before[l] = cacheHit(l)));
   for (let li = 0; li < order.length; li++) {
     const l = order[li];
     if (li) await new Promise((r) => setTimeout(r, 12000));
-    try {
-      const r = await translate(texts, { from: 'en', to: l, batch: 40, limit: PER_LANG_LIMIT });
-      DAILY_TR[l === 'zh' ? 'zh-CN' : l] = r.map || {};
-      console.log(
-        '  热榜翻译 ' + l + '：' + Object.keys(r.map || {}).length + '/' + texts.length +
-        '（本轮新译 ' + r.pending + (r.deferred ? '，顺延 ' + r.deferred : '') +
-        (r.failed ? '，失败 ' + r.failed : '') + '）'
-      );
-    } catch (e) {
-      console.log('  热榜翻译 ' + l + ' 失败，回退原文：' + e.message);
+    const merged = {};
+    let budget = PER_LANG_LIMIT;
+    let newCount = 0;
+    let deferred = 0;
+    let failed = 0;
+    for (const src of ['en', 'ja', 'ko']) {
+      const list = bySrc[src];
+      if (!list.length || budget <= 0 || src === l) continue; // 同语言不翻
+      try {
+        const r = await translate(list, { from: src, to: l, batch: 40, limit: budget });
+        Object.assign(merged, r.map || {});
+        newCount += r.pending;
+        deferred += r.deferred || 0;
+        failed += r.failed || 0;
+        budget -= r.pending;
+      } catch (e) {
+        console.log('  热榜翻译 ' + src + '→' + l + ' 失败：' + e.message);
+      }
+      if (src === 'en' && bySrc.ja.length + bySrc.ko.length) await new Promise((r) => setTimeout(r, 3000));
     }
+    DAILY_TR[l === 'zh' ? 'zh-CN' : l] = merged;
+    console.log(
+      '  热榜翻译 ' + l + '：' + Object.keys(merged).length + '/' + texts.length +
+      '（本轮新译 ' + newCount + (deferred ? '，顺延 ' + deferred : '') +
+      (failed ? '，失败 ' + failed : '') + '）'
+    );
   }
 }
 
