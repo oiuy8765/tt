@@ -209,8 +209,9 @@ async function translate(texts, opts) {
   let failed = 0;
 
   if (pending.length) {
+    const batchSize = Math.min(50, Math.max(1, Number(opts.batch) || BATCH));
     const batches = [];
-    for (let i = 0; i < pending.length; i += BATCH) batches.push(pending.slice(i, i + BATCH));
+    for (let i = 0; i < pending.length; i += batchSize) batches.push(pending.slice(i, i + batchSize));
     let idx = 0;
     let done = 0;
     let dirty = 0;

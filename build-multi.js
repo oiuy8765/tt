@@ -1529,44 +1529,48 @@ function dailySnippet(query, title) {
 // 热榜是英文新闻词，非中文页面看不懂 —— 构建时把标题/摘要翻成各语言（带增量缓存）
 const DAILY_TR = {};
 
+let DAILY_TR_DONE = false;
+
 async function buildDailyTranslations() {
+  if (DAILY_TR_DONE) return;
+  DAILY_TR_DONE = true;
   const raw = readJSON(path.join(DIST, 'data', 'daily.json'), null);
   const blocks = (raw && raw.data) || {};
   const texts = [];
   const seen = new Set();
+  const push = (s) => {
+    const v = String(s || '').replace(/\s+/g, ' ').trim();
+    // 太长、纯中文、话题标签、HTML 转义残留的都不翻
+    if (!v || v.length > 280 || seen.has(v)) return;
+    if (/^#/.test(v) || /[\u4e00-\u9fa5]/.test(v)) return;
+    seen.add(v);
+    texts.push(v);
+  };
   for (const g of Object.keys(blocks)) {
     for (const it of (blocks[g] && blocks[g].items) || []) {
-      for (const s of [String(it.query || ''), ...((it.articles || []).map((a) => String(a.title || '')))]) {
-        const v = s.replace(/\s+/g, ' ').trim();
-        // 太长、纯中文、话题标签、HTML 转义残留的都不翻
-        if (!v || v.length > 280 || seen.has(v)) continue;
-        if (/^#/.test(v) || /[\u4e00-\u9fa5]/.test(v)) continue;
-        seen.add(v);
-        texts.push(v);
-      }
+      push(it.query);
+      // 页面实际显示的是 dailySnippet() 处理后的摘要，不是原始文章标题；
+      // 只翻「会显示的那一条」，既省额度又保证键能命中
+      const one = (it.articles || [])[0];
+      if (one && one.title) push(dailySnippet(it.query, one.title));
     }
   }
-  // YouTube 热门视频标题也走同一套翻译（超出长度的截断后跳过）
+  // YouTube 热门视频标题也走同一套翻译（键必须与渲染时一致：slice(0,140)）
   const ytRaw = readJSON(path.join(DIST, 'data', 'yt.json'), null);
   for (const g of Object.keys((ytRaw && ytRaw.data) || {})) {
     for (const v of (ytRaw.data[g].items || []).slice(0, 10)) {
-      const s = String(v.title || '').replace(/\s+/g, ' ').trim().slice(0, 140);
-      if (!s || seen.has(s)) continue;
-      if (/^#/.test(s) || /[\u4e00-\u9fa5]/.test(s)) continue;
-      seen.add(s);
-      texts.push(s);
+      push(String(v.title || '').replace(/\s+/g, ' ').trim().slice(0, 140));
     }
   }
   if (!texts.length) return;
   // transmart 的简中代码是 zh（zh-CN 会报 Unrecognized target language）
-  // 语言间冷却 100s：Google gtx 兜底按 IP 限流（约 240 条/时间窗），
-  // 连续翻 4 种语言会在第 2 种开始全量 429
+  // 语言间冷却 15s：腾讯接口按 IP 限频，连续 4 种语言不做间隔容易整段 429
   const DAILY_LANGS = ['zh', 'zh-TW', 'ja', 'ko'];
   for (let li = 0; li < DAILY_LANGS.length; li++) {
     const l = DAILY_LANGS[li];
-    if (li) await new Promise((r) => setTimeout(r, 100000));
+    if (li) await new Promise((r) => setTimeout(r, 15000));
     try {
-      const r = await translate(texts, { from: 'en', to: l });
+      const r = await translate(texts, { from: 'en', to: l, batch: 40 });
       DAILY_TR[l === 'zh' ? 'zh-CN' : l] = r.map || {};
       console.log(
         '  热榜翻译 ' + l + '：' + Object.keys(r.map || {}).length + '/' + texts.length +
@@ -2004,4 +2008,4 @@ async function main() {
 
 if (require.main === module) main();
 
-module.exports = { main, renderDoc: layout };
+module.exports = { main, renderDoc: layout, buildDailyTranslations };

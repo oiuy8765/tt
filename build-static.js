@@ -341,6 +341,15 @@ function fetchLocal(apiPath) {
     console.log('  yt.json：无可用数据（YouTube 热门区块会隐藏）');
   }
 
+  // 热榜翻译要赶在主题词典之前跑：主题词典单次要翻 800+ 条，会先把腾讯接口的
+  // 限频额度吃掉，导致热榜后半段地区没有译文（实测 zh 只到 161/430，后面三种语言几乎全失败）。
+  try {
+    const dm = require(path.join(ROOT, 'build-multi.js'));
+    await dm.buildDailyTranslations();
+  } catch (e) {
+    console.log('  热榜翻译提前执行失败：' + e.message);
+  }
+
   console.log('[4/5] 生成中文词典…');
   const ZH = require(path.join(ROOT, 'build-zh.js'));
   const dailyObj = daily && daily.ok ? daily : null;
