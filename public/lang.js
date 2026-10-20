@@ -58,6 +58,55 @@
     return CONTENT[k] || k;
   }
 
+  /* 建议文案：按「模板 + 变量」在前端拼，不再整句中译。
+     整句机翻会把中文原文里的动作词搞坏（实测出现「実写短视频投流検証転換」），
+     而且关键词不跟着翻。模板由 build-multi 内嵌成 window.__ADVICE__。 */
+  var ADV = window.__ADVICE__ || { tpl: {}, kw: {} };
+
+  function advTpl(id) {
+    if (!id) return '';
+    return (ADV.tpl && ADV.tpl[id]) || '';
+  }
+  function advKw(s) {
+    var k = String(s == null ? '' : s).trim();
+    if (LANG === 'zh-CN') return k;
+    return (ADV.kw && ADV.kw[k]) || k;
+  }
+  function advFill(tplStr, vars) {
+    var up = {};
+    for (var k in vars) if (Object.prototype.hasOwnProperty.call(vars, k)) up[k.toUpperCase()] = vars[k];
+    return String(tplStr || '').replace(/\[\[(\w+)\]\]/g, function (m, k) {
+      var v = up[k.toUpperCase()];
+      return v == null ? m : String(v);
+    });
+  }
+  var EN_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  function adviceFromParts(x) {
+    var p = x && x.adviceParts;
+    if (!p || !p.a || !p.a.id) return '';
+    var vars = {};
+    if (p.b && p.b.vars) for (var k in p.b.vars) vars[k] = p.b.vars[k];
+    if (ADV.en_months && vars.M != null) vars.M = EN_MONTHS[Number(vars.M) - 1] || vars.M;
+
+    var act = advFill(advTpl(p.a.id), {
+      KW: advKw(p.a.kw),
+      WHO: advTpl(p.a.who),
+      PRICE: advTpl(p.a.price),
+      PLATFORM: p.a.platform,
+    });
+    var time = p.b ? advFill(advTpl(p.b.id), vars) : '';
+    return [act, time].filter(Boolean).join(' ');
+  }
+
+  // 有 adviceParts 就走模板；没有（老数据）才回落到字典
+  function adviceText(x) {
+    var byTpl = adviceFromParts(x);
+    if (byTpl) return byTpl;
+    var raw = x.carrier === 'web' && x.digitalAdvice ? x.digitalAdvice : x.advice;
+    return sysText(raw);
+  }
+
   // 分类标签：slug → 中文 → 译文
   var CAT_LABEL = {
     software: '软件', technology: '科技', business: '商业', marketing: '营销', finance: '金融',
@@ -385,7 +434,7 @@
         : '';
     var score = Math.round(x.carrier === 'web' ? x.buildScore || 0 : x.score || 0);
     var on = isSaved(x.slug);
-    var advice = x.carrier === 'web' && x.digitalAdvice ? x.digitalAdvice : x.advice;
+    var advice = adviceText(x);
     var platAdvice = x.carrier !== 'web' && x.platformAdvice ? x.platformAdvice : '';
 
     return (
@@ -402,7 +451,7 @@
       '</div>' +
       (desc ? '<p class="opp-desc">' + desc + '</p>' : '') +
       (cats || chips.length ? '<div class="opp-cats">' + chips.join('') + cats + '</div>' : '') +
-      (advice ? '<div class="opp-advice">💡 ' + esc(sysText(advice)) + '</div>' : '') +
+      (advice ? '<div class="opp-advice">💡 ' + esc(advice) + '</div>' : '') +
       (platAdvice ? '<div class="opp-plat-advice">📣 ' + esc(sysText(platAdvice)) + '</div>' : '') +
       seasonBar(x) +
       '</div>' +

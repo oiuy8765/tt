@@ -563,8 +563,35 @@ function langSwitch(lang, relPath) {
   );
 }
 
-function layout(lang, opts) {
-  const t = ui(lang);
+/**
+ * 首页卡片是在前端（lang.js）渲染的，它没法拿到服务端的模板文件。
+ * 这里把「当前语言的建议模板 + 本页涉及关键词的译文」内嵌进页面，
+ * 前端按模板本地拼接，避免再把整句中文丢给机翻（那样会出「実写短视频投流検証転換」这类破损）。
+ * 只内嵌首页需要的那部分，体积可控。
+ */
+function adviceBoot(lang) {
+  const D = ADVICE[lang] || ADVICE['zh-CN'] || {};
+  const ZH = ADVICE['zh-CN'] || {};
+  // 前端要用的 id 集合：动作模板 / 时机模板 / 价位 / 人群
+  const tpl = {};
+  for (const id of Object.keys(ZH)) {
+    if (D[id]) tpl[id] = D[id];
+  }
+  // 首页前 N 条的 advParts 用到的关键词译文
+  const kwMap = {};
+  for (const tp of (SITE_DATA.topics || []).slice(0, 200)) {
+    const p = tp && tp.adviceParts;
+    if (!p || !p.a || !p.a.kw) continue;
+    const src = p.a.kw;
+    const tr = lang === 'zh-CN' ? src : tx(lang, src) || '';
+    if (tr && tr !== src) kwMap[src] = tr;
+  }
+  // 时间模板里的月份：英文用月份名，其余语言用数字
+  const payload = { tpl, kw: kwMap, en_months: lang === 'en' };
+  return 'window.__ADVICE__=' + JSON.stringify(payload) + ';';
+}
+
+function layout(lang, opts) {  const t = ui(lang);
   const L = LANGS.find((x) => x.code === lang);
   const rel = opts.rel || '/';
   const canonical = SITE + L.prefix + (rel === '/' ? '/' : rel);
@@ -652,7 +679,7 @@ ${opts.body}
   </div>
   <div class="foot-note">© 2026 TrendSift · ${esc(t('数据每日更新'))} · ${esc(t('无需注册'))} · ${esc(t('不构成投资建议'))}</div>
 </footer>
-<script>window.__LANG__=${JSON.stringify(lang)};window.__BASE__=${JSON.stringify(L.prefix)};window.__T__=${JSON.stringify(uiDict)};</script>
+<script>window.__LANG__=${JSON.stringify(lang)};window.__BASE__=${JSON.stringify(L.prefix)};window.__T__=${JSON.stringify(uiDict)};${adviceBoot(lang)}</script>
 ${opts.script ? '<script src="' + opts.script + '" defer></script>' : ''}
 <script src="/lang.js?v=${CACHE_VER}"></script>
 </body>
@@ -697,7 +724,12 @@ function cardHtml(lang, tp, i) {
       ? '<span class="form-badge ' + (FORM_CLASS[tp.form] || '') + '">' + esc(t(tp.formLabel)) + '</span>'
       : '';
 
-  const advice = tp.carrier === 'web' && tp.digitalAdvice ? tp.digitalAdvice : tp.advice;
+  // 卡片建议必须走模板 + 变量（adviceLines），不能把整句中文丢给机翻：
+  // 整句翻译在日韩英里会被二次破坏（"実写短视频投流验证转化" → "実写短视频投流検証転換"），
+  // 而且关键词没跟着翻。adviceLines 输出的已经是目标语言，绝不能再过 sysText。
+  const advLines = adviceLines(lang, tp);
+  const advice = advLines.length ? advLines[0] : '';
+  const timeAdvice = advLines.length > 1 ? advLines[1] : '';
   const platAdvice = tp.carrier !== 'web' && tp.platformAdvice ? tp.platformAdvice : '';
 
   return (
@@ -711,7 +743,7 @@ function cardHtml(lang, tp, i) {
     '</div>' +
     (desc ? '<p class="opp-desc">' + desc + '</p>' : '') +
     (cats || chips.length ? '<div class="opp-cats">' + chips.join('') + cats + '</div>' : '') +
-    (advice ? '<div class="opp-advice">💡 ' + esc(sysText(lang, advice)) + '</div>' : '') +
+    (advice ? '<div class="opp-advice">💡 ' + esc(advice) + (timeAdvice ? ' ' + esc(timeAdvice) : '') + '</div>' : '') +
     (platAdvice ? '<div class="opp-plat-advice">📣 ' + esc(sysText(lang, platAdvice)) + '</div>' : '') +
     seasonBarHtml(lang, tp) +
     '</div>' +
