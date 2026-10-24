@@ -651,6 +651,7 @@ ${analyticsTag()}
   <nav class="mainnav" aria-label="main">
     <a href="${L.prefix}/"${isHome ? ' class="on"' : ''}>${esc(t('机会库'))}</a>
     <a href="${L.prefix}/daily.html"${rel === '/daily' ? ' class="on"' : ''}>${esc(t('今日热榜'))}</a>
+    <a href="${L.prefix}/picks.html"${rel === '/picks' ? ' class="on"' : ''}>${esc(t('每日精选'))}</a>
     <a href="${L.prefix}/lookup/"${rel.startsWith('/lookup') ? ' class="on"' : ''}>${esc(t('关键词分析'))}</a>
     <a href="${L.prefix}/topics/"${rel.startsWith('/topics') ? ' class="on"' : ''}>${esc(t('关键词详情'))}</a>
     <a href="${L.prefix}/compare/"${rel.startsWith('/compare') ? ' class="on"' : ''}>${esc(t('对比'))}</a>
@@ -765,26 +766,35 @@ function cardHtml(lang, tp, i) {
 
 /* ------------------------------ 首页 ------------------------------ */
 
-/* 每日精选：确定性轮换，每天 5 条、相邻两天零重叠（12 天一循环）。
-   机会库源数据是月度级指标，短期榜单几乎不动，用户没有「每天再来」的理由；
-   这个模块用日期做偏移，让首页每天固定换一批，配一条已翻译的建议当理由。
-   必须纯确定性：同一天内多次构建结果一致，不能引入随机数。 */
-function dailyPickHtml(lang, t, scored) {
+/* 每日精选独立页（/picks.html）：确定性轮换，每天 5 条、相邻两天零重叠。
+   机会库源数据是月度级指标，短期榜单几乎不动；这个页面用日期做偏移，
+   每天固定换一批，并展示最近几天的轮换记录。同一天内多次构建结果一致。 */
+function picksPage(lang) {
+  const t = ui(lang);
   const L = LANGS.find((x) => x.code === lang);
+  const shownScore = (x) => (x.carrier === 'web' ? x.buildScore || 0 : x.score || 0);
+  const pool = (SITE_DATA.topics || []).slice()
+    .sort((a, b) => shownScore(b) - shownScore(a))
+    .filter((x) => (x.vol || 0) >= 5000)
+    .slice(0, 60);
+  if (pool.length < 10) return layout(lang, { rel: '/picks', title: t('每日精选'), desc: '', body: '<main class="wrap"><p class="empty">' + esc(t('没有数据')) + '</p></main>' });
   const bjNow = new Date(Date.now() + 8 * 3600e3); // 北京时间
   const dayIndex = Math.floor(bjNow.getTime() / 86400e3);
-  const bjDate = bjNow.toISOString().slice(0, 10);
-  const pool = scored.filter((x) => (x.vol || 0) >= 5000).slice(0, 60);
-  if (pool.length < 10) return '';
-  const n = 5;
-  const offset = (dayIndex % Math.floor(pool.length / n)) * n;
-  const rows = [];
-  for (let k = 0; k < n; k++) {
-    const tp = pool[(offset + k) % pool.length];
+  const perDay = 5;
+  const nDays = Math.floor(pool.length / perDay); // 12 天一循环
+  const dayPicks = (off) => {
+    const di = dayIndex - off;
+    const base = (((di % nDays) + nDays) % nDays) * perDay;
+    const picks = [];
+    for (let k = 0; k < perDay; k++) picks.push(pool[(base + k) % pool.length]);
+    return { di, picks };
+  };
+  const dateOf = (di) => new Date(di * 86400e3).toISOString().slice(0, 10);
+  const row = (tp, k) => {
     const adv = adviceLines(lang, tp);
     const href = L.prefix + '/topics/' + tp.slug + '.html';
     const score = Math.round(tp.carrier === 'web' ? tp.buildScore || 0 : tp.score || 0);
-    rows.push(
+    return (
       '<li class="dp-row">' +
       '<span class="dp-rank">' + (k + 1) + '</span>' +
       '<div class="dp-main">' +
@@ -795,15 +805,39 @@ function dailyPickHtml(lang, t, scored) {
       (adv[0] ? '<p class="dp-why">💡 ' + esc(adv[0]) + '</p>' : '') +
       '</div></li>'
     );
-  }
-  return (
-    '<section class="dpick" id="dailyPick" aria-label="' + esc(t('每日精选')) + '">' +
-    '<div class="dp-head"><h2>' + esc(t('每日精选')) + '</h2>' +
-    '<span class="dp-date">' + esc(bjDate) + '</span>' +
+  };
+  const today = dayPicks(0);
+  const todayHtml =
+    '<section class="dpick"><div class="dp-head"><h2>' + esc(t('每日精选')) + '</h2>' +
+    '<span class="dp-date">' + esc(dateOf(today.di)) + '</span>' +
     '<span class="dp-note">' + esc(t('每天轮换 5 个，明天再来会是不一样的 5 个')) + '</span></div>' +
-    '<ul class="dp-list">' + rows.join("\r\n") + '</ul>' +
-    '</section>'
-  );
+    '<ul class="dp-list">' + today.picks.map(row).join('\n') + '</ul></section>';
+  const past = [];
+  for (let off = 1; off <= 6 && off < nDays; off++) {
+    const { di, picks } = dayPicks(off);
+    past.push(
+      '<li><span class="dp-pdate">' + esc(dateOf(di)) + '</span>' +
+      picks.map((tp) => '<a href="' + L.prefix + '/topics/' + tp.slug + '.html">' + esc(tp.keyword) + '</a>').join('<i class="sep">·</i>') +
+      '</li>'
+    );
+  }
+  const pastHtml = past.length
+    ? '<section class="dpick dp-past"><div class="dp-head"><h2>' + esc(t('往期精选')) + '</h2></div><ul class="dp-days">' + past.join('\n') + '</ul></section>'
+    : '';
+  const body =
+    '<main class="wrap">' +
+    '<header class="doc-hero"><div class="doc-eyebrow">' + esc(t('每日精选')) + '</div>' +
+    '<h1>' + esc(t('今天先看这 5 个')) + '</h1>' +
+    '<p class="doc-lead">' + esc(t('每天从上升话题里轮换 5 个，附一条可执行的建议。')) + '</p>' +
+    '<p class="doc-nav"><a href="' + L.prefix + '/">' + esc(t('进入机会库')) + '</a></p>' +
+    '</header>' + todayHtml + pastHtml +
+    '</main>';
+  return layout(lang, {
+    rel: '/picks',
+    title: t('每日精选') + ' · Google Trends | TrendSift',
+    desc: t('每天从上升话题里轮换 5 个，附一条可执行的建议。'),
+    body,
+  });
 }
 function homePage(lang) {
   const t = ui(lang);
@@ -870,8 +904,6 @@ function homePage(lang) {
         .join('')}
     </div>
   </section>
-
-  ${dailyPickHtml(lang, t, scored)}
 
   <div class="step-label"><b>1</b> ${esc(t('你想做什么'))}</div>
   <div class="carrier-pick" id="carrierPick">
@@ -2181,6 +2213,7 @@ function buildSitemaps() {
     push('/');
     push('/topics/');
     push('/daily');
+    push('/picks');
     push('/daily/');
     for (const d of dailySnapDates()) push('/daily/' + d);
     push('/compare/');
@@ -2295,6 +2328,7 @@ async function main() {
     write(path.join(dir, 'index.html'), homePage(l.code));
     count++;
     write(path.join(dir, 'daily.html'), dailyPage(l.code));
+    write(path.join(dir, 'picks.html'), picksPage(l.code));
     count++;
     if (snapDates.length) {
       write(path.join(dir, 'daily', 'index.html'), dailyArchiveIndex(l.code, snapDates));
