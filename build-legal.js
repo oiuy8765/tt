@@ -176,12 +176,16 @@ async function build() {
       }
       return s;
     };
+    // 品牌名归一：标题/正文里任何语言变体统一成当前语言的站点名
+    const BRAND_VARIANTS = ['TrendSift', '趋势雷达', '趨勢雷達', 'トレンドレーダー', '트렌드 레이더'];
+    const locBrand = (t) => (t ? String(t).replace(new RegExp(BRAND_VARIANTS.join('|'), 'g'), M.brandName(code)) : t);
     for (const p of PAGES) {
       let inner = dict ? applyTexts(base[p.key].inner, dict) : base[p.key].inner;
       // 中文句号/逗号常常写在标签外面，替换后会在英文/韩文页留下「。、，」
       if (code === 'en' || code === 'ko') inner = fixPunct(inner);
-      const title = tx2(base[p.key].title);
-      const desc = tx2(base[p.key].desc);
+      inner = locBrand(inner);
+      const title = locBrand(tx2(base[p.key].title));
+      const desc = locBrand(tx2(base[p.key].desc));
       const html = M.renderDoc(
         code,
         {

@@ -36,6 +36,29 @@ const LANGS = [
   { code: 'ko', prefix: '/ko', htmlLang: 'ko', label: '한국어', hreflang: 'ko' },
 ];
 
+// 各语言的站点名称：中文「趋势雷达」，日/韩用本地化译名（本地用户可直接搜本地名找到站）。
+const BRAND_LOCAL = {
+  'zh-CN': '趋势雷达',
+  'zh-TW': '趨勢雷達',
+  en: 'TrendSift',
+  ja: 'トレンドレーダー',
+  ko: '트렌드 레이더',
+};
+function brandName(lang) {
+  return BRAND_LOCAL[lang] || 'TrendSift';
+}
+// 品牌字标：两段式高亮，与原 Trend|Sift 的视觉节奏一致
+function brandMark(lang) {
+  const m = BRAND_MARK[lang] || ['Trend', 'Sift'];
+  return '<span class="wordmark">' + m[0] + '<span class="wm-b">' + m[1] + '</span></span>';
+}
+const BRAND_MARK = {
+  'zh-CN': ['趋势', '雷达'],
+  'zh-TW': ['趨勢', '雷達'],
+  en: ['Trend', 'Sift'],
+  ja: ['トレンド', 'レーダー'],
+  ko: ['트렌드', '레이더'],
+};
 const EN_MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 // Cloudflare Web Analytics：data/analytics.json 里配 {"cfToken":"..."} 才会输出统计脚本，
@@ -618,7 +641,7 @@ function layout(lang, opts) {  const t = ui(lang);
 <link rel="canonical" href="${canonical}" />
 ${altLinks(rel)}
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="TrendSift" />
+<meta property="og:site_name" content="${brandName(lang)}" />
 <meta property="og:title" content="${esc(title)}" />
 <meta property="og:description" content="${esc(desc)}" />
 <meta property="og:url" content="${canonical}" />
@@ -626,7 +649,7 @@ ${altLinks(rel)}
 <meta property="og:image" content="${SITE}/og.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="TrendSift — Google Trends rising searches" />
+<meta property="og:image:alt" content="${brandName(lang)} — Google Trends rising searches" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="${esc(title)}" />
 <meta name="twitter:description" content="${esc(desc)}" />
@@ -634,17 +657,17 @@ ${altLinks(rel)}
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="32x32" />
 <link rel="apple-touch-icon" href="/logo.svg" />
-<link rel="alternate" type="application/rss+xml" title="TrendSift RSS" href="${SITE}${L.prefix}/rss.xml" />
+<link rel="alternate" type="application/rss+xml" title="${brandName(lang)} RSS" href="${SITE}${L.prefix}/rss.xml" />
 <link rel="stylesheet" href="/styles.css?v=${CACHE_VER}" />
 ${jsonld}
 ${analyticsTag()}
 </head>
 <body data-lang="${lang}" data-base="${L.prefix}">
 <header class="topbar">
-  <a class="brand" href="${L.prefix}/" aria-label="TrendSift">
+  <a class="brand" href="${L.prefix}/" aria-label="${brandName(lang)}">
     <img class="logo" src="/logo.svg" width="38" height="38" alt="" />
     <span class="brand-text">
-      <span class="wordmark">Trend<span class="wm-b">Sift</span></span>
+      ${brandMark(lang)}
       <span class="tagline">${esc(t('Google Trends 上升词 · 选品 / 建站 / 投放'))}</span>
     </span>
   </a>
@@ -668,7 +691,7 @@ ${opts.body}
     <div class="foot-brand">
       <img class="foot-logo" src="/logo.svg" width="30" height="30" alt="" />
       <div>
-        <div class="foot-name">TrendSift</div>
+        <div class="foot-name">${brandName(lang)}</div>
         <div class="foot-tag">${esc(t('数据来自 Google Trends 的搜索热度，只收搜索量持续上升的产品、品类、服务与工具，每条都带 22 年月度历史曲线。'))}</div>
       </div>
     </div>
@@ -678,7 +701,7 @@ ${opts.body}
       <a href="${L.prefix}/contact.html">${esc(t('联系我们'))}</a>
     </nav>
   </div>
-  <div class="foot-note">© 2026 TrendSift · ${esc(t('数据每日更新'))} · ${esc(t('无需注册'))} · ${esc(t('不构成投资建议'))}</div>
+  <div class="foot-note">© 2026 ${brandName(lang)} · ${esc(t('数据每日更新'))} · ${esc(t('无需注册'))} · ${esc(t('不构成投资建议'))}</div>
 </footer>
 <script>window.__LANG__=${JSON.stringify(lang)};window.__BASE__=${JSON.stringify(L.prefix)};window.__T__=${JSON.stringify(uiDict)};${adviceBoot(lang)}</script>
 ${opts.script ? '<script src="' + opts.script + '" defer></script>' : ''}
@@ -834,7 +857,7 @@ function picksPage(lang) {
     '</main>';
   return layout(lang, {
     rel: '/picks',
-    title: t('每日精选') + ' · Google Trends | TrendSift',
+    title: t('每日精选') + ' · Google Trends | ' + brandName(lang),
     desc: t('每天从上升话题里轮换 5 个，附一条可执行的建议。'),
     body,
   });
@@ -981,7 +1004,7 @@ ${top.map((x, i) => cardHtml(lang, x, i)).join('\n')}
     '@graph': [
       {
         '@type': 'WebSite',
-        name: 'TrendSift',
+        name: brandName(lang), alternateName: 'TrendSift',
         url: SITE + L.prefix + '/',
         inLanguage: L.htmlLang,
         potentialAction: {
@@ -992,16 +1015,16 @@ ${top.map((x, i) => cardHtml(lang, x, i)).join('\n')}
       },
       {
         '@type': 'Organization',
-        name: 'TrendSift',
+        name: brandName(lang), alternateName: 'TrendSift',
         url: SITE + '/',
         email: 'id_02081918@foxmail.com',
       },
       {
         '@type': 'Dataset',
-        name: t('机会库') + ' · TrendSift',
+        name: t('机会库') + ' · ' + brandName(lang),
         description: t('数据来自 Google Trends 的搜索热度，只收搜索量持续上升的产品、品类、服务与工具，每条都带 22 年月度历史曲线。'),
         url: SITE + L.prefix + '/',
-        creator: { '@type': 'Organization', name: 'TrendSift' },
+        creator: { '@type': 'Organization', name: brandName(lang) },
         variableMeasured: ['monthly search volume', '90-day growth', '12-month growth', 'seasonality', 'social mentions'],
         temporalCoverage: '2004/2026',
       },
@@ -1018,7 +1041,7 @@ ${top.map((x, i) => cardHtml(lang, x, i)).join('\n')}
 
   return layout(lang, {
     rel: '/',
-    title: 'TrendSift · ' + t('Google Trends 上升词 · 选品 / 建站 / 投放趋势分析'),
+    title: brandName(lang) + ' · ' + t('Google Trends 上升词 · 选品 / 建站 / 投放趋势分析'),
     desc: t('数据来自 Google Trends 的搜索热度，只收搜索量持续上升的产品、品类、服务与工具，每条都带 22 年月度历史曲线。') + ' ' + t('不是新闻热搜，而是未来半年什么会更好卖。'),
     body,
     jsonld,
@@ -1283,7 +1306,7 @@ function topicPage(lang, tp, related) {
         name: kw + ' · ' + t('关键词详情'),
         description: desc || line1,
         url: SITE + L.prefix + '/topics/' + tp.slug,
-        creator: { '@type': 'Organization', name: 'TrendSift' },
+        creator: { '@type': 'Organization', name: brandName(lang) },
         temporalCoverage: '2004/2026',
         variableMeasured: ['monthly search volume', '90-day growth', '12-month growth', 'seasonality'],
       },
@@ -1306,7 +1329,7 @@ function topicPage(lang, tp, related) {
     ],
   };
 
-  const title = kw + ' · ' + pct(tp.g12) + ' / 12M · ' + fmtNum(tp.vol) + ' ' + t('月搜索量') + ' | TrendSift';
+  const title = kw + ' · ' + pct(tp.g12) + ' / 12M · ' + fmtNum(tp.vol) + ' ' + t('月搜索量') + ' | ' + brandName(lang);
   const d = (desc ? desc.slice(0, 110) + ' ' : '') + line1;
 
   return layout(lang, {
@@ -1440,13 +1463,13 @@ function categoryPage(lang, cat, list, relatedCats) {
     '@type': 'CollectionPage',
     name: catName + ' · ' + t('品类分析'),
     url: SITE + L.prefix + '/categories/' + slug,
-    isPartOf: { '@type': 'WebSite', name: 'TrendSift', url: SITE },
+    isPartOf: { '@type': 'WebSite', name: brandName(lang), alternateName: 'TrendSift', url: SITE },
     about: catName,
   };
 
   return layout(lang, {
     rel: '/categories/' + slug,
-    title: catName + ' · ' + t('品类分析') + ' · ' + st.n + ' ' + t('个词') + ' | TrendSift',
+    title: catName + ' · ' + t('品类分析') + ' · ' + st.n + ' ' + t('个词') + ' | ' + brandName(lang),
     desc:
       catName + ' · ' + t('该类目下的上升词') + '：' + st.n + '，' +
       t('平均 12 个月涨幅') + ' ' + pct(st.avg) + '，' + t('搜索量中位数') + ' ' + fmtNum(st.median),
@@ -1485,7 +1508,7 @@ function categoryIndexPage(lang, cats) {
 
   return layout(lang, {
     rel: '/categories/',
-    title: t('品类') + ' · ' + t('品类分析') + ' | TrendSift',
+    title: t('品类') + ' · ' + t('品类分析') + ' | ' + brandName(lang),
     desc: t('品类分析') + ' · ' + t('该类目下的上升词'),
     body,
   });
@@ -1544,7 +1567,7 @@ function comparePage(lang) {
 
   return layout(lang, {
     rel: '/compare/',
-    title: title + ' · TrendSift',
+    title: title + ' · ' + brandName(lang),
     desc: lead,
     body,
     script: '/compare.js?v=20261017a',
@@ -1605,7 +1628,7 @@ function lookupPage(lang) {
 
   return layout(lang, {
     rel: '/lookup/',
-    title: title + ' · TrendSift',
+    title: title + ' · ' + brandName(lang),
     desc: lead,
     body,
     script: '/lookup.js?v=' + CACHE_VER,
@@ -1652,14 +1675,14 @@ function indexPage(lang, pageNo, pages, list) {  const t = ui(lang);
 
   return layout(lang, {
     rel: '/topics/',
-    title: t('按热度排序的话题索引') + ' · TrendSift',
+    title: t('按热度排序的话题索引') + ' · ' + brandName(lang),
     desc: t('浏览全部 [[N]] 个上升话题').replace(/\[\[n\]\]/i, total) + ' — ' + t('数据来自 Google Trends 的搜索热度，只收搜索量持续上升的产品、品类、服务与工具，每条都带 22 年月度历史曲线。'),
     body,
     jsonld: {
       '@type': 'CollectionPage',
       name: t('按热度排序的话题索引'),
       url: SITE + L.prefix + '/topics/',
-      isPartOf: { '@type': 'WebSite', name: 'TrendSift', url: SITE },
+      isPartOf: { '@type': 'WebSite', name: brandName(lang), alternateName: 'TrendSift', url: SITE },
     },
   });
 }
@@ -1961,7 +1984,7 @@ function dailyPage(lang, arch) {
 
   return layout(lang, {
     rel: isArch ? '/daily/' + arch.date : '/daily',
-    title: (isArch ? fmtDay(arch.date) + ' · ' + t('热榜档案') + ' · Google Trends | TrendSift' : t('今天什么词被搜爆了') + ' · Google Trends | TrendSift'),
+    title: (isArch ? fmtDay(arch.date) + ' · ' + t('热榜档案') + ' · Google Trends | ' + brandName(lang) : t('今天什么词被搜爆了') + ' · Google Trends | ' + brandName(lang)),
     desc: t('各地区此刻搜索量突增的词与相关资讯，偏新闻，热度往往一两天就过去。'),
     body,
   });
@@ -2016,7 +2039,7 @@ function dailyArchiveIndex(lang, dates) {
     '</main>';
   return layout(lang, {
     rel: '/daily/',
-    title: t('历史榜单') + ' · Google Trends | TrendSift',
+    title: t('历史榜单') + ' · Google Trends | ' + brandName(lang),
     desc: t('每天一页，热度已定格，适合回看某个词是哪天开始爆的。'),
     body,
   });
@@ -2042,7 +2065,7 @@ function savedPage(lang) {
     '</main>';
   return layout(lang, {
     rel: '/saved',
-    title: t('我的清单') + ' | TrendSift',
+    title: t('我的清单') + ' | ' + brandName(lang),
     desc: t('把这条趋势放进你的清单，等动手时再回来核对数据。'),
     body: body,
   });
@@ -2170,7 +2193,7 @@ function buildRss() {
       path.join(dir, 'rss.xml'),
       rssChannel(
         l.code,
-        'TrendSift — Google Trends rising searches',
+        brandName(l.code) + ' — Google Trends rising searches',
         SITE + (l.prefix || ''),
         rssDesc,
         sorted.slice(0, 40)
@@ -2184,7 +2207,7 @@ function buildRss() {
         path.join(dir, 'rss', k + '.xml'),
         rssChannel(
           l.code,
-          'TrendSift · ' + pcatText(l.code, k),
+          brandName(l.code) + ' · ' + pcatText(l.code, k),
           SITE + l.prefix + '/categories/' + k,
           rssDesc,
           byPcat[k].slice().sort(byNew).slice(0, 40)
@@ -2247,7 +2270,7 @@ function buildSitemaps() {
 }
 
 function buildLlms() {
-  const txt = `# TrendSift
+  const txt = `# TrendSift · 趋势雷达 · トレンドレーダー · 트렌드 레이더
 
 > TrendSift (trendsift.site) tracks products, categories, services and tools whose Google Trends search interest is still rising, and turns the 22-year monthly history into build/product/ad decisions. Every topic page states estimated monthly searches, 90-day and 12-month growth, seasonality, main social platform and an early-window judgement.
 
@@ -2468,4 +2491,4 @@ async function main() {
 
 if (require.main === module) main();
 
-module.exports = { main, renderDoc: layout, buildDailyTranslations };
+module.exports = { main, renderDoc: layout, buildDailyTranslations, brandName };
