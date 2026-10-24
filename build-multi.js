@@ -765,6 +765,46 @@ function cardHtml(lang, tp, i) {
 
 /* ------------------------------ 首页 ------------------------------ */
 
+/* 每日精选：确定性轮换，每天 5 条、相邻两天零重叠（12 天一循环）。
+   机会库源数据是月度级指标，短期榜单几乎不动，用户没有「每天再来」的理由；
+   这个模块用日期做偏移，让首页每天固定换一批，配一条已翻译的建议当理由。
+   必须纯确定性：同一天内多次构建结果一致，不能引入随机数。 */
+function dailyPickHtml(lang, t, scored) {
+  const L = LANGS.find((x) => x.code === lang);
+  const bjNow = new Date(Date.now() + 8 * 3600e3); // 北京时间
+  const dayIndex = Math.floor(bjNow.getTime() / 86400e3);
+  const bjDate = bjNow.toISOString().slice(0, 10);
+  const pool = scored.filter((x) => (x.vol || 0) >= 5000).slice(0, 60);
+  if (pool.length < 10) return '';
+  const n = 5;
+  const offset = (dayIndex % Math.floor(pool.length / n)) * n;
+  const rows = [];
+  for (let k = 0; k < n; k++) {
+    const tp = pool[(offset + k) % pool.length];
+    const adv = adviceLines(lang, tp);
+    const href = L.prefix + '/topics/' + tp.slug + '.html';
+    const score = Math.round(tp.carrier === 'web' ? tp.buildScore || 0 : tp.score || 0);
+    rows.push(
+      '<li class="dp-row">' +
+      '<span class="dp-rank">' + (k + 1) + '</span>' +
+      '<div class="dp-main">' +
+      '<a class="dp-kw" href="' + href + '">' + dualSpan(lang, tp.keyword) + '</a>' +
+      '<span class="dp-meta"><b class="' + (tp.g90 > 0 ? 'up' : 'down') + '">' + pct(tp.g90) + '</b> ' +
+      esc(t('90 天增长')) + ' <i class="sep">·</i> ' +
+      esc(t(tp.carrier === 'web' ? '建站分' : '选品分')) + ' <b>' + score + '</b></span>' +
+      (adv[0] ? '<p class="dp-why">💡 ' + esc(adv[0]) + '</p>' : '') +
+      '</div></li>'
+    );
+  }
+  return (
+    '<section class="dpick" id="dailyPick" aria-label="' + esc(t('每日精选')) + '">' +
+    '<div class="dp-head"><h2>' + esc(t('每日精选')) + '</h2>' +
+    '<span class="dp-date">' + esc(bjDate) + '</span>' +
+    '<span class="dp-note">' + esc(t('每天轮换 5 个，明天再来会是不一样的 5 个')) + '</span></div>' +
+    '<ul class="dp-list">' + rows.join("\r\n") + '</ul>' +
+    '</section>'
+  );
+}
 function homePage(lang) {
   const t = ui(lang);
   const L = LANGS.find((x) => x.code === lang);
@@ -830,6 +870,8 @@ function homePage(lang) {
         .join('')}
     </div>
   </section>
+
+  ${dailyPickHtml(lang, t, scored)}
 
   <div class="step-label"><b>1</b> ${esc(t('你想做什么'))}</div>
   <div class="carrier-pick" id="carrierPick">
