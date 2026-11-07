@@ -75,7 +75,12 @@ jobs:
             echo "缓存无变化"
           else
             git commit -m "chore: refresh data caches (auto build)"
-            git push
+            # 构建期间别的 workflow 也可能在提交；推之前先变基，且缓存推送失败不能挡住部署
+            for i in 1 2 3; do
+              if git push; then break; fi
+              git pull --rebase --autostash origin main || true
+            done
+            git push || echo "缓存推送失败（不影响部署）"
           fi
 
       - name: Deploy to Cloudflare Pages
