@@ -337,6 +337,7 @@ function seasonBars(season, lang) {
 
 let UI_RAW = {};
 let SITE_DATA = null;
+let SIGNALS = null;
 let ZH_DICT = {};
 let ADVICE = {};
 
@@ -674,7 +675,7 @@ ${analyticsTag()}
   <nav class="mainnav" aria-label="main">
     <a href="${L.prefix}/"${isHome ? ' class="on"' : ''}>${esc(t('机会库'))}</a>
     <a href="${L.prefix}/daily.html"${rel === '/daily' ? ' class="on"' : ''}>${esc(t('今日热榜'))}</a>
-    <a href="${L.prefix}/picks.html"${rel === '/picks' ? ' class="on"' : ''}>${esc(t('每日精选'))}</a>
+    <a href="${L.prefix}/discover.html"${rel === '/discover' ? ' class="on"' : ''}>${esc(t('发现'))}</a>
     <a href="${L.prefix}/lookup/"${rel.startsWith('/lookup') ? ' class="on"' : ''}>${esc(t('关键词分析'))}</a>
     <a href="${L.prefix}/topics/"${rel.startsWith('/topics') ? ' class="on"' : ''}>${esc(t('关键词详情'))}</a>
     <a href="${L.prefix}/compare/"${rel.startsWith('/compare') ? ' class="on"' : ''}>${esc(t('对比'))}</a>
@@ -789,79 +790,143 @@ function cardHtml(lang, tp, i) {
 
 /* ------------------------------ 首页 ------------------------------ */
 
-/* 每日精选独立页（/picks.html）：确定性轮换，每天 5 条、相邻两天零重叠。
-   机会库源数据是月度级指标，短期榜单几乎不动；这个页面用日期做偏移，
-   每天固定换一批，并展示最近几天的轮换记录。同一天内多次构建结果一致。 */
-function picksPage(lang) {
+/* 发现页（/discover.html）：不做固定轮换，只呈现每日真实变化。
+   三类信号：
+     1) 品类升温 —— radar 的 24 期热度曲线，最近 3 期 vs 前期 4 期的加速度；
+     2) 今日需求信号 —— 当日热榜里短查询、可归类（游戏/AI/工具/消费）的词；
+     3) 今日热度榜 —— 按真实搜索量排序，回答「大家今天在搜什么」。
+   数据由 scripts/signals.js 在构建时算好（纯计算，不联网）。 */
+function sparkPath(spark, w, h) {
+  const arr = (spark || []).filter((v) => typeof v === 'number');
+  if (arr.length < 2) return '';
+  const max = Math.max.apply(null, arr);
+  const min = Math.min.apply(null, arr);
+  const span = max - min || 1;
+  const step = w / (arr.length - 1);
+  const pts = arr.map((v, i) => [i * step, h - 2 - ((v - min) / span) * (h - 4)]);
+  const line = pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
+  const area = line + ' L' + w + ' ' + h + ' L0 ' + h + ' Z';
+  return { line, area };
+}
+
+function discoverPage(lang) {
   const t = ui(lang);
   const L = LANGS.find((x) => x.code === lang);
-  const shownScore = (x) => (x.carrier === 'web' ? x.buildScore || 0 : x.score || 0);
-  const pool = (SITE_DATA.topics || []).slice()
-    .sort((a, b) => shownScore(b) - shownScore(a))
-    .filter((x) => (x.vol || 0) >= 5000)
-    .slice(0, 60);
-  if (pool.length < 10) return layout(lang, { rel: '/picks', title: t('每日精选'), desc: '', body: '<main class="wrap"><p class="empty">' + esc(t('没有数据')) + '</p></main>' });
-  const bjNow = new Date(Date.now() + 8 * 3600e3); // 北京时间
-  const dayIndex = Math.floor(bjNow.getTime() / 86400e3);
-  const perDay = 5;
-  const nDays = Math.floor(pool.length / perDay); // 12 天一循环
-  const dayPicks = (off) => {
-    const di = dayIndex - off;
-    const base = (((di % nDays) + nDays) % nDays) * perDay;
-    const picks = [];
-    for (let k = 0; k < perDay; k++) picks.push(pool[(base + k) % pool.length]);
-    return { di, picks };
+  const sig = SIGNALS || { stats: {}, demand: [], momentum: [], buckets: {} };
+  const st = sig.stats || {};
+  const catName = (k) => {
+    const map = { game: '游戏', ai: 'AI', app: '应用', tool: '工具', shop: '消费品', media: '影视', news: '新闻', other: '其他' };
+    return t(map[k] || '其他');
   };
-  const dateOf = (di) => new Date(di * 86400e3).toISOString().slice(0, 10);
-  const row = (tp, k) => {
-    const adv = adviceLines(lang, tp);
-    const href = L.prefix + '/topics/' + tp.slug + '.html';
-    const score = Math.round(tp.carrier === 'web' ? tp.buildScore || 0 : tp.score || 0);
-    return (
-      '<li class="dp-row">' +
-      '<span class="dp-rank">' + (k + 1) + '</span>' +
-      '<div class="dp-main">' +
-      '<a class="dp-kw" href="' + href + '">' + dualSpan(lang, tp.keyword) + '</a>' +
-      '<span class="dp-meta"><b class="' + (tp.g90 > 0 ? 'up' : 'down') + '">' + pct(tp.g90) + '</b> ' +
-      esc(t('90 天增长')) + ' <i class="sep">·</i> ' +
-      esc(t(tp.carrier === 'web' ? '建站分' : '选品分')) + ' <b>' + score + '</b></span>' +
-      (adv[0] ? '<p class="dp-why">💡 ' + esc(adv[0]) + '</p>' : '') +
-      '</div></li>'
-    );
-  };
-  const today = dayPicks(0);
-  const todayHtml =
-    '<section class="dpick"><div class="dp-head"><h2>' + esc(t('每日精选')) + '</h2>' +
-    '<span class="dp-date">' + esc(dateOf(today.di)) + '</span>' +
-    '<span class="dp-note">' + esc(t('每天轮换 5 个，明天再来会是不一样的 5 个')) + '</span></div>' +
-    '<ul class="dp-list">' + today.picks.map(row).join('\n') + '</ul></section>';
-  const past = [];
-  for (let off = 1; off <= 6 && off < nDays; off++) {
-    const { di, picks } = dayPicks(off);
-    past.push(
-      '<li><span class="dp-pdate">' + esc(dateOf(di)) + '</span>' +
-      picks.map((tp) => '<a href="' + L.prefix + '/topics/' + tp.slug + '.html">' + esc(tp.keyword) + '</a>').join('<i class="sep">·</i>') +
-      '</li>'
-    );
-  }
-  const pastHtml = past.length
-    ? '<section class="dpick dp-past"><div class="dp-head"><h2>' + esc(t('往期精选')) + '</h2></div><ul class="dp-days">' + past.join('\n') + '</ul></section>'
+  const topicHref = (slug) => L.prefix + '/topics/' + slug + '.html';
+
+  // 数据时间：按北京时间显示，用户能确认「这是活的」
+  const at = sig.at || Date.now();
+  const bj = new Date(at + 8 * 3600e3);
+  const atText = bj.toISOString().slice(0, 16).replace('T', ' ');
+
+  const momentum = (sig.momentum || []).slice(0, 12);
+  const momHtml = momentum
+    .map((m, i) => {
+      const sp = sparkPath(m.spark, 132, 34);
+      return (
+        '<a class="sg-card" href="' + topicHref(m.slug) + '">' +
+        '<div class="sg-row"><span class="sg-rank">' + (i + 1) + '</span>' +
+        '<span class="sg-kw">' + esc(m.keyword) + '</span>' +
+        '<span class="sg-mom">+' + m.mom + '%</span></div>' +
+        '<svg class="sg-spark" viewBox="0 0 132 34" preserveAspectRatio="none" aria-hidden="true">' +
+        '<path d="' + sp.area + '" fill="var(--brand-soft)"></path>' +
+        '<path d="' + sp.line + '" fill="none" stroke="var(--brand-ink)" stroke-width="1.6" stroke-linejoin="round"></path>' +
+        '</svg>' +
+        '<div class="sg-meta">' + esc(t('月搜')) + ' ' + Number(m.vol || 0).toLocaleString('en-US') + ' <i class="sep">·</i> ' +
+        esc(t('90 天增长')) + ' <b class="' + (m.g90 >= 0 ? 'up' : 'down') + '">' + pct(m.g90) + '</b></div>' +
+        '</a>'
+      );
+    })
+    .join('\n');
+
+  const demand = (sig.demand || []).slice(0, 10);
+  const demandHtml = demand.length
+    ? '<ul class="sg-list">' + demand.map((d) => {
+        const head = d.articles && d.articles[0] ? trDaily(lang, d.articles[0].title) || d.articles[0].title : '';
+        return (
+          '<li class="sg-item">' +
+          '<span class="sg-tag t-' + d.cat + '">' + esc(catName(d.cat)) + '</span>' +
+          '<div class="sg-body">' +
+          '<a class="sg-q" href="' + 'https://trends.google.com/trends/explore?q=' + encodeURIComponent(d.q) + '" target="_blank" rel="noopener nofollow">' + esc(d.q) + '</a>' +
+          '<span class="sg-sub">' + esc(d.traffic) + ' ' + esc(t('次搜索')) +
+          (d.geos && d.geos.length ? ' <i class="sep">·</i> ' + esc(d.geos.slice(0, 3).join(' / ')) : '') +
+          (d.fresh ? ' <i class="sep">·</i> <b class="sg-new">' + esc(t('首次出现')) + '</b>' : '') +
+          (!d.fresh && d.streak > 1 ? ' <i class="sep">·</i> ' + esc(t('连续在榜')) + ' ' + d.streak + ' ' + esc(t('天')) : '') +
+          '</span>' +
+          (head ? '<p class="sg-why">' + esc(head.slice(0, 120)) + '</p>' : '') +
+          '</div></li>'
+        );
+      }).join('\n') + '</ul>'
+    : '<p class="sg-empty">' + esc(t('今天的热榜以新闻为主，暂时没有能直接做产品的需求词。品类升温榜每天都会变，可以看上面。')) + '</p>';
+
+  // 热度榜：直接取所有查询按搜索量排（signals 里 news 只存新闻，这里用 buckets 汇总）
+  const allQ = [];
+  for (const k of Object.keys(sig.buckets || {})) for (const it of sig.buckets[k]) allQ.push(it);
+  const uniq = new Map();
+  for (const it of allQ) if (!uniq.has(it.q) || uniq.get(it.q).trafficValue < it.trafficValue) uniq.set(it.q, it);
+  const top = [...uniq.values()].sort((a, b) => b.trafficValue - a.trafficValue).slice(0, 12);
+  const maxV = top.length ? top[0].trafficValue || 1 : 1;
+  const pulseHtml = top.length
+    ? '<ul class="sg-pulse">' + top.map((x) => (
+        '<li><span class="sg-bar" style="width:' + Math.max(4, Math.round(((x.trafficValue || 0) / maxV) * 100)) + '%"></span>' +
+        '<a href="https://trends.google.com/trends/explore?q=' + encodeURIComponent(x.q) + '" target="_blank" rel="noopener nofollow">' + esc(x.q.slice(0, 90)) + '</a>' +
+        '<span class="sg-tr">' + esc(x.traffic) + '</span></li>'
+      )).join('\n') + '</ul>'
     : '';
+
   const body =
     '<main class="wrap">' +
-    '<header class="doc-hero"><div class="doc-eyebrow">' + esc(t('每日精选')) + '</div>' +
-    '<h1>' + esc(t('今天先看这 5 个')) + '</h1>' +
-    '<p class="doc-lead">' + esc(t('每天从上升话题里轮换 5 个，附一条可执行的建议。')) + '</p>' +
-    '<p class="doc-nav"><a href="' + L.prefix + '/">' + esc(t('进入机会库')) + '</a></p>' +
-    '</header>' + todayHtml + pastHtml +
+    '<header class="doc-hero"><div class="doc-eyebrow">' + esc(t('发现')) + '</div>' +
+    '<h1>' + esc(t('今天什么在涨')) + '</h1>' +
+    '<p class="doc-lead">' + esc(t('每天抓取 13 个地区的 Google Trends 热搜，并结合数百个品类的搜索热度曲线，挑出真正在升温的需求。')) + '</p>' +
+    '<div class="sg-stats">' +
+    '<span><b>' + (momentum.length || 0) + '</b> ' + esc(t('个品类在升温')) + '</span>' +
+    '<span><b>' + (st.queries || 0) + '</b> ' + esc(t('条今日热搜')) + '</span>' +
+    '<span><b>' + (st.geos || 0) + '</b> ' + esc(t('个地区')) + '</span>' +
+    '<span class="sg-at">' + esc(t('数据截至')) + ' ' + esc(atText) + '</span>' +
+    '</div></header>' +
+
+    (momentum.length
+      ? '<section class="sg-sec"><div class="sg-head"><h2>' + esc(t('品类正在升温')) + '</h2>' +
+        '<span>' + esc(t('最近三个月的搜索热度对比前期')) + '</span></div>' +
+        '<div class="sg-grid">' + momHtml + '</div></section>'
+      : '') +
+
+    ((sig.newTopics || []).length
+      ? '<section class="sg-sec"><div class="sg-head"><h2>' + esc(t('新进品类')) + '</h2>' +
+        '<span>' + esc(t('最近 7 天首次进入品类库')) + '</span></div>' +
+        '<div class="sg-grid">' + (sig.newTopics || []).map((m, i) =>
+          '<a class="sg-card" href="' + topicHref(m.slug) + '">' +
+          '<div class="sg-row"><span class="sg-rank">' + (i + 1) + '</span>' +
+          '<span class="sg-kw">' + esc(m.keyword) + '</span></div>' +
+          '<div class="sg-meta">' + esc(t('月搜')) + ' ' + Number(m.vol || 0).toLocaleString('en-US') + ' <i class="sep">·</i> ' +
+          esc(t('90 天增长')) + ' <b class="' + (m.g90 >= 0 ? 'up' : 'down') + '">' + pct(m.g90) + '</b> <i class="sep">·</i> ' + esc(m.firstDay) + '</div>' +
+          '</a>').join('\n') + '</div></section>'
+      : '') +
+    '<section class="sg-sec"><div class="sg-head"><h2>' + esc(t('今日需求信号')) + '</h2>' +
+    '<span>' + esc(t('热搜里能直接做产品的词')) + '</span></div>' + demandHtml + '</section>' +
+
+    (pulseHtml
+      ? '<section class="sg-sec"><div class="sg-head"><h2>' + esc(t('今天大家在搜什么')) + '</h2>' +
+        '<a class="sg-more" href="' + L.prefix + '/daily.html">' + esc(t('完整热榜')) + ' →</a></div>' + pulseHtml + '</section>'
+      : '') +
+
     '</main>';
+
   return layout(lang, {
-    rel: '/picks',
-    title: t('每日精选') + ' · Google Trends | ' + brandName(lang),
-    desc: t('每天从上升话题里轮换 5 个，附一条可执行的建议。'),
+    rel: '/discover',
+    title: t('发现') + ' · ' + t('今天什么在涨') + ' | ' + brandName(lang),
+    desc: t('每天抓取 13 个地区的 Google Trends 热搜，挑出真正在升温的需求。'),
     body,
   });
 }
+
 function homePage(lang) {
   const t = ui(lang);
   const L = LANGS.find((x) => x.code === lang);
@@ -2236,7 +2301,7 @@ function buildSitemaps() {
     push('/');
     push('/topics/');
     push('/daily');
-    push('/picks');
+    push('/discover');
     push('/daily/');
     for (const d of dailySnapDates()) push('/daily/' + d);
     push('/compare/');
@@ -2307,8 +2372,18 @@ Sitemap: ${SITE}/sitemap.xml
 
 /* ------------------------------ 主流程 ------------------------------ */
 
+const SIG = require('./scripts/signals');
+
 async function main() {
   loadDicts();
+  // 每日信号：热榜 + 历史快照 + 品类曲线合成一份清单
+  try {
+    SIGNALS = SIG.buildSignals({});
+    console.log('  信号：需求 ' + SIGNALS.demand.length + ' 条 / 升温 ' + SIGNALS.momentum.length + ' 个品类 / 热榜 ' + SIGNALS.stats.queries + ' 条');
+  } catch (e) {
+    console.log('  信号生成失败：' + e.message);
+    SIGNALS = { stats: {}, demand: [], momentum: [], buckets: {} };
+  }
   loadContentDicts();
   copyDicts();
 
@@ -2351,7 +2426,7 @@ async function main() {
     write(path.join(dir, 'index.html'), homePage(l.code));
     count++;
     write(path.join(dir, 'daily.html'), dailyPage(l.code));
-    write(path.join(dir, 'picks.html'), picksPage(l.code));
+    write(path.join(dir, 'discover.html'), discoverPage(l.code));
     count++;
     if (snapDates.length) {
       write(path.join(dir, 'daily', 'index.html'), dailyArchiveIndex(l.code, snapDates));
@@ -2464,6 +2539,11 @@ async function main() {
         lines.push(p + '/categories/' + sl + '.html ' + p + '/categories/' + target + '.html 301');
         lines.push(p + '/categories/' + sl + ' ' + p + '/categories/' + target + '.html 301');
       }
+    }
+    // 每日精选已下线，旧链接 301 到发现页
+    for (const p of prefixes) {
+      lines.push(p + '/picks.html ' + p + '/discover.html 301');
+      lines.push(p + '/picks ' + p + '/discover.html 301');
     }
     if (lines.length) {
       fs.writeFileSync(path.join(DIST, '_redirects'), lines.join('\n') + '\n');
