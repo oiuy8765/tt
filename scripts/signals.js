@@ -207,11 +207,14 @@ function diffNewTopics(radarTopics, today) {
     }
   }
   const cutoff = new Date(Date.parse(today) - 6 * 86400e3).toISOString().slice(0, 10);
+  // 种子日（表里最早的一天）不能算「新」——那天是全量写入，否则首周会把整库当成新增
+  const allDates = Object.values(seen).filter(Boolean).sort();
+  const seedDay = allDates.length ? allDates[0] : today;
   // 表里 6 天内首次见到的品类都算「新」，即使本次没有新增
   const newer = [];
   for (const tp of radarTopics) {
     const d = seen[tp.slug];
-    if (d && d >= cutoff && existed) newer.push(Object.assign({ firstDay: d }, tp));
+    if (d && d > seedDay && d >= cutoff) newer.push(Object.assign({ firstDay: d }, tp));
   }
   newer.sort((a, b) => (b.vol || 0) - (a.vol || 0));
   return newer.slice(0, 12).map((tp) => ({
