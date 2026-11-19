@@ -1,0 +1,978 @@
+{
+ "at": 1794048039108,
+ "date": "2026-11-07",
+ "stats": {
+  "queries": 146,
+  "geos": 13,
+  "demand": 4,
+  "fresh": 134,
+  "historyDays": 18
+ },
+ "demand": [
+  {
+   "q": "You'll soon be able to text Alexa to shop on Amazon",
+   "cat": "shop",
+   "traffic": "590K+",
+   "trafficValue": 590000,
+   "geos": [
+    "GLOBAL"
+   ],
+   "streak": 0,
+   "firstDay": "2026-11-07",
+   "fresh": true,
+   "articles": [
+    {
+     "title": "\"You'll soon be able to text Alexa to shop on Amazon\" is generating significant online interest. The latest Alexa for shopping feature is initially available by",
+     "url": "https://www.engadget.com/2309285/youll-soon-be-able-to-text-alexa-to-shop-on-amazon/",
+     "source": "Engadget",
+     "timeAgo": ""
+    }
+   ],
+   "score": 171
+  },
+  {
+   "q": "zelda ocarina of time remake",
+   "cat": "game",
+   "traffic": "500+",
+   "trafficValue": 500,
+   "geos": [
+    "US",
+    "AU"
+   ],
+   "streak": 0,
+   "firstDay": "2026-11-07",
+   "fresh": true,
+   "articles": [
+    {
+     "title": "Ask the Developer Vol. 24, The Legend of Zelda: Ocarina of Time – Chapter 1",
+     "url": "https://www.nintendo.com/en-gb/News/2026/November/Ask-the-Developer-Vol-24-The-Legend-of-Zelda-Ocarina-of-Time-Chapter-1-3230318.html",
+     "source": "Nintendo"
+    },
+    {
+     "title": "Award-Winning Composer And Musician Jon Batiste Talks Ocarina Of Time&apos;s Music And Why &apos;Guile&apos;s Theme&apos; Goes With Everything",
+     "url": "https://gameinformer.com/interview/2026/11/06/award-winning-composer-and-musician-jon-batiste-talks-ocarina-of-times-music",
+     "source": "Game Informer"
+    }
+   ],
+   "score": 162
+  },
+  {
+   "q": "play gta 6 before launch date",
+   "cat": "game",
+   "traffic": "500+",
+   "trafficValue": 500,
+   "geos": [
+    "US"
+   ],
+   "streak": 0,
+   "firstDay": "2026-11-07",
+   "fresh": true,
+   "articles": [
+    {
+     "title": "Download Grand Theft Auto VI Faster and Get to Leonida Sooner With Spectrum Internet Gig",
+     "url": "https://corporate.charter.com/newsroom/spectrum-giving-free-gig-speed-lift-thanksgiving-grand-theft-auto",
+     "source": "Charter Communications"
+    },
+    {
+     "title": "Grand Theft Auto VI pre-download begins November 10",
+     "url": "https://blog.playstation.com/2026/11/03/grand-theft-auto-vi-pre-download-begins-november-10/",
+     "source": "PlayStation.Blog"
+    }
+   ],
+   "score": 156
+  },
+  {
+   "q": "Can Labubu Lightning Strike Twice? POP MART Hopes So With Release of ‘KPop Demon Hunters’ Bag Charms",
+   "cat": "shop",
+   "traffic": "400K+",
+   "trafficValue": 400000,
+   "geos": [
+    "GLOBAL"
+   ],
+   "streak": 0,
+   "firstDay": "2026-11-07",
+   "fresh": true,
+   "articles": [
+    {
+     "title": "\"Can Labubu Lightning Strike Twice? POP MART Hopes So With Release of ‘KPop Demon Hunters’ Bag Charms\" is generating significant online interest. The official c",
+     "url": "https://www.rollingstone.com/product-recommendations/lifestyle/pop-mart-kpop-demon-hunters-blind-box-charms-labubu-toys-1235654181/",
+     "source": "Rolling Stone",
+     "timeAgo": ""
+    }
+   ],
+   "score": 144
+  }
+ ],
+ "news": [
+  {
+   "q": "Meghan's father Thomas Markle under house arrest after child sex abuse material charge",
+   "cat": "news",
+   "traffic": "800K+",
+   "trafficValue": 800000,
+   "geos": [
+    "GLOBAL"
+   ],
+   "streak": 0,
+   "firstDay": "2026-11-07",
+   "fresh": true,
+   "articles": [
+    {
+     "title": "\"Meghan's father Thomas Markle under house arrest after child sex abuse material charge\" is generating significant online interest. The 82-year-old appeared in ",
+     "url": "https://www.bbc.co.uk/news/articles/cqgkvv8m8pgyo?at_medium=RSS&at_campaign=rss",
+     "source": "BBC News",
+     "timeAgo": ""
+    }
+   ]
+  },
+  {
+   "q": "Israel's Arab-led parties in spotlight after inconclusive election",
+   "cat": "news",
+   "traffic": "720K+",
+   "trafficValue": 720000,
+   "geos": [
+    "GLOBAL"
+   ],
+   "streak": 0,
+   "firstDay": "2026-11-07",
+   "fresh": true,
+   "articles": [
+    {
+     "title": "\"Israel's Arab-led parties in spotlight after inconclusive election\" is generating significant online interest. Israel's center-right opposition has a chance to",
+     "url": "https://www.npr.org/2026/11/06/g-s1-152138/israel-election-palestinian-arab-parties",
+     "source": "NPR News",
+     "timeAgo": ""
+    }
+   ]
+  },
+  {
+   "q": "Trump's global health strategy is emerging. What will the Democratic Congress say?",
+   "cat": "news",
+   "traffic": "700K+",
+   "trafficValue": 700000,
+   "geos": [
+    "GLOBAL"
+   ],
+   "streak": 0,
+   "firstDay": "2026-11-07",
+   "fresh": true,
+   "articles": [
+    {
+     "title": "\"Trump's global health strategy is emerging. What will the Democratic Congress say?\" is generating significant online interest. The Trump Administration has ush",
+     "url": "https://www.npr.org/2026/11/06/nx-s1-6028828/global-health-usaid-trump-democrats-congress",
+     "source": "NPR News",
+     "timeAgo": ""
+    }
+   ]
+  },
+  {
+   "q": "No one knows how many ballots are outstanding in Mississippi's Senate race",
+   "cat": "news",
+   "traffic": "690K+",
+   "trafficValue": 690000,
+   "geos": [
+    "GLOBAL"
+   ],
+   "streak": 0,
+   "firstDay": "2026-11-07",
+   "fresh": true,
+   "articles": [
+    {
+     "title": "\"No one knows how many ballots are outstanding in Mississippi's Senate race\" is generating significant online interest. The razor-thin margin between GOP Sen. C",
+     "url": "https://www.npr.org/2026/11/06/nx-s1-6030645/mississippi-senate-results-provisional-ballots",
+     "source": "NPR News",
+     "timeAgo": ""
+    }
+   ]
+  },
+  {
+   "q": "Ousted Paraguay president under house arrest after banking crisis leaves 60% of country unable to access accounts",
+   "cat": "news",
+   "traffic": "630K+",
+   "trafficValue": 630000,
+   "geos": [
+    "GLOBAL"
+   ],
+   "streak": 0,
+   "firstDay": "2026-11-07",
+   "fresh": true,
+   "articles": [
+    {
+     "title": "\"Ousted Paraguay president under house arrest after banking crisis leaves 60% of country unable to access accounts\" is generating significant online interest. S",
+     "url": "https://www.theguardian.com/world/2026/nov/07/ousted-paraguay-president-under-house-arrest-after-banking-crisis-leaves-60-of-country-unable-to-access-accounts",
+     "source": "The Guardian",
+     "timeAgo": ""
+    }
+   ]
+  },
+  {
+   "q": "new zealand vs india",
+   "cat": "sport",
+   "traffic": "5K+",
+   "trafficValue": 5000,
+   "geos": [
+    "CA"
+   ],
+   "streak": 0,
+   "firstDay": "2026-11-07",
+   "fresh": true,
+   "articles": [
+    {
+     "title": "Ball by Ball Commentary & Live Score - NZ vs IND, 2nd ODI",
+     "url": "https://www.cricinfo.com/series/india-in-new-zealand-2026-27-1539421/new-zealand-vs-india-2nd-odi-1539438/ball-by-ball-commentary",
+     "source": "Cricinfo"
+    },
+    {
+     "title": "Gurnoor Brar takes 4-30 as India bowls out New Zealand for 134 in the 2nd ODI",
+     "url": "https://www.thestar.com/sports/cricket/india-wins-the-toss-and-bowls-in-the-2nd-odi-cricket-match-against-new-zealand/article_fe0e7835-2014-5330-b07d-54deb0ecd369.html",
+     "source": "Toronto Star"
+    }
+   ]
+  },
+  {
+   "q": "west indies vs bangladesh",
+   "cat": "sport",
+   "traffic": "500+",
+   "trafficValue": 500,
+   "geos": [
+    "US"
+   ],
+   "streak": 0,
+   "firstDay": "2026-11-07",
+   "fresh": true,
+   "articles": [
+    {
+     "title": "Hridoy gets to maiden Test century but Warrican makes it West Indies&apos; morning",
+     "url": "https://www.cricinfo.com/series/west-indies-in-bangladesh-2026-27-1553291/bangladesh-vs-west-indies-2nd-test-1553296/match-report",
+     "source": "Cricinfo"
+    },
+    {
+     "title": "Record-breaking Hasan Mahmud savours a special milestone",
+     "url": "https://www.cricbuzz.com/cricket-news/140811/record-breaking-hasan-mahmud-savours-a-special-milestone-cricbuzzcom",
+     "source": "Cricbuzz"
+    }
+   ]
+  },
+  {
+   "q": "new zealand vs tonga",
+   "cat": "sport",
+   "traffic": "500+",
+   "trafficValue": 500,
+   "geos": [
+    "GB"
+   ],
+   "streak": 0,
+   "firstDay": "2026-11-07",
+   "fresh": true,
+   "articles": [
+    {
+     "title": "Kiwis hold narrow lead over Tonga at halftime in World Cup semi-final",
+     "url": "https://www.nzherald.co.nz/sport/rugby-league/kiwis-v-tonga-live-updates-rugby-league-world-cup-semi-final-from-newcastle/WDHLJNY43ZAXFMMLQRZGNKR22Y/",
+     "source": "NZ Herald"
+    },
+    {
+     "title": "Rugby League World Cup semi-finals: Australia and New Zealand set to book their place in showstopping final",
+     "url": "https://www.racingpost.com/sport/rugby-league-tips/rugby-league-world-cup-semi-final-predictions-betting-tips-and-odds-aBqQE3i9VtWg/",
+     "source": "Racing Post"
+    }
+   ]
+  },
+  {
+   "q": "zimbabwe vs afghanistan",
+   "cat": "sport",
+   "traffic": "500+",
+   "trafficValue": 500,
+   "geos": [
+    "CA"
+   ],
+   "streak": 0,
+   "firstDay": "2026-11-05",
+   "fresh": false,
+   "articles": [
+    {
+     "title": "Afghanistan, Zimbabwe face-off with WTC spot on the horizon",
+     "url": "https://www.cricinfo.com/series/afghanistan-v-zimbabwe-2026-27-1555105/afghanistan-vs-zimbabwe-1st-test-1555123/match-preview",
+     "source": "Cricinfo"
+    },
+    {
+     "title": "Bennett’s ton, lower-order resistance put Zimbabwe on top in First Test",
+     "url": "https://guyanachronicle.com/2026/11/07/bennetts-ton-lower-order-resistance-put-zimbabwe-on-top-in-first-test/",
+     "source": "Guyana Chronicle"
+    }
+   ]
+  },
+  {
+   "q": "weather polar vortex",
+   "cat": "news",
+   "traffic": "200+",
+   "trafficValue": 200,
+   "geos": [
+    "CA"
+   ],
+   "streak": 0,
+   "firstDay": "2026-11-07",
+   "fresh": true,
+   "articles": [
+    {
+     "title": "El Niño vs. Polar Vortex: A winter weather showdown",
+     "url": "https://steinbachonline.com/articles/el-nio-vs-polar-vortex-a-winter-weather-showdown",
+     "source": "SteinbachOnline"
+    },
+    {
+     "title": "Pacific jet versus the polar vortex: Who wins November?",
+     "url": "https://www.theweathernetwork.com/en/news/weather/forecasts/pacific-jet-versus-the-polar-vortex-who-wins-november",
+     "source": "The Weather Network"
+    }
+   ]
+  },
+  {
+   "q": "arsenal vs hull city",
+   "cat": "sport",
+   "traffic": "200+",
+   "trafficValue": 200,
+   "geos": [
+    "MX"
+   ],
+   "streak": 0,
+   "firstDay": "2026-11-07",
+   "fresh": true,
+   "articles": [
+    {
+     "title": "Arteta&apos;s update on Saka, Saliba and Konsa",
+     "url": "https://www.arsenal.com/news/artetas-update-on-saka-saliba-and-konsa-aopoW1X0hn87",
+     "source": "Arsenal.com"
+    },
+    {
+     "title": "Hull City XI vs Arsenal – Predicted lineup and team news",
+     "url": "https://sports.yahoo.com/articles/hull-city-xi-vs-arsenal-050000058.html",
+     "source": "Yahoo Sports"
+    }
+   ]
+  },
+  {
+   "q": "uefa nations league",
+   "cat": "sport",
+   "traffic": "200+",
+   "trafficValue": 200,
+   "geos": [
+    "ID"
+   ],
+   "streak": 0,
+   "firstDay": "2026-11-07",
+   "fresh": true,
+   "articles": [
+    {
+     "title": "De Jong and Malen return to Netherlands squad",
+     "url": "https://www.beinsports.com/en-au/football/uefa-nations-league/articles/de-jong-and-malen-return-to-netherlands-squad-2026-11-06",
+     "source": "beIN SPORTS"
+    },
+    {
+     "title": "Frenkie&apos;s back in business! De Jong returns to Oranje fold as Xavi axes trio for crucial clashes",
+     "url": "https://www.yardbarker.com/soccer/articles/frenkies_back_in_business_de_jong_returns_to_oranje_fold_as_xavi_axes_trio_for_crucial_clashes/s1_17790_44523488",
+     "source": "Yardbarker"
+    }
+   ]
+  }
+ ],
+ "momentum": [
+  {
+   "slug": "charger-camera",
+   "keyword": "Charger camera",
+   "vol": 2900,
+   "g90": 643,
+   "mom": 630,
+   "spark": [
+    6,
+    7,
+    11,
+    12,
+    10,
+    10,
+    10,
+    8,
+    10,
+    33,
+    100,
+    75
+   ],
+   "cats": [
+    "technology",
+    "home"
+   ]
+  },
+  {
+   "slug": "draped-skirt",
+   "keyword": "Draped skirt",
+   "vol": 5400,
+   "g90": 300,
+   "mom": 462,
+   "spark": [
+    9,
+    10,
+    12,
+    15,
+    14,
+    15,
+    12,
+    14,
+    32,
+    34,
+    98,
+    100
+   ],
+   "cats": [
+    "fashion",
+    "clothing"
+   ]
+  },
+  {
+   "slug": "shoulder-bag",
+   "keyword": "Shoulder bag",
+   "vol": 368000,
+   "g90": 184,
+   "mom": 279,
+   "spark": [
+    12,
+    15,
+    13,
+    13,
+    16,
+    16,
+    13,
+    30,
+    32,
+    100,
+    88,
+    25
+   ],
+   "cats": [
+    "fashion",
+    "travel"
+   ]
+  },
+  {
+   "slug": "cropped-blazer",
+   "keyword": "Cropped blazer",
+   "vol": 27100,
+   "g90": 312,
+   "mom": 349,
+   "spark": [
+    11,
+    10,
+    15,
+    19,
+    18,
+    17,
+    12,
+    13,
+    24,
+    35,
+    100,
+    67
+   ],
+   "cats": [
+    "product",
+    "fashion"
+   ]
+  },
+  {
+   "slug": "odysee",
+   "keyword": "Odysee",
+   "vol": 450000,
+   "g90": 242,
+   "mom": 260,
+   "spark": [
+    22,
+    20,
+    23,
+    21,
+    19,
+    22,
+    18,
+    22,
+    24,
+    100,
+    79,
+    40
+   ],
+   "cats": [
+    "technology",
+    "entertainment"
+   ]
+  },
+  {
+   "slug": "twin-floor-bed",
+   "keyword": "Twin floor bed",
+   "vol": 9900,
+   "g90": 265,
+   "mom": 362,
+   "spark": [
+    11,
+    14,
+    18,
+    15,
+    15,
+    15,
+    14,
+    16,
+    27,
+    31,
+    100,
+    77
+   ],
+   "cats": [
+    "baby",
+    "product"
+   ]
+  },
+  {
+   "slug": "magnetic-shelf",
+   "keyword": "Magnetic Shelf",
+   "vol": 6600,
+   "g90": 233,
+   "mom": 360,
+   "spark": [
+    9,
+    10,
+    16,
+    14,
+    14,
+    15,
+    14,
+    15,
+    31,
+    35,
+    100,
+    65
+   ],
+   "cats": [
+    "home",
+    "product"
+   ]
+  },
+  {
+   "slug": "monitor-light",
+   "keyword": "Monitor light",
+   "vol": 18100,
+   "g90": 163,
+   "mom": 296,
+   "spark": [
+    8,
+    17,
+    19,
+    17,
+    20,
+    17,
+    14,
+    19,
+    46,
+    100,
+    83,
+    25
+   ],
+   "cats": [
+    "product",
+    "technology"
+   ]
+  },
+  {
+   "slug": "shoe-bag",
+   "keyword": "Shoe bag",
+   "vol": 49500,
+   "g90": 199,
+   "mom": 261,
+   "spark": [
+    11,
+    14,
+    21,
+    19,
+    17,
+    22,
+    21,
+    16,
+    32,
+    38,
+    100,
+    68
+   ],
+   "cats": [
+    "clothing",
+    "shoes"
+   ]
+  },
+  {
+   "slug": "portable-laptop-monitor",
+   "keyword": "Portable Laptop Monitor",
+   "vol": 6600,
+   "g90": 335,
+   "mom": 318,
+   "spark": [
+    12,
+    11,
+    18,
+    18,
+    15,
+    22,
+    17,
+    14,
+    18,
+    38,
+    100,
+    75
+   ],
+   "cats": [
+    "workplace",
+    "gaming"
+   ]
+  },
+  {
+   "slug": "hypergamy",
+   "keyword": "Hypergamy",
+   "vol": 673000,
+   "g90": 53,
+   "mom": 208,
+   "spark": [
+    11,
+    14,
+    16,
+    16,
+    23,
+    22,
+    25,
+    37,
+    100,
+    87,
+    71,
+    89
+   ],
+   "cats": [
+    "lifestyle",
+    "dating-relationships"
+   ]
+  },
+  {
+   "slug": "cordless-vacuum",
+   "keyword": "Cordless Vacuum",
+   "vol": 135000,
+   "g90": 241,
+   "mom": 222,
+   "spark": [
+    13,
+    16,
+    21,
+    21,
+    20,
+    28,
+    22,
+    19,
+    22,
+    44,
+    100,
+    71
+   ],
+   "cats": [
+    "home",
+    "product"
+   ]
+  },
+  {
+   "slug": "tinted-face-sunscreen",
+   "keyword": "Tinted face sunscreen",
+   "vol": 12100,
+   "g90": 144,
+   "mom": 268,
+   "spark": [
+    17,
+    22,
+    20,
+    21,
+    18,
+    16,
+    18,
+    23,
+    44,
+    100,
+    69,
+    38
+   ],
+   "cats": [
+    "beauty",
+    "skincare"
+   ]
+  },
+  {
+   "slug": "japanese-floor-mattress",
+   "keyword": "Japanese floor mattress",
+   "vol": 22200,
+   "g90": 211,
+   "mom": 246,
+   "spark": [
+    30,
+    22,
+    26,
+    21,
+    23,
+    23,
+    20,
+    18,
+    32,
+    37,
+    100,
+    81
+   ],
+   "cats": [
+    "sleep",
+    "product"
+   ]
+  },
+  {
+   "slug": "dog-stroller",
+   "keyword": "Dog Stroller",
+   "vol": 60500,
+   "g90": 203,
+   "mom": 221,
+   "spark": [
+    19,
+    19,
+    27,
+    25,
+    20,
+    21,
+    19,
+    18,
+    25,
+    38,
+    100,
+    50
+   ],
+   "cats": [
+    "travel",
+    "pets"
+   ]
+  },
+  {
+   "slug": "loaded-tea",
+   "keyword": "Loaded Tea",
+   "vol": 246000,
+   "g90": 107,
+   "mom": 193,
+   "spark": [
+    9,
+    10,
+    13,
+    17,
+    18,
+    29,
+    33,
+    31,
+    54,
+    62,
+    82,
+    100
+   ],
+   "cats": [
+    "food-beverage",
+    "beverages"
+   ]
+  },
+  {
+   "slug": "foam-sprayer",
+   "keyword": "Foam sprayer",
+   "vol": 49500,
+   "g90": 153,
+   "mom": 213,
+   "spark": [
+    27,
+    25,
+    29,
+    27,
+    23,
+    21,
+    21,
+    21,
+    38,
+    44,
+    100,
+    58
+   ],
+   "cats": [
+    "product",
+    "gardening-agriculture"
+   ]
+  },
+  {
+   "slug": "barrel-leg-pants-ih34TQ7G",
+   "keyword": "Barrel leg pants",
+   "vol": 12100,
+   "g90": 186,
+   "mom": 240,
+   "spark": [
+    15,
+    13,
+    18,
+    22,
+    23,
+    23,
+    21,
+    24,
+    36,
+    46,
+    100,
+    86
+   ],
+   "cats": [
+    "fashion",
+    "lifestyle"
+   ]
+  },
+  {
+   "slug": "embody",
+   "keyword": "Embody",
+   "vol": 368000,
+   "g90": 120,
+   "mom": 153,
+   "spark": [
+    14,
+    15,
+    12,
+    11,
+    12,
+    17,
+    35,
+    31,
+    16,
+    20,
+    60,
+    100
+   ],
+   "cats": [
+    "technology",
+    "health"
+   ]
+  },
+  {
+   "slug": "mini-rice-cooker",
+   "keyword": "Mini rice cooker",
+   "vol": 33100,
+   "g90": 152,
+   "mom": 176,
+   "spark": [
+    19,
+    22,
+    33,
+    33,
+    27,
+    27,
+    24,
+    27,
+    35,
+    47,
+    100,
+    70
+   ],
+   "cats": [
+    "home",
+    "kitchen"
+   ]
+  },
+  {
+   "slug": "beef-protein-powder-sx5SwMqb",
+   "keyword": "Beef protein powder",
+   "vol": 14800,
+   "g90": 165,
+   "mom": 190,
+   "spark": [
+    16,
+    17,
+    28,
+    25,
+    23,
+    24,
+    21,
+    31,
+    29,
+    47,
+    100,
+    68
+   ],
+   "cats": [
+    "health",
+    "fitness"
+   ]
+  },
+  {
+   "slug": "smart-bidet",
+   "keyword": "Smart bidet",
+   "vol": 1900,
+   "g90": 203,
+   "mom": 232,
+   "spark": [
+    10,
+    11,
+    19,
+    19,
+    17,
+    21,
+    18,
+    17,
+    25,
+    31,
+    100,
+    51
+   ],
+   "cats": [
+    "home",
+    "luxury"
+   ]
+  },
+  {
+   "slug": "cordless-paint-sprayer",
+   "keyword": "Cordless paint sprayer",
+   "vol": 18100,
+   "g90": 200,
+   "mom": 177,
+   "spark": [
+    24,
+    27,
+    35,
+    35,
+    31,
+    27,
+    21,
+    22,
+    27,
+    40,
+    100,
+    70
+   ],
+   "cats": [
+    "construction",
+    "home"
+   ]
+  },
+  {
+   "slug": "smart-power-strip",
+   "keyword": "Smart Power Strip",
+   "vol": 9900,
+   "g90": 202,
+   "mom": 178,
+   "spark": [
+    9,
+    11,
+    26,
+    26,
+    24,
+    26,
+    23,
+    18,
+    22,
+    37,
+    100,
+    53
+   ],
+   "cats": [
+    "technology",
+    "home"
+   ]
+  }
+ ]
+}
