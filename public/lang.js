@@ -50,12 +50,10 @@
     return (v > 0 ? '+' : '') + Math.round(v * 10) / 10 + '%';
   }
 
-  // 系统生成文案（建议/渠道）：直接给译文
+  // 系统生成文案（建议/渠道）：保留原文，不翻译
   function sysText(s) {
     if (!s) return '';
-    var k = String(s).replace(/\s+/g, ' ').trim();
-    if (LANG === 'zh-CN') return k;
-    return CONTENT[k] || k;
+    return String(s).replace(/\s+/g, ' ').trim();
   }
 
   /* 建议文案：按「模板 + 变量」在前端拼，不再整句中译。
@@ -131,16 +129,11 @@
     return CONTENT[zh] || zh;
   }
 
-  // 简介：原文/译文各自查整段词典后再截断（避免截断后查不到词典）
+  // 实时简介：按字数截断后输出原文，不翻译
   function dualDesc(s, max) {
     var full = String(s || '');
     if (!full) return '';
-    var tr = CONTENT[full];
-    var o = full.length > max ? full.slice(0, max) + '…' : full;
-    var t2 = tr && tr !== full ? (tr.length > max ? tr.slice(0, max) + '…' : tr) : '';
-    if (!t2) return esc(o);
-    if (LANG === 'en') return esc(t2);
-    return '<span class="tr-o">' + esc(o) + '</span><span class="tr-t">' + esc(t2) + '</span>';
+    return esc(full.length > max ? full.slice(0, max) + '…' : full);
   }
 
   // 季节柱状图（12 个月相对强弱）
@@ -214,20 +207,17 @@
   }
 
   function tx(s) {
+    // 实时数据不翻译：查表只用于分类名等站点固定词，动态词条一律原文返回
     if (!s) return '';
     if (LANG === 'zh-CN') return s;
-    return CONTENT[s] || s;
+    var v = CONTENT[s];
+    return v || s;
   }
 
-  // 双视图：原文为主、译文可选（body.tr-on 时显示译文），与详情页保持一致
-  // 英文页直接显示英文（访客不需要中文对照）
+  // 实时词条：永远显示原文，用户可用浏览器自行翻译
   function dualHtml(s) {
     s = String(s == null ? '' : s);
-    if (!s) return '';
-    var t = CONTENT[s];
-    if (!t || t === s) return esc(s);
-    if (LANG === 'en') return esc(t);
-    return '<span class="tr-o">' + esc(s) + '</span><span class="tr-t">' + esc(t) + '</span>';
+    return s ? esc(s) : '';
   }
 
   /* ---------------------------- 收藏 ---------------------------- */
@@ -298,6 +288,22 @@
     return typeof v === 'number' ? v : null;
   }
 
+  // 互联网产品词根 + 推荐分：与 build-multi.js 的 recommendScore 保持一致
+  var PRODUCT_ROOT = /\b(saas|micro ?saas|tool|software|app|platform|generator|converter|remover|plugin|extension|api|sdk|cli|crm|erp|dashboard|automation|workflow|no-?code|low-code|analytics|seo|marketing|hosting|database|pdf|scraper|proxy|vpn|chatbot|agent|ai |ai-|gpt|llm|image|video|design|writing|scheduler|booking|invoic(e|ing)|payment|fintech|crypto|subscription|membership|marketplace|directory|builder|template|editor|optimizer|tracker|monitor|security|cloud|data|remote|freelance|productivity)\b|人工智能|智能体|工具|软件|建站|营销/i;
+  function recommendScore(x) {
+    var base = x.carrier === 'web' ? (x.buildScore || 0) : (x.score || 0);
+    var s = base;
+    if (x.carrier === 'web') {
+      s += 12;
+      if (PRODUCT_ROOT.test(x.keyword || '')) s += 16;
+      if (x.digitalKind === 'need') s += 14;
+    }
+    if (x.type === 'brand' || x.brand) s -= 25;
+    if ((x.g90 || 0) > 0) s += Math.min(18, x.g90 / 4);
+    if (x.windowKey === 'fresh' || x.windowKey === 'open' || x.isNew) s += 10;
+    return s;
+  }
+
   function filtered() {
     var list = pool();
     if (S.pcat && S.pcat !== 'all')
@@ -366,7 +372,11 @@
     };
 
     var key = S.sort;
-    if (key === 'auto') key = S.carrier === 'web' ? 'build' : S.carrier === 'goods' ? 'score' : 'build';
+    if (key === 'auto') {
+      // 推荐排序：线上产品 / 在涨 / 新窗口优先，与构建期首页排序一致
+      list.sort(function (a, b) { return recommendScore(b) - recommendScore(a); });
+      return list;
+    }
     if (S.span) {
       list.sort(function (a, b) {
         return (spanVal(b) || -999) - (spanVal(a) || -999);
