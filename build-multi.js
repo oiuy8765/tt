@@ -340,11 +340,15 @@ let SITE_DATA = null;
 let SIGNALS = null;
 let ZH_DICT = {};
 let ADVICE = {};
+let AI_MARKET = null;      // AI 市场分析源数据（data/ai-market.json）
+let AI_MT = {};            // AI 市场分析多语言词典 { en:{中文:译文}, ... }
 
 function loadDicts() {
   UI_RAW = readJSON(path.join(ROOT, 'data', 'i18n', 'ui.json'), {});
   ADVICE = readJSON(path.join(ROOT, 'data', 'i18n', 'advice.json'), {});
   SITE_DATA = readJSON(path.join(ROOT, 'data', 'site-data.json'), { topics: [] });
+  AI_MARKET = readJSON(path.join(ROOT, 'data', 'ai-market.json'), { intro: '', items: [] });
+  AI_MT = readJSON(path.join(ROOT, 'data', 'i18n', 'ai-market.json'), {});
   const raw = readJSON(path.join(ROOT, 'data', 'zh-dict.json'), {});
   // 简中词典：短词有 @kw@ 版本（商品语境），优先用
   for (const k of Object.keys(raw)) {
@@ -382,38 +386,43 @@ function ui(lang) {
   };
 }
 
+// AI 市场分析专用翻译：整段分析正文走 ai-market.json 词典，切换语言时全篇切换。
+// 与实时数据板块（dualSpan 保留原文）不同，这个板块是 AI 撰写的内容，必须彻底本地化。
+// keyword（原始搜索词）故意不翻译——它是可查证的真实搜索词，翻成别语会失去参考价值。
+function amt(lang, text) {
+  if (text == null) return '';
+  const s = String(text);
+  if (lang === 'zh-CN') return s;
+  const d = AI_MT[lang] || {};
+  return d[s] || s;
+}
+
+// 内容词典查表：仅用于「站点原有文本」（分类标签等固定词表）。
+// 实时数据（关键词/简介/热榜标题/新闻摘要等）一律不再经此翻译——见下方 dualSpan/dualDescSpan。
+// 用户可用浏览器自带的翻译功能自行翻译动态数据。
 function tx(lang, text) {
   if (!text) return '';
   const d = CONTENT[lang] || {};
   return d[text] || text;
 }
 
-// 「原文为主、译文可选」：同一位置同时输出原文与译文，body.tr-on 时显示译文
+// 实时词条：永远输出原文，不再做「原文 / 译文」双视图
 function dualSpan(lang, text) {
   if (!text) return '';
-  const tr = tx(lang, text);
-  if (!tr || tr === text) return esc(text);
-  if (lang === 'en') return esc(tr);
-  return '<span class="tr-o">' + esc(text) + '</span><span class="tr-t">' + esc(tr) + '</span>';
+  return esc(text);
 }
 
-// 简介双语：原文/译文各自查整段词典后再截断，避免「先截断再查词典查不到译文」
-// 英文页直接显示英文（访客不需要中文对照），其余语言用原文/译文双视图
+// 实时简介：按字数截断后输出原文
 function dualDescSpan(lang, text, max) {
   if (!text) return '';
   const full = String(text);
-  const tr = tx(lang, full);
-  const o = full.length > max ? full.slice(0, max) + '…' : full;
-  const t2 = tr && tr !== full ? (tr.length > max ? tr.slice(0, max) + '…' : tr) : '';
-  if (!t2) return esc(o);
-  if (lang === 'en') return esc(t2);
-  return '<span class="tr-o">' + esc(o) + '</span><span class="tr-t">' + esc(t2) + '</span>';
+  return esc(full.length > max ? full.slice(0, max) + '…' : full);
 }
 
-// 系统生成文案（建议 / 渠道提示）：直接给译文，不做原文对照
+// 系统生成文案（渠道提示等）：保留原文
 function sysText(lang, text) {
   if (!text) return '';
-  return tx(lang, String(text).replace(/\s+/g, ' ').trim());
+  return String(text).replace(/\s+/g, ' ').trim();
 }
 
 // 分类标签：slug → 中文标签 → 译文
@@ -515,13 +524,8 @@ function seasonBarHtml(lang, tp) {
 
 // 原文/译文切换按钮（英文页直接显示英文，无需切换；其余语言包括简中都有双语内容）
 function trToggleHtml(lang) {
-  if (lang === 'en') return '';
-  const t = ui(lang);
-  return (
-    '<div class="daily-ctl tr-ctl" id="trToggle" role="group" aria-label="' + esc(t('显示译文')) + '">' +
-    '<button type="button" class="seg on" data-mode="orig">' + esc(t('显示原文')) + '</button>' +
-    '<button type="button" class="seg" data-mode="tr">' + esc(t('显示译文')) + '</button></div>'
-  );
+  // 实时数据不再翻译，无需「显示原文 / 译文」切换。
+  return '';
 }
 
 /**
@@ -546,7 +550,7 @@ function adviceLines(lang, tp) {
     vars.M = EN_MONTHS[idx] || vars.M;
   }
 
-  const kw = tx(lang, p.a.kw) || p.a.kw;
+  const kw = p.a.kw; // 实时关键词保留原文，不翻译
   const act = fill(tpl(p.a.id), {
     KW: kw,
     WHO: tpl(p.a.who),
@@ -601,15 +605,8 @@ function adviceBoot(lang) {
   for (const id of Object.keys(ZH)) {
     if (D[id]) tpl[id] = D[id];
   }
-  // 首页前 N 条的 advParts 用到的关键词译文
+  // 关键词是实时数据，不翻译：不再内嵌词条译文，前端 advKw 会回退原文
   const kwMap = {};
-  for (const tp of (SITE_DATA.topics || []).slice(0, 200)) {
-    const p = tp && tp.adviceParts;
-    if (!p || !p.a || !p.a.kw) continue;
-    const src = p.a.kw;
-    const tr = lang === 'zh-CN' ? src : tx(lang, src) || '';
-    if (tr && tr !== src) kwMap[src] = tr;
-  }
   // 时间模板里的月份：英文用月份名，其余语言用数字
   const payload = { tpl, kw: kwMap, en_months: lang === 'en' };
   return 'window.__ADVICE__=' + JSON.stringify(payload) + ';';
@@ -676,6 +673,7 @@ ${analyticsTag()}
     <a href="${L.prefix}/"${isHome ? ' class="on"' : ''}>${esc(t('机会库'))}</a>
     <a href="${L.prefix}/daily.html"${rel === '/daily' ? ' class="on"' : ''}>${esc(t('今日热榜'))}</a>
     <a href="${L.prefix}/discover.html"${rel === '/discover' ? ' class="on"' : ''}>${esc(t('发现'))}</a>
+    <a href="${L.prefix}/ai-market/"${rel.startsWith('/ai-market') ? ' class="on"' : ''}>${esc(t('AI 市场分析'))}</a>
     <a href="${L.prefix}/lookup/"${rel.startsWith('/lookup') ? ' class="on"' : ''}>${esc(t('关键词分析'))}</a>
     <a href="${L.prefix}/topics/"${rel.startsWith('/topics') ? ' class="on"' : ''}>${esc(t('关键词详情'))}</a>
     <a href="${L.prefix}/compare/"${rel.startsWith('/compare') ? ' class="on"' : ''}>${esc(t('对比'))}</a>
@@ -719,6 +717,26 @@ const FORM_CLASS = {
   saas: 'f-saas',
   tool: 'f-tool',
 };
+
+// 互联网产品词根：给「线上可做」的 SaaS / AI / 工具 / 应用 / 平台 / 电商工具加权
+const PRODUCT_ROOT =
+  /\b(saas|micro ?saas|tool|software|app|platform|generator|converter|remover|plugin|extension|api|sdk|cli|crm|erp|dashboard|automation|workflow|no-?code|low-code|analytics|seo|marketing|hosting|database|pdf|scraper|proxy|vpn|chatbot|agent|ai |ai-|gpt|llm|image|video|design|writing|scheduler|booking|invoic(e|ing)|payment|fintech|crypto|subscription|membership|marketplace|directory|builder|template|editor|optimizer|tracker|monitor|security|cloud|data|remote|freelance|productivity)\b|人工智能|智能体|工具|软件|建站|营销/i;
+
+// 推荐分：卡片显示分为底，线上产品 / 在涨 / 新窗口加权，实物与品牌词不额外加权。
+// 与前端 lang.js 的同名函数保持一致。
+function recommendScore(x) {
+  const base = x.carrier === 'web' ? (x.buildScore || 0) : (x.score || 0);
+  let s = base;
+  if (x.carrier === 'web') {
+    s += 12;                                    // 线上可做优先
+    if (PRODUCT_ROOT.test(x.keyword || '')) s += 16; // 明确的产品形态词
+    if (x.digitalKind === 'need') s += 14;       // 可直接做
+  }
+  if (x.type === 'brand' || x.brand) s -= 25;    // 品牌词降权
+  if ((x.g90 || 0) > 0) s += Math.min(18, x.g90 / 4);
+  if (x.windowKey === 'fresh' || x.windowKey === 'open' || x.isNew) s += 10;
+  return s;
+}
 
 function cardHtml(lang, tp, i) {
   const t = ui(lang);
@@ -845,21 +863,33 @@ function discoverPage(lang) {
     })
     .join('\n');
 
-  const demand = (sig.demand || []).slice(0, 10);
+  // 同时展示「今日热榜需求词」和「品类库里正在冒头的线上产品机会」，
+  // 后者不依赖当天热榜是否有产品词，保证这个板块每天都有足够内容。
+  const demand = (sig.demand || []).slice(0, 32);
   const demandHtml = demand.length
     ? '<ul class="sg-list">' + demand.map((d) => {
-        const head = d.articles && d.articles[0] ? trDaily(lang, d.articles[0].title) || d.articles[0].title : '';
+        const isLib = d.source === 'library';
+        const head = !isLib && d.articles && d.articles[0] ? d.articles[0].title : '';
+        const qHref = isLib && d.slug
+          ? topicHref(d.slug)
+          : 'https://trends.google.com/trends/explore?q=' + encodeURIComponent(d.q);
+        const why = isLib ? (d.desc || '') : head;
+        // 副信息：库词显示建站分 + 90 天增长；热榜词显示搜索量 + 地区
+        const sub = isLib
+          ? (d.buildScore ? esc(t('建站分')) + ' <b>' + Math.round(d.buildScore) + '</b>' : '') +
+            (d.g90 != null ? ' <i class="sep">·</i> ' + esc(t('90 天增长')) + ' <b class="' + (d.g90 >= 0 ? 'up' : 'down') + '">' + (d.g90 > 0 ? '+' : '') + d.g90 + '%</b>' : '') +
+            (d.fresh ? ' <i class="sep">·</i> <b class="sg-new">' + esc(t('新机会')) + '</b>' : '')
+          : esc(d.traffic) + ' ' + esc(t('次搜索')) +
+            (d.geos && d.geos.length ? ' <i class="sep">·</i> ' + esc(d.geos.slice(0, 3).join(' / ')) : '') +
+            (d.fresh ? ' <i class="sep">·</i> <b class="sg-new">' + esc(t('首次出现')) + '</b>' : '') +
+            (!d.fresh && d.streak > 1 ? ' <i class="sep">·</i> ' + esc(t('连续在榜')) + ' ' + d.streak + ' ' + esc(t('天')) : '');
         return (
           '<li class="sg-item">' +
           '<span class="sg-tag t-' + d.cat + '">' + esc(catName(d.cat)) + '</span>' +
           '<div class="sg-body">' +
-          '<a class="sg-q" href="' + 'https://trends.google.com/trends/explore?q=' + encodeURIComponent(d.q) + '" target="_blank" rel="noopener nofollow">' + esc(d.q) + '</a>' +
-          '<span class="sg-sub">' + esc(d.traffic) + ' ' + esc(t('次搜索')) +
-          (d.geos && d.geos.length ? ' <i class="sep">·</i> ' + esc(d.geos.slice(0, 3).join(' / ')) : '') +
-          (d.fresh ? ' <i class="sep">·</i> <b class="sg-new">' + esc(t('首次出现')) + '</b>' : '') +
-          (!d.fresh && d.streak > 1 ? ' <i class="sep">·</i> ' + esc(t('连续在榜')) + ' ' + d.streak + ' ' + esc(t('天')) : '') +
-          '</span>' +
-          (head ? '<p class="sg-why">' + esc(head.slice(0, 120)) + '</p>' : '') +
+          '<a class="sg-q" href="' + qHref + '"' + (isLib ? '' : ' target="_blank" rel="noopener nofollow"') + '>' + esc(d.q) + '</a>' +
+          '<span class="sg-sub">' + sub + '</span>' +
+          (why ? '<p class="sg-why">' + esc(why.slice(0, 120)) + '</p>' : '') +
           '</div></li>'
         );
       }).join('\n') + '</ul>'
@@ -910,7 +940,7 @@ function discoverPage(lang) {
           '</a>').join('\n') + '</div></section>'
       : '') +
     '<section class="sg-sec"><div class="sg-head"><h2>' + esc(t('今日需求信号')) + '</h2>' +
-    '<span>' + esc(t('热搜里能直接做产品的词')) + '</span></div>' + demandHtml + '</section>' +
+    '<span>' + esc(t('热搜与品类库里能直接做产品的词')) + '</span></div>' + demandHtml + '</section>' +
 
     (pulseHtml
       ? '<section class="sg-sec"><div class="sg-head"><h2>' + esc(t('今天大家在搜什么')) + '</h2>' +
@@ -931,10 +961,9 @@ function homePage(lang) {
   const t = ui(lang);
   const L = LANGS.find((x) => x.code === lang);
   const topics = (SITE_DATA.topics || []).slice();
-  // 排序必须用卡片上显示的那个分数：线上看建站分、实物看选品分。
-  // 之前一律按建站分排，会出现「实物卡片显示 60 分却排在 80 分前面」。
-  const shownScore = (x) => (x.carrier === 'web' ? x.buildScore || 0 : x.score || 0);
-  const scored = topics.slice().sort((a, b) => shownScore(b) - shownScore(a));
+  // 默认「推荐排序」：在卡片显示分基础上，优先「线上可做 + 非品牌 + 在涨/新」的互联网产品词，
+  // 避免实物商品霸榜。用户仍可用工具栏切换到纯建站分/选品分/增长等排序。
+  const scored = topics.slice().sort((a, b) => recommendScore(b) - recommendScore(a));
   const top = scored.slice(0, 60);
   const counts = SITE_DATA.counts || {};
 
@@ -1124,8 +1153,8 @@ const ICO = {
 function topicPage(lang, tp, related) {
   const t = ui(lang);
   const L = LANGS.find((x) => x.code === lang);
-  const kw = tx(lang, tp.keyword) || tp.keyword;
-  const desc = tx(lang, tp.descShort || '');
+  const kw = tp.keyword;          // 实时词保留原文
+  const desc = tp.descShort || ''; // 实时简介保留原文
   const monthName = (MONTHS[lang] || MONTHS.en)[(tp.season && tp.season.peakMonth) || 0];
   const peakPct = tp.peak ? Math.round((tp.current / tp.peak) * 100) : null;
   const isWeb = tp.carrier === 'web';
@@ -1753,6 +1782,279 @@ function indexPage(lang, pageNo, pages, list) {  const t = ui(lang);
 }
 
 
+/* ------------------------------ AI 市场分析 ------------------------------ */
+
+// 评级 → 徽章样式（A 最优先）。不翻译，纯字母。
+function amGradeClass(g) {
+  return g === 'A' ? 'am-g-a' : g === 'B' ? 'am-g-b' : 'am-g-c';
+}
+
+// 是否有真实 Google Trends 数字。热点事件词（如 GTA6）没有精确指数，
+// 不编造数字，改为展示可核实的「热度依据」（evidence）。
+function amHasTrend(it) {
+  return !!(it && it.trend && it.trend.vol != null);
+}
+
+// 卡片 KPI：有真实数字显示数字，否则显示热度依据文字
+function amCardKpi(lang, it, t) {
+  if (amHasTrend(it)) {
+    const trend = it.trend;
+    return (
+      '<div class="am-card-kpi">' +
+      '<span><b>' + fmtNum(trend.vol) + '</b> ' + esc(t('月搜索')) + '</span>' +
+      '<span class="' + (trend.g12 > 0 ? 'up' : 'down') + '"><b>' + pct(trend.g12) + '</b> 12M</span>' +
+      '<span><b>' + Math.round(trend.build || 0) + '</b> ' + esc(t('建站分')) + '</span>' +
+      '</div>'
+    );
+  }
+  return '<p class="am-card-evidence">' + esc(amt(lang, it.evidence)) + '</p>';
+}
+
+// 详情页 KPI：同上
+function amDetailKpi(lang, it, t) {
+  if (amHasTrend(it)) {
+    const trend = it.trend;
+    return (
+      '<div class="kpi-grid am-kpi">' +
+      '<div class="kpi"><b>' + fmtNum(trend.vol) + '</b><span>' + esc(t('月搜索量')) + '</span></div>' +
+      '<div class="kpi"><b class="' + (trend.g90 > 0 ? 'up' : 'down') + '">' + pct(trend.g90) + '</b><span>90 ' + esc(t('天增长')) + '</span></div>' +
+      '<div class="kpi"><b class="' + (trend.g12 > 0 ? 'up' : 'down') + '">' + pct(trend.g12) + '</b><span>12 ' + esc(t('个月增长')) + '</span></div>' +
+      '<div class="kpi"><b>' + Math.round(trend.build || 0) + '</b><span>' + esc(t('建站分')) + '</span></div>' +
+      '</div>'
+    );
+  }
+  return '<div class="am-evidence-box"><p>' + esc(amt(lang, it.evidence)) + '</p></div>';
+}
+
+// 单个机会卡片（列表页用）
+function amCard(lang, it) {
+  const t = ui(lang);
+  const L = LANGS.find((x) => x.code === lang);
+  const href = L.prefix + '/ai-market/' + it.slug + '.html';
+  const trend = it.trend || {};
+  return (
+    '<article class="am-card">' +
+    '<div class="am-card-top">' +
+    '<span class="am-grade ' + amGradeClass(it.grade) + '">' + esc(it.grade || '—') + '</span>' +
+    '<span class="am-cat">' + esc(amt(lang, it.cat)) + '</span>' +
+    '<span class="am-form">' + esc(amt(lang, it.form)) + '</span>' +
+    '</div>' +
+    '<h2 class="am-card-title"><a href="' + href + '">' + esc(amt(lang, it.title)) + '</a></h2>' +
+    '<div class="am-kw">' + esc(it.keyword) + '</div>' +
+    '<p class="am-card-tldr">' + esc(amt(lang, it.tldr)) + '</p>' +
+    amCardKpi(lang, it, t) +
+    '<a class="am-card-more" href="' + href + '">' + esc(t('查看完整分析')) + ' →</a>' +
+    '</article>'
+  );
+}
+
+function aiMarketIndexPage(lang) {
+  const t = ui(lang);
+  const L = LANGS.find((x) => x.code === lang);
+  const items = (AI_MARKET && AI_MARKET.items) || [];
+  const updated = (AI_MARKET && AI_MARKET.updated) || '';
+  const batch = (AI_MARKET && AI_MARKET.batch) || '';
+
+  const cards = items.map((it) => amCard(lang, it)).join('\n');
+
+  // 按分类聚合的目录锚点，方便搜索与 GEO 抓取
+  const catCount = {};
+  for (const it of items) {
+    const c = amt(lang, it.cat) || '—';
+    catCount[c] = (catCount[c] || 0) + 1;
+  }
+  const catChips = Object.keys(catCount)
+    .map((c) => '<span class="am-chip">' + esc(c) + ' <i>' + catCount[c] + '</i></span>')
+    .join('');
+
+  const body = `<main class="wrap doc-main am-main">
+  <nav class="crumbs" aria-label="breadcrumb">
+    <a href="${L.prefix}/">${esc(t('机会库'))}</a><span>›</span><span class="cur">${esc(t('AI 市场分析'))}</span>
+  </nav>
+  <header class="am-hero">
+    <span class="am-eyebrow">AI · ${esc(t('每周精选'))}</span>
+    <h1>${esc(t('AI 市场分析 · 可直接落地的建站与产品机会'))}</h1>
+    <p class="am-lead">${esc(amt(lang, AI_MARKET && AI_MARKET.intro))}</p>
+    <div class="am-meta">
+      <span>${esc(t('更新'))} <time datetime="${esc(updated)}">${esc(updated)}</time></span>
+      <span class="am-dot">·</span>
+      <span>${esc(batch)}</span>
+      <span class="am-dot">·</span>
+      <span>${items.length} ${esc(t('个精选机会'))}</span>
+    </div>
+    <div class="am-chips">${catChips}</div>
+  </header>
+  <section class="am-grid">${cards}</section>
+  <section class="am-note insight-box">
+    <div class="ins-row"><span class="ins-k">${esc(t('关于本板块'))}</span><span>${esc(t('这里的机会由 AI 结合 Google Trends 真实搜索数据与市场需求判断撰写，每周更新一次，不是每日实时数据。分析仅供参考，不构成投资建议。'))}</span></div>
+  </section>
+</main>`;
+
+  const jsonld = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        name: t('AI 市场分析'),
+        description: amt(lang, AI_MARKET && AI_MARKET.intro),
+        url: SITE + L.prefix + '/ai-market/',
+        inLanguage: L.htmlLang,
+        dateModified: updated,
+        isPartOf: { '@type': 'WebSite', name: brandName(lang), alternateName: 'TrendSift', url: SITE },
+      },
+      {
+        '@type': 'ItemList',
+        numberOfItems: items.length,
+        itemListElement: items.map((it, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: amt(lang, it.title),
+          url: SITE + L.prefix + '/ai-market/' + it.slug + '.html',
+        })),
+      },
+    ],
+  };
+
+  return layout(lang, {
+    rel: '/ai-market/',
+    title: t('AI 市场分析 · 可直接落地的建站与产品机会') + ' · ' + brandName(lang),
+    desc: (amt(lang, AI_MARKET && AI_MARKET.intro) || '').slice(0, 150),
+    body,
+    jsonld,
+  });
+}
+
+function aiMarketDetailPage(lang, it) {
+  const t = ui(lang);
+  const L = LANGS.find((x) => x.code === lang);
+  const trend = it.trend || {};
+  const title = amt(lang, it.title);
+  const rel = '/ai-market/' + it.slug;
+  const faq = it.faq || [];
+
+  const kpi = amDetailKpi(lang, it, t);
+
+  const section = (num, icon, label, text) =>
+    '<section class="am-sec">' +
+    '<h2><span class="am-sec-n">' + num + '</span><span class="am-sec-ico">' + icon + '</span>' + esc(label) + '</h2>' +
+    '<p>' + esc(amt(lang, text)) + '</p>' +
+    '</section>';
+
+  const steps = (it.steps || [])
+    .map((s, i) => '<li><span class="am-step-n">' + (i + 1) + '</span><span>' + esc(amt(lang, s)) + '</span></li>')
+    .join('');
+
+  const faqHtml = faq
+    .map(
+      (f) =>
+        '<details class="faq-item"><summary>' + esc(amt(lang, f.q)) + '</summary><p>' + esc(amt(lang, f.a)) + '</p></details>'
+    )
+    .join('');
+
+  const gtLink = 'https://trends.google.com/trends/explore?q=' + encodeURIComponent(it.keyword);
+
+  // GEO：把关键事实做成结构化 Q&A + 明确的「操作建议」，便于生成式引擎引用
+  const body = `<main class="wrap doc-main am-detail">
+  <nav class="crumbs" aria-label="breadcrumb">
+    <a href="${L.prefix}/">${esc(t('机会库'))}</a><span>›</span>
+    <a href="${L.prefix}/ai-market/">${esc(t('AI 市场分析'))}</a><span>›</span>
+    <span class="cur">${esc(it.keyword)}</span>
+  </nav>
+  <header class="am-detail-head">
+    <div class="am-detail-badges">
+      <span class="am-grade ${amGradeClass(it.grade)}">${esc(it.grade || '—')} ${esc(t('级机会'))}</span>
+      <span class="am-cat">${esc(amt(lang, it.cat))}</span>
+      <span class="am-form">${esc(amt(lang, it.form))}</span>
+      <span class="am-window">${esc(amt(lang, trend.window))}</span>
+    </div>
+    <h1>${esc(title)}</h1>
+    <p class="am-detail-kw">${esc(t('关键词'))}: <b>${esc(it.keyword)}</b> <a href="${gtLink}" target="_blank" rel="noopener nofollow">${esc(t('在 Google Trends 查看'))} ↗</a></p>
+    <div class="am-tldr"><span class="am-tldr-k">${esc(t('一句话结论'))}</span><p>${esc(amt(lang, it.tldr))}</p></div>
+    ${kpi}
+    <div class="am-signalrow">
+      <span>${esc(t('首次出现'))} <b>${esc(trend.firstSeen || '—')}</b></span>
+      <span>${esc(t('主要平台'))} <b>${esc(trend.platform || '—')}</b></span>
+      <span>${esc(t('更新批次'))} <b>${esc((AI_MARKET && AI_MARKET.batch) || '')}</b></span>
+    </div>
+  </header>
+
+  <div class="am-sections">
+    ${section('01', '◎', t('为什么是机会'), it.why)}
+    ${section('02', '♙', t('谁在搜索'), it.audience)}
+    ${section('03', '▦', t('做什么产品'), it.product)}
+    ${section('04', '⚔', t('竞争格局'), it.competition)}
+    ${section('05', '$', t('怎么变现'), it.monetize)}
+  </div>
+
+  <section class="am-sec am-steps-sec">
+    <h2><span class="am-sec-n">06</span><span class="am-sec-ico">↗</span>${esc(t('落地步骤'))}</h2>
+    <ol class="am-steps">${steps}</ol>
+  </section>
+
+  <section class="am-sec am-risk-sec">
+    <h2><span class="am-sec-n">07</span><span class="am-sec-ico">!</span>${esc(t('风险提示'))}</h2>
+    <p>${esc(amt(lang, it.risk))}</p>
+  </section>
+
+  <section class="am-action">
+    <span class="am-action-k">${esc(t('本周行动'))}</span>
+    <p>${esc(amt(lang, it.action))}</p>
+  </section>
+
+  <section class="am-faq">
+    <h2>${esc(t('常见问题'))}</h2>
+    ${faqHtml}
+  </section>
+
+  <footer class="am-source">
+    <p>${esc(t('数据口径'))}: ${esc(amt(lang, it.sourceNote || '搜索热度来自 Google Trends 公开相对指数（0-100）；月搜索量为关键词工具方法估算；增长、评分与窗口由趋势雷达基于历史曲线计算。分析判断由 AI 生成，仅供参考，不构成投资建议。'))}</p>
+    <a href="${L.prefix}/ai-market/">← ${esc(t('返回 AI 市场分析'))}</a>
+  </footer>
+</main>`;
+
+  const jsonld = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Article',
+        headline: title,
+        description: amt(lang, it.tldr),
+        inLanguage: L.htmlLang,
+        dateModified: (AI_MARKET && AI_MARKET.updated) || '',
+        author: { '@type': 'Organization', name: 'TrendSift AI' },
+        publisher: { '@type': 'Organization', name: brandName(lang), url: SITE },
+        mainEntityOfPage: { '@type': 'WebPage', '@id': SITE + L.prefix + rel + '.html' },
+        about: { '@type': 'Thing', name: it.keyword },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: brandName(lang), item: SITE + L.prefix + '/' },
+          { '@type': 'ListItem', position: 2, name: t('AI 市场分析'), item: SITE + L.prefix + '/ai-market/' },
+          { '@type': 'ListItem', position: 3, name: it.keyword, item: SITE + L.prefix + rel + '.html' },
+        ],
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: faq.map((f) => ({
+          '@type': 'Question',
+          name: amt(lang, f.q),
+          acceptedAnswer: { '@type': 'Answer', text: amt(lang, f.a) },
+        })),
+      },
+    ],
+  };
+
+  return layout(lang, {
+    rel,
+    title: title + ' · ' + esc(t('AI 市场分析')) + ' · ' + brandName(lang),
+    desc: (amt(lang, it.tldr) || '').slice(0, 155),
+    body,
+    jsonld,
+  });
+}
+
+
 /* ------------------------------ 今日热榜 ------------------------------ */
 
 const LOCALE = { 'zh-CN': 'zh-CN', 'zh-TW': 'zh-TW', en: 'en', ja: 'ja', ko: 'ko' };
@@ -1798,6 +2100,9 @@ const DAILY_TR = {};
 let DAILY_TR_DONE = false;
 
 async function buildDailyTranslations() {
+  // 实时热榜数据不再翻译，跳过联网翻译以加快构建。
+  return;
+  // eslint-disable-next-line no-unreachable
   if (DAILY_TR_DONE) return;
   DAILY_TR_DONE = true;
   const raw = readJSON(path.join(DIST, 'data', 'daily.json'), null);
@@ -1892,12 +2197,8 @@ async function buildDailyTranslations() {
 }
 
 function trDaily(lang, s) {
-  if (!s) return '';
-  if (lang === 'en') return '';
-  const m = DAILY_TR[lang];
-  if (!m) return '';
-  const v = m[String(s).replace(/\s+/g, ' ').trim()];
-  return v && v !== s ? v : '';
+  // 热榜标题/新闻摘要属实时数据，不再翻译，始终回退原文。
+  return '';
 }
 
 function dailyPage(lang, arch) {
@@ -2037,11 +2338,6 @@ function dailyPage(lang, arch) {
     '<h1>' + esc(isArch ? fmtDay(arch.date) + ' · ' + t('热榜档案') : t('今天什么词被搜爆了')) + '</h1>' +
     '<p class="doc-lead">' + esc(t('各地区此刻搜索量突增的词与相关资讯，偏新闻，热度往往一两天就过去。')) + '</p>' +
     archLink +
-    (!isArch && lang !== 'en'
-      ? '<div class="daily-ctl" id="dailyTrToggle" role="group" aria-label="' + esc(t('显示译文')) + '">' +
-        '<button type="button" class="seg on" data-mode="orig">' + esc(t('显示原文')) + '</button>' +
-        '<button type="button" class="seg" data-mode="tr">' + esc(t('显示译文')) + '</button></div>'
-      : '') +
     '</header>' +
     tabs +
     (sections || '<p class="empty">' + esc(t('没有数据')) + '</p>') +
@@ -2306,6 +2602,11 @@ function buildSitemaps() {
     for (const d of dailySnapDates()) push('/daily/' + d);
     push('/compare/');
     push('/categories/');
+    // AI 市场分析：列表页 + 每个精选机会详情页
+    push('/ai-market/');
+    if (AI_MARKET && (AI_MARKET.items || []).length) {
+      for (const it of AI_MARKET.items) push('/ai-market/' + it.slug + '.html');
+    }
     push('/about');
     push('/privacy');
     push('/contact');
@@ -2351,7 +2652,9 @@ function buildLlms() {
 - ${SITE}/ko/ — 한국어판
 - ${SITE}/zh-tw/ — 繁體中文版
 - ${SITE}/topics/ — full topic index
+- ${SITE}/ai-market/ — AI Market Analysis: a weekly, editorially curated set of rising keywords with in-depth, actionable market analyses (what to build, target users, competition, monetization, step-by-step plan). Fully translated into all 5 languages.
 
+${AI_MARKET && (AI_MARKET.items || []).length ? '## AI Market Analysis (weekly curated)\n' + AI_MARKET.items.map((it) => '- ' + it.keyword + ' — ' + (amt('en', it.title)) + ': ' + SITE + '/en/ai-market/' + it.slug + '.html').join('\n') + '\n' : ''}
 ## Data
 Search interest: Google Trends (public relative index, 0-100). Monthly volume: estimated with standard keyword-tool methodology. Growth, seasonality, volatility and scores: computed by TrendSift from the historical curve. Data is not official Google data and is not investment advice.
 
@@ -2359,14 +2662,34 @@ Search interest: Google Trends (public relative index, 0-100). Monthly volume: e
 Simplified Chinese (default), Traditional Chinese, English, Japanese, Korean — each with its own URL and hreflang annotations.
 `;
   fs.writeFileSync(path.join(DIST, 'llms.txt'), txt, 'utf8');
+
+  // llms-full.txt：给 AI 引擎的扩展版，含每个 AI 市场分析词条的标题与一句话结论。
+  let full = txt + '\n## Full AI Market Analysis entries\n';
+  const items = (AI_MARKET && AI_MARKET.items) || [];
+  for (const it of items) {
+    const url = SITE + '/en/ai-market/' + it.slug + '.html';
+    full += '\n### ' + it.keyword + ' — ' + amt('en', it.title) + '\n';
+    full += '- URL: ' + url + '\n';
+    const tldr = amt('en', it.tldr);
+    if (tldr) full += '- Summary: ' + tldr + '\n';
+    if (it.evidence) full += '- Evidence: ' + amt('en', it.evidence) + '\n';
+  }
+  full += '\n## Note\nAll analysis is AI-generated editorial opinion for reference only, not investment advice. Search data is based on Google Trends public relative index and keyword-tool estimates.\n';
+  fs.writeFileSync(path.join(DIST, 'llms-full.txt'), full, 'utf8');
 }
 
 function buildRobots() {
-  const txt = `User-agent: *
-Allow: /
-
-Sitemap: ${SITE}/sitemap.xml
-`;
+  // 显式欢迎主流 AI 搜索/生成引擎抓取（GEO）：默认 Allow 已放行，这里明确列出以利审计与引用。
+  const aiBots = [
+    'GPTBot', 'OAI-SearchBot', 'ChatGPT-User',
+    'ClaudeBot', 'Claude-Web',
+    'PerplexityBot', 'Perplexity-User',
+    'Google-Extended', 'Googlebot',
+    'Bingbot', 'Applebot', 'Applebot-Extended',
+    'CCBot', 'cohere-ai', 'Bytespider',
+  ];
+  const botLines = aiBots.map((b) => 'User-agent: ' + b + '\nAllow: /').join('\n\n');
+  const txt = `# TrendSift — Google Trends rising-signal analysis, multilingual.\n${botLines}\n\nUser-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`;
   fs.writeFileSync(path.join(DIST, 'robots.txt'), txt, 'utf8');
 }
 
@@ -2428,6 +2751,15 @@ async function main() {
     write(path.join(dir, 'daily.html'), dailyPage(l.code));
     write(path.join(dir, 'discover.html'), discoverPage(l.code));
     count++;
+    // AI 市场分析：列表页 + 每个机会一个独立详情页（整篇多语言）
+    if (AI_MARKET && (AI_MARKET.items || []).length) {
+      write(path.join(dir, 'ai-market', 'index.html'), aiMarketIndexPage(l.code));
+      count++;
+      for (const it of AI_MARKET.items) {
+        write(path.join(dir, 'ai-market', it.slug + '.html'), aiMarketDetailPage(l.code, it));
+        count++;
+      }
+    }
     if (snapDates.length) {
       write(path.join(dir, 'daily', 'index.html'), dailyArchiveIndex(l.code, snapDates));
       for (const d of snapDates) write(path.join(dir, 'daily', d + '.html'), dailyPage(l.code, { date: d }));
