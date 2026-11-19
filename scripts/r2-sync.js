@@ -49,6 +49,15 @@ if (!ACCOUNT || !TOKEN) {
 const BASE = `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT}/r2/buckets/${BUCKET}/objects`;
 const headers = { Authorization: `Bearer ${TOKEN}` };
 
+// 前置探测：bucket 未开通或 token 无 R2 权限时，整体优雅跳过（不阻断 CI）。
+async function r2Available() {
+  try {
+    const res = await fetch(`${BASE}/__probe__`, { headers });
+    // 200=存在, 404=对象不存在但 bucket 可用; 其它(10042 未开通/403 无权限)视为不可用
+    return res.status === 200 || res.status === 404;
+  } catch { return false; }
+}
+
 async function withRetry(fn, label, tries = 3) {
   for (let i = 1; i <= tries; i++) {
     try { return await fn(); } catch (e) {
@@ -100,7 +109,15 @@ async function pull() {
   if (fail) process.exitCode = 1;
 }
 
-(MODE === 'push' ? push() : MODE === 'pull' ? pull() : (() => {
-  console.error('用法：node scripts/r2-sync.js push | pull');
-  process.exit(2);
-})()).catch(e => { console.error(e); process.exit(1); });
+async function run() {
+  if (MODE !== 'push' && MODE !== 'pull') {
+    console.error('用法：node scripts/r2-sync.js push | pull');
+    process.exit(2);
+  }
+  if (!(await r2Available())) {
+    console.log(`R2 bucket「${BUCKET}」不可用（未开通或无权限），跳过同步。`);
+    return; // 正常退出，不阻断构建
+  }
+  if (MODE === 'push') await push(); else await pull();
+}
+run().catch(e => { console.error(e); process.exit(1); });
