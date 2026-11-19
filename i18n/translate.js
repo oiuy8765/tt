@@ -283,7 +283,7 @@ async function translate(texts, opts) {
         done += my.length;
         dirty += my.length;
         if (opts.onProgress) opts.onProgress(Math.min(done, pending.length), pending.length);
-        if (dirty >= 200) {
+        if (dirty >= 30) {
           saveCache(from, to, cache);
           dirty = 0;
         }
