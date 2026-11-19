@@ -43,14 +43,17 @@ jobs:
           sleep 5
           curl -s -m 5 http://127.0.0.1:8787/api/config -o /dev/null -w "server up: %{http_code}\n" || true
 
-      # 从 R2 拉取上次的翻译缓存 / 数据快照：数据跨构建复用，不必提交回仓库
-      # （失败不阻断构建，大不了本次重新生成缓存）
-      - name: Pull data cache from R2
-        run: node scripts/r2-sync.js pull
-        continue-on-error: true
-        env:
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      # 从 GitHub Actions 缓存恢复上次构建的翻译缓存 / 数据快照：
+      # 数据跨构建复用，不必提交回 git 仓库，也不需要 Cloudflare R2 / 支付方式。
+      # 用 run_id 作为新 key、前缀作为 restore-key，保证每次都能恢复最新一份并写回新缓存。
+      - name: Restore data cache
+        id: data-cache
+        uses: actions/cache@v4
+        with:
+          path: data/
+          key: trendsift-data-${{ github.run_id }}
+          restore-keys: |
+            trendsift-data-
 
       # 增量抓取话题词的「飙升相关查询」：每次轮换 100 个词，构建时话题页直接读缓存
       # --budget 是时间预算（分钟），不是次数也不是钱：Google 限流时多给点时间多试几个
@@ -62,7 +65,7 @@ jobs:
       - name: Build static site
         run: node build-static.js
         env:
-          # 强制重新抓取 explodingtopics 榜单：否则 R2 回写的新鲜缓存（6h 内）
+          # 强制重新抓取 explodingtopics 榜单：否则缓存里 6h 内的新鲜快照
           # 会让 getRadar 直接走缓存，机会库词表永远不会更新
           GT_FORCE_RADAR: '1'
 
@@ -78,14 +81,8 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-      # 部署完成后，把本次构建新产生的翻译缓存 / 数据快照推到 R2（不再提交回仓库），
-      # 下次构建从 R2 拉取复用。放在部署之后 + 允许失败，R2 出问题绝不影响站点上线。
-      - name: Push data cache to R2
-        run: node scripts/r2-sync.js push
-        continue-on-error: true
-        env:
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      # actions/cache 会在 job 结束时自动把更新后的 data/ 存成新缓存（key 用 run_id），
+      # 下次构建通过 restore-keys 恢复最新那份。无需额外 push 步骤，也不写回 git。
 
       # 把新 URL 主动推给 Bing/Yandex（Google 不支持该协议，靠自然抓取）
       - name: IndexNow ping
