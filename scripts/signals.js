@@ -40,22 +40,25 @@ const CATS = [
   {
     key: 'game',
     weight: 100,
-    re: /\b(pok[eé]mon|pokemon|zelda|gta|mario|fortnite|minecraft|roblox|steam|ps5|playstation|xbox|nintendo|switch 2|esports|speedrun|game pass|dlc|gameplay|walkthrough|game|gaming)\b|ゲーム|ゲーム|게임|游戏|遊戲/i,
+    re: /\b(pok[eé]mon|pokemon|zelda|gta|mario|fortnite|minecraft|roblox|steam|ps5|playstation|xbox|nintendo|switch 2|esports|speedrun|game pass|dlc|gameplay|walkthrough|game|gaming)\b|ゲーム|게임|游戏|遊戲/i,
   },
   {
+    // AI 应用层：模型 + 生成式工具 + 主流 AI 产品名
     key: 'ai',
     weight: 98,
-    re: /\b(ai|a\.i\.|chatgpt|openai|gpt-?\d|claude|gemini|llama|llm|midjourney|sora|copilot|deepseek|perplexity|grok|agent|agents|diffusion|text-to-(image|video)|machine learning)\b|人工智能|人工知能|인공지능|大模型|智能体/i,
+    re: /\b(ai|a\.i\.|chatgpt|openai|gpt-?\d|claude|gemini|llama|llm|midjourney|sora|copilot|deepseek|perplexity|grok|mistral|qwen|nvidia|agent|agents|diffusion|text-to-(image|video)|machine learning|ai (writer|chat|bot|image|video|voice|tool|app)|chatbot|ai-generated|voice clone|text to speech|tts|transcri(be|ption)|stable diffusion|flux|runway|kling|suno|udio|heygen|elevenlabs|rag|embedding|fine-?tun(e|ing))\b|人工智能|人工知能|인공지능|大模型|智能体|通义|豆包|文心|智谱|kimi|minimax/i,
   },
   {
+    // App / 线上产品形态：移动应用、Bot、订阅、建站、市场
     key: 'app',
-    weight: 88,
-    re: /\b(app store|google play|apk|ios|android app|download (the )?app|app)\b|アプリ|앱|下载|下載/i,
+    weight: 90,
+    re: /\b(app store|google play|apk|ios|android( app)?|download (the )?app|mobile app|web app|chrome extension|telegram bot|discord bot|pwa|newsletter|subscription|membership|marketplace|online directory|micro ?saas|starter kit|boilerplate|landing page|no-?code app)\b|アプリ|앱|下载|下載/i,
   },
   {
+    // 开发者 / SaaS / 效率工具：互联网产品的高价值词根
     key: 'tool',
-    weight: 84,
-    re: /\b(tool|software|editor|generator|converter|template|plugin|extension|saas|api|crm|nocode|no-code|dashboard|automation)\b|工具|ツール|도구/i,
+    weight: 86,
+    re: /\b(tool|software|editor|generator|converter|template|plugin|extension|saas|api|sdk|cli|crm|erp|nocode|no-code|low-code|dashboard|automation|automate|workflow|zapier|n8n|scraper|proxy|vpn|database|postgres|supabase|firebase|vercel|cloudflare|hosting|domain|analytics|seo|pdf|optimizer|remover|formatter|checker|builder|toolkit|open source|github|npm|docker|kubernetes)\b|工具|ツール|도구/i,
   },
   {
     key: 'shop',
@@ -78,18 +81,29 @@ const CATS = [
 const NEWSY =
   /\b(dies|died|dead|killed|arrest|arrested|impeach|elected|election|verdict|sentenced|lawsuit|resign|resigns|resigned|earthquake|storm|hurricane|flood|wildfire|weather|forecast|outage|explosion|shooting|ceasefire|summit|poll|polls|senate|congress|parliament|minister|president (trump|biden)|white house|supreme court)\b/i;
 
+// 强产品词根：出现在任何位置都基本能确定是「想用某个产品」，长句也成立
+const STRONG_PRODUCT = /\b(saas|micro ?saas|generator|converter|remover|plugin|sdk|cli|crm|erp|nocode|no-code|low-code|dashboard|automation|workflow|scraper|supabase|firebase|vercel|cloudflare|chatgpt|openai|gpt-?\d|claude|gemini|deepseek|perplexity|llm|midjourney|sora|copilot|chatbot|apk|app store|google play|ai (writer|chat|bot|image|video|tool|app))\b|人工智能|大模型|智能体/i;
+// 弱词根：tool/app/data/extension 这类词在体育/新闻长句里也频繁出现，词多时需谨慎
+const WEAK_PRODUCT = /\b(tool|software|editor|template|extension|api|hosting|analytics|seo|pdf|builder|agent|data|image|video|design|ai)\b|工具|软件|アプリ|앱/i;
+
 function classify(q) {
   const s = String(q || '');
   const words = s.split(/\s+/).filter(Boolean).length;
-  // 真实搜索词偏短；长句 + 问号/引号基本都是新闻标题
-  const sentenceLike = words > 7 || /[?？]/.test(s) || /[''"]/.test(s);
-  // 先判「新闻事件」：这类句子即使含 tour/shop 等词也不是需求
+  // 新闻事件：命中新闻词，且是完整句子（>=5 词）——这类即使含 tour/shop 也不算需求
   if (NEWSY.test(s) && words >= 5) return { key: 'news', weight: 0 };
-  if (sentenceLike) return { key: 'news', weight: 0 };
-  for (const c of CATS) {
-    if (c.re.test(s)) return { key: c.key, weight: c.weight };
+  // 问句、引号、超长句（>=11 词）基本都是新闻标题/报道句子
+  if (/[?？]/.test(s) || /[''"]/.test(s) || words >= 11) return { key: 'news', weight: 0 };
+  const hit = CATS.find((c) => c.re.test(s));
+  // 命中的是弱词根且词数偏多（>=5）：多半是新闻/体育长句里的偶然命中，丢弃
+  if (hit && (hit.key === 'tool' || hit.key === 'app' || hit.key === 'ai') && words >= 5) {
+    if (!STRONG_PRODUCT.test(s)) return { key: 'news', weight: 0 };
   }
+  if (hit) return { key: hit.key, weight: hit.weight };
+  // 没命中需求词根的短语：7 词以上的当作新闻口吻丢掉
+  if (words > 7) return { key: 'news', weight: 0 };
   if (NEWSY.test(s)) return { key: 'news', weight: 0 };
+  // 短句 + 弱产品词根（如 "ai boyfriend" "off page seo"）也算需求
+  if (WEAK_PRODUCT.test(s)) return { key: 'tool', weight: 84 };
   return { key: 'other', weight: 30 };
 }
 
@@ -226,6 +240,73 @@ function diffNewTopics(radarTopics, today) {
   }));
 }
 
+/* ---------------------- 互联网产品新词（品类库来源） ----------------------
+   热榜里能直接做产品的词本来就少（大多是新闻/体育），所以从品类库再补一路：
+   挑「线上可做(carrier=web) + 非品牌 + 在涨/新窗口 + 建站分够高」的互联网产品词。
+   这些不是「今天的热搜」，而是「品类曲线里正在冒头的线上机会」，与热榜需求互补。 */
+
+// 互联网产品形态标签：优先展示 SaaS / AI / 工具 / 应用 / 平台 / 电商工具
+const PRODUCT_RE =
+  /\b(saas|micro ?saas|tool|software|app|platform|generator|converter|remover|plugin|extension|api|sdk|cli|crm|erp|dashboard|automation|workflow|no-?code|low-code|analytics|seo|marketing|hosting|database|pdf|scraper|proxy|vpn|chatbot|agent|ai |ai-|gpt|llm|image|video|design|writing|scheduler|booking|invoic(e|ing)|payment|fintech|crypto|subscription|membership|marketplace|directory|builder|template|editor|optimizer|tracker|monitor|security|cloud|data|remote|freelance|productivity)\b|人工智能|智能体|工具|软件|建站|营销/i;
+
+// site-data 的 carrier=web 已经是 radar.js「线上可做」判定的结果，比关键词词根更可靠。
+// 因此这里以 carrier=web 为主池，PRODUCT_RE 只用来给「互联网产品形态」词加权、排前面。
+function buildProductDemand(history) {
+  const sd = readJSON(D('site-data.json'), { topics: [] });
+  const histMap = new Map();
+  for (const h of history) for (const k of h.map.keys()) histMap.set(k, h.date);
+  const out = [];
+  const seen = new Set();
+  for (const tp of sd.topics || []) {
+    if (tp.carrier !== 'web') continue;               // 只看线上可做（radar 已判定）
+    if (tp.type === 'brand' || tp.brand) continue;     // 排除品牌词
+    // 排除「已有玩家」的公司名和歧义词：用户要的是能自己做的需求词，不是某个现成产品
+    if (tp.digitalKind === 'company' || tp.digitalKind === 'noise') continue;
+    const k = norm(tp.keyword);
+    if (seen.has(k)) continue;
+    seen.add(k);
+    const g90 = tp.g90 || 0;
+    const g12 = tp.g12 || 0;
+    const fresh = tp.isNew || tp.windowKey === 'fresh' || tp.windowKey === 'open';
+    const isProduct = PRODUCT_RE.test(tp.keyword || '');
+    const rising = g90 > 3 || g12 > 10 || (tp.accel || 0) > 0;
+    // 产品形态词放宽收录（它们是「能做的产品」）；其余线上词要求新或在涨
+    if (!isProduct && !fresh && !rising) continue;
+    if (g90 < -25) continue;                           // 明显走下坡的不要
+    const build = tp.buildScore || 0;
+    if (build < 50) continue;                          // 建站分太低，参考价值不足
+    // 评分：建站分为主，产品形态 / 新 / 涨加权——让互联网产品词排在前面
+    const score = Math.round(
+      build + (isProduct ? 30 : 0) + (fresh ? 22 : 0) +
+      Math.min(25, Math.max(0, g90) / 3) + Math.min(12, Math.max(0, g12) / 8)
+    );
+    const firstDay = histMap.get(k) || tp.firstSeen || '';
+    const cat = /\b(ai|gpt|llm|chatbot|agent)\b|人工智能|智能体/i.test(tp.keyword || '') ? 'ai'
+      : isProduct ? 'tool' : 'app';
+    out.push({
+      q: tp.keyword,
+      cat,
+      traffic: (tp.vol ? fmtTraffic(tp.vol) : ''),
+      trafficValue: tp.vol || 0,
+      geos: [],
+      streak: 0,
+      firstDay,
+      fresh: !!fresh,
+      articles: [],
+      desc: tp.descShort || '',
+      form: tp.formLabel || '',
+      slug: tp.slug || '',
+      buildScore: build,
+      g90: Math.round(g90),
+      productForm: isProduct,
+      source: 'library',                               // 标记来源，页面可用不同样式
+      score,
+    });
+  }
+  out.sort((a, b) => b.score - a.score);
+  return out;
+}
+
 /* ------------------------------ 主流程 ------------------------------ */
 
 function buildSignals(opts) {
@@ -303,6 +384,24 @@ function buildSignals(opts) {
   }
 
   demand.sort((a, b) => b.score - a.score);
+
+  // 合并「品类库互联网产品新词」：与热榜需求词去重（同 norm 关键词只保留一条）
+  let productDemand = [];
+  try {
+    productDemand = buildProductDemand(history);
+  } catch (e) {
+    /* 读不到 site-data.json 时不影响热榜信号 */
+  }
+  const demandSeen = new Set(demand.map((d) => norm(d.q)));
+  for (const p of productDemand) {
+    if (!demandSeen.has(norm(p.q))) {
+      demandSeen.add(norm(p.q));
+      demand.push(p);
+    }
+  }
+  // 库来源词带 source 标记，重新按分数排序后统一截取
+  demand.sort((a, b) => b.score - a.score);
+
   news.sort((a, b) => b.trafficValue - a.trafficValue);
   for (const k of Object.keys(buckets)) {
     buckets[k].sort((a, b) => b.trafficValue - a.trafficValue);
@@ -322,7 +421,7 @@ function buildSignals(opts) {
       fresh: newToday,
       historyDays: histDays.length,
     },
-    demand: demand.slice(0, 60),
+    demand: demand.slice(0, 120),
     buckets,
     newTopics,
     news: news.slice(0, 12),
