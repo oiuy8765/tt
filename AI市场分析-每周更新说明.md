@@ -97,15 +97,14 @@ npx wrangler pages deploy dist --project-name=trends-radar --branch=main --commi
 
 ---
 
-## 数据缓存与代码解耦（R2 方案）
+## 数据缓存与代码解耦（GitHub Actions 缓存方案）
 
-CI 里已改造：构建前从 Cloudflare R2 拉取上次的翻译缓存/数据快照，构建部署后把新缓存推回 R2，**不再 commit 回仓库**。这样数据更新不污染 git 历史。
+CI 里已改造：构建前用 `actions/cache@v4` 恢复上次的翻译缓存/数据快照（`data/`），job 结束时自动把更新后的 `data/` 存成新缓存，**不再 commit 回仓库**。这样数据更新不污染 git 历史。
 
-- 同步脚本：`scripts/r2-sync.js`（`push` / `pull`），同步清单见脚本内 `FILES` 数组。
-- 依赖 secrets：`CLOUDFLARE_ACCOUNT_ID`、`CLOUDFLARE_API_TOKEN`（需含 R2 对象读写权限）。
-- **R2 需先在 Cloudflare Dashboard 手动开通一次**（R2 → 创建 bucket `trendsift-data`），CLI 无法开通。
-- 两个 R2 步骤都是 `continue-on-error`，即使 R2 未开通也不影响站点正常部署。
-- 页面数据本身仍是构建时抓取生成的（`build-static.js` 的 `getRadar`），R2 只缓存跨构建复用的中间产物，不改变"数据烘进静态 HTML、利于 SEO"的本质。
+- 缓存 key：`trendsift-data-${{ github.run_id }}`，`restore-keys: trendsift-data-`，每次恢复最近一份并写回新的一份。
+- 不依赖 Cloudflare R2，也不需要额外绑定支付方式（R2 开通会走到付款信息页，故放弃）。
+- 页面数据本身仍是构建时抓取生成的（`build-static.js` 的 `getRadar`），缓存只保存跨构建复用的中间产物，不改变"数据烘进静态 HTML、利于 SEO"的本质。
+- `scripts/r2-sync.js` 保留但已不再被 CI 调用，可无视。
 
 ---
 
